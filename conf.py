@@ -92,9 +92,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # Theme customization
 html_context = {
-    'display_github': True,
-    "last_updated": False,
-    "commit": False
+    'display_github': True
 }
 
 
