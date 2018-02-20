@@ -1,5 +1,5 @@
-Be a worker
-===========
+Be a worker too
+===============
 
 Section 1
 ---------
