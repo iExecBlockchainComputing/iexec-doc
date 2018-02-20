@@ -1,0 +1,33 @@
+.wy-side-nav-search {
+    background-color: #252627;
+}
+
+.wy-side-nav-search a.icon-home {
+    width: 100%
+}
+
+.wy-side-nav-search input[type=text] {
+    border-radius: 5px
+}
+
+.wy-menu-vertical a:hover {
+    background-color: #ADAFB3;
+    color: #FFF
+}
+
+.wy-nav-side {
+    background-color: #252627;
+}
+
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+    color: #E8E8E8;
+}
+
+.wy-nav-top {
+    background-color: #252627;
+}
+
+.wy-nav-top a {
+    width: 100%
+}
