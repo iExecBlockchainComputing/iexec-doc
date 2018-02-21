@@ -5,6 +5,9 @@ Welcome to iExec
 
 iExec is the first decentralized marketplace for cloud resources. The iExec platform allows everyone to monetize their applications, servers and data-sets.
 
+.. image:: https://iex.ec/app/uploads/2017/08/decentralized-cloud-infographic@3x-1.png
+
+
 **Why do we use it?**
 
 .. note:: It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
