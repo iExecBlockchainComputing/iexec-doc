@@ -18,7 +18,7 @@ In case the scheduler does not provide such a script, the following command can 
 
    docker run -d --restart always \
                 --env SCHEDULER_DOMAIN="devxw.iex.ec" \
-                -v /tmp:/tmp \
+                -v /tmp/iexec:/tmp/iexec \
                 -v /var/run/docker.sock:/var/run/docker.sock \
                 iexechub/worker:X.Y.Z
 
@@ -38,7 +38,9 @@ SHAREDPACKAGES    packages already installed in the worker        NO
 LOGGERLEVEL       logger level used by the worker                 NO           INFO
 ================  ==============================================  ==========  =============
 
-Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, if not defined the worker may not behave as expected.
+Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, if not defined the worker may not behave as expected:
+1. The option *-v /tmp/iexec:/tmp* will be used to store all the results from the worker.
+2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers. 
 
 Install a worker from deb package 
 ---------------------------------
