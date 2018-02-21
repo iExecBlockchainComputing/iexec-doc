@@ -16,7 +16,7 @@ In case the scheduler does not provide such a script, the following command can 
 
 .. code:: bash
 
-   docker run -d --restart always 
+   docker run -d --restart always \
                 --env SCHEDULER_DOMAIN="devxw.iex.ec" \
                 -v /tmp:/tmp \
                 -v /var/run/docker.sock:/var/run/docker.sock \
