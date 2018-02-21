@@ -8,11 +8,11 @@ The easiest way to deploy a worker on a machine is to use docker. For this, you 
 
 **From a script provided by the scheduler**
 
-The scheduler you want to connect your worker to may already provide a ready to launch script for you to use. In that case you can simply launch that script.
+The scheduler you want to connect your worker to may already provide a ready to launch script for you to use. In that case you can simply launch that script. It will start a worker with the correct parameters to connect to that scheduler.
 
 **Manual launch**
 
-The following command can be called on the machine where the worker will run:
+In case the scheduler does not provide such a script, the following command can be called on the machine where the worker will run:
 
 .. code:: bash
 
@@ -37,6 +37,8 @@ SHAREDAPPS        apps already installed in the worker            NO           d
 SHAREDPACKAGES    packages already installed in the worker        NO
 LOGGERLEVEL       logger level used by the worker                 NO           INFO
 ================  ==============================================  ==========  =============
+
+Regarding the volumes mounted with the -v command, they are mandatory.
 
 Install a worker from deb package 
 ---------------------------------
