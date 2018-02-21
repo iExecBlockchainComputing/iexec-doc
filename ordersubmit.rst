@@ -1,12 +1,14 @@
-Submit Work Order
-=================
+Submit a Work Order
+===================
 
-Section 1
----------
+Using the iExec SDK
+-------------------
+The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI tool that has all the commands to interact with the iExec network.
+Once you have it installed, here are the steps to submit a **Work Order** to the iExec network:
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+.. code-block:: bash
 
-Section 2
----------
+  iexec submit --dapp <dapp_address>
+   iexec result <txHash> --dapp <dapp_address>
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to read its full documentation.
