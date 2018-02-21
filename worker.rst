@@ -38,7 +38,7 @@ SHAREDPACKAGES    packages already installed in the worker        NO
 LOGGERLEVEL       logger level used by the worker                 NO           INFO
 ================  ==============================================  ==========  =============
 
-Regarding the volumes mounted with the -v command, they are mandatory.
+Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, if not defined the worker may not behave as expected.
 
 Install a worker from deb package 
 ---------------------------------
