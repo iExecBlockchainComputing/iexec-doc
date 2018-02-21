@@ -6,10 +6,10 @@ For providers
 ---------
 
 As a Provider, you can lend your machine power and monetize it by executing developer applications.
-Go to the `Be a worker`_ section to learn how to deploy your worker software.
+Go to the `Be a worker`__ section to learn how to deploy your worker software.
 For advanced users, you can learn how to deploy your own scheduler in the 'Be a scheduler' section.
 
-.. _worker: /worker
+.. __worker: /worker
 
 For Dapp users
 ---------
