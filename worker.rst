@@ -26,6 +26,18 @@ where X.Y.Z is the version of the worker that should be used. The list of availa
 
 The following parameters can be used in the command:
 
+================  ==============================================  ==========  =============
+Parameter         Meaning                                         Mandatory   Default value
+================  ==============================================  ==========  =============
+SCHEDULER_DOMAIN  URL of the scheduler                            YES
+SCHEDULER_IP      IP adress of the scheduler                      NO
+LOGIN             login of the worker to connect to scheduler     NO           vworker
+PASSWORD          password of the worker to connect to scheduler  NO           vworkerp
+SHAREDAPPS        apps already installed in the worker            NO           docker
+SHAREDPACKAGES    packages already installed in the worker        NO
+LOGGERLEVEL       logger level used by the worker                 NO           INFO
+================  ==============================================  ==========  =============
+
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
