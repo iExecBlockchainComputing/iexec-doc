@@ -1,4 +1,4 @@
-Wellcome to iExec
+Welcome to iExec
 =================
 
 **What is iExec?**
