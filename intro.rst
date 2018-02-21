@@ -6,13 +6,10 @@ For providers
 ---------
 
 As a Provider, you can lend your machine power and monetize it by executing developer applications.
-Go to the 'Be a worker' section to learn how to deploy your worker software.
-.. toctree::
-   :maxdepth: 2
-   :caption: Use iExec
-
-   worker
+Go to the 'Be a worker_' section to learn how to deploy your worker software.
 For advanced users, you can learn how to deploy your own scheduler in the 'Be a scheduler' section.
+
+.. _worker: /worker
 
 For Dapp users
 ---------
