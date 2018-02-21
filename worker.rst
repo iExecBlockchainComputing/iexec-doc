@@ -39,6 +39,7 @@ LOGGERLEVEL       logger level used by the worker                 NO           I
 ================  ==============================================  ==========  =============
 
 Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, if not defined the worker may not behave as expected:
+
 1. The option *-v /tmp/iexec:/tmp* will be used to store all the results from the worker.
 2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers. 
 
