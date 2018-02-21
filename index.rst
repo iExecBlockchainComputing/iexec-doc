@@ -3,7 +3,27 @@ Welcome to iExec
 
 **What is iExec?**
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+iExec is the first decentralized marketplace for cloud resources. The iExec platform allows everyone to monetize their applications, servers and data-sets.
+
+**What is your need?**
+
+
+FOR PROVIDERS
+As a Provider, you can lend your machine power and monetize it by executing developer applications.
+Go to the 'Be a worker' section to learn how to deploy your worker software.
+For advanced users, you can learn how to deploy your own scheduler in the 'Be a scheduler' section.
+
+FOR DAPPUSER
+
+As a Dapp user, you can run decentralized apps submited to the iExec platform. 
+Pick a Dapp on our Dapp store (https://dapps.iex.ec) and learn in the 'Submit a Work Order' section how to run dapps with the iExec SDK.
+
+FOR DEVELOPERS
+As a Developer, you can use iExec to overcome blockchain limitations, by executing your computations on a new distributed infrastructure.
+Go to the 'DEVELOP' section to learn how to build Dapps (binaries or docker images) for the community
+.. note:: binaries are beeing deprecated
+
+
 
 **Why do we use it?**
 
