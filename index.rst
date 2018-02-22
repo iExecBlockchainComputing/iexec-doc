@@ -37,6 +37,5 @@ Our architecture makes it possible to have a network of computing resources that
    :maxdepth: 2
    :caption: Develop
 
-   simpleapp
    dockerapp
    gpuapp
