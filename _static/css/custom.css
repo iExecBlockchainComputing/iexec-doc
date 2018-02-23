@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Overpass');
+
 .wy-side-nav-search {
-    background-color: #252627;
+    background-color: #010101;
 }
 
 .wy-side-nav-search a.icon-home {
@@ -16,18 +18,30 @@
 }
 
 .wy-nav-side {
-    background-color: #252627;
+    background-color: #010101;
 }
 
 .wy-menu-vertical header,
 .wy-menu-vertical p.caption {
-    color: #E8E8E8;
+    color: #F5F5F5;
 }
 
 .wy-nav-top {
-    background-color: #252627;
+    background-color: #353535;
 }
 
 .wy-nav-top a {
     width: 100%
+}
+p{
+    font-family: 'Overpass', sans-serif;
+    font-weight:500;
+    line-height:25px;
+}
+h1,h2,h3,h4,h5{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+.logo{
+    max-width:75% !important;
 }

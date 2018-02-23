@@ -15,14 +15,19 @@ Build your image
 ----------------
 Firstly you need to build a docker image which contains your application.
 
+Your image will be launched by iExec worker using following command:
+
+.. code:: bash
+
+   docker run -v ${DIRINURI}:/host -w /host ${XWDOCKERIMAGE} ${CMDLINE}
+
+* `DIRINURI` - directory where `dirinuri` files are accessible
+* `XWDOCKERIMAGE` - docker image to run
+* `CMDLINE` - command to execute
+
 .. note:: Please check that application in your docker container executes successfully before submitting it to iExec.
 
-.. note:: All `dirinuri` files are avaliable in `/host` directory.
-
 .. warning:: The working directory of container is forced to `/host` within execution.
-
-.. warning:: Don't put your application or any data to `/host` directory cause this directory will mounted as a docker volume.
-             So the your data will not be available.
 
 Push your image to Dockerhub
 ----------------------------
@@ -31,22 +36,16 @@ Before execution iExec worker will pull image from public repository.
 
 Get Dapp Sample
 ---------------
-The easiest way to start building your dapp at iExec is to get dapp example provided by our team.
+The easiest way to start building your dapp at iExec is to try our katacoda tutorial:
+https://www.katacoda.com/sulliwane/scenarios/ffmpeg
 
-Get ffmpeg Dapp:
+Dapp Files
+----------
+In katacoda tutorial we are modifing two files in order to adapt Dapp Sample to your application.
+In this section we will highlight the most important parts of modified files.
 
-.. code:: bash
-
-   git clone https://github.com/iExecBlockchainComputing/iexec-dapp-samples.git --branch ffmpeg
-
-
-Modify Dapp Sample
-------------------
-We must modify two files in order to adapt Dapp Sample to your application.
-
-
-Modify ./contracts/Ffmpeg.sol file
-**********************************
+Modifing ./contracts/Ffmpeg.sol file
+************************************
 
 .. code:: javascript
 
@@ -63,14 +62,12 @@ Modify ./contracts/Ffmpeg.sol file
 
     }
 
-* Modify contract name
-* Modify DAPP_PRICE
-* Modify DAPP_NAME
+* `contract Ffmpeg` - name of the contract. Should be the same as the contract file name. 
+* `DAPP_PRICE` - price for dapp execution
+* `DAPP_NAME` - dapp name
 
-.. warning:: Don't forget to rename Ffmpeg.sol file
-
-Modify ./iexec.js file
-**********************
+Modifing ./iexec.js file
+************************
 
 .. code:: javascript
 
@@ -86,10 +83,14 @@ Modify ./iexec.js file
         }
     };
 
-* `name` - application name
-* `app.type` - type of application
-* `work.cmdline` - command which will be executed in your container
-* `work.dirinuri` - file that will be downloaded to containers `/host` directory (Can be used for source data)
+* `name` - dapp name
+* `app.type` - type of dapp
+* `app.envvars` - environment variables passed to your dapp
+  
+.. warning:: It's very important to set XWDOCKERIMAGE variable. This variable sets the docker image of your dapp. 
+
+* `work.cmdline` - command that will be executed in your container
+* `work.dirinuri` - file that will be downloaded to `/host` directory in docker container
 
   * Can be a single file
   * Can be `.zip` archive, which will be decompressed automatically
