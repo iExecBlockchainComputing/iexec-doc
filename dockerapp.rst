@@ -1,12 +1,65 @@
 Docker Application
 ==================
+In this section we will show you how you can create a docker Dapp at iExec.
 
-Section 1
----------
+Build your image
+----------------
+Firstly you need to build a docker image which contains your application.
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Your image will be launched by iExec worker using following command:
 
-Section 2
----------
+.. code:: bash
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+   docker run -v ${DIRINURI}:/host -w /host ${XWDOCKERIMAGE} ${CMDLINE}
+
+* `DIRINURI` - directory where `dirinuri` files are accessible
+* `XWDOCKERIMAGE` - docker image to run
+* `CMDLINE` - command to execute
+
+Push your image to Dockerhub
+----------------------------
+You must push your image to a public repository at Docker Hub.
+Before execution iExec worker will pull image from public repository.
+
+Interactive Tutorial
+--------------------
+The easiest way to start building your dapp at iExec is to try our katacoda tutorial:
+https://www.katacoda.com/sulliwane/scenarios/ffmpeg
+
+Dapp Files
+----------
+In katacoda tutorial we are modifing some files in order to adapt Dapp Sample to your application.
+
+Modifing ./iexec.js file
+************************
+
+.. code:: javascript
+
+    module.exports = {
+        name: 'Ffmpeg',
+        app: {
+          type: 'DOCKER',
+          envvars: 'XWDOCKERIMAGE=jrottenberg/ffmpeg:scratch',
+        },
+        work: {
+            cmdline:'-i small.mp4 small.avi',
+            dirinuri:'http://techslides.com/demos/sample-videos/small.mp4',
+        }
+    };
+
+* `name` - dapp name
+* `app.type` - type of dapp
+* `app.envvars` - environment variables passed to your dapp
+  
+.. warning:: It's very important to set XWDOCKERIMAGE variable. This variable sets the docker image of your dapp. 
+
+* `work.cmdline` - command that will be executed in your container
+* `work.dirinuri` - file that will be downloaded to `/host` directory in docker container
+
+  * Can be a single file
+  * Can be `.zip` archive, which will be decompressed automatically
+
+Deploy your Dapp
+----------------
+
+Now your dapp is ready. So you can deploy it with iExec SDK.
