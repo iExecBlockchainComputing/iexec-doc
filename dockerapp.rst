@@ -2,8 +2,8 @@ Docker Application
 ==================
 In this section we will show you how you can create a docker Dapp at iExec.
 
-Build your image
-----------------
+Build & test your image
+-----------------------
 Firstly you need to build a docker image which contains your application.
 
 Your image will be launched by iExec worker using following command:
@@ -21,13 +21,11 @@ Push your image to Dockerhub
 You must push your image to a public repository at Docker Hub.
 Before execution iExec worker will pull image from public repository.
 
-Interactive Tutorial
---------------------
+Deploy your dapp
+----------------
 The easiest way to start building your dapp at iExec is to try our katacoda tutorial:
 https://www.katacoda.com/sulliwane/scenarios/ffmpeg
 
-Dapp Files
-----------
 In katacoda tutorial we are modifing some files in order to adapt Dapp Sample to your application.
 
 Modifing ./iexec.js file
@@ -59,7 +57,3 @@ Modifing ./iexec.js file
   * Can be a single file
   * Can be `.zip` archive, which will be decompressed automatically
 
-Deploy your Dapp
-----------------
-
-Now your dapp is ready. So you can deploy it with iExec SDK.

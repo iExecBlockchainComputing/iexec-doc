@@ -10,14 +10,6 @@ iExec is the first decentralized marketplace for cloud resources. The iExec plat
 Our architecture makes it possible to have a network of computing resources that are used to execute distributed applications.
 
 
-.. code-block:: python
-   :caption: this.py
-   :name: this-py
-
-   print 'Explicit is better than implicit.'
-
-
-
 .. toctree::
    :maxdepth: 2
    :caption: Getting Started
