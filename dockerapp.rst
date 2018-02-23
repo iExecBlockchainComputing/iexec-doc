@@ -28,7 +28,7 @@ https://www.katacoda.com/sulliwane/scenarios/ffmpeg
 
 Dapp Files
 ----------
-In katacoda tutorial we are modifing two files in order to adapt Dapp Sample to your application.
+In katacoda tutorial we are modifing some files in order to adapt Dapp Sample to your application.
 
 Modifing ./iexec.js file
 ************************
