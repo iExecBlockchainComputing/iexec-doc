@@ -1,18 +1,6 @@
 Be a worker
 ===========
 
-Supported CPU
--------------
-* **x86**
-* **x86_64**
-* **ARM**
-
-Supported OS
-------------
-* **Linux**
-* **MacOS**
-* **Windows**
-
 Start a worker in docker
 ------------------------
 
@@ -59,3 +47,15 @@ Install a worker from deb package
 ---------------------------------
 
 Coming soon.
+
+Supported CPU
+-------------
+* **x86**
+* **x86_64**
+* **ARM**
+
+Supported OS
+------------
+* **Linux**
+* **MacOS**
+* **Windows**
