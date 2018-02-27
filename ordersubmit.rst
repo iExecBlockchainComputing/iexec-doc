@@ -9,6 +9,6 @@ Once you have it installed, here are the steps to submit a **Work Order** to the
 .. code-block:: bash
 
   iexec submit --dapp <dapp_address>
-   iexec result <txHash> --dapp <dapp_address>
+  iexec result <txHash> --dapp <dapp_address>
 
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to read its full documentation.

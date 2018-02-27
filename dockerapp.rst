@@ -1,6 +1,6 @@
 Docker Application
 ==================
-In this section we will show you how you can create a docker Dapp at iExec.
+In this section we will show you how you can create a docker Dapp over iExec infrastructure.
 
 Build & test your image
 -----------------------
@@ -10,10 +10,10 @@ Your image will be launched by iExec worker using following command:
 
 .. code:: bash
 
-   docker run -v ${DIRINURI}:/host -w /host ${XWDOCKERIMAGE} ${CMDLINE}
+   docker run -v ${DIRINURI}:/host -w /host ${DOCKERIMAGE} ${CMDLINE}
 
 * `DIRINURI` - directory where `dirinuri` files are accessible
-* `XWDOCKERIMAGE` - docker image to run
+* `DOCKERIMAGE` - docker image to run
 * `CMDLINE` - command to execute
 
 Push your image to Dockerhub

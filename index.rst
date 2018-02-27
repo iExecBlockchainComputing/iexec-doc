@@ -21,7 +21,6 @@ Our architecture makes it possible to have a network of computing resources that
    :caption: Use iExec
 
    worker
-   scheduler
    ordersubmit
 
 
@@ -30,4 +29,3 @@ Our architecture makes it possible to have a network of computing resources that
    :caption: Develop
 
    dockerapp
-   gpuapp
