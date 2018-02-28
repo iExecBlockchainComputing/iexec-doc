@@ -50,13 +50,13 @@ Install from a deb package
 
 Coming soon.
 
-Install from a Apple PKG 
-------------------------
+Install from an Apple PKG 
+-------------------------
 
 Coming soon.
 
-Install from MSI package 
-------------------------
+Install from a MSI package 
+--------------------------
 
 Coming soon.
 
