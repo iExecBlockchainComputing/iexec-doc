@@ -1,10 +1,12 @@
 Be a worker
 ===========
 
+A worker is an essential actor of the infrastructure. It will be in charge of performing the works submitted by the users. It is part of a worker pool. A worker will be rewarded some RLC for every work it performs.
+
 Start a worker in docker
 ------------------------
 
-The easiest way to deploy a worker on a machine is to use docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `docker website <https://docs.docker.com/install/>`_ to install it.
+The easiest way to deploy a worker on a machine (thus to participate and earn some RLC) is to use docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `docker website <https://docs.docker.com/install/>`_ to install it.
 
 **From a script provided by the scheduler**
 
@@ -43,8 +45,18 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 1. The option *-v /tmp/iexec:/tmp* will be used to store all the results from the worker.
 2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers. 
 
-Install a worker from deb package 
----------------------------------
+Install from a deb package 
+--------------------------
+
+Coming soon.
+
+Install from a Apple PKG 
+------------------------
+
+Coming soon.
+
+Install from MSI package 
+------------------------
 
 Coming soon.
 
