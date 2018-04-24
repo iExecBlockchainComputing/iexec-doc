@@ -10,9 +10,9 @@ Your image will be launched by iExec worker using following command:
 
 .. code:: bash
 
-   docker run -v ${DIRINURI}:/host -w /host ${DOCKERIMAGE} ${CMDLINE}
+   docker run -v ${IN_OUT}:/iexec ${DOCKERIMAGE} ${CMDLINE}
 
-* `DIRINURI` - directory where `dirinuri` files are accessible
+* `IN_OUT` - directory where `dirinuri` files are accessible and where you can move result to have them in the  final zip result
 * `DOCKERIMAGE` - docker image to run
 * `CMDLINE` - command to execute
 
