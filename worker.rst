@@ -44,7 +44,7 @@ PASSWORD          password of the worker to connect to scheduler  NO           v
 SHAREDAPPS        apps already installed in the worker            NO           
 LOGGERLEVEL       logger level used by the worker                 NO           INFO
 TMPDIR            temporary folder used by the worker             NO
-WALLETPASSWORD    password of the wallet used by the worker       NO
+WALLETPASSWORD    password of the wallet used by the worker       YES
 ================  ==============================================  ==========  =============
 
 Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, **if not defined the worker may not behave as expected**:
