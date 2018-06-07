@@ -27,7 +27,6 @@ The following command can be called on the machine where the worker will run:
 		--env SHAREDAPPS=docker \
 		--env TMPDIR=/PATH/TO/TEMPDIR \
 		--env WALLETPASSWORD=walletpassword \
-		--env BLOCKCHAINETHENABLED=true \
 		-v /PATH/TO/WORKER/WALLET/wallet.json:/iexec/wallet/wallet_worker.json \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR \
@@ -44,15 +43,17 @@ SCHEDULER_DOMAIN  URL of the scheduler                            YES
 SCHEDULER_IP      IP adress of the scheduler                      NO
 LOGIN             login of the worker to connect to scheduler     NO           vworker
 PASSWORD          password of the worker to connect to scheduler  NO           vworkerp
-SHAREDAPPS        apps already installed in the worker            NO           docker
-SHAREDPACKAGES    packages already installed in the worker        NO
+SHAREDAPPS        apps already installed in the worker            NO           
 LOGGERLEVEL       logger level used by the worker                 NO           INFO
+TMPDIR            temporary folder used by the worker             NO
+WALLETPASSWORD    password of the wallet used by the worker       NO
 ================  ==============================================  ==========  =============
 
-Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, if not defined the worker may not behave as expected:
+Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, **if not defined the worker may not behave as expected**:
 
-1. The option *-v /tmp/iexec:/tmp* will be used to store all the results from the worker.
-2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers. 
+1. The option *-v /PATH/TO/WORKER/WALLET/wallet.json:/iexec/wallet/wallet_worker.json* is used for the worker to know which wallet to use.
+2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers when performing tasks. 
+3. The option *-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR* will be used to store all the results from the worker.
 
 Supported CPU
 -------------
