@@ -4,7 +4,7 @@ In this section we will show you how you can create a docker Dapp over iExec inf
 
 Build & test your image
 -----------------------
-Firstly you need to build a docker image which contains your application.
+Firstly you need to build a docker image that contains your application.
 
 Your image will be launched by iExec worker using following command:
 
@@ -12,13 +12,13 @@ Your image will be launched by iExec worker using following command:
 
    docker run -v ${IN_OUT}:/iexec ${DOCKERIMAGE} ${CMDLINE}
 
-* `IN_OUT` - directory where `dirinuri` files are accessible and where you can move result to have them in the  final zip result
+* `IN_OUT` - directory used to exchange files with the container. The files you put in `dirinuri` will be accessible in the container in the iexec folder. The result of the application (as well as the consensus.iexec file) should be in the iexec folder of the container.
 * `DOCKERIMAGE` - docker image to run
-* `CMDLINE` - command to execute
+* `CMDLINE` - command to execute for the application
 
 Push your image to Dockerhub
 ----------------------------
-You must push your image to a public repository at Docker Hub.
+You must push your image to a public repository at DockerHub.
 Before execution iExec worker will pull image from public repository.
 
 Deploy your dapp
