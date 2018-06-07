@@ -68,6 +68,9 @@ Supported CPU
 
 Supported OS
 ------------
+
+Since a worker is running in a docker container, it can be started in any OS that can support docker, so the following OS are supported:
+
 * **Linux**
 * **MacOS**
 * **Windows**
