@@ -19,19 +19,19 @@ The following command can be called on the machine where the worker will run:
 .. code:: bash
 
    docker run -d --restart always \
-			        --env SCHEDULER_DOMAIN=pool.example.iex.ec \
-      		     --env SCHEDULER_IP=13.59.215.30 \
-			        --env LOGIN=test \
-			        --env PASSWORD=password123 \
-			        --env LOGGERLEVEL=DEBUG \
-			        --env SHAREDAPPS=docker \
-			        --env TMPDIR=/PATH/TO/TEMPDIR \
-			        --env WALLETPASSWORD=walletpassword \
-			        --env BLOCKCHAINETHENABLED=true \
-			        -v /PATH/TO/WORKER/WALLET/wallet.json:/iexec/wallet/wallet_worker.json \
-			        -v /var/run/docker.sock:/var/run/docker.sock \
-			        -v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR \
-			        iexechub/worker:X.Y.Z
+	        --env SCHEDULER_DOMAIN=pool.example.iex.ec \
+	        --env SCHEDULER_IP=13.59.215.30 \
+		--env LOGIN=test \
+		--env PASSWORD=password123 \
+		--env LOGGERLEVEL=DEBUG \
+		--env SHAREDAPPS=docker \
+		--env TMPDIR=/PATH/TO/TEMPDIR \
+		--env WALLETPASSWORD=walletpassword \
+		--env BLOCKCHAINETHENABLED=true \
+		-v /PATH/TO/WORKER/WALLET/wallet.json:/iexec/wallet/wallet_worker.json \
+		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR \
+		iexechub/worker:X.Y.Z
 
 where X.Y.Z is the version of the worker that should be used. The list of available versions can be checked on the `iexec dockerhub page <https://hub.docker.com/r/iexechub/worker/tags/>`_. **It should match the version of the scheduler**.
 
@@ -54,26 +54,10 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 1. The option *-v /tmp/iexec:/tmp* will be used to store all the results from the worker.
 2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers. 
 
-Install from a deb package 
---------------------------
-
-Coming soon.
-
-Install from an Apple PKG 
--------------------------
-
-Coming soon.
-
-Install from a MSI package 
---------------------------
-
-Coming soon.
-
 Supported CPU
 -------------
 * **x86**
 * **x86_64**
-* **ARM**
 
 Supported OS
 ------------
