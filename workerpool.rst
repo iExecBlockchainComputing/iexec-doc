@@ -36,15 +36,14 @@ The first service, mandatory for the scheduler to work is the database. In the d
 The different variables you see here (MYSQL_ADMIN_PASSWORD, MYSQL_DB_NAME, MYSQL_USER_LOGIN, MYSQL_USER_PASSWORD, MYSQLDATA_FOLDER and DATABASE_FOLDER) are defined in the .env file and **should be modified**.
 
 Here is the list of variables used for the database and their meaning:
-====================  ==============================================  ==========
-Parameter             Meaning                                         Mandatory 
-====================  ==============================================  ==========
-MYSQL_ADMIN_PASSWORD  Admin password of the mysql database            YES
-MYSQL_DB_NAME         Database name to use                            YES
-MYSQL_USER_LOGIN      Login to use to connect to the database
-MYSQL_USER_PASSWORD   Password to use to connect to the database
-MYSQLDATA_FOLDER      Folder on the host machine where the db will 
-                      be persisted
-DATABASE_FOLDER       Folder containing the sql script that will be
-                      triggered at the start of the database
-====================  ==============================================  ==========
+
+====================  ===============================================================================  ==========
+Parameter             Meaning                                                                          Mandatory 
+====================  ===============================================================================  ==========
+MYSQL_ADMIN_PASSWORD  Admin password of the mysql database                                             YES
+MYSQL_DB_NAME         Database name to use                                                             YES
+MYSQL_USER_LOGIN      Login to use to connect to the database                                          YES
+MYSQL_USER_PASSWORD   Password to use to connect to the database                                       YES
+MYSQLDATA_FOLDER      Folder on the host machine where the db will be persisted                        YES
+DATABASE_FOLDER       Folder containing the sql script that will be triggered at the start of the db   YES
+====================  ===============================================================================  ==========
