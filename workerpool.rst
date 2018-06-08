@@ -128,3 +128,52 @@ SCHEDULERWALLETPATH                Path of the scheduler's wallet
 SCHEDULERWALLETPASSWORD            Password of the scheduler's wallet
 WORKERPOOLADDRESS                  
 =================================  ===============================================================================  ==========
+
+**Grafana service**
+
+.. code:: bash
+
+grafana:
+    image: iexechub/grafana:${GRAFANA_DOCKER_IMAGE_VERSION}
+    container_name: iexecgrafana
+    ports:
+      - "3000:3000"
+    environment:
+      - DBHOST=db
+      - MYSQL_DB_NAME=${MYSQL_DB_NAME}
+      - MYSQL_USER=${GRAFANA_SQL_LOGIN}
+      - MYSQL_PASSWORD=${GRAFANA_SQL_PASSWORD}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - GRAFANA_HOST=${GRAFANA_HOST}
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_NAME=ViewerOrg
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_ALLOW_SIGN_UP=false
+      - GRAFANA_HOME_NAME=${GRAFANA_HOME_NAME}
+      - GRAFANA_HOME_LOGO_WIDTH=${GRAFANA_HOME_LOGO_WIDTH}
+      - GRAFANA_HOME_LOGO_HEIGHT=${GRAFANA_HOME_LOGO_HEIGHT}
+      - GRAFANA_HOME_LOGO_PATH=${GRAFANA_HOME_LOGO_PATH}
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - grafana-logs:/var/log/grafana
+      - grafana-etc:/etc/grafana
+    networks:
+      - iexec-net
+    restart: unless-stopped
+
+Like the other services, the different variables used here are defined in the .env file and **should be modified**.
+
+============================  ===============================================================================  ==========
+Parameter                     Meaning                                                                          Mandatory 
+============================  ===============================================================================  ==========
+GRAFANA_DOCKER_IMAGE_VERSION  Image version of grafana
+MYSQL_DB_NAME                 Name of the database where grafana will get all the statistics
+GRAFANA_SQL_LOGIN             Login of the grafana user
+GRAFANA_SQL_PASSWORD          Password of the grafana user
+GRAFANA_ADMIN_PASSWORD        Admin password used in grafana
+GRAFANA_HOST                  Address of grafana
+GRAFANA_HOME_NAME             Name used in grafana's front end
+GRAFANA_HOME_LOGO_PATH        Path of the logo used in grafana's front end
+GRAFANA_HOME_LOGO_WIDTH       Width of the logo used in grafana's front end
+GRAFANA_HOME_LOGO_HEIGHT      Height of the logo used in grafana's front end
+============================  ===============================================================================  ==========
