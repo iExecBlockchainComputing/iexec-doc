@@ -47,3 +47,51 @@ MYSQL_USER_PASSWORD   Password to use to connect to the database                
 MYSQLDATA_FOLDER      Folder on the host machine where the db will be persisted                        YES
 DATABASE_FOLDER       Folder containing the sql script that will be triggered at the start of the db   YES
 ====================  ===============================================================================  ==========
+
+**Scheduler service**
+
+The main component is the scheduler service. In the docker compose file, it is defined as follow:
+
+.. code:: bash
+  scheduler:
+    image: iexechub/server:${SCHEDULER_DOCKER_IMAGE_VERSION}
+    container_name: iexecscheduler
+    hostname: iexecscheduler
+    ports:
+      - 4321:4321
+      - 4322:4322
+      - 4323:4323
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${CERTIFICATE_AND_PRIVATE_KEYS_REPO}:/iexec/keystore
+      - ${SCHEDULER_PERSISTING_FOLDER}:/var/xwhep
+      - ${SCHEDULERWALLETPATH}:/iexec/wallet/wallet_scheduler.json
+    environment:
+      - DBHOST=${DBHOST}
+      - DBNAME=${MYSQL_DB_NAME}
+      - DBUSER=${MYSQL_USER_LOGIN}
+      - DBPASS=${MYSQL_USER_PASSWORD}
+      - ADMINLOGIN=${ADMINLOGIN}
+      - ADMINPASSWORD=${ADMINPASSWORD}
+      - ADMINUID=${ADMINUID}
+      - WORKERLOGIN=${WORKERLOGIN}
+      - WORKERPASSWORD=${WORKERPASSWORD}
+      - WORKERUID=${WORKERUID}
+      - LOGGERLEVEL=${LOGGERLEVEL}
+      - JWTETHISSUER=${JWTETHISSUER}
+      - JWTETHSECRET=${JWTETHSECRET}
+      - DELEGATEDREGISTRATION=${DELEGATEDREGISTRATION}
+      - MAXFILESIZE=${MAXFILESIZE}
+      - BLOCKCHAINETHENABLED=${BLOCKCHAINETHENABLED}
+      - ETHNODE=${ETHNODE}
+      - RLCCONTRACT=${RLCCONTRACT}
+      - IEXECHUBCONTRACT=${IEXECHUBCONTRACT}
+      - WALLETPATH=${SCHEDULERWALLETPATH}
+      - WALLETPASSWORD=${SCHEDULERWALLETPASSWORD}
+      - WORKERPOOLADDRESS=${WORKERPOOLADDRESS}
+    networks:
+      - iexec-net
+    restart: unless-stopped
+    
+TODO
