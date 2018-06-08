@@ -3,8 +3,8 @@ Be a worker pool
 
 A worker pool (also called scheduler) is the essential actor of the infrastructure. It will be in charge of distributing the works submitted by the users to the different workers that are connected to this pool.
 
-Start a scheduler
------------------
+Docker compose file
+-------------------
 
 A scheduler is deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `the docker website <https://docs.docker.com/install/>`_ to install it. Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
 
@@ -133,7 +133,7 @@ WORKERPOOLADDRESS
 
 .. code:: bash
 
-grafana:
+  grafana:
     image: iexechub/grafana:${GRAFANA_DOCKER_IMAGE_VERSION}
     container_name: iexecgrafana
     ports:
@@ -177,3 +177,23 @@ GRAFANA_HOME_LOGO_PATH        Path of the logo used in grafana's front end
 GRAFANA_HOME_LOGO_WIDTH       Width of the logo used in grafana's front end
 GRAFANA_HOME_LOGO_HEIGHT      Height of the logo used in grafana's front end
 ============================  ===============================================================================  ==========
+
+Start a scheduler
+-----------------
+
+To start a scheduler, it is pretty straightforward since the scheduler can be started like any docker compose service, so it can be started using:
+
+.. code:: bash
+
+  docker-compose up -d
+  
+Please note that you need to make sure the scheduler has finished its start before starting any worker that will connect to the pool.
+
+Stop a scheduler
+----------------
+
+In a similar fashion, the scheduler can be stopped with the following command:
+
+.. code:: bash
+
+  docker-compose down
