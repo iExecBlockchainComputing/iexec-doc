@@ -1,6 +1,6 @@
 Submit a Work Order
 ===================
-The second you buy an order from a workerpool, it will trigger your work. Here are the differents options to buy a work from workerpools:
+The second you buy an order from a workerpool, it will trigger your work. Here are the available options to buy a work from a workerpool:
 
 Using the iExec SDK CLI
 ------------------------
