@@ -17,7 +17,8 @@ In the docker compose file, you will find the following components:
 
 The first service, mandatory for the scheduler to work is the database. In the docker compose file, the db looks like this.
 
-.. code:: bash
+.. code:: bash 
+
   db:
     image: mysql:5.7
     container_name: mysql
@@ -53,6 +54,7 @@ DATABASE_FOLDER       Folder containing the sql script that will be triggered at
 The main component is the scheduler service. In the docker compose file, it is defined as follow:
 
 .. code:: bash
+
   scheduler:
     image: iexechub/server:${SCHEDULER_DOCKER_IMAGE_VERSION}
     container_name: iexecscheduler
@@ -94,4 +96,35 @@ The main component is the scheduler service. In the docker compose file, it is d
       - iexec-net
     restart: unless-stopped
     
-TODO
+Like the database, the different variables used here are defined in the file .env and **should be modified**.
+
+=================================  ===============================================================================  ==========
+Parameter                          Meaning                                                                          Mandatory 
+=================================  ===============================================================================  ==========
+SCHEDULER_DOCKER_IMAGE_VERSION     Version of the scheduler image to use
+CERTIFICATE_AND_PRIVATE_KEYS_REPO  Path of the folder for the certificate that should be used by the scheduler
+SCHEDULER_PERSISTING_FOLDER        Path of the folder that will persist the results
+SCHEDULERWALLETPATH                Path of the scheduler's wallet
+DBHOST                             Host of the db to which the scheduler will connect
+MYSQL_DB_NAME                      Name of the db to use by the scheduler
+MYSQL_USER_LOGIN                   Login of the user to use by the scheduler
+MYSQL_USER_PASSWORD                Password of the user to use by the scheduler
+ADMINLOGIN                         Admin login for the scheduler
+ADMINPASSWORD                      Admin password for the scheduler
+ADMINUID                           Admin UID of the scheduler
+WORKERLOGIN                        Login of the worker that will connect to the pool
+WORKERPASSWORD                     Password of the worker that will connect to the pool
+WORKERUID                          Worker UID that will connect to the pool
+LOGGERLEVEL                        Log level to use in the scheduler's log
+JWTETHISSUER                       Issuer of the Json web token
+JWTETHSECRET                       Password of the Json web token
+DELEGATEDREGISTRATION
+MAXFILESIZE
+BLOCKCHAINETHENABLED               Boolean to say if the blockchain is used or not by the scheduler
+ETHNODE                            Address of the ETH node that the scheduler will use
+RLCCONTRACT                        Address of the RLC contract
+IEXECHUBCONTRACT                   Address of the iExechub contract
+SCHEDULERWALLETPATH                Path of the scheduler's wallet
+SCHEDULERWALLETPASSWORD            Password of the scheduler's wallet
+WORKERPOOLADDRESS                  
+=================================  ===============================================================================  ==========
