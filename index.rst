@@ -21,6 +21,7 @@ Our architecture makes it possible to have a network of computing resources that
    :caption: Use iExec
 
    worker
+   workerpool
    ordersubmit
 
 
