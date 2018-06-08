@@ -6,7 +6,7 @@ A worker pool (also called scheduler) is the essential actor of the infrastructu
 Start a scheduler
 -----------------
 
-A scheduler is deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `docker website <https://docs.docker.com/install/>` to install it. Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `docker compose website <https://docs.docker.com/compose/>` to install it.
+A scheduler is deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `the docker website <https://docs.docker.com/install/>`_ to install it. Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
 
 You can find the docker-compose file used for deployed on this repo: TODO
 The docker compose file is working out-of-the-box, so nothing should be modified in that file. Only the .env along this docker compose file should be modified to use the correct parameters.
