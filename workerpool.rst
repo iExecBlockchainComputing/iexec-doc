@@ -198,3 +198,5 @@ In a similar fashion, the scheduler can be stopped with the following command:
 .. code:: bash
 
   docker-compose down
+  
+Please note that once the scheduler is turned off, the workers will not work anymore.  
