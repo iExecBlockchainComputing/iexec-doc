@@ -5,6 +5,8 @@ Welcome to iExec
 
 iExec is the first decentralized marketplace for cloud resources. The iExec platform allows everyone to monetize their applications, servers and data-sets.
 
+.. image:: https://raw.githubusercontent.com/iExecBlockchainComputing/iexec-doc/master/_images/V2_infography.png
+
 Our architecture makes it possible to have a network of computing resources that are used to execute distributed applications.
 
 
