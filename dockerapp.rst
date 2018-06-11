@@ -33,26 +33,35 @@ Modifing ./iexec.js file
 
 .. code:: javascript
 
-    module.exports = {
-        name: 'Ffmpeg',
-        app: {
-          type: 'DOCKER',
-          envvars: 'XWDOCKERIMAGE=jrottenberg/ffmpeg:scratch',
-        },
-        work: {
-            cmdline:'-i /iexec/small.mp4 /iexec/small.avi',
-            dirinuri:'http://techslides.com/demos/sample-videos/small.mp4',
-        }
-    };
+  "app": {
+    "name": "Ffmpeg",
+    "price": 10,
+    "params": {
+      "type": "DOCKER",
+      "envvars": "XWDOCKERIMAGE=jrottenberg/ffmpeg:scratch"
+    }
+  },
+  "order": {
+    "buy": {
+      "app": "0xXXXXXXXXXXXXXXXXXXX",
+      "dataset": "0x0000000000000000000000000000000000000000",
+      "params": {
+        "cmdline": "-i /iexec/small.mp4 /iexec/small.avi",
+        "dirinuri: "http://techslides.com/demos/sample-videos/small.mp4"
+      }
+    }
+  }
+
 
 * `name` - dapp name
-* `app.type` - type of dapp
-* `app.envvars` - environment variables passed to your dapp
+* `app.params.type` - type of dapp
+* `app.params.envvars` - environment variables passed to your dapp
   
 .. warning:: It's very important to set XWDOCKERIMAGE variable. This variable sets the docker image of your dapp. 
 
-* `work.cmdline` - command that will be executed in your container
-* `work.dirinuri` - file that will be downloaded to `/host` directory in docker container
+* `order.buy.app` - Ethereum address where the application has been deployed
+* `params.cmdline` - command that will be executed in your container
+* `params.dirinuri` - file that will be downloaded to `/host` directory in docker container
 
   * Can be a single file
   * Can be `.zip` archive, which will be decompressed automatically
