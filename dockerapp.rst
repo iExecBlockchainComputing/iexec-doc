@@ -22,6 +22,11 @@ For the PoCo to run smoothly and verify that different workers return the same r
 
 An example of such a file could be the following. Let's say a dapp is being develop to blur faces on pictures, the content of the consensus.iexec file could simply be the coordinates of the faces in the pictures given to the dapp. The output of the execution (images with blur faces) may not be exactly the same, but the consensus.iexec file will be.   
 
+Some examples can be seen in the dapps:
+
+* `blur-face`: https://github.com/iExecBlockchainComputing/iexec-apps/tree/master/blur-face
+* `find-face`: https://github.com/iExecBlockchainComputing/iexec-apps/tree/master/find-face
+
 Push your image to Dockerhub
 ----------------------------
 You must push your image to a public repository at DockerHub.
