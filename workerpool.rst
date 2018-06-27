@@ -6,7 +6,7 @@ A worker pool (also called scheduler) is the essential actor of the infrastructu
 Docker compose file
 -------------------
 
-A scheduler is deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `the docker website <https://docs.docker.com/install/>`_ to install it. Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
+A scheduler is deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on `the docker website <https://docs.docker.com/install/>`_ to install it. Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
 
 You can find the docker-compose file used for deployed `here <https://github.com/iExecBlockchainComputing/iexec-deploy/blob/master/scheduler/docker-compose.yml>`_.
 
@@ -198,3 +198,5 @@ In a similar fashion, the scheduler can be stopped with the following command:
 .. code:: bash
 
   docker-compose down
+  
+Please note that once the scheduler is turned off, the workers will not work anymore.  

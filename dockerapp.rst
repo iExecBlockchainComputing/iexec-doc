@@ -16,6 +16,17 @@ Your image will be launched by iExec worker using following command:
 * `DOCKERIMAGE` - docker image to run
 * `CMDLINE` - command to execute for the application
 
+Deterministic result
+--------------------
+For the PoCo to run smoothly and verify that different workers return the same result, some determinism is needed at some point in the execution. Since it is not always easy (or even possible) to have exactly the same output of a job (for example, two images may be slightly different), the PoCo will look for determinism of a file called **consensus.iexec**. This file **has to be created by the dapp and must be deterministic**. It can contain anything but the multiple runs of the job should produce exactly the same consensus.iexec file. If not, the PoCo will not find a consensus. 
+
+An example of such a file could be the following. Let's say a dapp is being develop to blur faces on pictures, the content of the consensus.iexec file could simply be the coordinates of the faces in the pictures given to the dapp. The output of the execution (images with blur faces) may not be exactly the same, but the consensus.iexec file will be.   
+
+Some examples can be seen in the dapps:
+
+* `blur-face`: https://github.com/iExecBlockchainComputing/iexec-apps/tree/master/blur-face
+* `find-face`: https://github.com/iExecBlockchainComputing/iexec-apps/tree/master/find-face
+
 Push your image to Dockerhub
 ----------------------------
 You must push your image to a public repository at DockerHub.
@@ -33,26 +44,35 @@ Modifing ./iexec.js file
 
 .. code:: javascript
 
-    module.exports = {
-        name: 'Ffmpeg',
-        app: {
-          type: 'DOCKER',
-          envvars: 'XWDOCKERIMAGE=jrottenberg/ffmpeg:scratch',
-        },
-        work: {
-            cmdline:'-i /iexec/small.mp4 /iexec/small.avi',
-            dirinuri:'http://techslides.com/demos/sample-videos/small.mp4',
-        }
-    };
+  "app": {
+    "name": "Ffmpeg",
+    "price": 10,
+    "params": {
+      "type": "DOCKER",
+      "envvars": "XWDOCKERIMAGE=jrottenberg/ffmpeg:scratch"
+    }
+  },
+  "order": {
+    "buy": {
+      "app": "0xXXXXXXXXXXXXXXXXXXX",
+      "dataset": "0x0000000000000000000000000000000000000000",
+      "params": {
+        "cmdline": "-i /iexec/small.mp4 /iexec/small.avi",
+        "dirinuri: "http://techslides.com/demos/sample-videos/small.mp4"
+      }
+    }
+  }
+
 
 * `name` - dapp name
-* `app.type` - type of dapp
-* `app.envvars` - environment variables passed to your dapp
+* `app.params.type` - type of dapp
+* `app.params.envvars` - environment variables passed to your dapp
   
 .. warning:: It's very important to set XWDOCKERIMAGE variable. This variable sets the docker image of your dapp. 
 
-* `work.cmdline` - command that will be executed in your container
-* `work.dirinuri` - file that will be downloaded to `/host` directory in docker container
+* `order.buy.app` - Ethereum address where the application has been deployed
+* `params.cmdline` - command that will be executed in your container
+* `params.dirinuri` - file that will be downloaded to `/host` directory in docker container
 
   * Can be a single file
   * Can be `.zip` archive, which will be decompressed automatically
