@@ -18,7 +18,6 @@ Pick a Dapp on our Dapp store (https://dapps.iex.ec) and learn in the `Submit a 
 
 .. _Submit a Work Order: /ordersubmit.html
 
-
 For developers
 --------------
 
