@@ -61,6 +61,10 @@ The scheduler you want to connect your worker to may already provide a ready-to-
 
 The worker will send transactions on the ethereum network, therefore a wallet is needed for that worker to work properly. The wallet used by the worker should contain some ETH (used in the transactions performed by the worker) and some RLC (used to stake when the worker is contributing to a market order).
 
+How to get an Ethereum wallet ? https://kb.myetherwallet.com/offline/running-myetherwallet-locally.html
+How to get some test ETH (Kovan) on your Ethereum wallet ? https://gitter.im/kovan-testnet/faucet
+How to get some test RLC (Kovan) on your Ethereum wallet ? https://faucet.iex.ec/kovan
+
 Supported CPU
 -------------
 * **x86**
