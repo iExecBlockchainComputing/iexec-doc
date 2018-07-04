@@ -124,6 +124,8 @@ html_static_path = ['_static']
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
+    app.add_javascript('https://www.googletagmanager.com/gtag/js?id=UA-107386278-7')
+    app.add_javascript('js/gtag.js')
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
