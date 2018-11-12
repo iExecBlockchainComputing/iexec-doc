@@ -11,6 +11,6 @@ The iExec v2.3 labelled “Gold Lancer” (金槍手) sees the addition of an SD
 Module    Version  Link
 ========  =======  ========================================================================
 XtremWeb  14.0.0   `<https://github.com/iExecBlockchainComputing/xtremweb-hep/releases/tag/14.0.0>`_
-SDK       2        `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v2.2.39>`_
+SDK       2.2.39   `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v2.2.39>`_
 PoCo      1.0.14   `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/1.0.14>`_
 ========  =======  ========================================================================
