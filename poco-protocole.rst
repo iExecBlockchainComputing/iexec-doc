@@ -106,28 +106,30 @@ Here is the details of the v3-alpha implementations:
 Staking and Payment
 -------------------
 
+
+
 Parameters
 ----------
 
-- ``CONSENSUS_DURATION_RATIO = 10``
+``CONSENSUS_DURATION_RATIO = 10``
 
   Duration of the consensus timer (relative to the category duration). For a task of category `GigaPlus`, which reference duration is 1 hour, the consensus timer will last 10 hours. Therefore, if the task was submitted at 9:27AM, the consensus has to been achieved by 7:27PM (19:27).
 
-- ``REVEAL_DURATION = 2 hours``
+``REVEAL_DURATION = 2 hours``
 
   Reference duration of the reveal timer. This is a fixed value to all categories. Note that a reveal timer cannot extend beyound the consensus timer so the reveal duration may be shorter if the consesnsus deadline happens before.
 
-- ``WORKERPOOL_STAKE_RATIO = 30``
+``WORKERPOOL_STAKE_RATIO = 30``
 
   Percentage of the workerpool price that has to be stacked by the scheduler. For example, for an task costing 20 rlc, with an additional 1 rlc for the application and 5 rlc for the dataset, the worker will have to lock 26 rlc in total and the scheduler will have to lock (stake) 30% of 20 rlc → 6 rlc.
 
   This stake is lost and transfered to the reward kitty if the consensus is not finalized by the end of the consensus timer.
 
-- ``KITTY_RATIO = 10``
+``KITTY_RATIO = 10``
 
   Percentage of the reward kitty that is awarded to the scheduler for each successfull execution. If the reward kitty contains 42 rlc when a finalize is called, then the scheduler will get 4.2 extra rlc and the reard kitty will be left with 37.8 rlc.
 
-- ``KITTY_MIN = 1 rlc``
+``KITTY_MIN = 1 rlc``
 
   Minimum reward on successfull execution (up to the reward kitty value).
 
