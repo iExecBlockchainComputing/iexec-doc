@@ -142,9 +142,9 @@ The workerpool part is put inside the ``totalReward``. Stake from the losing wor
 
 **Example**
 
-We assumeThe workerpool we consider has a ``workerStakeRatioPolicy`` of 35% and a ``workerStakeRatioPolicy`` of 5%.
+Lets consider a workerpool with the policies ``workerStakeRatioPolicy = 35%`` and ``workerStakeRatioPolicy = 5%``.
 
-- A requester offers 20 RLC to run a task. The task is free but it uses a dataset that cost 1 RLC. The requester locks 21 RLC and the scheduler 6 RLC (30% of the 20 RLC offered to the worker pool). The trust objective is 99% (``trust = 100``)
+- A requester offers ``20 RLC`` to run a task. The task is free but it uses a dataset that cost ``1 RLC``. The requester locks ``21 RLC`` and the scheduler ``30% * 20 = 6 RLC``. The trust objective is ``99%`` (``trust = 100``)
 
 - 3 workers contribute:
 
@@ -152,7 +152,7 @@ We assumeThe workerpool we consider has a ``workerStakeRatioPolicy`` of 35% and 
   - The second worker (``score = 100 → power = 32``) contributes ``42``. He also locks ``7 RLC``.
   - The third worker (``score = 300 → power = 99``) contributes ``42``. He also locks ``7 RLC``.
 
-- After the third contribution, the value ``42`` has reached a 99.87% likelihood. Consensus is achieved and the two workers who contributed toward ``42`` have to reveal.
+- After the third contribution, the value ``42`` has reached a ``99.87%`` likelihood. Consensus is achieved and the two workers who contributed toward ``42`` have to reveal.
 
 - After both workers reveal, the scheduler finalizes the task:
 
@@ -169,7 +169,7 @@ We assumeThe workerpool we consider has a ``workerStakeRatioPolicy`` of 35% and 
     - Worker 3 takes ``25.65 * 6/11 = 13.990909090 RLC``
     - Scheduler takes the remaining ``1.350000001 RLC``
 
-  - If the reward kitty is not empty, the scheduler also takes a part of this.
+  - If the reward kitty is not empty, the scheduler also takes a part of it.
 
 Parameters
 ----------
