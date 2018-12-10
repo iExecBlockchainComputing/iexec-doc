@@ -140,7 +140,39 @@ The requester payment is composed of 3 parts, one for the workerpool, one for th
 
 The workerpool part is put inside the ``totalReward``. Stake from the losing workers is also added to the ``totalReward``. The scheduler takes a fixed portion of the ``totalReward`` as defined in the workerpool smartcontract (``schedulerRewardRatioPolicy``). The remaining reward is then divided between the successfull workers proportionnaly to the impact their contribution made on the consensus. If there is anything left (division rounding, a few nRLC at most) the scheduler gets is. The scheduler also gets part of the reward kitty.
 
-**Example**
+Parameters
+----------
+
+``CONSENSUS_DURATION_RATIO = 10``
+
+  Duration of the consensus timer (relative to the category duration). For a task of category `GigaPlus`, which reference duration is 1 hour, the consensus timer will last 10 hours. Therefore, if the task was submitted at 9:27AM, the consensus has to been achieved by 7:27PM (19:27).
+
+``REVEAL_DURATION = 2 hours``
+
+  Reference duration of the reveal timer. This is a fixed value to all categories. Note that a reveal timer cannot extend beyound the consensus timer so the reveal duration may be shorter if the consesnsus deadline happens before.
+
+``WORKERPOOL_STAKE_RATIO = 30``
+
+  Percentage of the workerpool price that has to be stacked by the scheduler. For example, for a task costing ``20 RLC``, with an additional ``1 RLC`` for the application and ``5 RLC`` for the dataset, the worker will have to lock ``26 RLC`` in total and the scheduler will have to lock (stake) ``30% * 20 = 6 RLC``.
+
+  This stake is lost and transfered to the reward kitty if the consensus is not finalized by the end of the consensus timer.
+
+``KITTY_RATIO = 10``
+
+  Percentage of the reward kitty that is awarded to the scheduler for each successfull execution. If the reward kitty contains 42 RLC when a finalize is called, then the scheduler will get 4.2 extra RLC and the reard kitty will be left with 37.8 RLC.
+
+``KITTY_MIN = 1 RLC``
+
+  Minimum reward on successfull execution (up to the reward kitty value).
+
+  - If the reward kitty contains 42.0 RLC, the reward is 4.2
+  - If the reward kitty contains 5.0 RLC, the reward should be 0.5 but gets raised to 1.0
+  - If the reward kitty contains 0.7 RLC, the reward should be 0.07 but gets raised to 0.7 (the whole kitty)
+
+  ``reward = kitty.percentage(KITTY_RATIO).max(KITTY_MIN).min(kitty)``
+
+Example
+-------
 
 Lets consider a workerpool with the policies ``workerStakeRatioPolicy = 35%`` and ``workerStakeRatioPolicy = 5%``.
 
@@ -163,41 +195,10 @@ Lets consider a workerpool with the policies ``workerStakeRatioPolicy = 35%`` an
   - The first workers stake is seized and he loses a third of its score. The correspond ``7 RLC`` are added to the ``totalReward``
   - We now have ``totalReward = 27 RLC``:
 
-    - We save 5% for the scheduler, ``workersReward = 95%*27 = 25.65 RLC``
+    - We save 5% for the scheduler, ``workersReward = 95% * 27 = 25.65 RLC``
     - Worker 2 has weight ``log2(32) = 5`` and worker 3 has a weight ``log2(99) = 6``. Total weight is ``5+6=11``
     - Worker 2 takes ``25.65 * 5/11 = 11.659090909 RLC``
     - Worker 3 takes ``25.65 * 6/11 = 13.990909090 RLC``
     - Scheduler takes the remaining ``1.350000001 RLC``
 
   - If the reward kitty is not empty, the scheduler also takes a part of it.
-
-Parameters
-----------
-
-``CONSENSUS_DURATION_RATIO = 10``
-
-  Duration of the consensus timer (relative to the category duration). For a task of category `GigaPlus`, which reference duration is 1 hour, the consensus timer will last 10 hours. Therefore, if the task was submitted at 9:27AM, the consensus has to been achieved by 7:27PM (19:27).
-
-``REVEAL_DURATION = 2 hours``
-
-  Reference duration of the reveal timer. This is a fixed value to all categories. Note that a reveal timer cannot extend beyound the consensus timer so the reveal duration may be shorter if the consesnsus deadline happens before.
-
-``WORKERPOOL_STAKE_RATIO = 30``
-
-  Percentage of the workerpool price that has to be stacked by the scheduler. For example, for a task costing 20 RLC, with an additional 1 RLC for the application and 5 RLC for the dataset, the worker will have to lock 26 RLC in total and the scheduler will have to lock (stake) 30% of 20 RLC → 6 RLC.
-
-  This stake is lost and transfered to the reward kitty if the consensus is not finalized by the end of the consensus timer.
-
-``KITTY_RATIO = 10``
-
-  Percentage of the reward kitty that is awarded to the scheduler for each successfull execution. If the reward kitty contains 42 RLC when a finalize is called, then the scheduler will get 4.2 extra RLC and the reard kitty will be left with 37.8 RLC.
-
-``KITTY_MIN = 1 RLC``
-
-  Minimum reward on successfull execution (up to the reward kitty value).
-
-  - If the reward kitty contains 42.0 RLC, the reward is 4.2
-  - If the reward kitty contains 5.0 RLC, the reward should be 0.5 but gets raised to 1.0
-  - If the reward kitty contains 0.7 RLC, the reward should be 0.07 but gets raised to 0.7 (the whole kitty)
-
-  ``reward = kitty.percentage(KITTY_RATIO).max(KITTY_MIN).min(kitty)``
