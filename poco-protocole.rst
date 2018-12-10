@@ -147,16 +147,19 @@ We assumeThe workerpool we consider has a ``workerStakeRatioPolicy`` of 35% and 
 - A requester offers 20 RLC to run a task. The task is free but it uses a dataset that cost 1 RLC. The requester locks 21 RLC and the scheduler 6 RLC (30% of the 20 RLC offered to the worker pool). The trust objective is 99% (``trust = 100``)
 
 - 3 workers contribute:
-  - The first one has a score of 12 (``power=3``) and contributes ``17``. He has to lock 7 RLC (35% of the 20 RLC awarded to the worker pool).
-  - The second worker has a score of 100 (``power=32``) and contributes ``42``. He also locks 7 RLC.
-  - The third worker has a score of 300 (``power=99``) and contributes ``42``. He also locks 7 RLC.
+
+  - The first one (``score = 12 → power = 3``) contributes ``17``. He has to lock ``7 RLC`` (35% of the ``20 RLC`` awarded to the worker pool).
+  - The second worker (``score = 100 → power = 32``) contributes ``42``. He also locks ``7 RLC``.
+  - The third worker (``score = 300 → power = 99``) contributes ``42``. He also locks ``7 RLC``.
 
 - After the third contribution, the value ``42`` has reached a 99.87% likelihood. Consensus is achieved and the two workers who contributed toward ``42`` have to reveal.
 
-- After the reveal, the scheduler finalizes the task:
+- After both workers reveal, the scheduler finalizes the task:
 
   - The requester locked value of ``21 RLC`` is seized.
   - The dataset owner gets ``1 RLC`` for the use of its dataset.
+  - Stake from the scheduler is unlocked.
+  - Stakes from workers 2 and 3 are also unlocked.
   - The first workers stake is seized and he loses a third of its score. The correspond ``7 RLC`` are added to the ``totalReward``
   - We now have ``totalReward = 27 RLC``:
 
