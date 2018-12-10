@@ -44,3 +44,9 @@ Our architecture makes it possible to have a network of computing resources that
    :caption: Releases
 
    releases
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Technical Report
+
+   technicalreport
