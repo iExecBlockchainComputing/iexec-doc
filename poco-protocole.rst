@@ -133,8 +133,8 @@ Parameters
 
   Minimum reward on successfull execution (up to the reward kitty value).
 
-    - If the reward kitty contains 42.0 rlc, the reward is 4.2
-    - If the reward kitty contains 5.0 rlc, the reward should be 0.5 but gets raised to 1.0
-    - If the reward kitty contains 0.7 rlc, the reward should be 0.07 but gets raised to 0.7 (the whole kitty)
+  - If the reward kitty contains 42.0 rlc, the reward is 4.2
+  - If the reward kitty contains 5.0 rlc, the reward should be 0.5 but gets raised to 1.0
+  - If the reward kitty contains 0.7 rlc, the reward should be 0.07 but gets raised to 0.7 (the whole kitty)
 
-``reward = kitty.percentage(KITTY_RATIO).max(KITTY_MIN).min(kitty)``
+  ``reward = kitty.percentage(KITTY_RATIO).max(KITTY_MIN).min(kitty)``

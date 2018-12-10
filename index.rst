@@ -37,6 +37,7 @@ Our architecture makes it possible to have a network of computing resources that
 
    poco-protocole
    poco-trust
+   poco-brokering
    poco-else
 
 .. toctree::
