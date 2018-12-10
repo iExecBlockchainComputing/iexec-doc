@@ -8,19 +8,19 @@ PoCo stands for proof of contribution. It's protocol designed to provide a trust
 
 PoCo is modular. It comes with features that can be used depending on the context:
 
-- **Result certification**
+**Result certification**
 
   The PoCo provides a layer of that relies on replication to achieve result certification. This is a purely software solution that enforces a confidence level on the result. This confidence level can be customized by the requester. (TODO: link to the relevant section).
 
   This layer also support the onchain certification of TEE (such as Intel SGX)
 
-- **Secure payment**
+**Secure payment**
 
   User funds are locked to ensure workers are payed. Workers have to achieve consensus to get the user's funds otherwize user is reimbursed. Worker and scheduler have to stake to participate. Bad behaviour from a actor result in a loss of stake.
 
   This is essential the public blockchain but all values can be set to 0 for private blockchain solutions.
 
-- **Permissioning**
+**Permissioning**
 
   For an execution to happen, a deal must be signed between the different parties. A permission mechanism can be used to control acces to applications, datasets and workerpools.
 
