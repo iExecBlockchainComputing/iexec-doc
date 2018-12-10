@@ -10,7 +10,7 @@ PoCo is modular. It comes with features that can be used depending on the contex
 
 **Result certification**
 
-  The PoCo provides a layer of that relies on replication to achieve result certification. This is a purely software solution that enforces a confidence level on the result. This confidence level can be customized by the requester. (TODO: link to the relevant section).
+  The PoCo provides a layer of that relies on replication to achieve result certification. This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <poco-trust.html>`__.
 
   This layer also support the onchain certification of TEE (such as Intel SGX)
 
@@ -39,7 +39,7 @@ Here is the details of the v3-alpha implementations:
 
 0. **Deal**
 
-   A deal is sealled by the Clerk (TODO: link to the relevant section). This marks the beginning of the execution. An event is produced to notify the worker pool's scheduler.
+   `A deal is sealled by the Clerk <poco-brokering.html>`__. This marks the beginning of the execution. An event is produced to notify the worker pool's scheduler.
 
    The consensus timer starts when the deal is signed. The corresponding task must be finalized before the end of this timer otherwize the scheduler gets punished and the user reimbursed.
 
