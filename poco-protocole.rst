@@ -106,7 +106,67 @@ Here is the details of the v3-alpha implementations:
 Staking and Payment
 -------------------
 
+Amongs the objectives of PoCo, we want to enshure a worker that contributes correctly is rewarded and, at the same time, that a requester won't be changed unless a consensus is achieved. This is achieved by locking the requesters funds for the duration of the consensus, and unlocking them depending on the outcomes.
 
+In order to prevent bad behaviour and enshure only good contributions are viable, workers also have to stake.
+
+The iExec account, managed by the ``Escrow`` part of the ``IexecClerk``, separates betwenn ``balance.stake`` (available, can be withdrawn) and ``balanced.locked`` (unavailable, frozen by a running task). The ``Escrow`` exposes the following mechanism:
+
+``lock``: Moves value from the ``balance.stake`` to ``balance.lock``
+
+  - Locks the requester stake for payment
+  - Locks the scheduler stake to protect against failed consensus
+  - Locks the worker stake when making a contribution
+
+``unlock``: Moves value from the ``balance.lock`` back to the ``balance.stake``
+
+  - Unlock the requester stake when the consensus fails
+  - Unlock the scheduler stake when consensus is achieved
+  - Unlock the worker stake when they contributed to a successfull consensus
+
+``seize``: Confiscate value from ``balance.lock``
+
+  - Seize the requester stake when the consensus is achieved (payment)
+  - Seize the scheduler stake when consensus fails (send to the reward kitty)
+  - Seize the worker stake when a contribution fails (redistributed to the other workers in the task)
+
+``reward``: Award value to the ``balance.stake``
+
+  - Reward the scheduler when consensus is achieved
+  - Reward the worker when they contributed to a successfull consensus
+  - Reward the app and dataset owner
+
+The requester payment is composed of 3 parts, one for the workerpool, one for the application and one for the dataset. When a consensus is finalized, the payment is seized from the requester and the application and dataset owners are rewarded accordingly.
+
+The workerpool part is put inside the ``totalReward``. Stake from the losing workers is also added to the ``totalReward``. The scheduler takes a fixed portion of the ``totalReward`` as defined in the workerpool smartcontract (``schedulerRewardRatioPolicy``). The remaining reward is then divided between the successfull workers proportionnaly to the impact their contribution made on the consensus. If there is anything left (division rounding, a few nRLC at most) the scheduler gets is. The scheduler also gets part of the reward kitty.
+
+**Example**
+
+We assumeThe workerpool we consider has a ``workerStakeRatioPolicy`` of 35% and a ``workerStakeRatioPolicy`` of 5%.
+
+- A requester offers 20 RLC to run a task. The task is free but it uses a dataset that cost 1 RLC. The requester locks 21 RLC and the scheduler 6 RLC (30% of the 20 RLC offered to the worker pool). The trust objective is 99% (``trust = 100``)
+
+- 3 workers contribute:
+  - The first one has a score of 12 (``power=3``) and contributes ``17``. He has to lock 7 RLC (35% of the 20 RLC awarded to the worker pool).
+  - The second worker has a score of 100 (``power=32``) and contributes ``42``. He also locks 7 RLC.
+  - The third worker has a score of 300 (``power=99``) and contributes ``42``. He also locks 7 RLC.
+
+- After the third contribution, the value ``42`` has reached a 99.87% likelihood. Consensus is achieved and the two workers who contributed toward ``42`` have to reveal.
+
+- After the reveal, the scheduler finalizes the task:
+
+  - The requester locked value of ``21 RLC`` is seized.
+  - The dataset owner gets ``1 RLC`` for the use of its dataset.
+  - The first workers stake is seized and he loses a third of its score. The correspond ``7 RLC`` are added to the ``totalReward``
+  - We now have ``totalReward = 27 RLC``:
+
+    - We save 5% for the scheduler, ``workersReward = 95%*27 = 25.65 RLC``
+    - Worker 2 has weight ``log2(32) = 5`` and worker 3 has a weight ``log2(99) = 6``. Total weight is ``5+6=11``
+    - Worker 2 takes ``25.65 * 5/11 = 11.659090909 RLC``
+    - Worker 3 takes ``25.65 * 6/11 = 13.990909090 RLC``
+    - Scheduler takes the remaining ``1.350000001 RLC``
+
+  - If the reward kitty is not empty, the scheduler also takes a part of this.
 
 Parameters
 ----------
@@ -121,20 +181,20 @@ Parameters
 
 ``WORKERPOOL_STAKE_RATIO = 30``
 
-  Percentage of the workerpool price that has to be stacked by the scheduler. For example, for an task costing 20 rlc, with an additional 1 rlc for the application and 5 rlc for the dataset, the worker will have to lock 26 rlc in total and the scheduler will have to lock (stake) 30% of 20 rlc → 6 rlc.
+  Percentage of the workerpool price that has to be stacked by the scheduler. For example, for a task costing 20 RLC, with an additional 1 RLC for the application and 5 RLC for the dataset, the worker will have to lock 26 RLC in total and the scheduler will have to lock (stake) 30% of 20 RLC → 6 RLC.
 
   This stake is lost and transfered to the reward kitty if the consensus is not finalized by the end of the consensus timer.
 
 ``KITTY_RATIO = 10``
 
-  Percentage of the reward kitty that is awarded to the scheduler for each successfull execution. If the reward kitty contains 42 rlc when a finalize is called, then the scheduler will get 4.2 extra rlc and the reard kitty will be left with 37.8 rlc.
+  Percentage of the reward kitty that is awarded to the scheduler for each successfull execution. If the reward kitty contains 42 RLC when a finalize is called, then the scheduler will get 4.2 extra RLC and the reard kitty will be left with 37.8 RLC.
 
-``KITTY_MIN = 1 rlc``
+``KITTY_MIN = 1 RLC``
 
   Minimum reward on successfull execution (up to the reward kitty value).
 
-  - If the reward kitty contains 42.0 rlc, the reward is 4.2
-  - If the reward kitty contains 5.0 rlc, the reward should be 0.5 but gets raised to 1.0
-  - If the reward kitty contains 0.7 rlc, the reward should be 0.07 but gets raised to 0.7 (the whole kitty)
+  - If the reward kitty contains 42.0 RLC, the reward is 4.2
+  - If the reward kitty contains 5.0 RLC, the reward should be 0.5 but gets raised to 1.0
+  - If the reward kitty contains 0.7 RLC, the reward should be 0.07 but gets raised to 0.7 (the whole kitty)
 
   ``reward = kitty.percentage(KITTY_RATIO).max(KITTY_MIN).min(kitty)``
