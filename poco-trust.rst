@@ -4,15 +4,15 @@ Replication & Trust
 How to achieve trust ?
 ----------------------
 
-The PoCo offers a consensus mechanism that can certify the likelihood of a result to be valid. This consensus relies on the scoring of workers and the replication of a task's execution to combine the score of the workers that come up with the same result. This consensus is largely based on Sarmenta's work [Sarmenta2002]_ with specific tunning of the scoring function [Trust]_.
+The PoCo offers a consensus mechanism that can certify the likelihood of a result to be valid. This consensus relies on the scoring of workers and the replication of a task's execution to combine the score of the workers that come up with the same result. This consensus is largely based on Sarmenta's work [Sarmenta2002]_ with specific tunning of the scoring function [Trust2018]_.
 
 
 Contribution credibility
 ------------------------
 
-Each worker's contribution has an associated credibility. This credibility derives from the worker's history score. As described in [Trust]_, a worker score is a positive integer that is incremented for each valid and verified contribution. In case of bad contribution, a worker loses one third of it's score.
+Each worker's contribution has an associated credibility. This credibility derives from the worker's history score. As described in [Trust2018]_, a worker score is a positive integer that is incremented for each valid and verified contribution. In case of bad contribution, a worker loses one third of it's score.
 
-This credibility can be expressed as a likelihood percentage but also as a weight value that can be used to detect consensus without resorting to floating point arithmetics. Again, this is described in [Trust]_.
+This credibility can be expressed as a likelihood percentage but also as a weight value that can be used to detect consensus without resorting to floating point arithmetics. Again, this is described in [Trust2018]_.
 
 Requiring a trust level
 -----------------------
@@ -43,4 +43,4 @@ References
 ----------
 
 .. [Sarmenta2002] Luis F.G.Sarmenta. Sabotage-tolerance mechanisms for volunteer computing systems. 2002. Future Generation Computer Systems, 18(4), 561–572
-.. [Trust] Trust management in the Proof of Contribution protocol. 2018. Technical report. `PDF <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/iExec_PoCo_and_trustmanagement_v1.pdf>`_
+.. [Trust2018] Trust management in the Proof of Contribution protocol. 2018. Technical report. `PDF <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/iExec_PoCo_and_trustmanagement_v1.pdf>`_
