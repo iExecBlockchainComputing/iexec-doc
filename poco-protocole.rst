@@ -35,6 +35,8 @@ The PoCo describes the succession of contributions that are requires to achieve 
 - `PoCo series #1: Initial PoCo description <https://medium.com/iex-ec/about-trust-and-agents-incentives-4651c138974c>`__
 - `PoCo series #3: Updated PoCo description <https://medium.com/iex-ec/poco-series-3-poco-protocole-update-a2c8f8f30126>`__
 
+The `nominal workflow <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/nominalworkflow-ODB.png>`__ is also available in the `technical report section <technicalreport.html>`__
+
 Here is the details of the v3-alpha implementations:
 
 0. **Deal**
