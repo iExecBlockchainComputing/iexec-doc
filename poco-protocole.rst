@@ -155,8 +155,7 @@ Parameters
 
     - ``REVEAL_DEADLINE_RATIO`` This describes the duration of the reveal periode. Whenever a contribution trigers a consensus, a reveal periode of this duration is reserved for the workers to reveal their contribution. Note that this periode will necessarily start before the end of the contribution phase.
 
-  Example:
-    Lets consider a task of category `GigaPlus`, which reference duration is 1 hour. If the task was submitted at 9:27AM, the contributions must be sent before 4:27PM (16:27). Whenever a contribution trigers a consensus, a 2 hours long reveal periode will start. Whatever happens, the consensus has to been achieved by 7:27PM (19:27).
+  Lets consider a task of category `GigaPlus`, which reference duration is 1 hour. If the task was submitted at 9:27AM, the contributions must be sent before 4:27PM (16:27). Whenever a contribution trigers a consensus, a 2 hours long reveal periode will start. Whatever happens, the consensus has to been achieved by 7:27PM (19:27).
 
 ``WORKERPOOL_STAKE_RATIO = 30``
 
