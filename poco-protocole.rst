@@ -145,13 +145,18 @@ The workerpool part is put inside the ``totalReward``. Stake from the losing wor
 Parameters
 ----------
 
-``CONSENSUS_DURATION_RATIO = 10``
+``FINAL_DEADLINE_RATIO = 10, CONTRIBUTION_DEADLINE_RATIO = 7, REVEAL_DEADLINE_RATIO = 2``
 
-  Duration of the consensus timer (relative to the category duration). For a task of category `GigaPlus`, which reference duration is 1 hour, the consensus timer will last 10 hours. Therefore, if the task was submitted at 9:27AM, the consensus has to been achieved by 7:27PM (19:27).
+  Parameters of the consensus timer. They express the number of reference timers (category duration) that are dedicated to each phase. These settings corresponds to a 70%-20%-10% distribution between the contribution phase, the reveal phase and the finalize phase.
 
-``REVEAL_DURATION = 2 hours``
+    - ``FINAL_DEADLINE_RATIO`` This describes the total duration of the consensus. At the end of this timer the consensus must be finalized. If it is not, the user can make a claim to get a refund.
 
-  Reference duration of the reveal timer. This is a fixed value to all categories. Note that a reveal timer cannot extend beyound the consensus timer so the reveal duration may be shorter if the consesnsus deadline happens before.
+    - ``CONTRIBUTION_DEADLINE_RATIO`` This describes the duration of the contribution periode. The consensus can finalized before that, but no contribution will be allowed after the timer to ensure enough time is left for the reveal and finalize steps.
+
+    - ``REVEAL_DEADLINE_RATIO`` This describes the duration of the reveal periode. Whenever a contribution trigers a consensus, a reveal periode of this duration is reserved for the workers to reveal their contribution. Note that this periode will necessarily start before the end of the contribution phase.
+
+  Example:
+    Lets consider a task of category `GigaPlus`, which reference duration is 1 hour. If the task was submitted at 9:27AM, the contributions must be sent before 4:27PM (16:27). Whenever a contribution trigers a consensus, a 2 hours long reveal periode will start. Whatever happens, the consensus has to been achieved by 7:27PM (19:27).
 
 ``WORKERPOOL_STAKE_RATIO = 30``
 
