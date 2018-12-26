@@ -33,6 +33,15 @@ Our architecture makes it possible to have a network of computing resources that
 
 .. toctree::
    :maxdepth: 2
+   :caption: PoCo
+
+   poco-protocole
+   poco-trust
+   poco-brokering
+   poco-else
+
+.. toctree::
+   :maxdepth: 2
    :caption: Releases
 
    releases
