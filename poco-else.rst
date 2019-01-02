@@ -23,13 +23,11 @@ When orders are matched, a deal is recorded by the IexecClerk which details the 
 
 The maximum duration of a task is govern by the category the task fit in. While the consensus duration can obviously not be shorter than the task runtime a significant margin is required for the scheduler to do its job correctly. Multiple workers are likely to contribute and extra time must be planed for the revealing and finalization steps.
 
-The consensus timer starts when the deal is recorded by the IexecClerk and marks the end of all contributions to the task. Once this timer is over, the task's consensus is considered a failure and the only possible outcome is to claim a failled consensus which refunds the requester and punishes the scheduler.
+The consensus timer starts when the deal is recorded by the IexecClerk. Once this timer is over, and if no consensus was finalized, the task is considered a failure and the requester can claim a failled consensus to get a refund. In the v3-alpha version, this timer lasts for 10 times wathever the category runtime is.
 
-  In the v3-alpha version, this timer lasts for 10 times wathever the category runtime is.
+In addition to the consensus timer, a contribution timer is started. This timer limits the timeframe for worker to contribute to ensure the enough time is left for the reveal and finalize phases. In the v3-alpha version, this timer lasts for 7 times wathever the category runtime is.
 
-The reveal timer starts whenever a consensus is reached and determines the timeframe the workers have to reveal their contributions. This should be long enough for worker to have time to reveal while not being to long so that the requesters waits to long for its result or the consensus fails because the scheduler cannot finalize in time.
-
-  In the v3-alpha version, *TO DETERMINE*.
+The reveal timer starts whenever a consensus is reached and determines the timeframe the workers have to reveal their contributions. This should be long enough for worker to have time to reveal while not being to long so that the requesters waits to long for its result or the consensus fails because the scheduler cannot finalize in time. In the v3-alpha version, this timer lasts for 2 times wathever the category runtime is. This leaves a gap of at least 1 time the category runtime for the scheduler to finalize the task before the end of the consensus timer.
 
 Reward kitty
 ------------
