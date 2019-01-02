@@ -4,7 +4,15 @@ Brokering
 Overview
 --------
 
-... TODO ...
+For iExec v3 we studied many possible evolutions of the brokering process. The first requirement was to include bid orders in addition to the already available ask orders. It soon became clear that the evolution had to go beyond a simple interaction. We considered on-chain and off-chain approach and finally went for a solution where both the pairing and the order book are off-chain. It might sound counterintuitive, but it has many advantages.
+
+If the orders and the pairing are handled off-chain, how can we build an on-chain agreement knowing that all parties have agreed? Is there a threat to the platform security?
+
+This option relies on the use of cryptographic signatures for order authentication. We represent orders using structures containing all the required details. The hash of this structure uniquely identifies the order. The structure by itself is worthless as anyone could write and publish it. However, if we add a valid cryptographic signature (of the identifying hash), then the origin of the order can be certified with the same level of security as if it was published on-chain. This role is fulfilled by a smart-contract called the iExecClerk.
+
+An overiew of the iExecODB (Open Decentralized Brokering) is available in this blog article:
+
+- `PoCo series #5: Open decentralized brokering on the iExec platform <https://medium.com/iex-ec/poco-series-5-open-decentralized-brokering-on-the-iexec-platform-67b266e330d8>`__
 
 Orders structure
 ----------------
@@ -257,7 +265,7 @@ FAQ : How to write an order ?
 
 A requester can enable the trust layer of the PoCo by setting the trust value in que requestorder. As described `here <poco-trust.html>`__, the trust can be customized depending on the required confidence level. If the requester wants à 99.99% confidence level on the results, it must set the ``trust`` field to ``10000``
 
-**[Requester] How do I run a non determinist application despite the PoCo requiering it?**
+**[Requester] How do I run a non determinist application despite the PoCo requiering determinism?**
 
 The PoCo requires an application to be deterministic for the replication layer to provide trust in the result. If an application is not deterministic, consensus cannot be achieved and replication must be avoided.
 
@@ -267,21 +275,32 @@ In order to obtain a result, the requester must prevent replication by asking a 
 
 The result of an execution can be valuable to the end user, and the requester might want to protect this result from leaking by encrypting it.
 
-TODO
+Anyone can set up an encryption key in a SMS (Secret Management Service) of its choice and set up the SMS address in the directory.
 
-.. In order to do so the beneficiary must first generate an encryption key (Kb) that will be used to secure the data. This key is then send (with the identifyer of the application authorized to retreive it) to a Secret Management Service (SMS) that runs in a protected enclave. The beneficiary should also register the address of the SMS where (Kb) is available in the onchain SMSDirectory.
+Once a user as set an encryption key (see TODO), any computation result can be encrypted with it by simply setting up the beneficiary address in the RequesterOrder.
 
-.. Once this setup process is done, the requester just needs to ask for the execution to be done in an enclave (by setting the ``tag`` to ``0x1``) and specify the key to use by setting the ``beneficiary`` field.
+Note that for an application can only perform result encryption if it runs in a verifyed enclave. No encryption key will be provided by the SMS to an application that doesn't run in a certified enclave.
+
+(TODO: potential issue, key leaking to malicious application with the requester attacking a beneficiary)
 
 **[Dataset owner] How do I limit the usage of my dataset to a specific application**
 
 iExec's datawallet and datastore provide all the features to monetize a valuable dataset while protecting it. Before uploading a dataset you should encrypt it using the iExec SDK. Through this process, the encryption key becomes the valuable data that has to be protected.
 
-For applications to use your dataset you must grant them permission to retreive the encryption key. This is done when you upload the encryption key to a Secret Management Service (SMS). This prevents a malicious application from getting the encryption key and leaking the sensitive data.
+The encryption key must be stored in a SMS and the address of the corresponding SMS recorded in the directory. The SMS stores this encryption key and will only communicate it to an application running in an enclave.
 
-You should also
+For a worker running an application to get the encryption key, it must first prove that this access is legitimate by providing the scheduler authorization. The SMS will verify that this authorization's signature is valid and that the corresponding task is registered onchain. This means that any deal signed in the iExec Clerk will grant access to the dataset's encryption key.
 
+Therefore in order to restrict the dataset's usage, the dataset owner should specify everything before hand when signing a brokering order. This is done through the ``apprestrict`` field of the datasetorder. The datasetowner can deploy a ``SimpleGroup`` smart contract, have the ``apprestrict`` field point to it, and then whitelist the applications that will have access to the dataset's encryption key.
 
-**[Scheduler] Whitelist deterministic applications**
+**[Scheduler] How do I protect myself from non deterministic applications?**
 
-**[Scheduler] Propose a safe context for unknown applications**
+When a scheduler publishes an order, it makes a commitment to achieve consensuson any task that is part of a deal made using this order. While everything is done to ensure an application cannot hurt a worker pool's machines, not reaching the consensus would cause a loss of stake from the scheduler. The scheduler must therefore take action to prevent this.
+
+Whenever the scheduler proposes to certify a result using the PoCo's trust layer, it should make sure the application's developper took the actions required to avec it compatible with the PoCo. On the other hand, any application could be executed with the PoCo's trust layer disabled.
+
+A scheduler could therefore emit two kinds of workerpoolorder:
+
+- A workerpoolorder offering execution with the PoCo's trust layer disabled (``trust = 0``) and accepting all applications (``apprestrict = 0``)
+
+- A workerpoolorder offering secure exection of whitelisted tasks. The application whitelist would use the ``GroupInterface`` to be verifyed by the iExec Clerk. This group could either be managed by the scheduler or by a certification authority that would check applications determinism.
