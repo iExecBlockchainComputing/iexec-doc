@@ -95,7 +95,7 @@ Here is the details of the v3-alpha implementations:
 
 5. **Consensus**
 
-   During the contribution, the consensus is updated and verified. Contributions are possible until the consensus is reached, at which point the contributions are closed and we enter a 2h reveal phase.
+   During the contribution, the consensus is updated and verified. Contributions are possible until the consensus is reached, at which point the contributions are closed and we enter in the reveal phase.
 
 6. **Reveal**
 
@@ -145,7 +145,7 @@ The workerpool part is put inside the ``totalReward``. Stake from the losing wor
 Parameters
 ----------
 
-``FINAL_DEADLINE_RATIO = 10, CONTRIBUTION_DEADLINE_RATIO = 7, REVEAL_DEADLINE_RATIO = 2``
+``FINAL_DEADLINE_RATIO = 10``, ``CONTRIBUTION_DEADLINE_RATIO = 7``, ``REVEAL_DEADLINE_RATIO = 2``
 
   Parameters of the consensus timer. They express the number of reference timers (category duration) that are dedicated to each phase. These settings corresponds to a 70%-20%-10% distribution between the contribution phase, the reveal phase and the finalize phase.
 
