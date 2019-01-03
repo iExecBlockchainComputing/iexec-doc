@@ -1,5 +1,5 @@
-Protocole
-=========
+Protocol
+========
 
 Objectives
 ----------

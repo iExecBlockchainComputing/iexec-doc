@@ -20,6 +20,9 @@ Our architecture makes it possible to have a network of computing resources that
    :maxdepth: 2
    :caption: Use iExec
 
+   products
+   sdk
+   wallet
    worker
    workerpool
    ordersubmit
