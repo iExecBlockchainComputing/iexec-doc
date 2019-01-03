@@ -36,13 +36,13 @@ The structure of the different order types is as follows:
 
 - ``volume`` Number of run authorized (by this order).
 
-- ``tag`` Special requierements of the application (see `tag`_).
+- ``tag`` Special requirements for the application (see `tag`_).
 
-- ``datasetrestrict`` Matching restrictions. Dataset or group of datasets that can be matched. Leave null value to disable check.
+- ``datasetrestrict`` Matching restrictions. Dataset or group of datasets that can be matched. Let null value to disable check.
 
-- ``workerpoolrestrict`` Matching restrictions. Workerpool or group of workerpools that can be matched. Leave null value to disable check.
+- ``workerpoolrestrict`` Matching restrictions. Workerpool or group of workerpools that can be matched. Let null value to disable check.
 
-- ``requesterrestrict`` Matching restrictions. Requester or group of requesters that can be matched. Leave null value to disable check.
+- ``requesterrestrict`` Matching restrictions. Requester or group of requesters that can be matched. Let null value to disable check.
 
 - ``salt`` A random value to ensure order uniqueness.
 
@@ -61,13 +61,13 @@ The structure of the different order types is as follows:
 
 - ``volume`` Number of authorized uses (by this order).
 
-- ``tag`` Special requierements of the dataset (see `tag`_).
+- ``tag`` Special requirements of the dataset (see `tag`_).
 
-- ``apprestrict`` Matching restrictions. App or group of apps that can be matched. Leave null value to disable check.
+- ``apprestrict`` Matching restrictions. App or group of apps that can be matched. Let null value to disable check.
 
-- ``workerpoolrestrict`` Matching restrictions. Workerpool or group of workerpools that can be matched. Leave null value to disable check.
+- ``workerpoolrestrict`` Matching restrictions. Workerpool or group of workerpools that can be matched. Let null value to disable check.
 
-- ``requesterrestrict`` Matching restrictions. Requester or group of requesters that can be matched. Leave null value to disable check.
+- ``requesterrestrict`` Matching restrictions. Requester or group of requesters that can be matched. Let null value to disable check.
 
 - ``salt`` A random value to ensure order uniqueness.
 
@@ -92,11 +92,11 @@ The structure of the different order types is as follows:
 
 - ``trust`` Trust level used to certify results.
 
-- ``apprestrict`` Matching restrictions. App or group of apps that can be matched. Leave null value to disable check.
+- ``apprestrict`` Matching restrictions. App or group of apps that can be matched. Let null value to disable check.
 
-- ``datasetrestrict`` Matching restrictions. Dataset or group of datasets that can be matched. Leave null value to disable check.
+- ``datasetrestrict`` Matching restrictions. Dataset or group of datasets that can be matched. Let null value to disable check.
 
-- ``requesterrestrict`` Matching restrictions. Requester or group of requesters that can be matched. Leave null value to disable check.
+- ``requesterrestrict`` Matching restrictions. Requester or group of requesters that can be matched. Let null value to disable check.
 
 - ``salt`` A random value to ensure order uniqueness.
 
@@ -133,7 +133,7 @@ The structure of the different order types is as follows:
 
 - ``beneficiary`` Address of the beneficiary of the computation. Used to require output data encryption.
 
-- ``callback`` Address to callback with the results (following EIP1154 interface). Leave empty (null) if no callback is required. Learn more about the `callback mechanism`_.
+- ``callback`` Address to callback with the results (following EIP1154 interface). Let empty (null) if no callback is required. Learn more about the `callback mechanism`_.
 
 - ``params`` Parameters of the application (application specific).
 
@@ -279,7 +279,7 @@ Anyone can set up an encryption key in a SMS (Secret Management Service) of its 
 
 Once a user as set an encryption key (see TODO), any computation result can be encrypted with it by simply setting up the beneficiary address in the RequesterOrder.
 
-Note that for an application can only perform result encryption if it runs in a verifyed enclave. No encryption key will be provided by the SMS to an application that doesn't run in a certified enclave.
+An application can only perform result encryption if it runs in a verifyed enclave. No encryption key will be provided by the SMS to an application that doesn't run in a certified enclave.
 
 (TODO: potential issue, key leaking to malicious application with the requester attacking a beneficiary)
 
@@ -295,7 +295,7 @@ Therefore in order to restrict the dataset's usage, the dataset owner should spe
 
 **[Scheduler] How do I protect myself from non deterministic applications?**
 
-When a scheduler publishes an order, it makes a commitment to achieve consensuson any task that is part of a deal made using this order. While everything is done to ensure an application cannot hurt a worker pool's machines, not reaching the consensus would cause a loss of stake from the scheduler. The scheduler must therefore take action to prevent this.
+When a scheduler publishes an order, it makes a commitment to achieve consensus on any task that is part of a deal made using this order. While everything is done to ensure an application cannot hurt a worker pool's machines, not reaching the consensus would cause a loss of stake from the scheduler. The scheduler must therefore take action to prevent this.
 
 Whenever the scheduler proposes to certify a result using the PoCo's trust layer, it should make sure the application's developper took the actions required to avec it compatible with the PoCo. On the other hand, any application could be executed with the PoCo's trust layer disabled.
 
