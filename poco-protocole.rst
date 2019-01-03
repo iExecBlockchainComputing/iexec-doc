@@ -95,7 +95,7 @@ Here is the details of the v3-alpha implementations:
 
 5. **Consensus**
 
-   During the contribution, the consensus is updated and verified. Contributions are possible until the consensus is reached, at which point the contributions are closed and we the reveal phase.
+   During the contribution, the consensus is updated and verified. Contributions are possible until the consensus is reached, at which point the contributions are closed and we enter in the reveal phase.
 
 6. **Reveal**
 
