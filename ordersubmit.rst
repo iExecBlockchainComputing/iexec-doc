@@ -82,7 +82,7 @@ B 3) fill "ABI / JSON Interface" fieldwith contract ABI found here :https://gith
 
 B 4) Click Access and select function approveIexecHub.
 
-B 5) set amount 2000  (need to cover dappPrice + Market Order price)
+B 5) set amount 2000  (need to cover dappPrice + Market workerpoolorder price)
 
 B 6) unlock your admin wallet and send transaction.
 
@@ -91,7 +91,7 @@ check in etherscan transaction is OK and you see approve event.
 `Transaction example <https://kovan.etherscan.io/tx/0x8083bb585e1414c2833d16637c96deadb0e01ec87891b69fecc8e16b26bdbf21/>`_
 
 
-C ) <b>You must deposit RLC to the IexecHub through IexecAPI to be able to buy workorder (requester will be the IexecAPI contract and pay the execution): </b>
+C ) <b>You must deposit RLC to the IexecHub through IexecAPI to be able to buy workerpoolorder (requester will be the IexecAPI contract and pay the execution): </b>
 
 C 1) Go to https://www.myetherwallet.com/#contracts and select Network KOVAN
 
@@ -157,7 +157,7 @@ note : You must see :
  * m_callback   : is your smart contract IexecAPI address. it will receive the callback.
  * m_beneficiary : is your or the wallet that will be able to download the result.
 
-Then, wait for workorder m_statusName is COMPLETED.
+Then, wait for workerpoolorder m_statusName is COMPLETED.
 Check that the callback has been done on your contract.
 Successful workOrderCallback tx factorial 10 example :
 
