@@ -159,7 +159,7 @@ Parameters
 
 ``WORKERPOOL_STAKE_RATIO = 30``
 
-  Percentage of the workerpool price that has to be stacked by the scheduler. For example, for a task costing ``20 RLC``, with an additional ``1 RLC`` for the application and ``5 RLC`` for the dataset, the worker will have to lock ``26 RLC`` in total and the scheduler will have to lock (stake) ``30% * 20 = 6 RLC``.
+  Percentage of the workerpool price that has to be staked by the scheduler. For example, for a task costing ``20 RLC``, with an additional ``1 RLC`` for the application and ``5 RLC`` for the dataset, the worker will have to lock ``26 RLC`` in total and the scheduler will have to lock (stake) ``30% * 20 = 6 RLC``.
 
   This stake is lost and transfered to the reward kitty if the consensus is not finalized by the end of the consensus timer.
 

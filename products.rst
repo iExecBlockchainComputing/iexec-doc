@@ -1,5 +1,5 @@
-The iExec Stack
-===============
+The iExec Solution Stack
+========================
 
 
 The Marketplace

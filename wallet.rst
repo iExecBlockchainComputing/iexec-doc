@@ -59,8 +59,8 @@ Edit the wallet.json file with your own information
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to get wallet management option.
 
 
-Stacking and incentives
------------------------
+Staking and incentives
+----------------------
 
 .. warning:: Introduce the concepts
 
