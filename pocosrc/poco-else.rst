@@ -1,8 +1,8 @@
 Other technical choices
-=======================
+-----------------------
 
 Callback
---------
+~~~~~~~~
 
 Some requester might want an onchain callback with the result of the execution. The callback mechanism is based on [EIP1154]_. The result is a ``bytes`` value that is set during the ``finalize``. The ``IexecHub`` implement both side of the [EIP1154]_.
 
@@ -17,7 +17,7 @@ Some requester might want an onchain callback with the result of the execution. 
   In order to protect the scheduler and the workers, any error raised during this callback will be disregarded and will not prevent the finalization from happening. The same goes for the callback running out of gas.
 
 Consensus & Reveal duration
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When orders are matched, a deal is recorded by the IexecClerk which details the parameters of the task. If a consensus on a result is achieved within a given timeframe then the task is considered successfull. On the other hand, if no consensus is reached the the execution if considered a failure. The duration of the consensus timer is a balance between the quality of service offered to the requester (short timer) and the margin available for the scheduler and the worker to achieve consensus (and go through the reveal process).
 
@@ -32,7 +32,7 @@ The reveal timer starts whenever a consensus is reached and determines the timef
   In the v3-alpha version, *TO DETERMINE*.
 
 Reward kitty
-------------
+~~~~~~~~~~~~
 
 When a consensus fails, the requester gets a refund and the scheduler loses its stake. In order to remove an attack vector, the requester does not get any of the seized stake. If this was a feature, anyone could build a flawed application that would not reach consensus to drain money from the scheduler. This would force the scheduler to whitelist all applications thus reducing the usability of the platform.
 
@@ -42,7 +42,7 @@ As described in the `protocole parameters <poco-protocole.html#parameters>`_ sec
 
 
 References
-----------
+~~~~~~~~~~
 
 .. [EIP1154] `EIP 1154: Oracle Interface <https://eips.ethereum.org/EIPS/eip-1154>`_
 .. [*] value susceptible to change.

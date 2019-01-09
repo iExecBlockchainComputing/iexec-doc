@@ -1,8 +1,8 @@
 Protocol
-========
+--------
 
 Objectives
-----------
+~~~~~~~~~~
 
 PoCo stands for proof of contribution. It's protocol designed to provide a trusted computing environment on top of untrusted resources. In addition to providing trust PoCo also orchestrates the different contributions to the iExec platform so that payment is always fare.
 
@@ -28,7 +28,7 @@ PoCo is modular. It comes with features that can be used depending on the contex
 
 
 Overview
---------
+~~~~~~~~
 
 The PoCo describes the succession of contributions that are requires to achieve consensus on a given result. The logic is details in two blog articles:
 
@@ -106,7 +106,7 @@ Here is the details of the v3-alpha implementations:
    Once all contribution have been revealed, or at the end of the reveal periode if some (but not all) reveal are missing, the scheduler must call the ``finalize`` method. This finalizes the task, reward good contribution and punish bad ones. This must be called before the end of the consensus timer. If call includes the callback mechanism if it was requested.
 
 Staking and Payment
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 Amongs the objectives of PoCo, we want to enshure a worker that contributes correctly is rewarded and, at the same time, that a requester won't be changed unless a consensus is achieved. This is achieved by locking the requesters funds for the duration of the consensus, and unlocking them depending on the outcomes.
 
@@ -143,7 +143,7 @@ The requester payment is composed of 3 parts, one for the workerpool, one for th
 The workerpool part is put inside the ``totalReward``. Stake from the losing workers is also added to the ``totalReward``. The scheduler takes a fixed portion of the ``totalReward`` as defined in the workerpool smartcontract (``schedulerRewardRatioPolicy``). The remaining reward is then divided between the successfull workers proportionnaly to the impact their contribution made on the consensus. If there is anything left (division rounding, a few nRLC at most) the scheduler gets is. The scheduler also gets part of the reward kitty.
 
 Parameters
-----------
+~~~~~~~~~~
 
 ``FINAL_DEADLINE_RATIO = 10, CONTRIBUTION_DEADLINE_RATIO = 7, REVEAL_DEADLINE_RATIO = 2``
 
@@ -178,7 +178,7 @@ Parameters
   ``reward = kitty.percentage(KITTY_RATIO).max(KITTY_MIN).min(kitty)``
 
 Example
--------
+~~~~~~~
 
 Lets consider a workerpool with the policies ``workerStakeRatioPolicy = 35%`` and ``workerStakeRatioPolicy = 5%``.
 

@@ -1,7 +1,7 @@
 Wallet Management
 =================
 
-| The cryptocurrency wallet is a secure software program to interacts with blockchains.
+| The cryptocurrency wallet is a secure software program to interact with blockchains.
 | The wallet enables user to send and receive digital currency and monitor their balance and conduct other operations as smart contract.
 
 | iExec service runs on ethereum blockchain, the deal between agents (data owner, resources provider, requestor, developer) are made using RLC token.
@@ -28,29 +28,28 @@ If you haven’t already, you will need to create an Ethereum wallet:
 
 * To Import the wallet using the Keystore file, you will need to open the downloaded wallet file with any text editor and copy its content.
 
+Useful links:
+  How to get an Ethereum wallet ? https://kb.myetherwallet.com/offline/running-myetherwallet-locally.html
+
 
 Credit your wallet with ETH and RLC
 -----------------------------------
 
-Your wallet must be credited with both ETH and RLC.
+| Your wallet must be credited with both ether (ETH) and RLC.
+| Ether is used to process the smart contracts.
 
-
-+---------------------+----------------+------------------+------------------+
-|    **Role**         | **RLC needed** | **ETH needed**   |    **Stacking**  +
-+---------------------+----------------+------------------+------------------+
-| requestor           |   yes          |    yes           |    yes           |
-+---------------------+----------------+------------------+------------------+
-| dapp provider       |   yes          |    no            |    yes           |
-+---------------------+----------------+------------------+------------------+
-| resources provider  |   yes          |    no            |    yes           |
-+---------------------+----------------+------------------+------------------+
+Useful links:
+ - How to get some test ETH (Kovan) on your Ethereum wallet ? https://gitter.im/kovan-testnet/faucet
+ - How to get some test RLC (Kovan) on your Ethereum wallet ? https://faucet.iex.ec/kovan
 
 
 Login with Metamask
 -------------------
 
-Once you’ve unlocked your Metamask, you can automatically login on the iExec explorer. In the explorer, both Balance and Allowance are displayed, and values are expressed in nRLC (Nano RLC).
-
+| Once you’ve unlocked your Metamask, you can login on the iExec marketplace https://market.iex.ec with embedded wallet management.
+| In the **Account**, both Balance and Allowance are displayed, and values are expressed in nRLC (Nano RLC).
+| When a computing deal is closed, a dedicated smart contract is created,
+ an allowance step is mandatory to give authority to this new smart contract proceed to the payment when the computing task is successfully ended.
 
 Set up the SDK with your own wallet
 -----------------------------------
@@ -58,6 +57,22 @@ Set up the SDK with your own wallet
 Edit the wallet.json file with your own information
 
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to get wallet management option.
+
+
+Stacking and incentives
+-----------------------
+
+.. warning:: Introduce the concepts
+
++---------------------+----------------+------------------+------------------+
+|    **Role**         | **RLC needed** | **ETH needed**   |    **Stacking**  +
++---------------------+----------------+------------------+------------------+
+| requestor           |   xxx          |    xxx           |    xxx           |
++---------------------+----------------+------------------+------------------+
+| dapp provider       |   xxx          |    xxx           |    xxx           |
++---------------------+----------------+------------------+------------------+
+| resources provider  |   xxx          |    xxx           |    xxx           |
++---------------------+----------------+------------------+------------------+
 
 
 

@@ -1,49 +1,57 @@
 Introduction
 ============
 
-What is iExec?
---------------
-
 | iExec is a multi-sided platform for computing resources.
 | It is a network connecting providers and users of distributed computing power, data-sets and developers, encouraging an ecosystem of decentralized and autonomous, privacy-preserving applications.
+| iExec therefore creates a new paradigm for cloud computing: a global and open market where computing power is traded like a commodity.
+| Comparably to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
 | iExec strengthens applications running on Ethereum smart contracts, allowing for off-chain computation services and data sets on-demand.
-| This is made possible by the iExec Proof-of-Contribution or ‘PoCo’ consensus protocol that validates off-chain computations.
+| This is made possible by the iExec Proof-of-Contribution or PoCo consensus protocol that validates off-chain computations.
 
 
 For resources providers
 -----------------------
 
 | Resource providers are organized in a similar way to miners in a cryptocurrency mining pool.
-| One master machine, called a ‘Scheduler’, manages the allocation of computational tasks and rewards for all connected ‘Workers’ in a ‘Worker Pool’.
 
+iExec Workerpool
+~~~~~~~~~~~~~~~~
 
-What is an iExec Worker?
-~~~~~~~~~~~~~~~~~~~~~~~~
+| Workers are organized in worker pools. For each one of these, a scheduler manages the work distribution.
+| Workers are the machines in charge of executing the tasks requested  by users, **the requestor**.
+| Similarly to blockchain miners, workers share their resources and get rewarded in RLC, the iExec's cryptocurrency and means of payment.
 
-| As a Worker, you can connect your machine to the network and provide computing power, executing computational tasks in exchange for RLC tokens.
-| Workers can be individuals or companies.
-| Anyone who owns computing resources can make them available by joining a ‘Worker Pool’ and contributing to execute computational tasks in exchange for RLC.
-| Any machine, from individual laptops to large-scale servers, can join a Workerpool.
-| Like blockchain miners, they want a simple solution that will make their computer part of a large infrastructure that will take care of the everything else for them.
+| There are two types of worker pools:
+|    - Public worker pools
+|    - Private worker pools
 
-Go to the `Be a worker`_ section to learn how to deploy your worker software.
+| Public worker pools are open for anyone to join. Anyone can also deploy a worker pool for others to join.
+| In the marketplace, you will also find private workers pools. This is the case for single cloud providers running their own scheduler and making available their own machines.
+| iExec has sealed agreement deals with several cloud companies, be it household names like IBM or TFCloud, or smaller providers in the area of Green IT.
 
-.. _Be a worker: /worker.html
+| In this open and inclusive system, competitive forces drive worker pools to offer the best quality of service possible,
+ and a dynamic reputation mechanism assigns a score to each worker completing a work.
 
-What is an iExec Workerpool?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| Worker Pools are made up of multiple individual machines.
-| Worker Pools are led by a ‘Scheduler’, one machine that organizes the workload and lists available WorkpoolOrders on the iExec Marketplace to be purchased.
-| Workerpools can either be public for anyone to join, or private.
-| Schedulers, while not doing the actual computation, receive a fee for the management of the Worker Pool.
-| Schedulers compete to attract Workers to their Worker Pool by providing efficient management and guaranteeing the earnings of Workers.
 
 | Go to the `Be a worker pool`_ section to learn how to deploy your worker pool software.
 
 .. _Be a worker pool: /workerpool.html
 
-Check out the worker pool present on the market at https://pools.iex.ec
+Browse the available Worker Pools: https://pools.iex.ec/
+
+
+iExec Worker
+~~~~~~~~~~~~
+
+| Anyone who owns computing resources can make them available by joining a **Worker Pool** and contributing to execute computational tasks in exchange for RLC.
+| Any machine, from individual laptops to large-scale servers, can join a **Worker pool**.
+| Like blockchain miners, they want a simple solution that will make their computer part of a large infrastructure that will take care of the everything else for them.
+| As a worker, if you switch to a different worker pool, you will still be able to maintain your reputation score, bringing it "with you" to your new pool, as this is all recorded on the blockchain.
+
+
+Go to the `Be a worker`_ section to learn how to deploy your worker software.
+
+.. _Be a worker: /worker.html
 
 
 For Dapp users
@@ -94,4 +102,4 @@ For requestors
 | The Pay-Per-Task model and the blockchain allow a high level of control of operating costs and expenses for computation.
 | Requestors can define a minimum level of trust to ensure the task has been correctly processed, whether or not to execute on Intel SGX hardware enclave enables machines, for example.
 | Requestors select resources providers depending on certain criteria such as geographical location or energy management.
-| Requestors can monitor and fully audit all computing activity, thanks to Blockchain.
+| Requestors can monitor and fully audit all computing activity, thanks to Blockchain core property.

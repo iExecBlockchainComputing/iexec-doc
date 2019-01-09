@@ -1,21 +1,37 @@
-Submit a Work Order
-===================
-The second you buy an order from a workerpool, it will trigger your work. Here are the available options to buy a work from a workerpool:
+Task execution
+==============
+
+
+
 
 Using the iExec SDK CLI
-------------------------
+-----------------------
+
+
+
 The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI tool that has all the commands to interact with the iExec network.
 
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to read its full documentation.
 
 
-Using the browser Marketplace
-------------------------------
-Go checkout https://market.iex.ec
+Using the Marketplace and the Dapp Store
+----------------------------------------
 
+Installation of your metamask wallet in your web browser is required.
+
+Marketplace and Dapp Store allow to buy **workerpoolorders** and submit computing task in a very simple way.
+
+| All existing dapps, published in the Dapp Store, are available in the text box for the dapp address with default arguments.
+| It is also possible to fill in any existing dapp address and arguments in the dedicated textboxes.
+
+.. image:: _images/buy_sell.png
+
+
+| Visit the iExec Marketplace (https://market.iex.ec)
+| Visit the Dapp store (https://dapps.iex.ec)
 
 Using a custom smart contract ( + Callback )
-------------------------------
+--------------------------------------------
 
 An exemple on Kovan with factorial dapp.
 Prerequiste :

@@ -1,9 +1,9 @@
-Quick installation with SDK
-===========================
+Getting started
+===============
 
 
-You can test iExec on kovan network, one of the testing networks of ethereum.
-
+After the installation of the SDK, you will create and credit your wallet then set up a task and then run an application.
+The test occurs on kovan network, one of the testing networks of ethereum.
 
 - Install the sdk
 
@@ -12,9 +12,7 @@ You can test iExec on kovan network, one of the testing networks of ethereum.
     sudo npm -g -i iexec
 
 
-- Create all the configuration files and the wallet.json file containing all your wallet information.
-
-the SDK creates for you a wallet.
+- Create all the configuration files **in the current directory**,
 
 .. code-block:: bash
 
@@ -26,9 +24,12 @@ the SDK creates for you a wallet.
     publicKey:  0xcef04083fc9f537ee19b17fd1c4431d55172e7ba0e153802a641ec0f268a5d1466599b5a90cd0dd2a34fe34359f4ad044d8e0256b306c3e4f011ec26e32d1bbe
     address:    0x403e633A31b01aFd2BeAadb19764f0eBa7F3c059
 
+The SDK creates for you a wallet and store all your wallet information in wallet.json file.
+
 .. NOTE::
     Encrypted wallet option is available,
     check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details
+
 
 Check your wallet balance with
 
@@ -46,7 +47,7 @@ Check your wallet balance with
     nRLC: 0
 
 
-- Get ETH
+- Get ETH: a small amount of ether cryptocurrency (ETH) is necessary to interact with the ethereum blockchain.
 
 .. code-block:: bash
 
@@ -60,7 +61,7 @@ Check your wallet balance with
     | You will receive a small amount of ETH in few minutes.
 
 
-- Get RLC
+- Get RLC: RLC can be used to reward the computing resources.
 
 .. code-block:: bash
 
@@ -75,7 +76,6 @@ Check your wallet balance with
 
 
 - Create a task template
-  To validate the installation, you can launch a factorial application.
 
 .. code-block:: bash
 
@@ -87,10 +87,13 @@ Check your wallet balance with
     params:
       cmdline: --help
 
+
+To validate the installation, let's launch the factorial application. Given N, it computes N!
+
 - Edit the task description in the iexec.json file.
 
 The factorial app is defined by its ethereum address.
-We also set up the parameter of the application
+We also set up the parameter of the application N=7
 
 .. code-block:: bash
 
@@ -106,8 +109,9 @@ We also set up the parameter of the application
       }
     }
 
-- Find a workerpoolorder in the orderbook.
-The workerpoolorder corresponds to the resources you will rent to run your task.
+- Find a **workerpoolorder** in the orderbook
+
+The workerpoolorder corresponds to the resources you could rent to run your task.
 
 .. code-block:: bash
 
@@ -148,16 +152,16 @@ The workerpoolorder corresponds to the resources you will rent to run your task.
     ℹ trade in the browser at https://market.iex.ec
 
 
-- Deposit RLC on your account,
-Now you have to charge your account,
-(((TBD décrire le account)))
+- Deposit RLC on your account
+
+Now you have to charge your account
+
 
 .. code-block:: bash
 
     iexec account deposit 15000
     ℹ using chain [kovan]
     ✔ deposited 15000 nRLC to your iExec account
-
 
 
 - Fill the order
