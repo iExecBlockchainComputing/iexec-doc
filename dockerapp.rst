@@ -6,7 +6,7 @@ Develop Application
 | they will be rewarded with the fee in your account.
 | And you should then withdraw your funds at anytime to your own wallet.
 
-why using docker containers?
+Why using docker containers?
 ----------------------------
 
 | A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.

@@ -1,11 +1,14 @@
 Getting started
 ===============
 
+| iEXec, as a blockchain based solution, allows you to manage your computing transactions in a secure and decentralized environment.
+| This transactions between many parties require an ethereum wallet to interact.
+| You will first create and credit your ethereum wallet and then run an application.
+| The test occurs on kovan network, one of the testing networks of ethereum, with no real value.
 
-After the installation of the SDK, you will create and credit your wallet then set up a task and then run an application.
-The test occurs on kovan network, one of the testing networks of ethereum.
 
-- Install the sdk
+SDK Installation
+----------------
 
 .. code-block:: bash
 
@@ -75,6 +78,9 @@ Check your wallet balance with
     }
 
 
+Task execution
+--------------
+
 - Create a task template
 
 .. code-block:: bash
@@ -111,7 +117,7 @@ We also set up the parameter of the application N=7
 
 - Find a **workerpoolorder** in the orderbook
 
-The workerpoolorder corresponds to the resources you could rent to run your task.
+The workerpoolorder corresponds to the resources you can buy to run your task.
 
 .. code-block:: bash
 
@@ -208,7 +214,7 @@ The command returns the ethereum work address.
 
     ℹ if work is not "COMPLETED" after Thu Jan 03 2019 03:05:36 GMT+0100 (CET) you can claim the work to get a full refund using "iexec work claim"
 
-- Until it is completed
+until it is completed
 
 .. code-block:: bash
 
