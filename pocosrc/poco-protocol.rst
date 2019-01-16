@@ -158,7 +158,7 @@ The requester payment is composed of 3 parts, one for the workerpool, one for th
 Parameters
 ~~~~~~~~~~
 
-``FINAL_DEADLINE_RATIO = 10, CONTRIBUTION_DEADLINE_RATIO = 7, REVEAL_DEADLINE_RATIO = 2``
+``FINAL_DEADLINE_RATIO = 10``, ``CONTRIBUTION_DEADLINE_RATIO = 7``, ``REVEAL_DEADLINE_RATIO = 2``
 
   Parameters of the consensus timer. They express the number of reference timers (category duration) that are dedicated to each phase.
   These settings corresponds to a 70%-20%-10% distribution between the contribution phase, the reveal phase and the finalize phase.
