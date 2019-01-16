@@ -9,17 +9,18 @@ In addition to providing trust PoCo also orchestrates the different contribution
 
 PoCo is modular. It comes with features that can be used depending on the context:
 
-**Result certification**
+**Result consolidation**
 
-  The PoCo provides a layer of that relies on replication to achieve result certification.
+  The PoCo provides a layer of that relies on replication to achieve result consolidation.
   This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <poco-trust.html>`__.
 
   This layer also support the onchain certification of TEE (such as Intel SGX)
 
 **Secure payment**
 
-  User funds are locked to ensure workers are payed. Workers have to achieve consensus to get the user's funds otherwize user is reimbursed.
-  Worker and scheduler have to stake to participate. Bad behaviour from a actor result in a loss of stake.
+  | User funds are locked to ensure all resources providers are paid for their contributions. Resources can take the form of data, applications or computing power.
+  | Workers have to achieve consensus to get the user's funds otherwize user is reimbursed.
+  | Worker and scheduler have to stake to participate. Bad behaviour from a actor result in a loss of stake.
 
   This is essential the public blockchain but all values can be set to 0 for private blockchain solutions.
 
@@ -33,14 +34,14 @@ PoCo is modular. It comes with features that can be used depending on the contex
 Overview
 ~~~~~~~~
 
-The PoCo describes the succession of contributions that are requires to achieve consensus on a given result. The logic is details in two blog articles:
+The PoCo describes the succession of contributions that are required to achieve consensus on a given result. The logic is details in two blog articles:
 
 - `PoCo series #1: Initial PoCo description <https://medium.com/iex-ec/about-trust-and-agents-incentives-4651c138974c>`__
 - `PoCo series #3: Updated PoCo description <https://medium.com/iex-ec/poco-series-3-poco-protocole-update-a2c8f8f30126>`__
 
 The `nominal workflow <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/nominalworkflow-ODB.png>`__ is also available in the `technical report section <technicalreport.html>`__
 
-Here is the details of the v3-alpha implementations:
+Here is the details of the implementations:
 
 0. **Deal**
 
@@ -50,13 +51,13 @@ Here is the details of the v3-alpha implementations:
 
 1. **Initialization**
 
-   The scheduler calls the ``initialize`` method. Given a dealid and a position in the request order (within the deal window), this function initializes the corresponding task and returns the taskid.
+   The scheduler calls the ``initialize`` method. Given a deal id and a position in the request order (within the deal window), this function initializes the corresponding task and returns the taskid.
 
    ``bytes32 taskid = keccak256(abi.encodePacked(_dealid, idx));``
 
 2. **Authorization signature**
 
-   The scheduler designates workers that an participate to this task. This is done by signing (with the scheduler's ethereum wallet) a message containing the worker's ethereum address, the taskid,
+   The scheduler designates workers that participate to this task, the scheduler's ethereum wallet signs a message containing the worker's ethereum address, the taskid,
     and (optional) the worker's enclave's ethereum address. If the worker doesn't use an enclave, this field must be filled with ``address(0)``.
 
    This ethereum signature (authorization) is sent to the worker through an off-chain channel implemented by the middleware.

@@ -1,8 +1,8 @@
-Develop Application
+Provide Application
 ===================
 
 | In this section we will show you how you can create a docker Dapp over iExec infrastructure.
-| For developers, in the task as a service model, each time a task is launched through the iExec,
+| For developers, in the **task as a service** model, each time a task is launched through the iExec,
 | they will be rewarded with the fee in your account.
 | And you should then withdraw your funds at anytime to your own wallet.
 

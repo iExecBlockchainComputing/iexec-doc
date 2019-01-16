@@ -15,7 +15,7 @@ SDK Installation
     sudo npm -g -i iexec
 
 
-- Create all the configuration files **in the current directory**,
+- Now you need to create configuration files
 
 .. code-block:: bash
 
@@ -27,12 +27,12 @@ SDK Installation
     publicKey:  0xcef04083fc9f537ee19b17fd1c4431d55172e7ba0e153802a641ec0f268a5d1466599b5a90cd0dd2a34fe34359f4ad044d8e0256b306c3e4f011ec26e32d1bbe
     address:    0x403e633A31b01aFd2BeAadb19764f0eBa7F3c059
 
-The SDK creates for you a wallet and store all your wallet information in wallet.json file.
+The SDK creates for you a wallet and store all your wallet information in wallet.json file,
+
 
 .. NOTE::
-    Encrypted wallet option is available,
-    check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details
-
+    - Encrypted wallet option is available, check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details
+    - Configuration is associated to **the current directory**,
 
 Check your wallet balance with
 
@@ -50,7 +50,8 @@ Check your wallet balance with
     nRLC: 0
 
 
-- Get ETH: a small amount of ether cryptocurrency (ETH) is necessary to interact with the ethereum blockchain.
+- Get ETH:
+ a small amount of ether cryptocurrency (ETH) is necessary to interact with the ethereum blockchain.
 
 .. code-block:: bash
 
@@ -64,7 +65,8 @@ Check your wallet balance with
     | You will receive a small amount of ETH in few minutes.
 
 
-- Get RLC: RLC can be used to reward the computing resources.
+- Get RLC:
+ RLC can be used to reward the computing resources.
 
 .. code-block:: bash
 
@@ -94,12 +96,13 @@ Task execution
       cmdline: --help
 
 
-To validate the installation, let's launch the factorial application. Given N, it computes N!
+| To validate the installation, let's launch the factorial application.
+| Factorial function:  given N, it computes N!   N*(N-1)*(N-2)*...*1
 
 - Edit the task description in the iexec.json file.
 
-The factorial app is defined by its ethereum address.
-We also set up the parameter of the application N=7
+| The factorial app is defined by its ethereum address.
+| We also set up the parameter of the application N=7
 
 .. code-block:: bash
 
@@ -117,7 +120,7 @@ We also set up the parameter of the application N=7
 
 - Find a **workerpoolorder** in the orderbook
 
-The workerpoolorder corresponds to the resources you can buy to run your task.
+The workerpoolorder corresponds to the resources you can use to run your task.
 
 .. code-block:: bash
 
@@ -157,10 +160,11 @@ The workerpoolorder corresponds to the resources you can buy to run your task.
 
     ℹ trade in the browser at https://market.iex.ec
 
+Many orders are availables, this is possible to select, regarding you preference: price, workerpool location.
 
 - Deposit RLC on your account
 
-Now you have to charge your account
+Now you have to charge your account.
 
 
 .. code-block:: bash
@@ -221,7 +225,7 @@ until it is completed
     .....
     m_statusName:          COMPLETED
 
-- Download the result and check the result of 7! (factorial(7))
+- Download the result and check your result
 
 .. code-block:: bash
 

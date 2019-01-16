@@ -49,7 +49,7 @@ Login with Metamask
 | Once you’ve unlocked your Metamask, you can login on the iExec marketplace https://market.iex.ec with embedded wallet management.
 | In the **Account**, both Balance and Allowance are displayed, and values are expressed in nRLC (Nano RLC).
 | When a computing deal is closed, a dedicated smart contract is created,
- an allowance step is mandatory to give authority to this new smart contract proceed to the payment when the computing task is successfully ended.
+ an allowance step is mandatory to give authority to this new smart contract to proceed to the payment when the computing task is successfully ended.
 
 Set up the SDK with your own wallet
 -----------------------------------
@@ -62,18 +62,19 @@ Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sd
 Staking and incentives
 ----------------------
 
-.. warning:: Introduce the concepts
-
-+---------------------+----------------+------------------+------------------+
-|    **Role**         | **RLC needed** | **ETH needed**   |    **Stacking**  +
-+---------------------+----------------+------------------+------------------+
-| requestor           |   xxx          |    xxx           |    xxx           |
-+---------------------+----------------+------------------+------------------+
-| dapp provider       |   xxx          |    xxx           |    xxx           |
-+---------------------+----------------+------------------+------------------+
-| resources provider  |   xxx          |    xxx           |    xxx           |
-+---------------------+----------------+------------------+------------------+
-
++---------------------+----------------+-----------------------+-----------------------------------------------------+
+|    **Role**         | **RLC needed** | **ETH needed**        |    **Staking**                                      |
++---------------------+----------------+-----------------------+-----------------------------------------------------+
+| requester           |   yes          |    no                 |    Token locked until the execution id finalized    |
++---------------------+----------------+-----------------------+-----------------------------------------------------+
+| App provider        |   no           |    yes for deployment |    no                                               |
++---------------------+----------------+-----------------------+-----------------------------------------------------+
+| Data provider       |   no           |    yes for deployment |    no                                               |
++---------------------+----------------+-----------------------+-----------------------------------------------------+
+| Worker              |   yes          |    yes for deployment |    yes                                              |
++---------------------+----------------+-----------------------+-----------------------------------------------------+
+| Worker Pool         |   yes          |    yes for deployment |    yes                                              |
++---------------------+----------------+-----------------------+-----------------------------------------------------+
 
 
 

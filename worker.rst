@@ -8,6 +8,8 @@ A worker is an essential actor of the infrastructure. It will be in charge of pe
 Install and start a worker
 --------------------------
 
+Contact the worker pool to get all the needed parameters to join its pool.
+
 The following command can be called on the machine where the worker will run:
 
 .. code:: bash
@@ -26,7 +28,9 @@ The following command can be called on the machine where the worker will run:
 		-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR \
 		iexechub/worker:X.Y.Z
 
-where X.Y.Z is the version of the worker that should be used. The list of available versions can be checked on the `iexec dockerhub page <https://hub.docker.com/r/iexechub/worker/tags/>`_. **It should match the version of the scheduler**.
+| where X.Y.Z is the version of the worker that should be used.
+| The list of available versions can be checked on the `iexec dockerhub page <https://hub.docker.com/r/iexechub/worker/tags/>`_.
+| **It must match the version of the scheduler**.
 
 Please note that all the values shown here are just given as an example, it should be adapted to the worker pool you are trying to join and to the machine on which the worker will run.
 

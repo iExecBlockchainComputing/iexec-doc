@@ -58,17 +58,17 @@ Workerpools
 |  - Public worker pools
 |  - Private worker pools
 
-| Public worker pools are open for anyone to join. Anyone can also deploy a worker pool for others to join.
+| Public worker pools are open for anyone to join.
+| Anyone can also deploy a worker pool for others to join.
 | As a worker, if you switch to a different worker pool, you will still be able to maintain your reputation score,
  bringing it “with you” to your new pool, as this is all recorded on the blockchain.
 
-Browse the available Worker Pools: https://pools.iex.ec/
-
-| More information and statistics on the worker pool dashboard.
-| https://stimergy-pool.iex.ec/
-
 .. image:: _images/workerpool_graphana.png
 
+Browse the available Worker Pools: https://pools.iex.ec/
+
+| More information and statistics on the worker pool dashboard
+| For example, visit the worker pool of our partner Stimergy at https://stimergy-pool.iex.ec/
 
 SDK and API
 ---------------
@@ -78,3 +78,6 @@ SDK and API
 | CLI and JS library allowing developers to easily interact with the iExec stack
 | Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details
 
+| Go to the `Getting started`_ section to learn how to use the SDK.
+
+.. _Getting started: /sdk.html
