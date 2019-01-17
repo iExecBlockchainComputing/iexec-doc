@@ -1,10 +1,11 @@
 Getting started
 ===============
 
-| iEXec, as a blockchain based solution, allows you to manage your computing transactions in a secure and decentralized environment.
-| This transactions between many parties require an ethereum wallet to interact.
-| You will first create and credit your ethereum wallet and then run an application.
-| The test occurs on kovan network, one of the testing networks of ethereum, with no real value.
+
+iExec, being blockchain-based, allows you to manage your computing transactions in a secure and decentralized environment.
+In order to transact between multiple parties within iExec, an Ethereum wallet is required.
+First, you will need to create your Ethereum wallet and credit it with Ethereum tokens (ETH), before running the application.
+While iExec is in its development phase, we allow transactions on Ethereum’s Kovan Network. Sometimes referred to as test network, it uses Kovan ETH tokens that hold no real value and are used solely for testing purposes.
 
 
 SDK Installation
@@ -27,8 +28,7 @@ SDK Installation
     publicKey:  0xcef04083fc9f537ee19b17fd1c4431d55172e7ba0e153802a641ec0f268a5d1466599b5a90cd0dd2a34fe34359f4ad044d8e0256b306c3e4f011ec26e32d1bbe
     address:    0x403e633A31b01aFd2BeAadb19764f0eBa7F3c059
 
-The SDK creates for you a wallet and store all your wallet information in wallet.json file,
-
+The SDK creates a wallet for you and stores all your wallet information in filed named: wallet.json
 
 .. NOTE::
     - Encrypted wallet option is available, check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details
@@ -51,6 +51,7 @@ Check your wallet balance with
 
 
 - Get ETH:
+
  a small amount of ether cryptocurrency (ETH) is necessary to interact with the ethereum blockchain.
 
 .. code-block:: bash
@@ -66,6 +67,7 @@ Check your wallet balance with
 
 
 - Get RLC:
+
  RLC can be used to reward the computing resources.
 
 .. code-block:: bash

@@ -3,14 +3,10 @@ Welcome to iExec
 
 **What is iExec?**
 
-| iExec wants to decentralize cloud computing market by building the future of the Internet infrastructure.
-| iExec aims at providing to companies scalable, secure and easy access to the services, the datasets and the computing resources they need.
-| Our technology relies on the Ethereum smart contracts and allows for a virtual Cloud infrastructure that provides high-performance computing services on demand
 
-| iExec is the first decentralized marketplace for cloud resources.
-| The iExec platform allows everyone to monetize their applications, servers and datasets in a fair and secure context.
-
-.. image:: https://raw.githubusercontent.com/iExecBlockchainComputing/iexec-doc/master/_images/V2_infography.png
+| iExec is a multi-sided platform for computing resources.
+| It is a network connecting providers and users of distributed computing power, datasets and developers, encouraging an ecosystem of decentralized and autonomous, privacy-preserving applications.
+| iExec therefore creates a new paradigm for cloud computing: a global and open market where computing power is traded like a commodity.
 
 
 .. toctree::
@@ -40,12 +36,7 @@ Welcome to iExec
 
 .. toctree::
    :maxdepth: 2
-   :caption: Releases
+   :caption: Resources
 
-   releases
+   resources
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Technical Report
-
-   technicalreport

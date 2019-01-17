@@ -2,6 +2,22 @@ The iExec Solution Stack
 ========================
 
 
+Dapp store
+----------
+
+The dapp store is a catalog of ready to use applications and tools.
+
+.. image:: _images/DappStore.png
+
+| The DApp Store can be seen as a collection of decentralized applications running on top of iExec.
+| Users are able to browse through the listed dapps and use their favorites.
+| These dapps are curated and represent the wide span of industries iExec can support: artificial intelligence, 3D rendering, fintech, cryptography, scientific research or IoT.
+
+| Anyone can launch its own Dapp Store and curate applications the way they see fit.
+
+Visit the Dapp store (https://dapps.iex.ec)
+
+
 The Marketplace
 ---------------
 
@@ -20,35 +36,6 @@ The Marketplace
 | Comparably to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
 
 Visit the iExec Marketplace (https://market.iex.ec)
-
-Dapp store
-----------
-
-The dapp store is a catalog of ready to use applications and tools.
-
-.. image:: _images/DappStore.png
-
-| The DApp Store can be seen as a collection of decentralized applications running on top of iExec.
-| Users are able to browse through the listed dapps and use their favorites.
-| These dapps are curated and represent the wide span of industries iExec can support: artificial intelligence, 3D rendering, fintech, cryptography, scientific research or IoT.
-
-| Anyone can launch its own Dapp Store and curate applications the way they see fit.
-
-Visit the Dapp store (https://dapps.iex.ec)
-
-Task Explorer
--------------
-
-The iExec Explorer is a user-friendly web application that can explore all relevant information about transactions, applications deployed and worker pools deployed.
-
-.. image:: _images/iExecExplorer.png
-
-For each transaction, the tool provides details on its time of execution, its hash, the user's public address, the dapp's public address, the worker's public address, the price of the deal and the status of the transaction.
-
-.. image:: _images/iExecworkdetail.png
-
-Visit the iExex Explorer https://explorer.iex.ec/
-
 
 Workerpools
 -----------
@@ -70,13 +57,26 @@ Browse the available Worker Pools: https://pools.iex.ec/
 | More information and statistics on the worker pool dashboard
 | For example, visit the worker pool of our partner Stimergy at https://stimergy-pool.iex.ec/
 
+Task Explorer
+-------------
+
+The iExec Explorer is a user-friendly web application that can explore all relevant information about transactions, applications deployed and worker pools deployed.
+
+.. image:: _images/iExecExplorer.png
+
+For each transaction, the tool provides details on its time of execution, its hash, the user's public address, the dapp's public address, the worker's public address, the price of the deal and the status of the transaction.
+
+.. image:: _images/iExecworkdetail.png
+
+Visit the iExex Explorer https://explorer.iex.ec/
+
 SDK and API
 ---------------
 
 | The iExec SDK and API provide a set of tools that allows all users to interact with iExec decentralized marketplace.
 
-| CLI and JS library allowing developers to easily interact with the iExec stack
-| Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details
+| Command Line Interface (CLI) and JavaScript library allowing developers to easily interact with the iExec stack.
+| Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details.
 
 | Go to the `Getting started`_ section to learn how to use the SDK.
 

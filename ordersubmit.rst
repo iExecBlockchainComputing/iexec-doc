@@ -4,11 +4,11 @@ Task execution
 
 
 
-Using the iExec SDK CLI
------------------------
+Using the iExec SDK
+-------------------
 
 
-The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI tool that has all the commands to interact with the iExec network.
+The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI (Command Line Interface) tool that has all the commands to interact with the iExec network.
 
 Go to the `Getting Started`_ section to learn how to manage a task execution.
 

@@ -59,12 +59,6 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 
 The scheduler you want to connect your worker to may already provide a ready-to-launch script for you to use out-of-the-box. In that case you can simply launch that script. It will start a worker with the correct parameters to connect to that scheduler. The only parameter that should change for you is the path of the worker's wallet.
 
-
-Windows installation
---------------------
-
-available soon
-
 Wallet restriction
 ------------------
 

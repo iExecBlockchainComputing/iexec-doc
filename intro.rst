@@ -1,9 +1,6 @@
 Introduction
 ============
 
-| iExec is a multi-sided platform for computing resources.
-| It is a network connecting providers and users of distributed computing power, datasets and developers, encouraging an ecosystem of decentralized and autonomous, privacy-preserving applications.
-| iExec therefore creates a new paradigm for cloud computing: a global and open market where computing power is traded like a commodity.
 | Comparably to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
 | iExec strengthens applications running on Ethereum smart contracts, allowing for off-chain computation services and datasets on-demand.
 | This is made possible by the iExec Proof-of-Contribution or PoCo consensus protocol that validates off-chain computations.
@@ -70,6 +67,9 @@ For Dapp users
 
 .. _Task execution: /ordersubmit.html
 
+| In the iExec Marketplace https://market.iex.ec, with few clicks, you can access a large amounts of computational power.
+| In the iExec Dapp Store https://dapps.iex.ec, you can access an extensive list of ready-to-use decentralized applications.
+
 For developers
 --------------
 
@@ -97,8 +97,6 @@ For Data providers
 For requesters
 --------------
 
-| In the iExec Marketplace https://market.iex.ec, with few clicks, you can access a large amounts of computational power.
-| In the iExec Dapp Store https://dapps.iex.ec, you can access an extensive list of ready-to-use decentralized applications.
 | The multi-sided market provided by iExec allows to trade applications, the requesters set requestorder for an “ask” publication, a computing resources provider should accept the deal and process this requestorder
   at the price fixed by the requester.
 | The Pay-Per-Task model and the blockchain allow a high level of control of operating costs and expenses for computation.
