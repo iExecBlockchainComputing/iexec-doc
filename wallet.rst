@@ -62,18 +62,23 @@ Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sd
 Staking and incentives
 ----------------------
 
+| Staking is a important part of the consensus protocol, to prevent attacks and maintain a high level of trust between participants.
+| Workers and schedulers have to commit a security deposit, who computed an erroneous result will lose their stake.
+| The movements of RLC is presented below.
+
+
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
-|    **Role**         | **RLC needed** | **ETH needed**        |    **Staking**                                      |
+|    **Role**         | **RLC needed** | **ETH needed**        |    **Staking and incentives**                       |
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
-| Requester           |   yes          |    no                 |    Token locked until the execution id finalized    |
+| Requester           |   yes          |    no                 |    payment, token locked during execution           |
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
-| App provider        |   no           |    yes for deployment |    no                                               |
+| App provider        |   no           |    yes for deployment |    reward                                           |
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
-| Dataset provider    |   no           |    yes for deployment |    no                                               |
+| Dataset provider    |   no           |    yes for deployment |    reward                                           |
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
-| Worker              |   yes          |    yes                |    yes                                              |
+| Worker              |   yes          |    yes                |    stacking for security deposit, reward            |
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
-| Scheduler           |   yes          |    yes                |    yes                                              |
+| Scheduler           |   yes          |    yes                |    stacking for security deposit, reward            |
 +---------------------+----------------+-----------------------+-----------------------------------------------------+
 
 

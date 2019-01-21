@@ -1,20 +1,14 @@
-Task execution
-==============
-
-
-
+How to execute a task
+=====================
 
 Using the iExec SDK
 -------------------
 
 
-The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI (Command Line Interface) tool that has all the commands to interact with the iExec network.
-
-Go to the `Getting Started`_ section to learn how to manage a task execution.
-
+| The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI (Command Line Interface) tool providing all the commands to interact with the iExec network.
+| As an introduction, go to the `Getting Started`_ section to learn how to manage a task execution. For more details, go to `iExec SDK github page <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ to read its full documentation.
 .. _Getting Started: /sdk.html
 
-Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to read its full documentation.
 
 
 Using the Marketplace and the Dapp Store
@@ -22,16 +16,41 @@ Using the Marketplace and the Dapp Store
 
 Installation of your metamask wallet in your web browser is required.
 
-Marketplace and Dapp Store allow to buy **workerpoolorders** and submit computing task in a very simple way.
+The marketplace and the Dapp Store allow to buy **workerpoolorders** and submit computing task in a very simple way.
 
-| All existing dapps, published in the Dapp Store, are available in the text box for the dapp address with default arguments.
-| It is also possible to fill in any existing dapp address and arguments in the dedicated textboxes.
+| From the Dapp store, you can select your dApp and will be redirected to the marketplace with the dApp address and default work parameters filled.
+ The marketplace selects also the cheapest workerpoolorder available.
+
+| From the marketplace, all existing dApps, published in the Dapp Store, are available in the select menu. It is also possible to fill in any existing dApp address and your custom arguments in the dedicated textboxes.
+
 
 .. image:: _images/buy_sell.png
 
-
 | Visit the iExec Marketplace (https://market.iex.ec)
 | Visit the Dapp store (https://dapps.iex.ec)
+
+For input data, you can use the dirinuri variable to select the data that will be download during the initialization of the task on the worker.
+The data must be available online and from a direct link, redirection are not allowed.
+
+
+.. code-block:: bash
+
+    {
+      "order": {
+        "buy": {
+          "app": "0x2f185a1e5cedf07d64d9c94e39c0f060c38fc2fe",
+          "dataset": "0x0000000000000000000000000000000000000000",
+          "params": {
+            "cmdline": "your_command_line",
+            "dirinuri" : "https://github.com/iExecBlockchainComputing/iexec-dapp-samples/raw/blender/apps/iexec-rlc.blend"
+          }
+        }
+      }
+    }
+
+
+
+
 
 
 Using a custom smart contract ( + Callback )

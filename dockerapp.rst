@@ -1,5 +1,5 @@
-Provide Application
-===================
+How to provide an application: dApp
+===================================
 
 | In this section we will show you how you can create a docker Dapp over iExec infrastructure.
 | For developers, in the **task as a service** model, each time a task is launched through the iExec,

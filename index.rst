@@ -1,5 +1,5 @@
 Welcome to iExec
-=================
+================
 
 **What is iExec?**
 
@@ -26,6 +26,7 @@ Welcome to iExec
    workerpool
    ordersubmit
    dockerapp
+   paypertask
 
 
 .. toctree::

@@ -20,7 +20,7 @@ Releases
 This section is for the different releases made. The latest stable version is 2.3.
 
 Version 2.3 "Gold Lancer” (金槍手)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The iExec v2.3 labelled “Gold Lancer” (金槍手) sees the addition of an SDK that provides full end-to-end privacy-preserving computing, guarantees execution integrity, and provides an on-chain enclave execution attestation. It consists of the following releases of the different modules:
 
@@ -32,17 +32,58 @@ SDK       2.2.39   `<https://github.com/iExecBlockchainComputing/iexec-sdk/relea
 PoCo      1.0.14   `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/1.0.14>`_
 ========  =======  ========================================================================
 
-Technical Report
-----------------
+Technical Reports
+-----------------
 
 - Trust management in the Proof of Contribution protocol in V3    `PDF <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/iExec_PoCo_and_trustmanagement_v1.pdf>`_
 - Nominal workflow.                                          `PNG <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/nominalworkflow-ODB.png>`_
 
-Contacts
---------
+Contact us
+----------
 
 - Slack: https://slack.iex.ec
 - Gitter : https://gitter.im/iExecBlockchainComputing/Lobby
 - Email : support@iex.ec
+
+
+
+Glossary
+--------
+
+.. glossary::
+
+ Worker:
+    They are individuals or companies who own computing resources and are willing to make them available for the computation of tasks against payments in RLC.
+    Similarly to blockchain miners, they want a simple solution that will make their computer part of a large infrastructure that will take care of the details for them.
+
+ Worker pool:
+    Worker pools organize workers contributions. They are led by a scheduler, who organises the work distribution.
+    They can either be public and federate resources from anyone or private and try to optimise the management of specific hardware.
+    While not doing the actual computation, they receive a fee for the management of the infrastructure.
+    They compete to attract workers, which they do by achieving an efficient management which guarantees the income of workers.
+
+ RLC: 
+    tdb 
+
+ Requester:
+    tdb
+
+ task:
+    tdb
+
+ category
+    tdb
+
+ scheduler:
+    tdb
+
+ dApp
+    tdb
+
+ Dapp Store
+    tdb
+
+ Pool Manager
+    tdb
 
 

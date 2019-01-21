@@ -5,6 +5,39 @@ Introduction
 | iExec strengthens applications running on Ethereum smart contracts, allowing for off-chain computation services and datasets on-demand.
 | This is made possible by the iExec Proof-of-Contribution or PoCo consensus protocol that validates off-chain computations.
 
+For requesters
+--------------
+
+intro a faire
+
+For Dapp users
+~~~~~~~~~~~~~~
+
+| As a Dapp user, you can browse the iExec Dapp Store; a listing of user-submitted decentralized applications that are already powered by iExec.
+| iExec is required to enhance the limited computing capacities of blockchain to run compute-intensive decentralized applications: few kilobytes of storage, very inefficient virtual machines and very high latency protocol.
+| As the demand for decentralized applications grows, there is an ever-growing need to provide additional computing capacity to run them.
+| The existing clouds cannot fulfill the requirements for DApps that need fully decentralized infrastructures for their execution.
+| For these applications, ‘off-chain’ computation is needed.
+| iExec provides the infrastructure for this as well as ‘PoCo’ (proof-of-contribution), the consensus protocol that provides blockchain-level consolidation and validation of the off-chain computation.
+
+| Pick a Dapp on our Dapp store (https://dapps.iex.ec)
+| and learn in the `Task execution`_ section how to run dapps with the iExec SDK.
+
+.. _Task execution: /ordersubmit.html
+
+| In the iExec Marketplace https://market.iex.ec, with few clicks, you can access a large amounts of computational power.
+| In the iExec Dapp Store https://dapps.iex.ec, you can access an extensive list of ready-to-use decentralized applications.
+
+The bid approach
+~~~~~~~~~~~~~~~~
+
+| The multi-sided market provided by iExec allows to trade applications, the requesters set requestorder for an “ask” publication, a computing resources provider should accept the deal and process this requestorder
+  at the price fixed by the requester.
+| The Pay-Per-Task model and the blockchain allow a high level of control of operating costs and expenses for computation.
+| Requesters can define a minimum level of trust to ensure the task has been correctly processed, whether or not to execute on Intel SGX hardware enclave enables machines, for example.
+| Requesters select resources providers depending on certain criteria such as geographical location or energy management.
+| Requesters can monitor and fully audit all computing activity, thanks to Blockchain core property.
+
 
 For resources providers
 -----------------------
@@ -31,9 +64,9 @@ iExec Workerpool
  and a dynamic reputation mechanism assigns a score to each worker completing a work.
 
 
-| Go to the `Be a worker pool`_ section to learn how to deploy your worker pool.
+| Go to the `How to become a scheduler`_ section to learn how to deploy your worker pool.
 
-.. _Be a worker pool: /workerpool.html
+.. _How to become a scheduler: /workerpool.html
 
 Browse the available Worker Pools: https://pools.iex.ec/
 
@@ -47,31 +80,13 @@ iExec Worker
 | As a worker, if you switch to a different worker pool, you will still be able to maintain your reputation score, bringing it "with you" to your new pool, as this is all recorded on the blockchain.
 
 
-Go to the `Be a worker`_ section to learn how to deploy your worker software.
+Go to the `How to become a worker`_ section to learn how to deploy your worker software.
 
-.. _Be a worker: /worker.html
+.. _How to become a worker: /worker.html
 
-
-For Dapp users
---------------
-
-| As a Dapp user, you can browse the iExec Dapp Store; a listing of user-submitted decentralized applications that are already powered by iExec.
-| iExec is required to enhance the limited computing capacities of blockchain to run compute-intensive decentralized applications: few kilobytes of storage, very inefficient virtual machines and very high latency protocol.
-| As the demand for decentralized applications grows, there is an ever-growing need to provide additional computing capacity to run them.
-| The existing clouds cannot fulfill the requirements for DApps that need fully decentralized infrastructures for their execution.
-| For these applications, ‘off-chain’ computation is needed.
-| iExec provides the infrastructure for this as well as ‘PoCo’ (proof-of-contribution), the consensus protocol that provides blockchain-level consolidation and validation of the off-chain computation.
-
-| Pick a Dapp on our Dapp store (https://dapps.iex.ec)
-| and learn in the `Task execution`_ section how to run dapps with the iExec SDK.
-
-.. _Task execution: /ordersubmit.html
-
-| In the iExec Marketplace https://market.iex.ec, with few clicks, you can access a large amounts of computational power.
-| In the iExec Dapp Store https://dapps.iex.ec, you can access an extensive list of ready-to-use decentralized applications.
 
 For developers
---------------
+~~~~~~~~~~~~~~
 
 | Developers can monetize applications by setting a fixed-fee for access using the iExec Pay-per-task model
 | As a developer of decentralized applications, you can use iExec to overcome blockchain limitations of cost
@@ -85,7 +100,7 @@ Go to the `Provide Application`_ section to learn how to build Dapps (binaries o
 
 
 For Data providers
-------------------
+~~~~~~~~~~~~~~~~~~
 
 | *Coming May 2019*
 
@@ -94,12 +109,3 @@ For Data providers
  the data wallet presents new opportunities to create highly secure applications, respecting privacy and ownership.
 
 
-For requesters
---------------
-
-| The multi-sided market provided by iExec allows to trade applications, the requesters set requestorder for an “ask” publication, a computing resources provider should accept the deal and process this requestorder
-  at the price fixed by the requester.
-| The Pay-Per-Task model and the blockchain allow a high level of control of operating costs and expenses for computation.
-| Requesters can define a minimum level of trust to ensure the task has been correctly processed, whether or not to execute on Intel SGX hardware enclave enables machines, for example.
-| Requesters select resources providers depending on certain criteria such as geographical location or energy management.
-| Requesters can monitor and fully audit all computing activity, thanks to Blockchain core property.
