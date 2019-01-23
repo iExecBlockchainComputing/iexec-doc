@@ -1,12 +1,15 @@
 How to execute a task
 =====================
 
+The iExec stack provides adapted tools to manage task execution.
+
 Using the iExec SDK
 -------------------
 
 
 | The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI (Command Line Interface) tool providing all the commands to interact with the iExec network.
 | As an introduction, go to the `Getting Started`_ section to learn how to manage a task execution. For more details, go to `iExec SDK github page <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ to read its full documentation.
+
 .. _Getting Started: /sdk.html
 
 
@@ -124,7 +127,7 @@ Note IexecAPI address:   $IexecAPI_Adresss
 
 Check in etherscan transaction is OK and you see approve event.
 
-Click here to see `Transaction example <https://kovan.etherscan.io/tx/0x8083bb585e1414c2833d16637c96deadb0e01ec87891b69fecc8e16b26bdbf21/>`_
+Click here to see `Transaction example 1 <https://kovan.etherscan.io/tx/0x8083bb585e1414c2833d16637c96deadb0e01ec87891b69fecc8e16b26bdbf21/>`_
 
 
 3. You must deposit RLC to the IexecHub through IexecAPI to be able to buy workerpoolorder (requester will be the IexecAPI contract and pay the execution):
@@ -144,7 +147,7 @@ Click here to see `Transaction example <https://kovan.etherscan.io/tx/0x8083bb58
 
 check in etherscan transaction is OK and you see Deposit event.
 
-Click here to see `Transaction example <https://kovan.etherscan.io/tx/0x378ad8c8da3c4463ad9decca4a4974dd6eeba53cea444a155db2d0578bdfeb91/>`_
+Click here to see `Transaction example 2 <https://kovan.etherscan.io/tx/0x378ad8c8da3c4463ad9decca4a4974dd6eeba53cea444a155db2d0578bdfeb91/>`_
 
 4. You can now buyForWorkOrder on the IexecAPI contract :
 
@@ -177,7 +180,7 @@ _beneficiary      your wallet or the wallet that is allowed to download the resu
 
 A buyForWorkOrder transaction successful example :
 
-`Transaction example <https://kovan.etherscan.io/tx/0xb465f9980848f030526035812181263f332fdefe9577aa3e1a7fdda08c2330f9/>`_
+`Transaction example 3 <https://kovan.etherscan.io/tx/0xb465f9980848f030526035812181263f332fdefe9577aa3e1a7fdda08c2330f9/>`_
 
 Watch the workorder (found woid in the transaction previous Log) :
 

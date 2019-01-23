@@ -25,7 +25,7 @@ The structure of the different order types is as follows:
 
 **AppOrder**
 
-.. literalinclude:: sources/IexecODBLibOrders.sol
+.. literalinclude:: IexecODBLibOrders.sol
   :language: c
   :lines: 31-42
   :dedent: 1
@@ -50,7 +50,7 @@ The structure of the different order types is as follows:
 
 **DatasetOrder**
 
-.. literalinclude:: sources/IexecODBLibOrders.sol
+.. literalinclude:: IexecODBLibOrders.sol
   :language: c
   :lines: 43-54
   :dedent: 1
@@ -75,7 +75,7 @@ The structure of the different order types is as follows:
 
 **WorkerpoolOrder**
 
-.. literalinclude:: sources/IexecODBLibOrders.sol
+.. literalinclude:: IexecODBLibOrders.sol
   :language: c
   :lines: 55-68
   :dedent: 1
@@ -104,7 +104,7 @@ The structure of the different order types is as follows:
 
 **RequesterOrder**
 
-.. literalinclude:: sources/IexecODBLibOrders.sol
+.. literalinclude:: IexecODBLibOrders.sol
   :language: c
   :lines: 69-87
   :dedent: 1
@@ -304,4 +304,3 @@ A scheduler could therefore emit two kinds of workerpoolorder:
 - A workerpoolorder offering execution with the PoCo's trust layer disabled (``trust = 0``) and accepting all applications (``apprestrict = 0``)
 
 - A workerpoolorder offering secure exection of whitelisted tasks. The application whitelist would use the ``GroupInterface`` to be verifyed by the iExec Clerk. This group could either be managed by the scheduler or by a certification authority that would check applications determinism.
->>>>>>> master:poco-brokering.rst

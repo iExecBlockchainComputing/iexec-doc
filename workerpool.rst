@@ -1,7 +1,7 @@
-How to become a scheduler
-=========================
+How to become a pool manager
+============================
 
-A worker pool (also called scheduler) is the essential actor of the infrastructure. It will be in charge of distributing the works submitted by the users to the different workers that are connected to this pool.
+A worker pool, managed by a pool manager is the essential actor of the infrastructure. It will be in charge of distributing the works submitted by the users to the different workers that are connected to this pool.
 
 .. include:: prerequisites.rst
 

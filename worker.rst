@@ -10,6 +10,8 @@ Install and start a worker
 
 Contact the worker pool to get all the needed parameters to join its pool.
 
+Pool manager must provide connection location information, authentication login and password.
+
 The following command can be called on the machine where the worker will run:
 
 .. code:: bash

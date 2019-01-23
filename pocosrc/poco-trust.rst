@@ -55,6 +55,6 @@ Limitation
 References
 ~~~~~~~~~~
 
-.. [Sarmenta2002] Luis F.G.Sarmenta. Sabotage-tolerance mechanisms for volunteer computing systems. 2002. Future Generation Computer Systems, 18(4), 561–572 `PDF <http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.67.2962&rep=rep1&type=pdf>`_
+.. [Sarmenta2002] Luis F.G.Sarmenta. Sabotage-tolerance mechanisms for volunteer computing systems. 2002. Future Generation Computer Systems, 18(4), 561–572 `Sarmenta2002 PDF <http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.67.2962&rep=rep1&type=pdf>`_
 
-.. [Trust2018] Trust management in the Proof of Contribution protocol. 2018. Technical report. `PDF <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/iExec_PoCo_and_trustmanagement_v1.pdf>`_
+.. [Trust2018] Trust management in the Proof of Contribution protocol. 2018. Technical report. `Trust2018 PDF <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/iExec_PoCo_and_trustmanagement_v1.pdf>`_

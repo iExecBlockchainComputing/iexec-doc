@@ -5,16 +5,17 @@ Objectives
 ~~~~~~~~~~
 
 PoCo stands for proof of contribution. It's protocol designed to provide a trusted computing environment on top of untrusted resources.
-In addition to providing trust PoCo also orchestrates the different contributions to the iExec platform so that payment is always fare.
+
+In addition to providing trust, PoCo also orchestrates the different contributions to the iExec platform so that payment is always fare.
 
 PoCo is modular. It comes with features that can be used depending on the context:
 
 **Result consolidation**
 
-  The PoCo provides a layer of that relies on replication to achieve result consolidation.
+  PoCo relies on replication to achieve result consolidation.
   This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <poco-trust.html>`__.
 
-  This layer also support the onchain certification of TEE (such as Intel SGX)
+  This layer also support the onchain certification of TEE (such as Intel SGX).
 
 **Secure payment**
 
@@ -167,8 +168,7 @@ Parameters
 
     - ``CONTRIBUTION_DEADLINE_RATIO`` This describes the duration of the contribution period. The consensus can finalize before that, but no contribution will be allowed after the timer to ensure enough time is left for the reveal and finalize steps.
 
-    - ``REVEAL_DEADLINE_RATIO`` This describes the duration of the reveal period. Whenever a contribution triggers a consensus, a reveal period of this duration is reserved for the workers to reveal their contribution.
-     Note that this period will necessarily start before the end of the contribution phase.
+    - ``REVEAL_DEADLINE_RATIO`` This describes the duration of the reveal period. Whenever a contribution triggers a consensus, a reveal period of this duration is reserved for the workers to reveal their contribution. Note that this period will necessarily start before the end of the contribution phase.
 
   Lets consider a task of category `GigaPlus`, which reference duration is 1 hour. If the task was submitted at 9:27AM, the contributions must be sent before 4:27PM (16:27).
    Whenever a contribution triggers a consensus, a 2 hours long reveal period will start. Whatever happens, the consensus has to been achieved by 7:27PM (19:27).

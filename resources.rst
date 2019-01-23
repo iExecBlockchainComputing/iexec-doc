@@ -52,38 +52,18 @@ Glossary
 
 .. glossary::
 
+ Requester:
+    an individual or enterprise requesting the use of cloud resources through iExec.
+
  Worker:
     They are individuals or companies who own computing resources and are willing to make them available for the computation of tasks against payments in RLC.
     Similarly to blockchain miners, they want a simple solution that will make their computer part of a large infrastructure that will take care of the details for them.
 
  Worker pool:
-    Worker pools organize workers contributions. They are led by a scheduler, who organises the work distribution.
-    They can either be public and federate resources from anyone or private and try to optimise the management of specific hardware.
+    Worker pools organize workers contributions. They are led by a Pool Manager, who organises the work distribution, the order publication.
     While not doing the actual computation, they receive a fee for the management of the infrastructure.
     They compete to attract workers, which they do by achieving an efficient management which guarantees the income of workers.
 
- RLC: 
-    tdb 
-
- Requester:
-    tdb
-
- task:
-    tdb
-
- category
-    tdb
-
- scheduler:
-    tdb
-
- dApp
-    tdb
-
- Dapp Store
-    tdb
-
- Pool Manager
-    tdb
-
+  RLC:
+    RLC tokens will be used to access the resources provided by the market network. It will be the unique way of payment for application providers, server providers and data providers.
 

@@ -1,6 +1,7 @@
 The iExec Solution Stack
 ========================
 
+iExec provides a complete software stack and create an complete environment  complete platform such that no additional software is needed to support applications.
 
 Dapp store
 ----------
