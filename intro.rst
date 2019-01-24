@@ -1,4 +1,4 @@
-| Comparably to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
+| Comparable to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
 | iExec strengthens applications running on Ethereum smart contracts, allowing for off-chain computation services and datasets on-demand.
 | This is made possible by the iExec Proof-of-Contribution or PoCo consensus protocol that validates off-chain computations.
 
@@ -28,7 +28,7 @@ Application providers or developers can monetize their applications and algorith
 As a developer of decentralized applications, you may use iExec to overcome blockchain limitations (few kilobytes of storage, very inefficient virtual machines and very high latency protocol) by executing your computations “off-chain” on the iExec decentralized infrastructure.
 Developers also benefit from being free from adjusting resource allocation. By not having to maintain any servers, developers deploy applications that can rapidly upscale/downscale based on user-demand.
 
-Go to the `How to provide an application`_ section to learn how to build dApp for the community.
+Go to the `How to provide an application`_ section to learn how to build dapp for the community.
 
 .. _How to provide an application: /dockerapp.html
 
@@ -93,7 +93,7 @@ iExec allows requesters (individuals and enterprises) to access affordable, secu
 
 - **Access to datasets**
 
-  On the iExec Data Store, requesters have access to a large amount of varied datasets that can be opened from associated dApps from the Dapp Store.
+  On the iExec Data Store, requesters have access to a large amount of varied datasets that can be opened from associated dapps from the Dapp Store.
 
   Requesters can freely browse available cloud resources, and trigger an execution once they gather a triplet of resources compatible with each other.
 

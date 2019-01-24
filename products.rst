@@ -10,7 +10,7 @@ The dapp store is a catalog of ready to use applications and tools.
 
 .. image:: _images/DappStore.png
 
-| The DApp Store can be seen as a collection of decentralized applications running on top of iExec.
+| The Dapp Store can be seen as a collection of decentralized applications running on top of iExec.
 | Users are able to browse through the listed dapps and use their favorites.
 | These dapps are curated and represent the wide span of industries iExec can support: artificial intelligence, 3D rendering, fintech, cryptography, scientific research or IoT.
 

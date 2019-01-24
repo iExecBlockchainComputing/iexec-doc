@@ -58,6 +58,22 @@ Edit the wallet.json file with your own information
 
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to get wallet management option.
 
+Account and wallet
+------------------
+
+iExec is a decentralized exchange and therefore, it uses smart contracts to execute your trades.
+
+iExec does not directly interact nor tap into a user’s wallet. An Ethereum wallet owner remains the sole proprietor of his assets, and needs to deposit RLC from his Ethereum Wallet to his iExec Account for them to be used.
+
+For example, workers must deposit a certain amount of RLC from their Ethereum Wallet to their iExec Account in order to be able to stake and participate as network computers.
+
+Similarly, requesters must have an account topped up with RLC in order to trigger the execution of an application. The amount of RLC engaged in the deal will be locked throughout the execution, and transferred to the cloud resource providers at completion.
+
+For these cloud resource providers (application, compute and dataset providers), the reward from a successfully completed task is deposited in their iExec Account. Providers can then decide to withdraw some or all of their balance from their iExec Account to their Ethereum Wallet at any given time.
+
+The iExecClerk smart contract service is the piece of software that manages under your authority all of your token interactions, with a high degree of security.
+
+
 
 Staking and incentives
 ----------------------

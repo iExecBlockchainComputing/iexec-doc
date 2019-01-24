@@ -23,6 +23,7 @@ About iExec
    worker
    workerpool
    ordersubmit
+   teexecution
    dockerapp
    paypertask
 

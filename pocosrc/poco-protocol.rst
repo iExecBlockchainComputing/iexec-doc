@@ -4,55 +4,56 @@ Protocol
 Objectives
 ~~~~~~~~~~
 
-PoCo stands for proof of contribution. It's protocol designed to provide a trusted computing environment on top of untrusted resources.
+PoCo is a protocol designed to provide trust in an open and decentralized environment of untrusted machines.
 
-In addition to providing trust, PoCo also orchestrates the different contributions to the iExec platform so that payment is always fare.
+In addition to providing trust, PoCo also orchestrates the different contributions to the iExec network, ensuring payments are always fair and timely.
 
-PoCo is modular. It comes with features that can be used depending on the context:
+A major quality of PoCo lies in the fact that it is a modular protocol. It comes with features that are context-specific.
 
 **Result consolidation**
 
-  PoCo relies on replication to achieve result consolidation.
-  This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <poco-trust.html>`__.
+  PoCo relies on replication to achieve result consolidation. This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <poco-trust.html>`__.
 
-  This layer also support the onchain certification of TEE (such as Intel SGX).
+  This layer also supports the onchain consolidation of execution results carried out in Trusted Execution Environments (TEE) such as Intel SGX.
 
 **Secure payment**
 
-  | User funds are locked to ensure all resources providers are paid for their contributions. Resources can take the form of data, applications or computing power.
-  | Workers have to achieve consensus to get the user's funds otherwize user is reimbursed.
-  | Worker and scheduler have to stake to participate. Bad behaviour from a actor result in a loss of stake.
+Once a deal is sealed on the iExec Marketplace, requester funds are locked to ensure all resource providers are paid for their contributions. Resources can take the form of data, applications or computing power.
 
-  This is essential the public blockchain but all values can be set to 0 for private blockchain solutions.
+Workers must achieve consensus on the execution result to get the requester's funds. If consensus is not achieved, the requester is reimbursed.
+
+Worker and scheduler must stake RLC to participate as a computing providers. Bad behaviour from an actor results in a loss of stake.
+
+  This is essential on the public blockchain, but all values can be set to 0 for private blockchain solutions.
 
 **Permissioning**
 
-  For an execution to happen, a deal must be signed between the different parties. A permission mechanism can be used to control access to applications, datasets and workerpools.
-  The secure payment layer can be disabled for a private blockchain.
-  It can also be used in the context of the public blockchain to increase the security, with dataset restriction for a specific application for example.
+  For an execution to happen, a deal must be signed between the different parties involved. A permission mechanism can be used to control access to applications, datasets and workerpools.
+
+  The secure payment layer can be disabled for a private blockchain, or it can also be used in the context of the public blockchain to increase security. An example of permissioning is dataset restriction for a specific application.
 
 
 Overview
 ~~~~~~~~
 
-The PoCo describes the succession of contributions that are required to achieve consensus on a given result. The logic is details in two blog articles:
+PoCo describes the succession of contributions that are required to achieve consensus on a given result. Its logic is detailed in two blog articles:
 
 - `PoCo series #1: Initial PoCo description <https://medium.com/iex-ec/about-trust-and-agents-incentives-4651c138974c>`__
 - `PoCo series #3: Updated PoCo description <https://medium.com/iex-ec/poco-series-3-poco-protocole-update-a2c8f8f30126>`__
 
 The `nominal workflow <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/nominalworkflow-ODB.png>`__ is also available in the `technical report section <technicalreport.html>`__
 
-Here is the details of the implementations:
+Below are the details of the implementations:
 
 0. **Deal**
 
-   `A deal is sealled by the Clerk <poco-brokering.html>`__. This marks the beginning of the execution. An event is produced to notify the worker pool's scheduler.
+   `A deal is sealed by the Clerk <poco-brokering.html>`__. This marks the beginning of the execution. An event is created to notify the worker pool's scheduler.
 
-   The consensus timer starts when the deal is signed. The corresponding task must be finalized before the end of this timer otherwize the scheduler gets punished and the user reimbursed.
+   The consensus timer starts when the deal is signed. The corresponding task must be completed before the end of this countdown. Otherwise, the scheduler gets punished by a loss of stake and reputation, and the user reimbursed.
 
 1. **Initialization**
 
-   The scheduler calls the ``initialize`` method. Given a deal id and a position in the request order (within the deal window), this function initializes the corresponding task and returns the taskid.
+   The scheduler calls the ``initialize`` method. Given a deal id and a position in the request order (within the deal window), this function initializes the corresponding task and returns the *taskid*.
 
    ``bytes32 taskid = keccak256(abi.encodePacked(_dealid, idx));``
 

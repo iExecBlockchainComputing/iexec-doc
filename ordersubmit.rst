@@ -21,10 +21,10 @@ Installation of your metamask wallet in your web browser is required.
 
 The marketplace and the Dapp Store allow to buy **workerpoolorders** and submit computing task in a very simple way.
 
-| From the Dapp store, you can select your dApp and will be redirected to the marketplace with the dApp address and default work parameters filled.
+| From the Dapp store, you can select your dapp and will be redirected to the marketplace with the dapp address and default work parameters filled.
  The marketplace selects also the cheapest workerpoolorder available.
 
-| From the marketplace, all existing dApps, published in the Dapp Store, are available in the select menu. It is also possible to fill in any existing dApp address and your custom arguments in the dedicated textboxes.
+| From the marketplace, all existing dapps, published in the Dapp Store, are available in the select menu. It is also possible to fill in any existing dapp address and your custom arguments in the dedicated textboxes.
 
 
 .. image:: _images/buy_sell.png
@@ -50,9 +50,6 @@ The data must be available online and from a direct link, redirection are not al
         }
       }
     }
-
-
-
 
 
 
