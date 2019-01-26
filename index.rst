@@ -1,53 +1,42 @@
-Welcome to iExec
-=================
+About iExec
+===========
 
-**What is iExec?**
-
-iExec is the first decentralized marketplace for cloud resources. The iExec platform allows everyone to monetize their applications, servers and data-sets.
-
-.. image:: https://raw.githubusercontent.com/iExecBlockchainComputing/iexec-doc/master/_images/V2_infography.png
-
-Our architecture makes it possible to have a network of computing resources that are used to execute distributed applications.
+| iExec is building the future of the Internet infrastructure by decentralizing the cloud computing market. It is the first blockchain-based cloud computing marketplace.
+| The iExec network connects cloud resource sellers with cloud resource buyers, encouraging an ecosystem of decentralized and autonomous, privacy-preserving applications.
+| This network aims at providing companies with scalable, secure and easy access to the services, datasets and computing resources they need. iExec’s technology relies on Ethereum smart contracts and allows for a virtual cloud infrastructure that provides high-performance computing services on-demand.
+| At iExec, we believe in a future of decentralized infrastructure and market network, where big data and HPC applications, highly valued datasets, and computing resources (storage, CPU, GPU) will be monetized on the blockchain with the highest level of transparency, resiliency, and security.
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Getting Started
+   :caption: CLOUD RESOURCES MARKETPLACE
 
    intro
+   products
 
 .. toctree::
    :maxdepth: 2
-   :caption: Use iExec
+   :caption: How to use iExec
 
+   gettingstarted
+   wallet
    worker
    workerpool
-   ordersubmit
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Develop
-
+   taskexecution
+   teexecution
    dockerapp
+   paypertask
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Technical Documentation
+
+   poco
 
 .. toctree::
    :maxdepth: 2
-   :caption: PoCo
+   :caption: Resources
 
-   poco-protocole
-   poco-trust
-   poco-brokering
-   poco-else
+   resources
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Releases
-
-   releases
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Technical Report
-
-   technicalreport

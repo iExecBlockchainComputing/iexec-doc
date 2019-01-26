@@ -1,14 +1,16 @@
-Be a worker
-===========
+How to become a worker
+======================
 
 A worker is an essential actor of the infrastructure. It will be in charge of performing the works submitted by the users. It is part of a worker pool. A worker will be rewarded some RLC for every work it performs.
 
-Start a worker
---------------
+.. include:: prerequisites.rst
 
-Workers are deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on the `docker website <https://docs.docker.com/install/>`_ to install it.
+Install and start a worker
+--------------------------
 
-**Manual launch**
+Contact the worker pool to get all the needed parameters to join its pool.
+
+Pool manager must provide connection location information, authentication login and password.
 
 The following command can be called on the machine where the worker will run:
 
@@ -28,7 +30,9 @@ The following command can be called on the machine where the worker will run:
 		-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR \
 		iexechub/worker:X.Y.Z
 
-where X.Y.Z is the version of the worker that should be used. The list of available versions can be checked on the `iexec dockerhub page <https://hub.docker.com/r/iexechub/worker/tags/>`_. **It should match the version of the scheduler**.
+| where X.Y.Z is the version of the worker that should be used.
+| The list of available versions can be checked on the `iexec dockerhub page <https://hub.docker.com/r/iexechub/worker/tags/>`_.
+| **It must match the version of the scheduler**.
 
 Please note that all the values shown here are just given as an example, it should be adapted to the worker pool you are trying to join and to the machine on which the worker will run.
 
@@ -57,16 +61,15 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 
 The scheduler you want to connect your worker to may already provide a ready-to-launch script for you to use out-of-the-box. In that case you can simply launch that script. It will start a worker with the correct parameters to connect to that scheduler. The only parameter that should change for you is the path of the worker's wallet.
 
-**Wallet of the worker**
+Wallet restriction
+------------------
 
-The worker will send transactions on the ethereum network, therefore a wallet is needed for that worker to work properly. The wallet used by the worker should contain some ETH (used in the transactions performed by the worker) and some RLC (used to stake when the worker is contributing to a market order).
-
-* How to get an Ethereum wallet ? https://kb.myetherwallet.com/offline/running-myetherwallet-locally.html
-* How to get some test ETH (Kovan) on your Ethereum wallet ? https://gitter.im/kovan-testnet/faucet
-* How to get some test RLC (Kovan) on your Ethereum wallet ? https://faucet.iex.ec/kovan
+An exclusive wallet must be associated to your worker.
+You should create as many wallet as workers you get per worker pool.
 
 Supported CPU
 -------------
+
 * **x86**
 * **x86_64**
 
@@ -78,3 +81,4 @@ Since a worker is running in a docker container, it can be started in any OS tha
 * **Linux**
 * **MacOS**
 * **Windows**
+

@@ -1,12 +1,15 @@
-Be a worker pool
-================
+How to become a pool manager
+============================
 
-A worker pool (also called scheduler) is the essential actor of the infrastructure. It will be in charge of distributing the works submitted by the users to the different workers that are connected to this pool.
+A worker pool, managed by a pool manager is the essential actor of the infrastructure. It will be in charge of distributing the works submitted by the users to the different workers that are connected to this pool.
+
+.. include:: prerequisites.rst
+
 
 Docker compose file
 -------------------
 
-A scheduler is deployed using docker. For this, you need to have docker already installed on the machine. You can follow the instructions on `the docker website <https://docs.docker.com/install/>`_ to install it. Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
+ Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
 
 You can find the docker-compose file used for deployed `here <https://github.com/iExecBlockchainComputing/iexec-deploy/blob/master/scheduler/docker-compose.yml>`_.
 
@@ -200,3 +203,5 @@ In a similar fashion, the scheduler can be stopped with the following command:
   docker-compose down
   
 Please note that once the scheduler is turned off, the workers will not work anymore.  
+
+

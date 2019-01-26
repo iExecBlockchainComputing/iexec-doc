@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'iExec Project'
-copyright = u'2018, iExec Team'
+copyright = u'2019, iExec Team'
 author = u'iExec Team'
 
 # The version info for the project you're documenting, acts as replacement for
