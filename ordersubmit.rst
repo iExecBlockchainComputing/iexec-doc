@@ -162,7 +162,7 @@ Click here to see `Transaction example 2 <https://kovan.etherscan.io/tx/0x378ad8
 Parameter         Meaning
 ================  ==========================================================================================
 _marketorderIdx   set one found in the marketplace
-_workerpool       set the workerpool address of the _marketorderIdx selected
+_workerpool       set the worker pool address of the _marketorderIdx selected
 _app              0x2f185a1e5ced207d64d9c94e39c0f060c38fc2fe
 _dataset          0x0000000000000000000000000000000000000000
 _params           {"cmdline": "10"}
@@ -233,3 +233,4 @@ And Beneficiary can also download the result too :
     MBPdefrancois2:call fbranci$ cat 0xe16ada2d83021632cd78a2fbf7620ce485064365.text
     3628800
 
+.. include:: contactus.rst

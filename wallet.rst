@@ -28,8 +28,8 @@ If you haven’t already, you will need to create an Ethereum wallet:
 
 * To Import the wallet using the Keystore file, you will need to open the downloaded wallet file with any text editor and copy its content.
 
-Useful links:
-  How to get an Ethereum wallet ? https://kb.myetherwallet.com/offline/running-myetherwallet-locally.html
+Useful link:
+ - How to get an Ethereum wallet ? https://kb.myetherwallet.com/offline/running-myetherwallet-locally.html
 
 
 Credit your wallet with ETH and RLC
@@ -47,7 +47,7 @@ Login with Metamask
 -------------------
 
 | Once you’ve unlocked your Metamask, you can login on the iExec marketplace https://market.iex.ec with embedded wallet management.
-| In the **Account**, both Balance and Allowance are displayed, and values are expressed in nRLC (Nano RLC).
+| In the **Account**, both Balance and Allowance are displayed, and values are expressed in nRLC (nano RLC).
 | When a computing deal is closed, a dedicated smart contract is created,
  an allowance step is mandatory to give authority to this new smart contract to proceed to the payment when the computing task is successfully ended.
 
@@ -55,6 +55,13 @@ Set up the SDK with your own wallet
 -----------------------------------
 
 Edit the wallet.json file with your own information
+
+Create the file if it is missing
+
+.. code-block:: bash
+
+    iexec wallet create
+
 
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to get wallet management option.
 

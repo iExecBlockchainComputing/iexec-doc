@@ -29,7 +29,7 @@ The Marketplace
 | At any given moment, the market is able to give customers access to a large capacity of computing power at the best rate.
 | Worker pools place **workerpoolorders** defining the price at which they are willing to execute tasks.
 | On this marketplace, applications and users buy **workerpoolorders** for their computations to be executed based on pre-selected criteria
-| As a multi-sided market, applications and users will publish **requestorder**, that workerpool will accept and compute, this feature will come in V3.
+| As a multi-sided market, applications and users will publish **requestorder**, that worker pool will accept and compute, this feature will come in V3.
 
 .. image:: _images/marketplace_pge.png
 
@@ -38,8 +38,8 @@ The Marketplace
 
 Visit the iExec Marketplace (https://market.iex.ec)
 
-Workerpools
------------
+Worker pools
+------------
 
 | Workers are organized in worker pools.
 | For each one of these, a scheduler manages the work distribution. There are two types of worker pools:
@@ -74,11 +74,10 @@ Visit the iExex Explorer https://explorer.iex.ec/
 SDK and API
 ---------------
 
-| The iExec SDK and API provide a set of tools that allows all users to interact with iExec decentralized marketplace.
+The iExec SDK and API provide a set of tools that allows all users to easily interact with iExec decentralized marketplace.
 
-| Command Line Interface (CLI) and JavaScript library allowing developers to easily interact with the iExec stack.
-| Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details.
+Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details.
 
-| Go to the `Getting started`_ section to learn how to use the SDK.
+Go to the `Getting started`_ section to learn how to use the SDK.
 
 .. _Getting started: /sdk.html

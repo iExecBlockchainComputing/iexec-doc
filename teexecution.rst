@@ -1,4 +1,4 @@
-How to execute an encrypted task
+How to privately execute a task
 ===============================
 
 
@@ -6,38 +6,43 @@ iExec provides a full end to end data protection for blockchain-based computatio
 
 End-to-end protection means full protection of the application data, user data, embedded data as well as application output data.
 
-The following guide shows steps by steps how to run an application protected by Intel® SGX, guaranteeing the security of the application data.
+Intel® Software Guard Extensions (SGX) is a technology that runs code and data in CPU-hardened “enclaves” or a ‘Trusted Execution Environment’ (TEE).
 
-The solution is available using the iExec sdk.
+The enclave is a trusted area of memory where critical aspects of the application functionality are protected, helping keep code and data confidential and unmodified.
 
-| Please follow instruction to install the SDK.
-| Your account must be topped up with RLC in order to trigger the execution of an application.
-| Go to `Getting Started`_ section to learn how to install and use the sdk for task execution.
+This following section outlines step by step how to run an application protected by Intel® SGX.
 
+The solution is available through the iExec SDK.
+
+Head to the `Getting Started`_ section to install and use the iExec SDK for task execution.
+
+Your account must be topped up with RLC in order to trigger the execution of an application.
 
 .. _Getting Started: /sdk.html
 
-Let's create a image with the 3D rendering software `Blender <https://www.blender.org/>`_ preserving the pricacy of the application.
+As an illustration, let's create an image with the 3D rendering software `Blender <https://www.blender.org/>`_, while preserving the privacy of the your input data.
 
-1. Encryption and Data pushing
 
-Let’s use it to locally encrypt the input data and push it on a public file hosting service so that the worker can access it:
+1. Encrypt and push data on a public server
+
+Let’s locally encrypt the data and push it on a public file hosting service, so that the worker is able to access it:
 
 .. code-block:: bash
 
     iexec tee init # create iExec trusted execution folders tree
 
 
-Download the blender model `iexec-rlc.blend <https://raw.githubusercontent.com/iExecBlockchainComputing/iexec-dapps-registry/master/iExecBlockchainComputing/Blender/iexec-rlc.blend>`_
-and copy the file in the tee input folder.
+Download the blender model `iexec-rlc.blend <https://raw.githubusercontent.com/iExecBlockchainComputing/iexec-dapps-registry/master/iExecBlockchainComputing/Blender/iexec-rlc.blend>`_,
+and copy the file in the *./tee/inputs* folder.
 
 .. code-block:: bash
 
     cp iexec-rlc.blend ./tee/inputs
 
-Encrypt the input data
+Encrypt the input data:
 
 .. code-block:: bash
+
     iexec tee encryptedpush --application 0x2f3422f2805693cf741ee32707d57923ef6fa55f
     ℹ using chain [kovan]
     ⠅⡘ ▶ encrypting data from /home/eric/pm/test/tee/inputs and uploadingcli: Pulling from iexechub/sgx-scone
@@ -50,14 +55,23 @@ Encrypt the input data
 
     ✔ data encrypted and uploaded
 
-Above command will return parameters the command line in string format that will be used in next step.
+The above-mentioned command will return the command line parameters in string format that will be used in the next step.
 
-— Trigger trusted application execution
-    Prepare work order and trigger the trusted application execution:
+
+2. Trigger trusted application execution
+
+
+Prepare a work order and trigger the trusted application execution:
+
+.. code-block:: bash
 
     iexec order init --buy # init work order fields in iexec.json
-    Now open the iexec.json config file, and edit below two fields:
 
+
+Now open the iexec.json config file, and edit the app and command line fields:
+
+  - Address for the blender app: 0x2f3422f2805693cf741ee32707d57923ef6fa55f
+  - Command line provided by the " iexec tee encryptedpush ..." command
 
 .. code-block:: javascript
 
@@ -72,13 +86,16 @@ Above command will return parameters the command line in string format that will
       }
     }
 
-Select a worker pool supporting sgx :
+Select a worker pool supporting SGX:
 
 .. code-block:: bash
 
     iexec orderbook show --category 5
 
-And select a order from the worker pool with the address 0x49327538C2f418743E70Ca3495888a62B587A641, with sgx support.
+Select an order from the worker pool with the address 0x49327538C2f418743E70Ca3495888a62B587A641.
+This worker pool supports SGX.
+
+Fill the selected order:
 
 .. code-block:: bash
 
@@ -92,6 +109,8 @@ And select a order from the worker pool with the address 0x49327538C2f418743E70C
     ? Do you want to spend 15864 nRLC to fill order with ID 1963 and submit your work Yes
     ✔ Filled order with ID 1963
     ✔ New work at 0x6bd60b2c01a161c46915c6a12553eaaee332f785 submitted to workerpool 0x49327538c2f418743e70ca3495888a62b587a641
+
+Monitor your order:
 
 .. code-block:: bash
 
@@ -115,7 +134,7 @@ And select a order from the worker pool with the address 0x49327538C2f418743E70C
     m_beneficiary:         0x0000000000000000000000000000000000000000
     m_statusName:          COMPLETED
 
-Download the work result when it is completed
+Download the work result once it is completed:
 
 .. code-block:: bash
 
@@ -139,28 +158,41 @@ Download the work result when it is completed
     m_beneficiary:         0x0000000000000000000000000000000000000000
     m_statusName:          COMPLETED
 
-✔ downloaded work result to file /home/eric/pm/test/encryptedOutputFiles.zip.none
+    ✔ downloaded work result to file /home/eric/pm/test/encryptedOutputFiles.zip.none
 
+
+Move the result in the './tee/encryptedOutputs/' folder to decrypt the result:
 
 .. code-block:: bash
 
    mv encryptedOutputFiles.zip.none ./tee/encryptedOutputs/encryptedOutputFiles.zip
 
-Please note that the user who triggered the task (i.e. SGX application) is the only one able to download the encrypted results.
-When the application is triggered at remote Intel® SGX decentralized node,
-the application will automatically pull the encrypted user input data from remote file system
-(i.e. pushed in step-2); retrieve the secret key (based on the Session ID)
-from secret management server via secured Intel® SGX provision channel,
-which is then used to decrypt the user input data; the decrypted data can then be used to feed the application execution. The application result is encrypted by the secret key, and encrypted result is further signed by a secured private key for an attestation of the trusted execution, the signature is to be verified by Blockchain on-chain network. The procedure is done automatically in the trusted execution environment
+
+Please note that the user who triggered the task (i.e. the SGX application) is the only one able to download the encrypted results.
+
+When the application is triggered in a remote Intel® SGX decentralized node, the application will automatically
+
+  1. Pull the encrypted user input data from remote file system (i.e. pushed in step 2)
+
+  2. Retrieve the secret key (based on the Session ID) from the secret management server via a secure Intel® SGX provision channel
+
+  3. The secret is then used to decrypt the user input data
+
+  4. The decrypted data is used to feed the application execution
+
+  5. The application result is encrypted by the secret key, and the encrypted result is further signed by a secure private key for an attestation of the trusted execution. The signature is verified on the blockchain
+
+
+The procedure is done automatically in the trusted execution environment
 (i.e. Intel® SGX enclave) without any user intervention.
 
-— Decrypt results
-The Last step, decrypt the result:
+3. Decrypt your result
+
+The last step is decrypting the result:
 
 .. code-block:: bash
 
     iexec tee decrypt
-
     ⠉⠙ ▶ decryptingcli: Pulling from iexechub/sgx-scone
 
     Digest: sha256:e5f5bd685c211c58f2d6429dc21e5f61b27ca04b0d1fba8d0898fa30f0b36800
@@ -177,7 +209,8 @@ The Last step, decrypt the result:
     ✔ data decrypted in folder /home/eric/pm/test/tee/outputs
 
 
-That’s it! Your completed and secure result is now available and can be found in the ./tee/outputs folder.
+That’s it! Your completed and secure result is now available in the *./tee/outputs* folder.
 
-Please note that only the corresponding user owns the key to decrypt the application output result.
+Please note that only the corresponding user owns the key to decrypt the application's output result.
 
+.. include:: contactus.rst

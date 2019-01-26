@@ -162,7 +162,7 @@ The workerpoolorder corresponds to the resources you can use to run your task.
 
     ℹ trade in the browser at https://market.iex.ec
 
-Many orders are availables, this is possible to select, regarding you preference: price, workerpool location.
+Many orders are availables, this is possible to select, regarding you preference: price, worker pool location.
 
 - Deposit RLC on your account
 
@@ -183,13 +183,13 @@ Now you have to charge your account.
     iexec order fill 1884
     ℹ using chain [kovan]
     ℹ app price: 1 nRLC for app 0x2f185a1e5ced207d64d9c94e39c0f060c38fc2fe
-    ℹ workerpool price: 12315 nRLC for workerpool 0x0061b8b1191394fa710def946368675b79db062b
+    ℹ workerpool price: 12315 nRLC for worker pool 0x0061b8b1191394fa710def946368675b79db062b
     ℹ work parameters:
     cmdline: 7
 
     ? Do you want to spend 12316 nRLC to fill order with ID 1884 and submit your work Yes
     ✔ Filled order with ID 1884
-    ✔ New work at 0x8374e2d96305a4a9b3f84e531b67e350f008b31d submitted to workerpool 0x0061b8b1191394fa710def946368675b79db062b
+    ✔ New work at 0x8374e2d96305a4a9b3f84e531b67e350f008b31d submitted to worker pool 0x0061b8b1191394fa710def946368675b79db062b
 
 The command returns the ethereum work address.
 
@@ -260,7 +260,4 @@ until it is completed
 
 Installation is complete.
 
-
-For technical support, contact us:
-  - mail support@iex.ec
-  - slack iexec-team-private.slack.com
+.. include:: contactus.rst
