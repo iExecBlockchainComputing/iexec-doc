@@ -18,11 +18,11 @@ About iExec
    :maxdepth: 2
    :caption: How to use iExec
 
-   sdk
+   gettingstarted
    wallet
    worker
    workerpool
-   ordersubmit
+   taskexecution
    teexecution
    dockerapp
    paypertask
