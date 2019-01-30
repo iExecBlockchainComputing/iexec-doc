@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'iExec Project'
+project = u'iExec Documentation'
 copyright = u'2019, iExec Team'
 author = u'iExec Team'
 
