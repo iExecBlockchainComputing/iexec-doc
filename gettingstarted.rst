@@ -13,7 +13,7 @@ SDK Installation
 
 .. code-block:: bash
 
-    sudo npm -g -i iexec
+    sudo npm -g -i install iexec
 
 
 - Now you need to create configuration files
