@@ -190,7 +190,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'iExecProjectDocumentation', u'iExec Project Documentation Documentation',
+    (master_doc, 'iExecProjectDocumentation', u'iExec Project Documentation',
      author, 'iExecProjectDocumentation', 'One line description of project.',
      'Miscellaneous'),
 ]
