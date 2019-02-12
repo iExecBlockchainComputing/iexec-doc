@@ -12,7 +12,7 @@ A major quality of PoCo lies in the fact that it is a modular protocol. It comes
 
 **Result consolidation**
 
-  PoCo relies on replication to achieve result consolidation. This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <poco-trust.html>`__.
+  PoCo relies on replication to achieve result consolidation. This is a purely software solution that enforces a confidence level on the result. `This confidence level can be customized by the requester <pocosrc/poco-trust.html>`__.
 
   This layer also supports the onchain consolidation of execution results carried out in Trusted Execution Environments (TEE) such as Intel SGX.
 
@@ -41,7 +41,7 @@ PoCo describes the succession of contributions that are required to achieve cons
 - `PoCo series #1: Initial PoCo description <https://medium.com/iex-ec/about-trust-and-agents-incentives-4651c138974c>`__
 - `PoCo series #3: Updated PoCo description <https://medium.com/iex-ec/poco-series-3-poco-protocole-update-a2c8f8f30126>`__
 
-The `nominal workflow <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/nominalworkflow-ODB.png>`__ is also available in the `technical report section <technicalreport.html>`__
+The `nominal workflow <https://github.com/iExecBlockchainComputing/iexec-doc/raw/master/techreport/nominalworkflow-ODB.png>`__ is also available in the `technical report section <resources.html>`__
 
 Below are the details of the implementations:
 
@@ -49,7 +49,7 @@ Below are the details of the implementations:
 0. **Deal**
 
 
-   `A deal is sealed by the Clerk <poco-brokering.html>`__. This marks the beginning of the execution. An event is created to notify the worker pool's scheduler.
+   `A deal is sealed by the Clerk <pocosrc/poco-brokering.html>`__. This marks the beginning of the execution. An event is created to notify the worker pool's scheduler.
 
    The consensus timer starts when the deal is signed. The corresponding task must be completed before the end of this countdown. Otherwise, the scheduler gets punished by a loss of stake and reputation, and the user reimbursed.
 

@@ -18,7 +18,7 @@ Module    Version  Link
 ========  =======  ========================================================================
 XtremWeb  14.0.0   `<https://github.com/iExecBlockchainComputing/xtremweb-hep/releases/tag/14.0.0>`_
 SDK       2.2.39   `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v2.2.39>`_
-PoCo      1.0.14   `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/1.0.14>`_
+PoCo      1.0.14   `<https://github.com/iExecBlockchainComputing/PoCo/>`_
 ========  =======  ========================================================================
 
 

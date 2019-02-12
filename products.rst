@@ -80,4 +80,4 @@ Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexe
 
 Go to the `Getting started`_ section to learn how to use the SDK.
 
-.. _Getting started: /sdk.html
+.. _Getting started: /gettingstarted.html

@@ -158,4 +158,4 @@ params.dirinurifile    input downloaded to `/host` directory in docker container
 
 Go to the `Getting started`_ section to learn how to test your dapp .
 
-.. _Getting started: /sdk.html
+.. _Getting started: /gettingstarted.html

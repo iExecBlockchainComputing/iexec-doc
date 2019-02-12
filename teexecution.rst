@@ -1,5 +1,5 @@
-How to privately execute a task
-===============================
+How to privately execute a task: "TEE execution"
+================================================
 
 
 iExec provides a full end to end data protection for blockchain-based computation using Intel® SGX.
@@ -18,7 +18,7 @@ Head to the `Getting Started`_ section to install and use the iExec SDK for task
 
 Your account must be topped up with RLC in order to trigger the execution of an application.
 
-.. _Getting Started: /sdk.html
+.. _Getting Started: /gettingstarted.html
 
 As an illustration, let's create an image with the 3D rendering software `Blender <https://www.blender.org/>`_, while preserving the privacy of the your input data.
 
