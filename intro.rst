@@ -32,6 +32,17 @@ Go to the `How to provide an application`_ section to learn how to build dapp fo
 
 .. _How to provide an application: /dockerapp.html
 
+
+Dataset providers
+-----------------
+
+Data owner can monetize their dats by setting a fixed-fee for each single usage of their software (pay-per-task model).
+Dataset can be seen as a wide concept to protect,
+iExec allows with multiple levels of security to monitize any data: data means dataset or more advanced valuable models as AI trained model,
+
+.. _How to provide a dataset: /dataset.html
+
+
 Computing Providers
 -------------------
 
