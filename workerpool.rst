@@ -11,11 +11,6 @@ Docker compose file
 
  Since all the services used by iExec run in docker, we will use docker-compose to start the scheduler and its related service. You can follow the instructions  on the `the docker compose website <https://docs.docker.com/compose/>`_ to install it.
 
-You can find the docker-compose file used for deployed `here <https://github.com/iExecBlockchainComputing/iexec-deploy/tree/master/scheduler/scheduler/docker-compose.yml>`_.
-
-The docker compose file is working out-of-the-box, so nothing should be modified in that file. Only the .env along this docker compose file should be modified to use the correct parameters.
- You can find the .env file `here <https://github.com/iExecBlockchainComputing/iexec-deploy/tree/master/scheduler/scheduler/.env>`_.
-
 In the docker compose file, you will find the following components:
 
 **Database service**
