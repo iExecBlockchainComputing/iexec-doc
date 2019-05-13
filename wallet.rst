@@ -72,6 +72,7 @@ The iExec SDK provides all features needed to manage one or multiple wallets.
     - **Using aliases** :     the option --wallet-file allows to use custom filename for your wallet, to ease the management of multiple wallets.
 
     .. code-block:: bash
+
         cp ~/.ethereum/keystore/UTC--2019-04-23T08-34-59.991000000Z--7E82621Ea3B9BB78d62e32E88cf97f4B855C36D4 my_custom_wallet_filename
         iexec wallet show --wallet-file my_custom_wallet_filename
 
