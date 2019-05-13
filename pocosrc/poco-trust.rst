@@ -48,7 +48,7 @@ Limitation
 
 | This consensus mechanism requires replicable applications.
 | Non deterministic applications, long running jobs such as webservers, do not meet this requirement out of the box.
-| When it is possible, the application developer must provide a deterministic result in the ``/iexec/consensus.iexec`` file.
+| When it is possible, the application developer must provide a deterministic result in the ``/iexec_out/determinism.iexec`` file.
 | Otherwise, the user can still run its application on the iExec platform but would have to disable the PoCo's consensus layer.
 | Hardware security as TEE is an option to overpass this limitation.
 
