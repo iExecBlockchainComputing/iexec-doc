@@ -74,7 +74,7 @@ Below are the details of the implementations:
 3. **Task computation**
 
 
-   Once the authorization is received and verified, the worker computes the requested tasks. Results from this execution are placed in the ``/iexec`` folder. The following values are then computed:
+   Once the authorization is received and verified, the worker computes the requested tasks. Results from this execution are placed in the ``/iexec_out`` folder. The following values are then computed:
 
    - *bytes32 digest*: a digest (sha256) of the result folder.
    - *bytes32 hash*:   the hash of the *digest*, used to produce a consensus
@@ -84,11 +84,11 @@ Below are the details of the implementations:
    ``resultSeal == keccak256(abi.encodePacked(worker, taskid, resultDigest))``
 
    In computer science, a deterministic algorithm is an algorithm which, given a particular input, will always produce the same output.
-   An application can override the computation of the result digest (usually the hash of the result archive) by providing a specific file ``/iexec/consensus.iexec``. This is necessary to achieve consensus on non-deterministic applications.
+   An application can override the computation of the result digest (usually the hash of the result archive) by providing a specific file ``/iexec_out/determinism.iexec``. This is necessary to achieve consensus on non-deterministic applications.
 
-   If a TEE was used to produce the result, the enclave should produce a ``/iexec/enclaveSig.iexec`` that contains the enclave signature (of the resultHash and resultSeal).
+   If a TEE was used to produce the result, the enclave should produce a ``/iexec_out/enclaveSig.iexec`` that contains the enclave signature (of the resultHash and resultSeal).
 
-   Finally, if the requester asked for a callback, the value of this callback must be specified in ``/iexec/callback.iexec``. Otherwize, the digest will be sent through the callback.
+   Finally, if the requester asked for a callback, the value of this callback must be specified in ``/iexec_out/callback.iexec``. Otherwize, the digest will be sent through the callback.
 
 \
 4. **Contribution**
@@ -105,7 +105,7 @@ Below are the details of the implementations:
 
    - *signature enclaveSign*
 
-     The enclave signature coming from ``/iexec/enclaveSig.iexec``. This is required if the ``enclaveChallenge`` is not ``address(0)``. Otherwise it should be set to ``{ r: bytes32(0), s: bytes32(0), v: uint8(0) }``
+     The enclave signature coming from ``/iexec_out/enclaveSig.iexec``. This is required if the ``enclaveChallenge`` is not ``address(0)``. Otherwise it should be set to ``{ r: bytes32(0), s: bytes32(0), v: uint8(0) }``
 
    - *signature workerpoolSign*
 
