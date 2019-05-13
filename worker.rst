@@ -45,8 +45,8 @@ Here is the details for the different parameters used in the command:
 Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, **if not defined the worker may not behave as expected**:
 
 1. The option *-v /home/ubuntu/wallet.json:/iexec-wallet/wallet.json* is used for the worker to know which wallet to use.
-2. The option *-v /tmp/iexec-worker:/tmp/iexec-worker* is to allow the worker to start new docker containers when performing tasks. 
-3. The option *-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR* will be used to store all the results from the worker.
+2. The option *-v /tmp/iexec-worker:/tmp/iexec-worker* will be used to store all the results from the worker.
+3. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers when performing tasks. 
 
 **From a script provided by the scheduler**
 
