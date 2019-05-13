@@ -1,4 +1,4 @@
-How to become a worker
+Worker
 ======================
 
 A worker is an essential actor of the infrastructure. It will be in charge of performing the works submitted by the users. It is part of a worker pool. A worker will be rewarded some RLC for every work it performs.
