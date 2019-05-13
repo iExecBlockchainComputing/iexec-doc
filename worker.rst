@@ -15,46 +15,37 @@ Pool manager must provide connection location information, authentication login 
 The following command can be called on the machine where the worker will run:
 
 .. code:: bash
+		
+	docker run -d --name "my-iexec-worker" \
+           --hostname "my-iexec-worker" \
+           --env "IEXEC_WORKER_NAME=my-iexec-worker" \
+           --env "IEXEC_CORE_HOST=main-pool.iex.ec" \
+           --env "IEXEC_CORE_PORT=18090" \
+           --env "IEXEC_WORKER_WALLET_PATH=/iexec-wallet/wallet.json" \
+           --env "IEXEC_WORKER_WALLET_PASSWORD=mypassw00rd" \
+           -v /home/ubuntu/wallet.json:/iexec-wallet/wallet.json \
+           -v /tmp/iexec-worker:/tmp/iexec-worker\
+           -v /var/run/docker.sock:/var/run/docker.sock \
+           iexechub/iexec-worker:3.X.X
 
-   docker run -d --restart always \
-	        --env SCHEDULER_DOMAIN=pool.example.iex.ec \
-	        --env SCHEDULER_IP=13.59.215.30 \
-		--env LOGIN=test \
-		--env PASSWORD=password123 \
-		--env LOGGERLEVEL=DEBUG \
-		--env SHAREDAPPS=docker \
-		--env TMPDIR=/PATH/TO/TEMPDIR \
-		--env WALLETPASSWORD=walletpassword \
-		-v /PATH/TO/WORKER/WALLET/wallet.json:/iexec/wallet/wallet_worker.json \
-		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR \
-		iexechub/worker:X.Y.Z
 
-| where X.Y.Z is the version of the worker that should be used.
-| The list of available versions can be checked on the `iexec dockerhub page <https://hub.docker.com/r/iexechub/worker/tags/>`_.
-| **It must match the version of the scheduler**.
+Please get the lastest version available (3.X.X) `here <https://hub.docker.com/r/iexechub/iexec-core/tags>`_. Note that it must match the version of the scheduler.
 
 Please note that all the values shown here are just given as an example, it should be adapted to the worker pool you are trying to join and to the machine on which the worker will run.
 
 Here is the details for the different parameters used in the command:
 
-================  ==============================================  ==========  =============
-Parameter         Meaning                                         Mandatory   Default value
-================  ==============================================  ==========  =============
-SCHEDULER_DOMAIN  URL of the scheduler                            YES
-SCHEDULER_IP      IP adress of the scheduler                      NO
-LOGIN             login of the worker to connect to scheduler     NO           vworker
-PASSWORD          password of the worker to connect to scheduler  NO           vworkerp
-SHAREDAPPS        apps already installed in the worker            NO           
-LOGGERLEVEL       logger level used by the worker                 NO           INFO
-TMPDIR            temporary folder used by the worker             NO
-WALLETPASSWORD    password of the wallet used by the worker       YES
-================  ==============================================  ==========  =============
+:IEXEC_WORKER_NAME: Name of your worker on the workerpool dashboard
+:IEXEC_CORE_HOST: Domain of the scheduler
+:IEXEC_CORE_PORT: Port of the scheduler
+:IEXEC_WORKER_BASE_DIR: Should match the tmp folder your mounting (-v /tmp/iexec-worker). Results of tasks will be stored in /tmp/iexec-worker/my-iexec-worker)
+:IEXEC_GAS_PRICE_MULTIPLIER: Increase it will speed up transactions (default: 1.3)
+:IEXEC_WORKER_OVERRIDE_BLOCKCHAIN_NODE_ADDRESS: Use a custom ethereum node here, otherwise the one given by the core will be used
 
 Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, **if not defined the worker may not behave as expected**:
 
-1. The option *-v /PATH/TO/WORKER/WALLET/wallet.json:/iexec/wallet/wallet_worker.json* is used for the worker to know which wallet to use.
-2. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers when performing tasks. 
+1. The option *-v /home/ubuntu/wallet.json:/iexec-wallet/wallet.json* is used for the worker to know which wallet to use.
+2. The option *-v /tmp/iexec-worker:/tmp/iexec-worker* is to allow the worker to start new docker containers when performing tasks. 
 3. The option *-v /PATH/TO/TEMPDIR:/PATH/TO/TEMPDIR* will be used to store all the results from the worker.
 
 **From a script provided by the scheduler**
