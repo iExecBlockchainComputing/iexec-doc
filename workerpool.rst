@@ -78,7 +78,7 @@ The main component is the scheduler service. In the docker compose file, it is d
       - IEXEC_HUB_ADDRESS=0xiexechubaddress
       - POOL_ADDRESS=0xmyworkerpool
       - IEXEC_START_BLOCK_NUMBER=0
-       - REVEAL_TIMEOUT_PERIOD=120000
+      - REVEAL_TIMEOUT_PERIOD=120000
       - IEXEC_ASK_REPLICATE_PERIOD=30000
       - IEXEC_RESULT_REPOSITORY_HOST=my-workerpool.com
       - IEXEC_RESULT_REPOSITORY_PORT=18090
