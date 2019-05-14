@@ -1,26 +1,25 @@
-How to provide an dataset
-=========================
+How to provide a dataset
+========================
 
 | In this section we will show you how you can propose a dataset or any valuable data over iExec infrastructure.
-| For dataset providers, in the **task as a service** model, each time a task is launched through the iExec,
-| they will be rewarded with the fee in your account.
-| And you should then withdraw your funds at anytime to your own wallet.
+| In the **task-as-a-service** model, each time a task is launched through the iExec network,
+| The dataset providers set the price of their datasets. Requesters pay on a pay-per-task basis.
+| And you can then withdraw your funds at anytime to your own wallet.
 
 
-Whitilisting and order  Dataset owner will manage
+Whitelisting and ordering Dataset owner will manage:
 
- * who can process the dataset.
- * which application can run the dataset.
+ * who can process the dataset
+ * which application can run the dataset
  * make restriction for computing resources
  * set up a cutting-edge pricing management
 
 Deploy your dataset
 -------------------
 
-Zip you dataset, or our model.
+Zip your dataset, or model.
 
 Put the data on public data storage, the dataset must be accessible in direct download.
-
 
 Set up a configuration file.
 
@@ -44,7 +43,7 @@ Then edit the iexec.json to describe your application: name, source, price,...
   },
 
 
-Then you deploy your dataset.
+Then you deploy your dataset:
 
 .. code-block:: bash
 
@@ -55,23 +54,23 @@ Then you deploy your dataset.
     ✔ Deployed new dataset at address 0xCb781f3106E25E2A9408C4B89C47034877223D12
 
 
-Publish dataset order
----------------------
+Publish a dataset order
+-----------------------
 
-- Create a order template
+- Create an order template
 
 .. code-block:: bash
 
     iexec order init --dataset --wallet-file developper_wallet
 
-Edit the order part in iexec.json to describe the dataset orders.
+Edit the order part in iexec.json to describe the dataset.
 
 ===================== ==========================================================
 Parameter               Meaning
 ===================== ==========================================================
  dataset                dataset address
  datasetprice           dataset price
- volume                 number of order created.
+ volume                 number of order created
  tag                    tag for extra computational requirement (*)
  datasetrestrict:       restricted to dataset (*)
  workerpoolrestrict     restricted to workerpool (*)
@@ -80,7 +79,7 @@ Parameter               Meaning
 (*) disable by default with 0x0000000000000000000000000000000000000000
 
 The volume is the total number of tasks allowed within the order created.
-Once all the volume is consumed, the dataset wont be available, dataset owner has to publish a new datasetorder.
+Once all the volume is consumed, the dataset won't be available, the dataset owner has to publish a new datasetorder:
 
 
 .. code-block:: javascript

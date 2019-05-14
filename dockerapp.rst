@@ -1,36 +1,36 @@
 How to provide an application
 =============================
 
-| In this section we will show you how you can create a docker Dapp over iExec infrastructure.
-| For developers, in the **task as a service** model, each time a task is launched through the iExec,
-| they will be rewarded with the fee in your account.
-| And you should then withdraw your funds at anytime to your own wallet.
+| In this section we will show you how you can create a Docker dapp over the iExec infrastructure.
+| In the **task as a service** model, each time a task is launched through the iExec network,
+| Developers set the price of their app. Requesters pay on a pay-per-task basis.
+| And you can then withdraw your funds at anytime to your own wallet.
 
-Why using docker containers?
+Why using Docker containers?
 ----------------------------
 
 | A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
 | Docker Engine is the most widely used container engine. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
-| Docker is very convenient because it simplifies the deployment process, while ensuring consistency and repeatability in builds. Different people at different times will therefore build the same binary and obtain the same application behaviour.
+| Docker is very convenient because it simplifies the deployment process, while ensuring consistency and repeatability in builds. Different people at different times will therefore build the same binary and obtain the same application behavior.
 | Another feature of Docker is the possibility of creating new layers that build on top of existing images. These existing images could be yours, or images proposed by the community.
 
 https://docs.docker.com/storage/storagedriver/#images-and-layers
 
-Build & test your docker image
+Build & test your Docker image
 ------------------------------
 
 We suppose your wallet is already created and charged with ETH to deploy your dapp and with RLC for testing.
 
-Firstly you need to build a docker image that contains your application.
+Firstly you need to build a Docker image that contains your application.
 
 iExec supports linux-based Docker container.
 
-Your image will be launched by iExec worker using following command.
+Your image will be launched by an iExec worker using following command.
 If you application manages dataset, during the set up of your application, the dataset must be placed in the DIR_IN directory
 
 .. code:: bash
 
-   docker run -v ${DIR_IN}:/iexec_in ${DIR_OUT}:/iexec_out ${DOCKERIMAGE} ${CMDLINE}
+   docker run -v ${DIR_IN}:/iexec_in -v ${DIR_OUT}:/iexec_out ${DOCKERIMAGE} ${CMDLINE}
 
 .. WARNING::
     Use absolute path to define ${DIR_IN} and ${DIR_OUT} and not a relative path.
@@ -42,17 +42,18 @@ DIR_IN            directory where datasets is downloaded during the task initial
 DIR_OUT           put all results files here. Full directory zipped in finalisation step.
                   The result of the application (as well as the determinism.iexec file)
                   should be in the iexec folder of the container. URL of the scheduler
-DOCKERIMAGE       path to docker image to run
+DOCKERIMAGE       path to Docker image to run
 ARGS              command to execute for the application
 ================  ==========================================================================================
 
-A list of applications with their docker images can be found at
+A list of applications with their Docker images can be found at
 https://github.com/iExecBlockchainComputing/iexec-apps
+
 
 Deterministic result
 --------------------
 
-| iExec allows requester to ask for a result with a predefined level of trust.
+| iExec allows requesters to ask for a result with a predefined level of trust.
 | For the PoCo to run smoothly and verify that different workers return the same result, some determinism is needed at some point in the execution.
 | Since it is not always easy (or even possible) to have exactly the same output of a job (for example, compute 3D rendering images on 2 different machines may produce 2 slightly different images).
 | The PoCo will look for determinism of a file called **determinism.iexec**.
@@ -113,7 +114,7 @@ Before the execution of the task, iExec worker will pull the image from public r
 Deploy your dapp
 ----------------
 
-Once the application is available on docker, yous should register your application on the blockchain
+Once the application is available on Docker, you have to register your application on the blockchain
 and really create your decentralized and autonomous application, **a dapp**
 
 
@@ -258,7 +259,7 @@ Publish the order
 
 Now the application is available.
 
-Check out http://v3.explorer.iex.ec
+Check out http://explorer.iex.ec
 
 
 Go to the `Getting started`_ section to learn how to test your dapp .
