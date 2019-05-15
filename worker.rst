@@ -120,9 +120,14 @@ Go to the 'Wallet Managment' section for more information
 
 5. Launch the VM
 
+.. image:: _images/worker_vm_import.png
+
 To import the VM, just click on iexec-worker.ova file. You will see the “Import Virtual Appliance” window. If you only have 4GB of RAM, please change the RAM to 2,048MB in this window.
 Delete the previous version if you had installed any in the past. 
 Click on the ‘Import’ button.
+
+.. image:: _images/worker_vm_start.png
+
 Double click on ‘iExec-Worker’ (or click on ‘start’).
 
 6. Copy your wallet from your host computer to the VM
@@ -133,11 +138,16 @@ Open the ‘keystore’ folder, then copy/paste the content of your wallet file 
 
 Click on “Launch Worker” on the VM desktop.
 Enter the worker name and the wallet password
+
+.. image:: _images/worker_vm_fill_password.png
+
 When the worker initialization process is complete, the worker will be started and you will get something like:
 **You worker is all set**.
 Your worker will now be able to compute some tasks comming from the iExec network to earn some RLCs.
 
 Note: If you want to properly shutdown your worker, you can click on the “Stop Worker” icon placed in the desktop of the VM
+
+.. image:: _images/worker_vm_stop_icon.png
 
 
 **Supported OS**
