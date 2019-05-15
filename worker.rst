@@ -50,12 +50,17 @@ Please note that all the values shown here are just given as an example, it shou
 
 Here is the details for the different parameters used in the command:
 
-:IEXEC_WORKER_NAME: Name of your worker on the workerpool dashboard
-:IEXEC_CORE_HOST: Domain of the scheduler
-:IEXEC_CORE_PORT: Port of the scheduler
-:IEXEC_WORKER_BASE_DIR: Should match the tmp folder your mounting (-v /tmp/iexec-worker). Results of tasks will be stored in /tmp/iexec-worker/my-iexec-worker)
-:IEXEC_GAS_PRICE_MULTIPLIER: Increase it will speed up transactions (default: 1.3)
-:IEXEC_WORKER_OVERRIDE_BLOCKCHAIN_NODE_ADDRESS: Use a custom ethereum node here, otherwise the one given by the core will be used
+=============================================  ==========================================================================================
+Parameter                                       Meaning
+=============================================  ==========================================================================================
+IEXEC_WORKER_NAME                              Name of your worker on the workerpool dashboard
+EXEC_CORE_HOST                                 Domain of the scheduler
+IEXEC_CORE_PORT                                Port of the scheduler
+IEXEC_WORKER_BASE_DIR                          | Should match the tmp folder your mounting (-v /tmp/iexec-worker).
+                                               | Results of tasks will be stored in /tmp/iexec-worker/my-iexec-worker)
+IEXEC_GAS_PRICE_MULTIPLIER:                    Increase it will speed up transactions (default: 1.3)
+IEXEC_WORKER_OVERRIDE_BLOCKCHAIN_NODE_ADDRESS  Use a custom ethereum node here, otherwise the one given by the core will be used
+=============================================  ==========================================================================================
 
 Regarding the volumes mounted with the -v option in the docker run command, they are mandatory, **if not defined the worker may not behave as expected**:
 
