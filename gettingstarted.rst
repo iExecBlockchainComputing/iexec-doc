@@ -1,5 +1,5 @@
-Getting started
-===============
+Quick start
+===========
 
 
 iExec, being blockchain-based, allows you to manage your computing transactions in a secure and decentralized environment.

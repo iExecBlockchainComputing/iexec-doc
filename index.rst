@@ -16,7 +16,7 @@ About iExec
 
 .. toctree::
    :maxdepth: 2
-   :caption: How to use iExec
+   :caption: Get Help
 
    gettingstarted
    wallet

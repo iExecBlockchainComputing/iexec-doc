@@ -61,8 +61,8 @@ We will detail how to configure this more in details in the followings paragraph
 Hand zone
 ----------
 
-Prerequisite:
---------------------------
+Prerequisite
+~~~~~~~~~~~~
 - use ubuntu OS or ubuntu docker image :
 
 Prerequisite lib packages
@@ -92,7 +92,7 @@ Install some eth key libs
 
 
 PoA Chains
-----------
+~~~~~~~~~~
 
 We use parity-deploy tooling, to facilitate the config and keys generation of PoA chain.
 
@@ -169,7 +169,7 @@ You must see all your node starting with no errors and each nodes connected to 4
 
 
 PoA Bridges
------------
+~~~~~~~~~~~
 
 Poa-Network bridges allow to bridge ERC-20 to ERC-20 token as describe in the poa-network medium article :
 
