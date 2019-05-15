@@ -2,16 +2,13 @@
 iExec dOracle: a flexible and secure Oracle solution
 ====================================================
 
-
-
 ***********************
 Why do we need Oracles?
 ***********************
 
-
 The Ethereum blockchain provides a global trustless computer: given some input and the smart contract code, the blockchain guarantees execution according the Ethereum specification, by replicating the execution across thousands of nodes and implementing a consensus mechanism across all these nodes. Hence the execution of the contract is decentralized, and will happen without needing to trust any single actor.
 
-Unfortunately decentralizing the execution is not sufficient. To be of any real world use, a smart contract most often require access to external, real-world information. For example an insurance smart contract could require data about the weather to trigger payment, or a hedging contract could requires pricing data. This information is already available in the digital world: the web 2.0 is full of nice API that give you data about everything. It is however not straightforward to put this information on the blockchain: if the update message comes from a single wallet, then this wallet controls the whole execution outcome - which contradicts the very purpose of a smart contract. This poses a problem because it means the smart contract has to trust an off-chain actor (an Ethereum wallet) to provide such information, which defeats the purpose of decentralization: now the information provider becomes the trusted third party that decentralization was supposed to replace in the first place!
+Unfortunately decentralizing the execution is not sufficient. To be of any real world use, a smart contract most often require access to external, real-world information. For example an insurance smart contract could require data about the weather to trigger payment, or a hedging contract could requires pricing data. This information is already available in the digital world: the web 2.0 is full of nice APIs that provide all kind of data. It is however not straightforward to put this information on the blockchain: if the update message comes from a single wallet, then this wallet controls the whole execution outcome. It means the smart contract has to trust an off-chain actor (the owner of an Ethereum wallet) to provide such information, which defeats the purpose of decentralization: now the information provider becomes the trusted third party that decentralization was supposed to do away with in the first place!
 
 Oracle are systems designed to solve this problem: providing the blockchain with data from the real world in the most secure and robust way possible. It turns out we at iExec have been working on this problem for a long time. Indeed an update to an Oracle (for example the price of a stock or the average temperature for a day) can be seen as the result of a specific type of off-chain computation, one that would involve calling an API and processing the response to return the final result. As a result the iExec infrastructure is perfectly suited to build an efficient and secure Oracle system: the iExec dOracle.
 
@@ -21,34 +18,24 @@ The iExec solution: the Decentralized Oracle (dOracle)
 
 For two years iExec has been working on the design of the Proof of Contribution protocol, which provides a flexible and highly robust solution to the problem of off-chain computation. At its core it is a simple Schelling game between off-chain computation providers (Workers): a given number of Workers are randomly chosen in a much bigger group, and are assigned the same computation. Each of them proposes a result, and the result that is proposed by the biggest number of workers is taken as the overall computation result (see PoCo documentation for more details).
 
-The PoCo is both flexible and robust: the trust level for the computation (eg the Oracle update in the dOracle case) can be set arbitrarily, and determines the number of replications. It also includes a coherent on-chain incentive mechanism, that protects the whole system against any (financially sustainable) attack. Last but not least, it is cheap and scalable: the more Workers join the iExec platform, the more secure and the cheaper running a dOracle will be.
+The PoCo is both flexible and robust: the trust level for the computation (eg for the Oracle update in the dOracle case) can be set arbitrarily, and determines the number of replications. It also includes a coherent on-chain incentive mechanism, that protects the whole system against any (financially sustainable) attack. Last but not least, it is cheap and scalable: the more Workers join the iExec platform, the more secure and the cheaper running a dOracle will be.
+iExec dOracle relies on random sampling among all the Workers on the iExec platform, along with an on-chain consensus algorithm and an integrated trust score system to make an attack on the dOracle result exponentially expensive.
+
+iExec dOracle builds on top of the decentralized cloud computing platform developed by iExec to allow developers to easily create robust and secure decentralized oracle. Building an Oracle on top of iExec is therefore extremely simple: just create a dApp with the logic of the Oracle (querying an API, processing different results into a final one); the iExec platform will automatically replicate it across many different worker; then the PoCo will realize a consensus on the different values. The whole process is simple and as secure as you wish - provided enough money is paid for each execution/ oracle update.
 
 
-The only way of getting a valid information from a group of agents that are not all trusted is to use several agents as an information source. The more agents you ask, the lower the probability of a majority of your source belonging to an attacker. This is exactly what iExec’s PoCo does: it replicates the computation on several workers and determines a consensus value from all the different results.
-It turns out this is the best way to create a robust oracle: choosing several agent at random among thousands of others.
+Why you should use iExec dOracle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-iExec dOracle builds on top of the decentralized cloud computing developed by iExec to allow developers to easily create robust and secure decentralized oracle.
+iExec dOracle allows you to create your own Oracle, with custom logic, while benefiting from the security guarantees of the whole iExec platform.
 
-Creating a dOracle is therefore as simple as building a docker image: just create a classical iExec dApp containing your oracle logic. The iExec platform will ensure this logic is performed by a number of agents chosen at random among all iExec workers, and will remunerate each agent to give them sufficient incentives to provide the right result.
+* It's secure. You can set the desired level of trust for your dOracle execution. The conjunction of random sampling and iExec's built-in incentive and reputation systems makes your dOracle highly secured.
+* It's easy-to-use. It relies on 2 years of research and development to make the iExec platform simple and developer friendly. Creating your own personalized Decentralized Oracle only takes a simple dockerized application and a few lines of Solidity!
+* It's cheap. It doesn't rely on bribing or incentivizing honest behavior, only on random sampling and a powerful reputation system to make attack impractical.
 
-
-
-A big part of the information about the world is already available online, in the web 2.0; and for a traditional app getting this information is often as simple as making an API call. Getting it on the blockchain however is not as straightforward: who should we trust to push the data from the API? If we end up trusting a single Ethereum account to push the data, the whole concept of smart contract loses its meaning; we could as well trust this person for whatever computation the smart contract performs.
-It turns out we at iExec have already solved this problem: the problem of ensuring the  validity of a crowdsourced computation is similar to ensuring the validity of an Oracle. To solve it we have developed the Proof of Contribution protocol, which works by replicating a computation across several agents, maintaining for each agent a trust score, and aggregating the responses of different agents for the same computation according to their trust score. With the use of replication and the right incentive system, you can make an attack against arbitrarily costly: that’s what the PoCo essentially does.
-
-Building an Oracle on top of iExec is therefore extremely simple: just create a dApp with the logic of the Oracle (querying an API, processing different results into a final one); the iExec platform will automatically replicate it across many different worker; then the PoCo will realize a consensus on the different values. The whole process is simple and as secure as you wish - provided enough money is paid for each execution/ oracle update.
-
-
-How does it compare to the other Oracle solutions?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-iExec dOracle is the only truly decentralized oracle solutions. It is also one of the easiest to use, relying on 3 years of research and development to make the iExec platform simple and easy-to-use.
-The dOracle benefits from the security guarantees of the PoCo, which enables him to update its value with an arbitrarily high security level.
-Lastly it is cheap, as it relies on execution on randomly chosen workers to make an attack impractical. The more workers on the iExec platform, the more secure the dOracle, all for the same price.
-
-*****************
+******************
 How does it work?
-*****************
+******************
 
 
 Background: task execution on the iExec platform
@@ -66,12 +53,14 @@ iExec dOracle: general architecture
 An iExec dOracle can be seen as an “on-chain API”: fundamentally it is a simple value-store smart contract, with accessors for other smart contracts to get its data, and an internal mechanism to update the date in the most secure way possible.
 The dOracle architecture is composed of two parts: an on-chain smart contract and a classical iExec dApp (packaged in a docker container).
 
-Off-chain component
-	The off-chain part of a dOracle is a classical iExec dApp, that will be executed on the iExec platform and be replicated on several worker as part of an iExec computation deal. It contains the oracle logic, for example to query a web API and process the result. Whenever an operator wishes to update the dOracle, it requests a computation like in a normal iExec deal, specifying the dOracle app as dApp, and the parameters if applicable.
-	The dOracle result is written in the ``/iexec_out/callback.iexec`` file by the dApp. When the computation ends the worker will send both the ``callback.iexec`` (containing the oracle result) and the ``determinism.iexec`` (containing a hash of the result) on the blockchain. The ``determinism.iexec`` is used by the PoCo smart contract to achieve a consensus on the resulting output of the different worker/replications of the deal. The ``callback.iexec`` value is stored in the ``results`` field of the Task object in the iExecHub smart contract.
+**Off-chain component**
 
-On-chain component
-	The on-chain part is the dOracle contract. Anyone can request an update of its internal state by sending the id of a task corresponding to the execution of the corresponding dApp. With this id, the dOracle contract will query the blockchain and retrieve the deal object. It then checks that the execution passes the dOracle requirements (trust level, execution tag, that the app is right). If it does the dOracle contract then decodes the value in the results field and update its fields accordingly. The value is then accessible like a normal on a smart contract.
+The off-chain part of a dOracle is a classical iExec dApp, that will be executed on the iExec platform and be replicated on several worker as part of an iExec computation deal. It contains the oracle logic, for example to query a web API and process the result. Whenever an operator wishes to update the dOracle, it requests a computation like in a normal iExec deal, specifying the dOracle app as dApp, and the parameters if applicable.
+The dOracle result is written in the ``/iexec_out/callback.iexec`` file by the dApp. When the computation ends the worker will send both the ``callback.iexec`` (containing the oracle result) and the ``determinism.iexec`` (containing a hash of the result) on the blockchain. The ``determinism.iexec`` is used by the PoCo smart contract to achieve a consensus on the resulting output of the different worker/replications of the deal. The ``callback.iexec`` value is stored in the ``results`` field of the Task object in the iExecHub smart contract.
+
+**On-chain component**
+
+The on-chain part is the dOracle contract. Anyone can request an update of its internal state by sending the id of a task corresponding to the execution of the corresponding dApp. With this id, the dOracle contract will query the blockchain and retrieve the deal object. It then checks that the execution passes the dOracle requirements (trust level, execution tag, that the app is right). If it does the dOracle contract then decodes the value in the results field and update its fields accordingly. The value is then accessible like a normal on a smart contract.
 
 *************************************************************
 Example: development and workflow of a price-feed application
