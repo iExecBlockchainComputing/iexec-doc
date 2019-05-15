@@ -32,6 +32,8 @@ About iExec
 
    poco
    poa
+   doracle
+   datawallet
 
 .. toctree::
    :maxdepth: 2
