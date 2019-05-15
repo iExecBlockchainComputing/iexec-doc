@@ -29,14 +29,16 @@ You can choose to get an encrypted result depending on the privacy of your task 
 
 1. Generate your beneficiary keys
 
-.. code-block:: bash
+.. code:: bash
+        
     iexec tee generate-beneficiary-keys
 
 2. Push your keys to the SMS 
 
 Please check your 'chain.json' file contains an entry '"sms": "https://kovan-pool.iex.ec:443"'
 
-.. code-block:: bash
+.. code:: bash
+        
     iexec tee push-secret
 
 3. Buy computation with your beneficiary address
@@ -46,7 +48,8 @@ SDK: iexec.json > requestorder > beneficiary > 0xyourAddress
 
 4. Download the result and decrypt it
 
-.. code-block:: bash
+.. code:: bash
+        
     iexec task show <0xtask> --download
     iexec tee decrypt-results <encryptedResultsPath>
 
