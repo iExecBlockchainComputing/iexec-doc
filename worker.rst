@@ -1,5 +1,5 @@
 Worker
-======================
+======
 
 A worker is an essential actor of the iExec Network. It will be in charge of computing tasks sent by requesters on the iExec Marketplace. A worker will be rewarded with RLCs for every properly computed tasks.
 
@@ -7,9 +7,10 @@ A worker is an essential actor of the iExec Network. It will be in charge of com
 Please remember your wallet must be loaded with ETH and RLC must be deposited to your iExec account in order to stake for incoming tasks.
 
 
+<<<<<<< HEAD
 Start a worker
 --------------------------
---------------------------
+=======
 
 You will find a list of workerpools at https://pools.iex.ec/
 
@@ -78,7 +79,10 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 Join-Workerpool script
 -----------------------------------
 
-The workerpool you want to connect may already provide a ready-to-launch script on the Grafana dashboard. In that case you can simply update that script with your worker name and the path of your worker wallet before launching it.
+When available, click on the "Join Worker Pool" button on the top left of the dashboard page and follow instructions.
+
+.. image:: _images/joinwp.png
+
 
 **Supported OS**
 

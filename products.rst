@@ -19,6 +19,19 @@ The dapp store is a catalog of ready to use applications and tools.
 Visit the Dapp store (https://dapps.iex.ec)
 
 
+Data store
+----------
+
+The data store is a catalog of ready to use datasets.
+
+.. image:: _images/DataStore.png
+
+| The Data Store can be seen as a collection of dataset available as inputs for applications.
+| Users are able to browse through the listed datasets and use their favorites.
+
+
+Visit the Data store (https://data.iex.ec)
+
 The Marketplace
 ---------------
 
@@ -55,8 +68,8 @@ Worker pools
 
 Browse the available Worker Pools: https://pools.iex.ec/
 
-| More information and statistics on the worker pool dashboard
-| For example, visit the worker pool of our partner Stimergy at https://stimergy-pool.iex.ec/
+More information and statistics on the worker pool dashboard
+
 
 Task Explorer
 -------------
@@ -78,6 +91,6 @@ The iExec SDK and API provide a set of tools that allows all users to easily int
 
 Check `iExec SDK documentation <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more details.
 
-Go to the `Getting started`_ section to learn how to use the SDK.
+Go to the `Quick start`_ section to learn how to use the SDK.
 
-.. _Getting started: /gettingstarted.html
+.. _Quick start: /quickstart.html

@@ -1,5 +1,5 @@
 Workerpool manager
-============================
+==================
 
 A workerpool manager is an essential actor in the iExec network. It will be in charge of proposing available computing resources (workers) to task requesters. The iexec-core software will take care of handling tasks comming from blockchain events and will distribute it to alive workers.
 

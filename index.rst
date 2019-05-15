@@ -16,24 +16,24 @@ About iExec
 
 .. toctree::
    :maxdepth: 2
-   :caption: How to use iExec
+   :caption: Get Help
 
-   gettingstarted
+   quickstart
    wallet
    worker
    workerpool
    taskexecution
-   teexecution
    dockerapp
    dataset
-   paypertask
-
 
 .. toctree::
    :maxdepth: 3
    :caption: Technical Documentation
 
    poco
+   poa
+   doracle
+   datawallet
 
 .. toctree::
    :maxdepth: 2

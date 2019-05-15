@@ -1,5 +1,5 @@
-How to provide a dataset
-========================
+Dataset provider
+================
 
 | In this section we will show you how you can propose a dataset or any valuable data over iExec infrastructure.
 | In the **task-as-a-service** model, each time a task is launched through the iExec network,
@@ -76,6 +76,7 @@ Parameter               Meaning
  workerpoolrestrict     restricted to workerpool (*)
  requesterrestrict:     restricted to requester (*)
 ===================== ==========================================================
+
 (*) disable by default with 0x0000000000000000000000000000000000000000
 
 The volume is the total number of tasks allowed within the order created.
@@ -139,9 +140,23 @@ Publish the order
 
 Now the dataset is available.
 
-Check out http://v3.explorer.iex.ec
+
+Input dataset encryption
+------------------------
+
+As a dataset provider, you might want to protect your dataset with encryption in order to monetize it.
+Any encrypted dataset will be decrypted on worker resources with a dataset secret key retrieved from the Secret Management Service.
+This dataset secret key need to be created and push by the dataset owner.
+At this point, the decrypted dataset will be ready to be used by the app.
+
+# How to encrypt a dataset
+
+(coming soon)
 
 
-Go to the `Getting started`_ section to learn how to test a dapp .
+Check out http://explorer.iex.ec
 
-.. _Getting started: /gettingstarted.html
+
+Go to the `Quick start`_ section to learn how to test a dapp .
+
+.. _Quick start: /quickstart.html

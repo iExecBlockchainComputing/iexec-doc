@@ -1,5 +1,5 @@
 The Pay-per-Task model
-======================
+----------------------
 
 We are introducing a new method for pricing and we have defined several task categories that describe the execution boundaries.
 
@@ -7,8 +7,7 @@ We are introducing a new method for pricing and we have defined several task cat
 
 In the future, we’ll refine the categories, and provide more advanced tools for helping developers to maximize the usage of the infrastructure
 
-Categories Description
-----------------------
+**Categories Description**
 
 ============= ================== ========================
 **Category**   **Input/output**  **Maximum Elapsed Time**

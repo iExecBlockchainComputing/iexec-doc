@@ -1,5 +1,5 @@
-Getting started
-===============
+Quick start
+===========
 
 
 iExec, being blockchain-based, allows you to manage your computing transactions in a secure and decentralized environment.
@@ -159,13 +159,15 @@ Check the wallet is now charged with ETH and RLC
     nRLC: 200
 
 
+.. include:: paypertask.rst
+
 
 Task execution
 --------------
 
 
 Let's execute the vanitygen application, a command-line vanity ethereum address generator starting with a given pattern.
-The address can be found in https://v3.explorer.iex.ec/kovan application deployed tab.
+The address can be found in https://explorer.iex.ec/kovan application deployed tab.
 
 
 - Deposit RLC on your account
@@ -184,9 +186,7 @@ you have to charge your account to allow deal's smart contract to lock fund enga
     ✔ deposited 40 nRLC to your iExec account
 
 
-- We need to find a existing order for the application, we will use the orderhash for the task submission.
-The application is registered on the blockchain, and app order has to be filled to run the task.
-
+- We need to find a existing order for the application, we will use the orderhash for the task submission. The application is registered on the blockchain, and app order has to be filled to run the task.
 
 .. code-block:: bash
 
@@ -202,6 +202,7 @@ The application is registered on the blockchain, and app order has to be filled 
       publicationTimestamp: 2019-04-24T09:24:19.037Z
 
 Make sure apporder still remains for the application. see **remaining** field.
+
 Copy the orderHash, it will be used later.
 
 
@@ -276,6 +277,7 @@ Select your order and copy the related orderHash
 
 
 Edit the task description in the iexec.json file.
+
 Fill in the app address, the category, a maximum price for the workerpool order and task's parameter.
 
 Limitation price exists also for dataset and app but the current example use free of charge application and no dataset.
@@ -341,8 +343,8 @@ Now the request order is created and it can be submitted
 
 
 
-The command returns the dealid address.
-Let's retrieve the task id
+| The command returns the dealid address.
+| Let's retrieve the task id
 
 .. code-block:: bash
 
@@ -450,6 +452,45 @@ until it is completed
 .. code-block:: bash
 
     cat stdout
+
+
+**Result encryption**
+
+You can choose to get an encrypted result depending on the privacy of your task result.
+
+* If the beneficiary of the task is set, the result will be pushed to the iExec Result Repository:
+  - If the key of the beneficiary has been pushed to the Secret Management Service, the result will be encrypted before being pushed to the Result Repository. The beneficiary of the task will be the only one able to access and decrypt the result.
+  - If the key of the beneficiary is missing in the Secret Management Service, the result will be pushed to the Result Repository without encryption. The beneficiary of the task will be the only one able to access the result.
+* If the beneficiary of the task is unset, the result will be pushed to IPFS without encryption.
+
+
+# How run a task with an encrypted result
+
+1. Generate your beneficiary keys
+
+.. code:: bash
+
+    iexec tee generate-beneficiary-keys
+
+2. Push your keys to the SMS
+
+Please check your 'chain.json' file contains an entry '"sms": "https://kovan-pool.iex.ec:443"'
+
+.. code:: bash
+
+    iexec tee push-secret
+
+3. Buy computation with your beneficiary address
+
+market.iex.ec: Advanced parameters > Beneficiary > Private
+SDK: iexec.json > requestorder > beneficiary > 0xyourAddress
+
+4. Download the result and decrypt it
+
+.. code:: bash
+
+    iexec task show <0xtask> --download
+    iexec tee decrypt-results <encryptedResultsPath>
 
 
 .. include:: contactus.rst
