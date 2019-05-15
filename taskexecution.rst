@@ -8,9 +8,9 @@ Using the iExec SDK
 
 
 | The `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ is a CLI (Command Line Interface) tool providing all the commands to interact with the iExec network.
-| As an introduction, go to the `Getting Started`_ section to learn how to manage a task execution. For more details, go to `iExec SDK github page <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ to read its full documentation.
+| As an introduction, go to the `Quick start`_ section to learn how to manage a task execution. For more details, go to `iExec SDK github page <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ to read its full documentation.
 
-.. _Getting Started: /sdk.html
+.. _Quick start: /quickstart.html
 
 
 Using the Marketplace and the Dapp Store

@@ -30,7 +30,7 @@ If you haven’t already, you will need to create an Ethereum wallet:
 * To Import the wallet using the Keystore file, you will need to open the downloaded wallet file with any text editor and copy its content.
 
 Useful link:
- - How to get an Ethereum wallet ? https://kb.myetherwallet.com/offline/running-myetherwallet-locally.html
+ - How to get an Ethereum wallet ? https://www.myetherwallet.com/
 
 
 Credit your wallet with ETH and RLC
