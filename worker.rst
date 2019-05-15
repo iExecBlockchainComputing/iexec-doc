@@ -136,10 +136,7 @@ Open the ‘keystore’ folder, then copy/paste the content of your wallet file 
 
 7. Start your worker
 
-Click on “Launch Worker” on the VM desktop.
-Enter the worker name and the wallet password
-
-.. image:: _images/worker_vm_fill_password.png
+Click on the “Launch Worker” icon on the VM desktop and follow instructions.
 
 When the worker initialization process is complete, the worker will be started and you will get something like:
 **You worker is all set**.
