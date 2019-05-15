@@ -1,12 +1,12 @@
-=========================================================
+====================================================
 iExec dOracle: a flexible and secure Oracle solution
-=========================================================
+====================================================
 
 
 
-*************************
+***********************
 Why do we need Oracles?
-*************************
+***********************
 
 
 The Ethereum blockchain provides a global trustless computer: given some input and the smart contract code, the blockchain guarantees execution according the Ethereum specification, by replicating the execution across thousands of nodes and implementing a consensus mechanism across all these nodes. Hence the execution of the contract is decentralized, and will happen without needing to trust any single actor.
@@ -15,9 +15,9 @@ Unfortunately decentralizing the execution is not sufficient. To be of any real 
 
 Oracle are systems designed to solve this problem: providing the blockchain with data from the real world in the most secure and robust way possible. It turns out we at iExec have been working on this problem for a long time. Indeed an update to an Oracle (for example the price of a stock or the average temperature for a day) can be seen as the result of a specific type of off-chain computation, one that would involve calling an API and processing the response to return the final result. As a result the iExec infrastructure is perfectly suited to build an efficient and secure Oracle system: the iExec dOracle.
 
-*******************************************************
+******************************************************
 The iExec solution: the Decentralized Oracle (dOracle)
-*******************************************************
+******************************************************
 
 For two years iExec has been working on the design of the Proof of Contribution protocol, which provides a flexible and highly robust solution to the problem of off-chain computation. At its core it is a simple Schelling game between off-chain computation providers (Workers): a given number of Workers are randomly chosen in a much bigger group, and are assigned the same computation. Each of them proposes a result, and the result that is proposed by the biggest number of workers is taken as the overall computation result (see PoCo documentation for more details).
 
@@ -40,19 +40,19 @@ Building an Oracle on top of iExec is therefore extremely simple: just create a 
 
 
 How does it compare to the other Oracle solutions?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 iExec dOracle is the only truly decentralized oracle solutions. It is also one of the easiest to use, relying on 3 years of research and development to make the iExec platform simple and easy-to-use.
 The dOracle benefits from the security guarantees of the PoCo, which enables him to update its value with an arbitrarily high security level.
 Lastly it is cheap, as it relies on execution on randomly chosen workers to make an attack impractical. The more workers on the iExec platform, the more secure the dOracle, all for the same price.
 
-********************
+*****************
 How does it work?
-********************
+*****************
 
 
 Background: task execution on the iExec platform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The iExec architecture is two-sided: the on-chain part is a set of smart contract that implement the PoCo, handles the incentive and adjudication systems; and the off-chain part is made of workers, that provide computing resources to execute the tasks, and schedulers, that dispatch the tasks to execute between the worker of the worker-pool they manage. Each side of the iExec platform (worker-pool, computation requester) create and sign orders that describe the kind of transaction they are willing to enter (type of hardware, minimum price, etc…). When several orders of different types are compatible they are matched together on the blockchain, to create a deal. Once a deal is made, the scheduler that is part of the deal will choose a set of workers in his workerpool to execute the task. Each worker will download the dApp (a docker container) and run it. Upon executing the task each worker sends back two values on the blockchain:
 a hash of the result that is written by the dApp in a determinism.iexec file. A consensus is made over this value for each replication, and the value resulting from the consensus is stored in the resultHash field of the Task object.
@@ -61,37 +61,41 @@ an additional iexec.callback value that will be stored on the blockchain in the 
 A normal execution ends when the Deal is finalized; all the stakeholders are paid, and the computation requester is free to download the data pointed to by the results field of the Deal object on the blockchain.
 
 iExec dOracle: general architecture
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 An iExec dOracle can be seen as an “on-chain API”: fundamentally it is a simple value-store smart contract, with accessors for other smart contracts to get its data, and an internal mechanism to update the date in the most secure way possible.
 The dOracle architecture is composed of two parts: an on-chain smart contract and a classical iExec dApp (packaged in a docker container).
 
 Off-chain component
-The off-chain part of a dOracle is a classical iExec dApp, that will be executed on the iExec platform and be replicated on several worker as part of an iExec computation deal. It contains the oracle logic, for example to query a web API and process the result. Whenever an operator wishes to update the dOracle, it requests a computation like in a normal iExec deal, specifying the dOracle app as dApp, and the parameters if applicable.
-The dOracle result is written in the iexec_out/callback.iexec file by the dApp. When the computation ends the worker will send both the callback.iexec (containing the oracle result) and the determinism.iexec (containing a hash of the result) on the blockchain. The determinism.iexec is used by the PoCo smart contract to achieve a consensus on the resulting output of the different worker/replications of the deal. The callback.iexec value is stored in the results field of the Deal object in the iExecHub smart contract.
+	The off-chain part of a dOracle is a classical iExec dApp, that will be executed on the iExec platform and be replicated on several worker as part of an iExec computation deal. It contains the oracle logic, for example to query a web API and process the result. Whenever an operator wishes to update the dOracle, it requests a computation like in a normal iExec deal, specifying the dOracle app as dApp, and the parameters if applicable.
+	The dOracle result is written in the ``/iexec_out/callback.iexec`` file by the dApp. When the computation ends the worker will send both the ``callback.iexec`` (containing the oracle result) and the ``determinism.iexec`` (containing a hash of the result) on the blockchain. The ``determinism.iexec`` is used by the PoCo smart contract to achieve a consensus on the resulting output of the different worker/replications of the deal. The ``callback.iexec`` value is stored in the ``results`` field of the Task object in the iExecHub smart contract.
 
 On-chain component
-The on-chain part is the dOracle contract. Anyone can request an update of its internal state by sending the id of a Deal of an execution of the corresponding dApp. With this id, the dOracle contract will query the blockchain and retrieve the deal object. It then checks that the execution passes the dOracle requirements (trust level, execution tag, that the app is right). If it does the dOracle contract then decodes the value in the results field and update its fields accordingly. The value is then accessible like a normal on a smart contract.
+	The on-chain part is the dOracle contract. Anyone can request an update of its internal state by sending the id of a task corresponding to the execution of the corresponding dApp. With this id, the dOracle contract will query the blockchain and retrieve the deal object. It then checks that the execution passes the dOracle requirements (trust level, execution tag, that the app is right). If it does the dOracle contract then decodes the value in the results field and update its fields accordingly. The value is then accessible like a normal on a smart contract.
 
-*********************************************************************
+*************************************************************
 Example: development and workflow of a price-feed application
-*********************************************************************
+*************************************************************
 
 A simple example of dOracle is available on Github. The following section goes through its different components, explaining what each of them does.
 
 
 The PriceFeed dApp
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
-The PriceFeed dApp is a simple Node.js script, available at []. Given a set of parameters, the application encodes it results so that it can be interpreted by the corresponding dOracle smart contract, stores it in /iexec_out/callback.iexec, and store the hash of this encoded value to perform the consensus. The Worker will then send these values on-chain as part of the task finalization, where they will be accessible by the dOracle smart contract.
+The PriceFeed dApp is a simple Node.js script, available at PriceFeedSource_. Given a set of parameters, the application encodes it results so that it can be interpreted by the corresponding dOracle smart contract, stores it in ``/iexec_out/callback.iexec``, and store the hash of this encoded value to perform the consensus. The Worker will then send these values on-chain as part of the task finalization, where they will be accessible by the dOracle smart contract.
+
+.. _PriceFeedSource: https://github.com/iExecBlockchainComputing/iexec-apps/tree/master/PriceFeed
 
 For example, given the parameters "BTC USD 9 2019-04-11T13:08:32.605Z" the price-oracle application will:
-Retrieve the price of BTC in USD at 2019-04-11T13:08:32.605Z
-Multiply this value by 10e9 (to capture price value more accurately as it will be represented by an integer onchain)
-encode the date, the description ("btc-usd-9") and the value using abi.encode
-Store this result in /iexec_out/callback.iexec
-hash the result and store it in /iexec_out/determinism.iexec
-iExec will then achieve PoCo consensus on the /iexec_out/determinism.iexec value, and will store both the /iexec_out/determinism.iexec and the /iexec_out/callback.iexec onchain, in the Task object on the iExecHub smart contract.
+
+- Retrieve the price of BTC in USD at 2019-04-11T13:08:32.605Z
+- Multiply this value by 10e9 (to capture price value more accurately as it will be represented by an integer onchain)
+- Encode the date, the description ("btc-usd-9") and the value using abi.encode
+- Store this result in ``/iexec_out/callback.iexec``
+- Hash the result and store it in ``/iexec_out/determinism.iexec``
+
+iExec will then achieve PoCo consensus on the ``/iexec_out/determinism.iexec`` value, and will store both the ``/iexec_out/determinism.iexec`` and the ``/iexec_out/callback.iexec`` onchain, in the Task object on the iExecHub smart contract.
 
 Once your oracle dApp is written, you can build it into a Docker image and make it available on the iExec platform as explained here.
 
@@ -99,7 +103,9 @@ Once your oracle dApp is written, you can build it into a Docker image and make 
 The dOracle generic contract
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Every dOracle must inherit from the IexecDoracle contract (source available on Github).
+Every dOracle must inherit from the IexecDoracle contract (source available on `Github <https://github.com/iExecBlockchainComputing/iexec-doracle-base>`_ and `npm <https://www.npmjs.com/package/iexec-doracle-base>`_).
+
+This contract contains stores:
 
 .. code-block:: solidity
 
@@ -111,7 +117,7 @@ Every dOracle must inherit from the IexecDoracle contract (source available on G
 	bytes32    public m_requiredtag;
 	uint256    public m_requiredtrust;
 
-In particular, the m_authorizedApp must be the address of the smart contract of the dOracle dApp, and the m_requiredtag describes the parameters of the iExec Task necessary to validate the dOracle update.
+In particular, the ``m_authorizedApp`` must be the address of the smart contract of the dOracle dApp, and the ``m_requiredtag`` describes the parameters of the iExec Task necessary to validate the dOracle update.
 
 The dOracle exposes mainly three internal functions, that may be used by the contracts that inherit from it:
 
@@ -126,13 +132,13 @@ A function to initialize/update the settings:
 .. code-block:: solidity
 
 	function _iexecDoracleUpdateSettings(
-	        address _authorizedApp,
-		address _authorizedDataset,
-		address _authorizedWorkerpool
-	        bytes32 _requiredtag,
-	        uint256 _requiredtrust
-	    )
-	    internal
+		address _authorizedApp
+	,	address _authorizedDataset
+	,	address _authorizedWorkerpoo
+	,	bytes32 _requiredtag
+	,	uint256 _requiredtrust
+	)
+	internal
 
 The update function, that takes in input a TaskId, and reads the Task object data from the iExecHub smart contract to perform the required checks: that the authorized app, dataset, workerpool, trust level and tags are valid, and that the hash of results is equal to the hashResult field of the Task object (over which the consensus was reached). If the Task passes the checks then it returns the results field of the Task object, eg the result of the dOracle dApp computation.
 
@@ -144,17 +150,15 @@ The update function, that takes in input a TaskId, and reads the Task object dat
 
 A dOracle smart contract should inherit from the generic IexecDOracle contract, and expose two main functionalities:
 
-
-
-* An update function, that will call the internal (inherited) _iexecDoracleGetVerifiedResult function and process its result to update the dOracle contract internal state
+* An update function, that will call the internal (inherited) _iexecDoracleGetVerifiedResult function and process its result to update the dOracle contract internal state.
 * One or several accessor functions, that allows other smart contract to access the oracle value.
 
 The PriceFeed dOracle contract
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the PriceFeed example, the PriceFeed smart contract is made of three parts:
 
-* Its internal state description: a timedValue struct storing the oracle data for a given value, and a values field that maps an index of the form “BTC_USD_9” to the corresponding timedValue struct value.
+* Its internal state description: a timedValue struct storing the oracle data for a given value, and a values field that maps an index of the form “BTC-USD-9” to the corresponding timedValue struct value.
 
 
 .. code-block:: solidity
@@ -169,7 +173,7 @@ In the PriceFeed example, the PriceFeed smart contract is made of three parts:
 
 	mapping(bytes32 => timedValue) public values;
 
-This also allows to read the resulting prices. For example, to get the most recent price of BTC in USD with 9 place precision (as described above), query values(keccak256(bytes("BTC-USD-9"))) from the dOracle contract and this will return a structure containing the value, the associate date, and the details of the request.
+This also allows to read the resulting prices. For example, to get the most recent price of BTC in USD with 9 place precision (as described above), query ``values(keccak256(bytes("BTC-USD-9")))`` from the dOracle contract and this will return a structure containing the value, the associate date, and the details of the request.
 
 * The update function processResult, that takes the TaskId of an execution of the dOracle dApp, calls the internal _iexecDoracleGetVerifiedResult and process the result to update the values map.
 
@@ -203,14 +207,13 @@ The PriceFeed dOracle also declares an event ValueChange, that is fired whenever
 .. code-block:: solidity
 
 	function updateEnv(
-		 address _authorizedApp,
-		 address _authorizedDataset,
-		 address _authorizedWorkerpool,
-		 bytes32 _requiredtag,
-		 uint256 _requiredtrust
-		)
-		public onlyOwner
-		{
-			_iexecDoracleUpdateSettings(_authorizedApp, _authorizedDataset, _authorizedWorkerpool, _requiredtag, _requiredtrust);
-		}
+		address _authorizedApp
+	,	address _authorizedDataset
+	,	address _authorizedWorkerpool
+	,	bytes32 _requiredtag
+	,	uint256 _requiredtrust
+	)
+	public onlyOwner
+	{
+		_iexecDoracleUpdateSettings(_authorizedApp, _authorizedDataset, _authorizedWorkerpool, _requiredtag, _requiredtrust);
 	}
