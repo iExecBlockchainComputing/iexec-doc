@@ -7,7 +7,6 @@ A worker is an essential actor of the iExec Network. It will be in charge of com
 Please remember your wallet must be loaded with ETH and RLC must be deposited to your iExec account in order to stake for incoming tasks.
 
 
-<<<<<<< HEAD
 Start a worker
 --------------------------
 =======
