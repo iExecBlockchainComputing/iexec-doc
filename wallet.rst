@@ -10,6 +10,7 @@ Wallet Management
  this gas is used to calculate the amount of fees that need to be paid to the network in order to execute an operation.
 
 
+
 Create your Wallet
 ------------------
 
@@ -51,16 +52,32 @@ Login with Metamask
 | When a computing deal is closed, a dedicated smart contract is created,
  an allowance step is mandatory to give authority to this new smart contract to proceed to the payment when the computing task is successfully ended.
 
-Set up the SDK with your own wallet
------------------------------------
+Wallet management with the SDK
+-------------------------------
 
-Edit the wallet.json file with your own information
+The iExec SDK provides all features needed to manage one or multiple wallets.
 
-Create the file if it is missing
+    - **Wallet creation** : you can directly create a new wallet.
 
-.. code-block:: bash
 
-    iexec wallet create
+    - **Keystore directory** : all the wallets you should manage are now stored in a specified location.
+
+
+    - **Encrypted wallet** : By default, all the wallet are encrypted in the keystore and protected by a user password.
+
+
+    - **Import wallet** : You can import (recreate a local wallet file) from a private key.
+
+
+    - **Using aliases** :     the option --wallet-file allows to use custom filename for your wallet, to ease the management of multiple wallets.
+
+    .. code-block:: bash
+
+        cp ~/.ethereum/keystore/UTC--2019-04-23T08-34-59.991000000Z--7E82621Ea3B9BB78d62e32E88cf97f4B855C36D4 my_custom_wallet_filename
+        iexec wallet show --wallet-file my_custom_wallet_filename
+
+
+    - **Account management** : you can send ETH and RLC to another address. You can deposit and withdraw RLC to your account.
 
 
 Go checkout the `iExec SDK <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ page to get wallet management option.

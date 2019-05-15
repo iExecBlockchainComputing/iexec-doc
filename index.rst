@@ -25,6 +25,7 @@ About iExec
    taskexecution
    teexecution
    dockerapp
+   dataset
    paypertask
 
 
