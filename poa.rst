@@ -20,7 +20,7 @@ You can see explanation and illustration this consortium usage presented in the 
 
 We define a consortium as a set of privates keys that will be used to run their "home" chain.
 Those keys will create what we call Trusted Authority that will be in charge of creating blocks in their home chain.
-The public consensus (Proof of work, Proof of stake) is replaced with a Proof of Authorities consensus. The consensus used in our case is `Aura <https://wiki.parity.io/Aura/>`_ .
+The public consensus (Proof of work, Proof of stake) is replaced with a Proof of Authorities consensus. The consensus used in our case is `Aura <https://wiki.parity.io/Aura>`_ .
 If all keys are hold by only one entity. This is a basically private chain. Because there is only one operator. This operator is able to rewrite or erase all history.
 Nevertheless, this operator can choose to give access to his blockchain state to others and allow them eventually to send transactions to it too.
 A better approach is to share those authorities privates keys between different legals entities (2,3,n companies). This is what we call a consortium chain.
