@@ -1,5 +1,5 @@
-Getting started
-===============
+Quick start
+===========
 
 
 iExec, being blockchain-based, allows you to manage your computing transactions in a secure and decentralized environment.
@@ -14,7 +14,6 @@ SDK Installation
 Prerequisites:
  - npm
  - zip
-
 
 .. code-block:: bash
 
@@ -158,8 +157,6 @@ Check the wallet is now charged with ETH and RLC
     ETH:  0.1
     nRLC: 200
 
-
-.. include:: paypertask.rst
 
 
 Task execution
@@ -450,45 +447,6 @@ until it is completed
 .. code-block:: bash
 
     cat stdout
-
-
-**Result encryption**
-
-You can choose to get an encrypted result depending on the privacy of your task result.
-
-* If the beneficiary of the task is set, the result will be pushed to the iExec Result Repository:
-  - If the key of the beneficiary has been pushed to the Secret Management Service, the result will be encrypted before being pushed to the Result Repository. The beneficiary of the task will be the only one able to access and decrypt the result.
-  - If the key of the beneficiary is missing in the Secret Management Service, the result will be pushed to the Result Repository without encryption. The beneficiary of the task will be the only one able to access the result.
-* If the beneficiary of the task is unset, the result will be pushed to IPFS without encryption.
-
-
-# How run a task with an encrypted result
-
-1. Generate your beneficiary keys
-
-.. code:: bash
-
-    iexec tee generate-beneficiary-keys
-
-2. Push your keys to the SMS
-
-Please check your 'chain.json' file contains an entry '"sms": "https://kovan-pool.iex.ec:443"'
-
-.. code:: bash
-
-    iexec tee push-secret
-
-3. Buy computation with your beneficiary address
-
-market.iex.ec: Advanced parameters > Beneficiary > Private
-SDK: iexec.json > requestorder > beneficiary > 0xyourAddress
-
-4. Download the result and decrypt it
-
-.. code:: bash
-
-    iexec task show <0xtask> --download
-    iexec tee decrypt-results <encryptedResultsPath>
 
 
 .. include:: contactus.rst

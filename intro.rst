@@ -17,7 +17,8 @@ No more CPU cycle wasted! Computing providers can make the most of their servers
 
  - **Data providers**
 
-Data is the new gold! Data providers can monetize datasets usage and open up new revenue streams for their assets.
+Data is the new gold!
+Data providers can monetize datasets usage and open up new revenue streams for their assets.
 A single entity can be all types of providers at the same time.
 
 
@@ -28,9 +29,9 @@ Application providers or developers can monetize their applications and algorith
 As a developer of decentralized applications, you may use iExec to overcome blockchain limitations (few kilobytes of storage, very inefficient virtual machines and very high latency protocol) by executing your computations “off-chain” on the iExec decentralized infrastructure.
 Developers also benefit from being free from adjusting resource allocation. By not having to maintain any servers, developers deploy applications that can rapidly upscale/downscale based on user-demand.
 
-Go to the `How to provide an application`_ section to learn how to build dapp for the community.
+Go to the `Application provider`_ section to learn how to build dapp for the community.
 
-.. _How to provide an application: /dockerapp.html
+.. _Application provider: /dockerapp.html
 
 
 Dataset providers
@@ -40,7 +41,9 @@ Data owner can monetize their dats by setting a fixed-fee for each single usage 
 Dataset can be seen as a wide concept to protect,
 iExec allows with multiple levels of security to monitize any data: data means dataset or more advanced valuable models as AI trained model,
 
-.. _How to provide a dataset: /dataset.html
+Go to the `Dataset provider`_ section to learn how to propose a dataset.
+
+.. _Dataset provider: /dataset.html
 
 
 Computing Providers
@@ -69,8 +72,6 @@ You may also check out the list of worker pool currently available on the iExec 
 
 Data providers
 --------------
-
-*Coming May 2019*
 
 Data providers that own valuable datasets can make them available for use by applications through the iExec Data Store.
 Technologies such as Intel SGX and IBM Datashield, combined with iExec’s pay-per-task model, offer new opportunities of creating highly-secure applications that respect data privacy and ownership.
@@ -105,7 +106,7 @@ iExec allows requesters (individuals and enterprises) to access affordable, secu
 
   - **Access to datasets**
 
-  On the iExec Data Store, requesters have access to a large amount of varied datasets that can be opened from associated dapps from the Dapp Store.
+  On the `iExec Data Store <https://data.iex.ec>, requesters have access to a large amount of varied datasets that can be opened from associated dapps from the Dapp Store.
 
   Requesters can freely browse available cloud resources, and trigger an execution once they gather a triplet of resources compatible with each other.
 

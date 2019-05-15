@@ -6,12 +6,17 @@ Introduction
 ------------
 
 
-The iExec platform can be used and deployed in a consortium manner.
+
+The iExec Enterprise Edition (iEE) addresses the needs of enterprises and consortium that want to improve their processes and create businesses by leveraging blockchain paradigms.
+
+iEE refers to private, consortium, and hybrid implementations of the iExec stack for business applications.
+This integration and consulting service allow corporates to optimize their computing infrastructure, orchestrate the sharing of data and deploy applications with no downtime, fraud, or third-party interference.
 
 This will allow companies to **automate their businesses through a transparent history, immutable, and cryptographically verifiable state.**
 Automate their business between them but also allow them to target new customers thanks to their join forces and efficient services on their consortium chain.
 
 You can see explanation and illustration this consortium usage presented in the `iExec talk at ETHCC <https://github.com/iExecBlockchainComputing/iexec-deploy/blob/master/poa/slides/README.md/>`_
+
 
 We define a consortium as a set of privates keys that will be used to run their "home" chain.
 Those keys will create what we call Trusted Authority that will be in charge of creating blocks in their home chain.
@@ -61,13 +66,16 @@ Prerequisite:
 - use ubuntu OS or ubuntu docker image :
 
 Prerequisite lib packages
+
 .. code-block:: bash
 
     docker run -it --name poa_config ubuntu:18.10 /bin/bash
     apt-get update
     apt-get install -y zip sudo git curl wget gcc
 
+
 Install some eth key libs
+
 .. code-block:: bash
 
     git clone https://github.com/paritytech/parity-ethereum -b v2.4.5
@@ -84,7 +92,7 @@ Install some eth key libs
 
 
 PoA Chains
---------------------------
+----------
 
 We use parity-deploy tooling, to facilitate the config and keys generation of PoA chain.
 
@@ -119,6 +127,7 @@ Then you can generate the numbers of nodes you wanted to bootstrap with the comm
     cp /usr/bin/ethstore .
     ./parity-deploy.sh --config aura --name HOME-CHAIN --nodes ${NB_NODES} --entrypoint "/bin/parity" --release $PARITY_DOCKER_VERSION --expose
 
+
 You can customize then the deployment/chain/spec.json generated.
 - add account with fonds
 - define stepDuration for blocktime
@@ -131,10 +140,10 @@ Zip your config :
 
     zip -r poa-config.zip .env docker-compose.yml deployment data config
 
+
 If you used ubuntu docker container, copy the zip on your host. On your host (you need docker):
 
 .. code-block:: bash
-
 
     export ID_CONTAINER=$(docker ps --format '{{.ID}}' --filter "name=poa_config")
     docker cp ${ID_CONTAINER}:/parity-deploy/poa-config.zip .
@@ -149,11 +158,13 @@ Test your generated configs on your host (you need docker and docker compose) :
 
 You must see all your node starting with no errors and each nodes connected to 4 others peers.
 
-Tips :
-In this generated config, you may need to edit manually some files according to your network or config :
-in docker-compose.yml :
-- changing ports to avoid conflicts
-- adding command start option like --force-sealing --logging levels
+.. NOTE::
+
+    In this generated config, you may need to edit manually some files according to your network in docker-compose.yml:
+
+        - changing ports to avoid conflicts
+
+        - adding command start option like --force-sealing --logging levels
 
 
 
@@ -161,25 +172,35 @@ PoA Bridges
 -----------
 
 Poa-Network bridges allow to bridge ERC-20 to ERC-20 token as describe in the poa-network medium article :
+
 https://medium.com/poa-network/introducing-the-erc20-to-erc20-tokenbridge-ce266cc1a2d0
+
 The 3 mains bridges components are smart contracts, bridges agents softwares, and interface to use by users to bridge asset.
 There is 2 parts for smart contract. A bridge smart contract deploy on the mainnet and another bridge smart contract deploy on the home chain.
-Bridges
 
-Contracts :
+
+Bridges contracts :
 
 https://github.com/poanetwork/poa-bridge-contracts.git
 
 Bridges Agents:
+
 https://github.com/poanetwork/token-bridge.git
 
 Bridge Interface :
+
 https://github.com/poanetwork/bridge-ui
 
-You can see a full deployment script
-(https://github.com/iExecBlockchainComputing/iexec-deploy/blob/master/poa/CI/bootpoatestnetV3master.sh) of poa-network bridges stack on PoA chains iExec context added with RLC token and PoCo smart contracts deployed.
+You can see a full deployment script of poa-network bridges stack on PoA chains iExec context added with RLC token and PoCo smart contracts deployed.
+
+https://github.com/iExecBlockchainComputing/iexec-deploy/blob/master/poa/CI/bootpoatestnetV3master.sh
 
 We planned to merge soon a new feature that will allow to add a whitelisting feature as described here.
+
 https://forum.poa.network/t/consortium-bridge/1739
 
+
 Contacts-us to have more informations about this.
+
+     - mail support@iex.ec
+     - slack iexec-team.slack.com

@@ -23,17 +23,15 @@ About iExec
    worker
    workerpool
    taskexecution
-   teexecution
    dockerapp
    dataset
-   paypertask
-
 
 .. toctree::
    :maxdepth: 3
    :caption: Technical Documentation
 
    poco
+   poa
 
 .. toctree::
    :maxdepth: 2

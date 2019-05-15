@@ -1,5 +1,5 @@
-How to provide an application
-=============================
+Application provider
+====================
 
 | In this section we will show you how you can create a Docker dapp over the iExec infrastructure.
 | In the **task as a service** model, each time a task is launched through the iExec network,
@@ -262,6 +262,6 @@ Now the application is available.
 Check out http://explorer.iex.ec
 
 
-Go to the `Getting started`_ section to learn how to test your dapp .
+Go to the `Quick start`_ section to learn how to test your dapp .
 
-.. _Getting started: /gettingstarted.html
+.. _Quick start : /quickstart.html

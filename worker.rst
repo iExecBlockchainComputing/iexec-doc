@@ -1,5 +1,5 @@
 Worker
-======================
+======
 
 A worker is an essential actor of the infrastructure. It will be in charge of performing the works submitted by the users. It is part of a worker pool. A worker will be rewarded some RLC for every work it performs.
 
@@ -9,6 +9,21 @@ Your wallet must be charged with 0.4 ETH.
 
 | The worker registration to the workerpool does not require any RLC but to have a chance to be involved in a deal by processing tasks, the worker should stake an amount of RLC.
 | This amount is not fixed and the workerpool will give you the minimum amount needed.
+
+
+Join a worker pool
+------------------
+
+Contact the worker pool to get all the needed parameters to join its pool.
+
+You should find a list of worker pool
+https://pools.iex.ec/
+
+Click on "Join Worker Pool" on the top left of dashboard page.
+
+.. image:: _images/joinwp.png
+
+and follow the instruction.
 
 
 Install and start a worker
