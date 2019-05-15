@@ -202,6 +202,7 @@ you have to charge your account to allow deal's smart contract to lock fund enga
       publicationTimestamp: 2019-04-24T09:24:19.037Z
 
 Make sure apporder still remains for the application. see **remaining** field.
+
 Copy the orderHash, it will be used later.
 
 
@@ -276,6 +277,7 @@ Select your order and copy the related orderHash
 
 
 Edit the task description in the iexec.json file.
+
 Fill in the app address, the category, a maximum price for the workerpool order and task's parameter.
 
 Limitation price exists also for dataset and app but the current example use free of charge application and no dataset.

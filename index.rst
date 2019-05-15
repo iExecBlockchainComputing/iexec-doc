@@ -18,7 +18,7 @@ About iExec
    :maxdepth: 2
    :caption: Get Help
 
-   gettingstarted
+   quickstart
    wallet
    worker
    workerpool

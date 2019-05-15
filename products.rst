@@ -68,8 +68,8 @@ Worker pools
 
 Browse the available Worker Pools: https://pools.iex.ec/
 
-| More information and statistics on the worker pool dashboard
-| For example, visit the available worker pools at https://pool.iex.ec/
+More information and statistics on the worker pool dashboard
+
 
 Task Explorer
 -------------
