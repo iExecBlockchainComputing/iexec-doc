@@ -1,43 +1,33 @@
 Worker
 ======
 
-A worker is an essential actor of the infrastructure. It will be in charge of performing the works submitted by the users. It is part of a worker pool. A worker will be rewarded some RLC for every work it performs.
-
-.. include:: prerequisites.rst
-
-Your wallet must be charged with 0.4 ETH.
-
-| The worker registration to the workerpool does not require any RLC but to have a chance to be involved in a deal by processing tasks, the worker should stake an amount of RLC.
-| This amount is not fixed and the workerpool will give you the minimum amount needed.
+A worker is an essential actor of the iExec Network. It will be in charge of computing tasks sent by requesters on the iExec Marketplace. A worker will be rewarded with RLCs for every properly computed tasks.
 
 
-Join a worker pool
-------------------
-
-Contact the worker pool to get all the needed parameters to join its pool.
-
-You should find a list of worker pool
-https://pools.iex.ec/
-
-Click on "Join Worker Pool" on the top left of dashboard page.
-
-.. image:: _images/joinwp.png
-
-and follow the instruction.
+Please remember your wallet must be loaded with ETH and RLC must be deposited to your iExec account in order to stake for incoming tasks.
 
 
-Install and start a worker
+Start a worker
 --------------------------
+=======
 
-Contact the worker pool to get all the needed parameters to join its pool.
+You will find a list of workerpools at https://pools.iex.ec/
 
-You should find a list of worker pool
-https://pools.iex.ec/
+After having loaded some ETH and deposited some RLC to your iExec account, you can start your worker.
+
+You have different ways to join a workerpool:
+
+* with Docker
+* with Join-Workerpool scripts
+* with a Virtual Machine
 
 
-Pool manager must provide connection location information, authentication login and password.
 
-The following command can be called on the machine where the worker will run:
+Docker
+----------------------------
+
+
+In a terminal, run:
 
 .. code:: bash
 		
@@ -56,7 +46,7 @@ The following command can be called on the machine where the worker will run:
 
 Please get the lastest version available (3.X.X) `here <https://hub.docker.com/r/iexechub/iexec-core/tags>`_. Note that it must match the version of the scheduler.
 
-Please note that all the values shown here are just given as an example, it should be adapted to the worker pool you are trying to join and to the machine on which the worker will run.
+Please note that all the values shown here are just given as an example, it should be adapted to the worker workerpool you are trying to join and to the machine on which the worker will run.
 
 Here is the details for the different parameters used in the command:
 
@@ -73,28 +63,91 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 2. The option *-v /tmp/iexec-worker:/tmp/iexec-worker* will be used to store all the results from the worker.
 3. The option *-v /var/run/docker.sock:/var/run/docker.sock* is to allow the worker to start new docker containers when performing tasks. 
 
-**From a script provided by the scheduler**
+**Supported CPU**
 
-The scheduler you want to connect your worker to may already provide a ready-to-launch script for you to use out-of-the-box. In that case you can simply launch that script. It will start a worker with the correct parameters to connect to that scheduler. The only parameter that should change for you is the path of the worker's wallet.
+* x86
+* x86_64
+
+**Supported OS**
+
+* Linux
+* MacOS
+* Windows
+
+
+Join-Workerpool script
+-----------------------------------
+
+When available, click on the "Join Worker Pool" button on the top left of the dashboard page and follow instructions.
+
+.. image:: _images/joinwp.png
+
+
+**Supported OS**
+
+* Linux
+
+
+Virtual Machine (VM)
+----------------------------
+
+
+A VM is ready to make you join the public workerpool.
+
+1. Download the VM 
+
+https://download.iex.ec/iExec-Public-Worker.ova
+(mirror: https://drive.google.com/file/d/1Q655sygSbqCffmwi8G12leMzbRQLOI9x/)
+
+2. Install Virtual Box
+
+https://www.virtualbox.org/wiki/Downloads
+
+3. Get or create a wallet
+
+Keep your wallet in a safe place, you will need it later.
+Same advice for your wallet password, you will need it later.
+Go to the 'Wallet Managment' section for more information
+
+4. Top up some ETH & RLC and make a RLC deposit to your iExec account
+
+Go to the 'Wallet Managment' section for more information
+
+5. Launch the VM
+
+To import the VM, just click on iexec-worker.ova file. You will see the “Import Virtual Appliance” window. If you only have 4GB of RAM, please change the RAM to 2,048MB in this window.
+Delete the previous version if you had installed any in the past. 
+Click on the ‘Import’ button.
+Double click on ‘iExec-Worker’ (or click on ‘start’).
+
+6. Copy your wallet from your host computer to the VM
+
+Open the ‘keystore’ folder, then copy/paste the content of your wallet file from your host computer into the ‘wallet.json’ file of the VM.
+
+7. Start your worker
+
+Click on “Launch Worker” on the VM desktop.
+Enter the worker name and the wallet password
+When the worker initialization process is complete, the worker will be started and you will get something like:
+**You worker is all set**.
+Your worker will now be able to compute some tasks comming from the iExec network to earn some RLCs.
+
+Note: If you want to properly shutdown your worker, you can click on the “Stop Worker” icon placed in the desktop of the VM
+
+
+**Supported OS**
+
+* Linux
+* MacOS
+* Windows
+
+
 
 Wallet restriction
 ------------------
 
 An exclusive wallet must be associated to your worker.
-You should create as many wallet as workers you get per worker pool.
+You need N wallets if you want N workers. 
 
-Supported CPU
--------------
 
-* **x86**
-* **x86_64**
-
-Supported OS
-------------
-
-Since a worker is running in a docker container, it can be started in any OS that can support docker, so the following OS are supported:
-
-* **Linux**
-* **MacOS**
-* **Windows**
 
