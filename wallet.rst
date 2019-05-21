@@ -57,6 +57,11 @@ Deposit and withdraw
 
 .. image:: _images/account.png
 
+.. IMPORTANT::
+
+   * To join worker pool, you must deposit and keep a minimal of 5 RLC on your account.
+   * | After the job completion, the reward goes into your account.
+     | **Only the wallet owner can withdraw RLC tokens to his wallet**.
 
 Wallet management with the SDK
 -------------------------------
