@@ -9,12 +9,12 @@ In the future, we’ll refine the categories, and provide more advanced tools fo
 
 **Categories Description**
 
-============= ================== ========================
-**Category**   **Input/output**  **Maximum Elapsed Time**
-------------- ------------------ ------------------------
-1  -- XS         10 Mb                 5 min
-2  -- S          100 Mb               15 min
-3  -- M          250 Mb               30 min
-4  -- L          500 Mb               60 min
-5  -- XL         1 Gb                120 min
-============= ================== ========================
+============= ========================
+**Category**  **Maximum Elapsed Time**
+------------- ------------------------
+0  -- XS            5 min
+1  -- S            20 min
+2  -- M             1 hour
+3  -- L             3 hour
+4  -- XL           10 hour
+============= ========================
