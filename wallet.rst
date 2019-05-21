@@ -47,10 +47,16 @@ Useful links:
 Login with Metamask
 -------------------
 
+Deposit and withdraw
+~~~~~~~~~~~~~~~~~~~~
+
 | Once you’ve unlocked your Metamask, you can login on the iExec marketplace https://market.iex.ec with embedded wallet management.
 | In the **Account**, both Balance and Allowance are displayed, and values are expressed in nRLC (nano RLC).
 | When a computing deal is closed, a dedicated smart contract is created,
  an allowance step is mandatory to give authority to this new smart contract to proceed to the payment when the computing task is successfully ended.
+
+.. image:: _images/account.png
+
 
 Wallet management with the SDK
 -------------------------------
@@ -96,7 +102,6 @@ Similarly, requesters must have an account topped up with RLC in order to trigge
 For these cloud resource providers (application, compute and dataset providers), the reward from a successfully completed task is deposited in their iExec Account. Providers can then decide to withdraw some or all of their balance from their iExec Account to their Ethereum Wallet at any given time.
 
 The iExecClerk smart contract service is the piece of software that manages under your authority all of your token interactions, with a high degree of security.
-
 
 
 Staking and incentives
