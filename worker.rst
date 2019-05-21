@@ -31,14 +31,14 @@ In a terminal, run:
 
 .. code:: bash
 		
-	docker run -d --name "my-iexec-worker" \
-           --hostname "my-iexec-worker" \
-           --env "IEXEC_WORKER_NAME=my-iexec-worker" \
+	docker run -d --name "MY_WORKER_NAME" \
+           --hostname "MY_WORKER_NAME" \
+           --env "IEXEC_WORKER_NAME=MY_WORKER_NAME" \
            --env "IEXEC_CORE_HOST=main-pool.iex.ec" \
            --env "IEXEC_CORE_PORT=18090" \
            --env "IEXEC_WORKER_WALLET_PATH=/iexec-wallet/wallet.json" \
-           --env "IEXEC_WORKER_WALLET_PASSWORD=mypassw00rd" \
-           -v /home/ubuntu/wallet.json:/iexec-wallet/wallet.json \
+           --env "IEXEC_WORKER_WALLET_PASSWORD=MY_PASSWORD" \
+           -v PATH_TO_MY_WALLET_FILE:/iexec-wallet/wallet.json \
            -v /tmp/iexec-worker:/tmp/iexec-worker\
            -v /var/run/docker.sock:/var/run/docker.sock \
            iexechub/iexec-worker:3.X.X
@@ -136,10 +136,7 @@ Open the ‘keystore’ folder, then copy/paste the content of your wallet file 
 
 7. Start your worker
 
-Click on “Launch Worker” on the VM desktop.
-Enter the worker name and the wallet password
-
-.. image:: _images/worker_vm_fill_password.png
+Click on the “Launch Worker” icon on the VM desktop and follow instructions.
 
 When the worker initialization process is complete, the worker will be started and you will get something like:
 **You worker is all set**.
