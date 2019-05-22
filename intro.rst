@@ -52,7 +52,7 @@ Computing Providers
 Within the iExec network, providers of computing power are called ‘Workers’.
 As a worker, you can connect your machine to the network and provide computing power.
 
-This materializes in your machine executing computational tasks in exchange for a price freely determined by you (in RLC tokens).
+Your machine executes computational tasks in exchange for a reward in RLC tokens.
 Workers can be individuals or companies.
 Anyone owning computing resources can make them available by joining a “worker pool” and renting computing power to the network.
 Any machine, from an individual laptop to a large-scale data center, can join a worker pool.
@@ -60,6 +60,9 @@ Head to the `How to become a worker`_ section to learn how to deploy your worker
 
 Worker pools are made up of multiple individual machines.
 They are led by a Pool manager, a lead entity that organizes the workload and signals how many tasks it is able to process and at which price.
+
+**The Pool Manager freely determines the pricing to execute computational task for its workers.**
+
 Pool manager, while not doing the actual computation, receive a fee for the management of the worker pool.
 Pool manager compete to attract workers to their worker pool by providing efficient management and guaranteeing earnings for workers.
 Head to the `How to Become a pool manager`_ section to learn how to deploy your worker pool service.
