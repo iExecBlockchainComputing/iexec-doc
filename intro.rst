@@ -25,7 +25,7 @@ A single entity can be all types of providers at the same time.
 Application Providers
 ---------------------
 
-Application providers or developers can monetize their applications and algorithms by setting a fixed-fee for each single usage of their software (pay-per-task model).
+Application providers can monetize their applications and algorithms by setting a fixed-fee for each single usage of their software (pay-per-task model).
 As a developer of decentralized applications, you may use iExec to overcome blockchain limitations (few kilobytes of storage, very inefficient virtual machines and very high latency protocol) by executing your computations “off-chain” on the iExec decentralized infrastructure.
 Developers also benefit from being free from adjusting resource allocation. By not having to maintain any servers, developers deploy applications that can rapidly upscale/downscale based on user-demand.
 
