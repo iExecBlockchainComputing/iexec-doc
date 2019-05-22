@@ -56,6 +56,7 @@ Your machine executes computational tasks in exchange for a reward in RLC tokens
 Workers can be individuals or companies.
 Anyone owning computing resources can make them available by joining a “worker pool” and renting computing power to the network.
 Any machine, from an individual laptop to a large-scale data center, can join a worker pool.
+
 Head to the `How to become a worker`_ section to learn how to deploy your worker software.
 
 Worker pools are made up of multiple individual machines.
@@ -65,9 +66,10 @@ They are led by a Pool manager, a lead entity that organizes the workload and si
 
 Pool manager, while not doing the actual computation, receive a fee for the management of the worker pool.
 Pool manager compete to attract workers to their worker pool by providing efficient management and guaranteeing earnings for workers.
+
 Head to the `How to Become a pool manager`_ section to learn how to deploy your worker pool service.
 
-You may also check out the list of worker pool currently available on the iExec Marketplace in the Pools Registry.
+You may also check out the list of worker pool currently available on the iExec Marketplace in the `Pools Catalog <https://pools.iex.ec>`_.
 
 .. _How to become a worker: /worker.html
 .. _How to become a pool manager: /workerpool.html
