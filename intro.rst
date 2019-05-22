@@ -80,7 +80,7 @@ Data providers
 
 Data providers that own valuable datasets can make them available for use by applications through the iExec Data Store.
 
-iExec pay per task model empowers Intel SGX and IBM Datashield and offers new opportunities of creating highly-secure applications that respect data privacy and ownership.
+iExec pay per task model empowers Intel SGX and IBM Datashield to offer new opportunities of creating highly-secure applications that respect data privacy and ownership.
 
 
 For Cloud Resource Requesters
