@@ -1,7 +1,7 @@
 The iExec Solution Stack
 ========================
 
-iExec provides a complete software stack and create an complete environment  complete platform such that no additional software is needed to support applications.
+iExec provides a complete software stack and create an complete environment such that no additional software is needed to support applications.
 
 Dapp store
 ----------
@@ -10,13 +10,16 @@ The dapp store is a catalog of ready to use applications and tools.
 
 .. image:: _images/DappStore.png
 
-| The Dapp Store can be seen as a collection of decentralized applications running on top of iExec.
+| The Dapp Store allows users to browse decentralized applications and .
 | Users are able to browse through the listed dapps and use their favorites.
 | These dapps are curated and represent the wide span of industries iExec can support: artificial intelligence, 3D rendering, fintech, cryptography, scientific research or IoT.
 
 | Anyone can launch its own Dapp Store and curate applications the way they see fit.
 
-Visit the Dapp store (https://dapps.iex.ec)
+
+Go to the `Provide your application`_ section.
+
+.. _Provide your application: /dockerapp.html
 
 
 Data store
@@ -30,7 +33,11 @@ The data store is a catalog of ready to use datasets.
 | Users are able to browse through the listed datasets and use their favorites.
 
 
-Visit the Data store (https://data.iex.ec)
+Go to the `Provide your dataset`_ section.
+
+.. _Provide your dataset: /dataset.html
+
+
 
 The Marketplace
 ---------------
@@ -74,7 +81,7 @@ More information and statistics on the worker pool dashboard
 Task Explorer
 -------------
 
-The iExec Explorer is a user-friendly web application that can explore all relevant information about transactions, applications deployed and worker pools deployed.
+The iExec Explorer is a web application that can explore all relevant information about transactions, applications deployed and worker pools deployed.
 
 .. image:: _images/iExecExplorer.png
 
@@ -82,7 +89,7 @@ For each transaction, the tool provides details on its time of execution, its ha
 
 .. image:: _images/iExecworkdetail.png
 
-Visit the iExex Explorer https://explorer.iex.ec/
+Visit the iExec Explorer https://explorer.iex.ec/
 
 SDK and API
 ---------------
