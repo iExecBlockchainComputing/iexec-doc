@@ -114,7 +114,7 @@ iExec allows requesters (individuals and enterprises) to access affordable, secu
 
   On the `iExec Data Store <https://data.iex.ec>`_, requesters have access to a large amount of varied datasets that can be opened from associated dapps from the Dapp Store.
 
-  Requesters can freely browse available cloud resources, and trigger an execution once they gather a triplet of resources compatible with each other.
+  Requesters browses available cloud resources and triggers an execution in just a few clicks.
 
   They can then monitor and audit all the orders they have triggered since each activity log is recorded on the blockchain.
 
