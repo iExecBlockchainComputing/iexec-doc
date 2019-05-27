@@ -61,7 +61,8 @@ EXEC_CORE_HOST                                 Domain of the scheduler
 IEXEC_CORE_PORT                                Port of the scheduler
 IEXEC_WORKER_BASE_DIR                          | Should match the tmp folder your mounting (-v /tmp/iexec-worker).
                                                | Results of tasks will be stored in /tmp/iexec-worker/my-iexec-worker)
-IEXEC_GAS_PRICE_MULTIPLIER                     Increase it will speed up transactions (default: 1.3)
+IEXEC_GAS_PRICE_MULTIPLIER                     Increase it will speed up tx (default: 1.3)*see Fees section
+IEXEC_GAS_PRICE_CAP                            Max gas price for any tx (default: 22Gwei)*see Fees section
 IEXEC_WORKER_OVERRIDE_BLOCKCHAIN_NODE_ADDRESS  Use a custom ethereum node here, otherwise the one given by the core will be used
 =============================================  ==========================================================================================
 
@@ -163,6 +164,22 @@ Wallet restriction
 
 An exclusive wallet must be associated to your worker.
 You need N wallets if you want N workers. 
+
+Fees
+------------------
+
+Gas price on the Ethereum network is constantly changing. A high traffic could potentially increase average gas price since some people might want to get their transactions mined very fast.
+By taking a look at https://ethgasstation.info/, you will see a `Median Gas Price (gwei)` which will be different in few hours.
+
+* IEXEC_GAS_PRICE_MULTIPLIER
+
+For each transaction, the worker will look at the current gas price and will multiply it by a K factor in order to send [cheap & slow] or [expensive & fast] transactions. You can tune that in the config of your worker.
+This K factor is called `IEXEC_GAS_PRICE_MULTIPLIER` and it default value is 1.3 (which means a little faster than some other guys).
+
+* IEXEC_GAS_PRICE_CAP
+
+To avoid sending super expensive transactions, you can cap the value `NETWORK_GAS_PRICE * IEXEC_GAS_PRICE_MULTIPLIER`.
+This cap value is called `IEXEC_GAS_PRICE_CAP` and the default value is 22Gwei (you can change it too). (edited) 
 
 
 
