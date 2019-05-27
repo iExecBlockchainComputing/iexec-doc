@@ -2,9 +2,10 @@ Releases
 --------
 The latest stable version for iExec stack can be found:
 
-path_to_latest_release1
-path_to_latest_release2
-path_to_latest_release3
+- path_to_latest_release1
+- path_to_latest_release2
+- path_to_latest_release3
+
 
 Version 3.0 : "Impatient Vanguard" (急先鋒)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
