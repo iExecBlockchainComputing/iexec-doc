@@ -182,4 +182,49 @@ To avoid sending super expensive transactions, you can cap the value `NETWORK_GA
 This cap value is called `IEXEC_GAS_PRICE_CAP` and the default value is 22Gwei (you can change it too). (edited) 
 
 
+Statuses of Replicates
+-------------------------
+
+One Task bought by a requester will result in one to many Replicates depending on the level of trust set by the requester.
+For a given task, each worker involved will have it own Replicate containing the description of the task to compute inside. The whole computation of a Replicate is made of several stages. Each stage completed by a worker will result to an update of its Replicate status.
+
+Here are the different possible statuses for a replicate:
+
+* CREATED: A new replicate is assigned to your worker just after it asked for new one
+* RUNNING: Your worker confirms is going to work on this replicate
+* APP_DOWNLOADING: Your worker is downloaing the application
+* APP_DOWNLOADED: The download of the application is completed
+* APP_DOWNLOAD_FAILED: The download of the application failed
+* DATA_DOWNLOADING: Your worker is downloaing the dataset
+* DATA_DOWNLOADED: The download of the dataset is completed
+* DATA_DOWNLOAD_FAILED: The download of the dataset failed
+* COMPUTING: Your worker is computing the task
+* COMPUTED: The computation is completed
+* COMPUTE_FAILED: The computation failed
+* CAN_CONTRIBUTE: Your worker can contribute the fingerprint of the computed result on chain
+* CANT_CONTRIBUTE_SINCE_STAKE_TOO_LOW: Your worker hasn't enought RLC in its account to contribute (30% of the task in RLC)
+* CANT_CONTRIBUTE_SINCE_TASK_NOT_ACTIVE: The task is not active on chain
+* CANT_CONTRIBUTE_SINCE_AFTER_DEADLINE: The deadline for the contribution is reached
+* CANT_CONTRIBUTE_SINCE_CONTRIBUTION_ALREADY_SET: Your worker already contributed for this task
+* CONTRIBUTING: Your worker sent the "contribute(..)" transaction (fingerprint of the result) on chain
+* CONTRIBUTE_FAILED: The contribute transaction failed
+* CONTRIBUTED: Your worker has contributed on chain
+* CANT_REVEAL: Your worker cant reveal the proof that it is the owner of the fingerprint of the computed result
+* REVEALING: Your worker sent the "reveal(..)" transactions (proof that he is the owner of the fingerprint of the result)
+* REVEALED: Your worker has revealed the proof on chain
+* REVEAL_FAILED: The reveal transaction failed
+* RESULT_UPLOAD_REQUESTED: Your worker has been called for uploading the result to a remote filesystem
+* RESULT_UPLOAD_REQUEST_FAILED: Your worker did not accept to be called for uploading the result
+* RESULT_UPLOADING: Your worker is uploading the result
+* RESULT_UPLOADED: The result is uploaded (to an iExec Result Repository or to IPFS)
+* RESULT_UPLOAD_FAILED: The upload of the result failed
+* COMPLETED: The whole task is completed meaning the task is finalized. You have been rewarded if you are part of the consensus
+* REVEAL_TIMEOUT: Your worker took too long to reveal its proof (more than 2 period after the consensus)
+* WORKER_LOST: Your worker didn't ping the iexec-core scheduler for a while. It is considered as out for this task
+* ABORTED_ON_CONSENSUS_REACHED: The consensus is reached but you are not part of it
+* ABORTED_ON_CONTRIBUTION_TIMEOUT: Your worker took too long to contribute (7 periods after the purchase of the task)
+* FAILED: Your worker failed to participate to the task
+* OUT_OF_GAS: Your worker needs some ETH, please refill its wallet
+* RECOVERING: Your worker has been stop, it is starting back from where it stop
+
 
