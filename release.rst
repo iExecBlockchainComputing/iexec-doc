@@ -34,8 +34,8 @@ The indispensable elements are:
 
 - Description/summary:
     * explain the bug in a few words.
-    * Give the id of transaction.
-    * Make sure your developers know your technical environment, like operating system information .
+    * Give the id of the task, the address of the wallet or the id of the transaction you have a problem with.
+    * Make sure your developers know your technical environment, like operating system information.
     * Visual proof: A picture is worth a thousand words, it can help developers understand the problem better and faster.
     * Steps to reproduce: describe the steps you took before you encountered the bug.
     * Give any additional information you find useful for the description.
