@@ -59,10 +59,6 @@ Find a here a complete tutorial to monetize application and dataset
 
 `<https://github.com/iExecBlockchainComputing/apps/tree/master/CloudCoinAnalysis>`_
 
-Create a front-end for your data monietization dapps
-
- `<https://github.com/iExecBlockchainComputing/not-safe-for-work-ui>`_
-
 Build an oracle with iExec
 
  `<https://github.com/iExecBlockchainComputing/price-feed-doracle>`_
