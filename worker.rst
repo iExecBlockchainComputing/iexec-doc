@@ -183,10 +183,12 @@ This cap value is called `IEXEC_GAS_PRICE_CAP` and the default value is 22Gwei (
 
 
 Statuses of Replicates
--------------------------
+----------------------
 
 One Task bought by a requester will result in one to many Replicates depending on the level of trust set by the requester.
-For a given task, each worker involved will have it own Replicate containing the description of the task to compute inside. The whole computation of a Replicate is made of several stages. Each stage completed by a worker will result to an update of its Replicate status.
+For a given task, each worker involved will have it own Replicate containing the description of the task to compute inside.
+The whole computation of a Replicate is made of several stages. Each stage completed by a worker will result to an update of its Replicate status.
+
 
 Here are the different possible statuses for a replicate:
 
