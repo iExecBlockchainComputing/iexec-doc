@@ -7,12 +7,14 @@ The latest stable version for iExec stack.
 ==========  =========  ==================================================================================
 Module       Version    Link
 ==========  =========  ==================================================================================
-SDK          2.2.39     `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.31>`_
+Core         3.0.1      `<https://github.com/iExecBlockchainComputing/iexec-core/releases/tag/3.0.1>`_
 Worker       3.0.1      `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.0.1>`_
+SDK          2.2.39     `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.31>`_
 Poco         3.0.24     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.34>`_
 ==========  =========  ==================================================================================
 
-Current Docker container worker version is **iexechub/iexec-worker:3.0.1**
+Core current docker image version is **iexechub/iexec-core:3.0.1**
+Worker Current docker image version is **iexechub/iexec-worker:3.0.1**
 
 
 Report an issue
@@ -88,6 +90,7 @@ The list of new features and improvement:
 ========  =======  ==================================================================================
 Module    Version  Link
 ========  =======  ==================================================================================
+Core       3.0.0    `<https://github.com/iExecBlockchainComputing/iexec-core/releases/tag/3.0.0>`_
 Worker     3.0.0    `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.0.0>`_
 SDK        3.0.21   `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.21>`_
 Poco       3.0.24   `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.34>`_
@@ -128,4 +131,3 @@ Contact us
 - Slack: https://slack.iex.ec
 - Gitter : https://gitter.im/iExecBlockchainComputing/Lobby
 - Email : support@iex.ec
-
