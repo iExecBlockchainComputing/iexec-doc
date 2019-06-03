@@ -9,8 +9,8 @@ Module       Version    Link
 ==========  =========  ==================================================================================
 Core         3.0.1      `<https://github.com/iExecBlockchainComputing/iexec-core/releases/tag/3.0.1>`_
 Worker       3.0.1      `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.0.1>`_
-SDK          2.2.39     `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.31>`_
-Poco         3.0.24     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.34>`_
+SDK          3.0.31     `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.31>`_
+PoCo         3.0.35     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.35>`_
 ==========  =========  ==================================================================================
 
 Core current docker image version is **iexechub/iexec-core:3.0.1**
@@ -36,8 +36,8 @@ The indispensable elements are:
 
 - Description/summary:
     * explain the bug in a few words.
-    * Give the id of transaction.
-    * Make sure your developers know your technical environment, like operating system information .
+    * Give the id of the task, the address of the wallet or the id of the transaction you have a problem with.
+    * Make sure your developers know your technical environment, like operating system information.
     * Visual proof: A picture is worth a thousand words, it can help developers understand the problem better and faster.
     * Steps to reproduce: describe the steps you took before you encountered the bug.
     * Give any additional information you find useful for the description.
@@ -60,10 +60,6 @@ Tutorials
 Find a here a complete tutorial to monetize application and dataset
 
 `<https://github.com/iExecBlockchainComputing/apps/tree/master/CloudCoinAnalysis>`_
-
-Create a front-end for your data monietization dapps
-
- `<https://github.com/iExecBlockchainComputing/not-safe-for-work-ui>`_
 
 Build an oracle with iExec
 
@@ -92,7 +88,7 @@ Module    Version  Link
 ========  =======  ==================================================================================
 Core       3.0.0    `<https://github.com/iExecBlockchainComputing/iexec-core/releases/tag/3.0.0>`_
 Worker     3.0.0    `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.0.0>`_
-SDK        3.0.21   `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.21>`_
+SDK        3.0.29   `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.29>`_
 Poco       3.0.24   `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.34>`_
 ========  =======  ==================================================================================
 
