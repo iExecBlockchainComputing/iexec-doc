@@ -15,6 +15,12 @@ About iExec
    products
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Release & Support
+
+   release
+
+.. toctree::
    :maxdepth: 2
    :caption: Get Help
 

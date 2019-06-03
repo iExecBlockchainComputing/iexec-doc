@@ -11,8 +11,8 @@ Please note that:
 
 
 Start a worker
---------------------------
-=======
+--------------
+
 
 You will find a list of workerpools at https://pools.iex.ec/
 
@@ -20,15 +20,79 @@ After having loaded some ETH and deposited some RLC to your iExec account, you c
 
 You have different ways to join a workerpool:
 
+* with a Virtual Machine
 * with Docker
 * with Join-Workerpool scripts
-* with a Virtual Machine
 
 
+For security reason, it is **highly recommended to use the virtual machine**.
+
+| The Docker containers run on top of the host kernel by design, but from the point of view of security it can be seen as a risk that needs to be mitigated.
+| As a worker, you have no control on applications that should run on your machine.
+
+
+Virtual Machine (VM)
+~~~~~~~~~~~~~~~~~~~~
+
+
+A VM is ready to make you join the public workerpool.
+
+1. Download the VM
+
+https://download.iex.ec/iExec-Public-Worker.ova
+(mirror: https://drive.google.com/file/d/1Q655sygSbqCffmwi8G12leMzbRQLOI9x/)
+
+2. Install Virtual Box
+
+https://www.virtualbox.org/wiki/Downloads
+
+3. Get or create a wallet
+
+Keep your wallet in a safe place, you will need it later.
+Same advice for your wallet password, you will need it later.
+Go to the 'Wallet Managment' section for more information
+
+4. Top up some ETH & RLC and make a RLC deposit to your iExec account
+
+Go to the 'Wallet Managment' section for more information
+
+5. Launch the VM
+
+.. image:: _images/worker_vm_import.png
+
+To import the VM, just click on iexec-worker.ova file. You will see the “Import Virtual Appliance” window. If you only have 4GB of RAM, please change the RAM to 2,048MB in this window.
+Delete the previous version if you had installed any in the past.
+Click on the ‘Import’ button.
+
+.. image:: _images/worker_vm_start.png
+
+Double click on ‘iExec-Worker’ (or click on ‘start’).
+
+6. Copy your wallet from your host computer to the VM
+
+Open the ‘keystore’ folder, then copy/paste the content of your wallet file from your host computer into the ‘wallet.json’ file of the VM.
+
+7. Start your worker
+
+Click on the “Launch Worker” icon on the VM desktop and follow instructions.
+
+When the worker initialization process is complete, the worker will be started and you will get something like:
+**You worker is all set**.
+Your worker will now be able to compute some tasks comming from the iExec network to earn some RLCs.
+
+Note: If you want to properly shutdown your worker, you can click on the “Stop Worker” icon placed in the desktop of the VM
+
+.. image:: _images/worker_vm_stop_icon.png
+
+
+**Supported OS**
+
+* Linux
+* MacOS
+* Windows
 
 Docker
-----------------------------
-
+~~~~~~
 
 In a terminal, run:
 
@@ -85,7 +149,7 @@ Regarding the volumes mounted with the -v option in the docker run command, they
 
 
 Join-Workerpool script
------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 When available, click on the "Join Worker Pool" button on the top left of the dashboard page and follow instructions.
 
@@ -97,66 +161,6 @@ When available, click on the "Join Worker Pool" button on the top left of the da
 * Linux
 
 
-Virtual Machine (VM)
-----------------------------
-
-
-A VM is ready to make you join the public workerpool.
-
-1. Download the VM 
-
-https://download.iex.ec/iExec-Public-Worker.ova
-(mirror: https://drive.google.com/file/d/1Q655sygSbqCffmwi8G12leMzbRQLOI9x/)
-
-2. Install Virtual Box
-
-https://www.virtualbox.org/wiki/Downloads
-
-3. Get or create a wallet
-
-Keep your wallet in a safe place, you will need it later.
-Same advice for your wallet password, you will need it later.
-Go to the 'Wallet Managment' section for more information
-
-4. Top up some ETH & RLC and make a RLC deposit to your iExec account
-
-Go to the 'Wallet Managment' section for more information
-
-5. Launch the VM
-
-.. image:: _images/worker_vm_import.png
-
-To import the VM, just click on iexec-worker.ova file. You will see the “Import Virtual Appliance” window. If you only have 4GB of RAM, please change the RAM to 2,048MB in this window.
-Delete the previous version if you had installed any in the past. 
-Click on the ‘Import’ button.
-
-.. image:: _images/worker_vm_start.png
-
-Double click on ‘iExec-Worker’ (or click on ‘start’).
-
-6. Copy your wallet from your host computer to the VM
-
-Open the ‘keystore’ folder, then copy/paste the content of your wallet file from your host computer into the ‘wallet.json’ file of the VM.
-
-7. Start your worker
-
-Click on the “Launch Worker” icon on the VM desktop and follow instructions.
-
-When the worker initialization process is complete, the worker will be started and you will get something like:
-**You worker is all set**.
-Your worker will now be able to compute some tasks comming from the iExec network to earn some RLCs.
-
-Note: If you want to properly shutdown your worker, you can click on the “Stop Worker” icon placed in the desktop of the VM
-
-.. image:: _images/worker_vm_stop_icon.png
-
-
-**Supported OS**
-
-* Linux
-* MacOS
-* Windows
-
 
 
 Wallet restriction
@@ -166,7 +170,7 @@ An exclusive wallet must be associated to your worker.
 You need N wallets if you want N workers. 
 
 Fees
-------------------
+----
 
 Gas price on the Ethereum network is constantly changing. A high traffic could potentially increase average gas price since some people might want to get their transactions mined very fast.
 By taking a look at https://ethgasstation.info/, you will see a `Median Gas Price (gwei)` which will be different in few hours.

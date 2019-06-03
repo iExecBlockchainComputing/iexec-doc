@@ -13,35 +13,38 @@ SDK          3.0.31     `<https://github.com/iExecBlockchainComputing/iexec-sdk/
 PoCo         3.0.35     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.35>`_
 ==========  =========  ==================================================================================
 
-Core current docker image version is **iexechub/iexec-core:3.0.1**
-Worker Current docker image version is **iexechub/iexec-worker:3.0.1**
+
+
+==========  ===========================================
+Module       Current docker image Version
+==========  ===========================================
+Core         **iexechub/iexec-core:3.0.1**
+Worker       **iexechub/iexec-worker:3.0.1**
+==========  ===========================================
 
 
 Report an issue
 ---------------
 
-If you found a problem, please fill in an issue in our github page.
-
+| If you found a problem, please fill in an issue in our github page.
 | Before reporting, have a look to the existing list of open and closed issues.
 | The problem may already get reported.
+| If the problem you encountered is not listed, open a new issue with the most complete description of the problem you can provide.
 
-If the problem you encountered is not listed, open a new issue with the most complete description of the problem you can provide.
-
-**Make it easy for the team to solve the problem.**
+**Make it easy for our team to solve the problem.**
 
 The indispensable elements are:
 
 - Title:
-    * Keep it brief, clear and include the name of the feature where you found an issue.
+    * Keep it brief, clear and include the name of the feature.
 
 - Description/summary:
-    * explain the bug in a few words.
-    * Give the id of the task, the address of the wallet or the id of the transaction you have a problem with.
-    * Make sure your developers know your technical environment, like operating system information.
-    * Visual proof: A picture is worth a thousand words, it can help developers understand the problem better and faster.
+    * Explain the bug in a few words.
+    * Give the id of the task, the address of the wallet or the id of the transaction.
+    * Make sure your developers know the technical environment (operating system, etc)
+    * Visual proof: a picture is worth a thousand words, it can help developers understand the problem better and faster.
     * Steps to reproduce: describe the steps you took before you encountered the bug.
     * Give any additional information you find useful for the description.
-
 
 ================  ====================================================================
 Module             Link to open or check existing issues
@@ -50,20 +53,20 @@ Worker              `<https://github.com/iExecBlockchainComputing/iexec-core/iss
 SDK                 `<https://github.com/iExecBlockchainComputing/iexec-sdk/issues>`_
 ================  ====================================================================
 
-| If the classification of the issue is not clear for you or does not match with the previous list,
+| If the classification of the issue is not clear for you or does not match with the category above,
 | you can send your bug report by mail at support@iex.ec
 
 
 Tutorials
 ---------
 
-Find a here a complete tutorial to monetize application and dataset
+Find a here a complete tutorial to monetize an application and a dataset.
 
 `<https://github.com/iExecBlockchainComputing/apps/tree/master/CloudCoinAnalysis>`_
 
 Build an oracle with iExec
 
- `<https://github.com/iExecBlockchainComputing/price-feed-doracle>`_
+`<https://github.com/iExecBlockchainComputing/price-feed-doracle>`_
 
 
 Release Notes
