@@ -204,8 +204,8 @@ Here are the different possible statuses for a replicate:
 * COMPUTED: The computation is completed
 * COMPUTE_FAILED: The computation failed
 * CAN_CONTRIBUTE: Your worker can contribute the fingerprint of the computed result on chain
-* CANT_CONTRIBUTE_SINCE_STAKE_TOO_LOW: Your worker hasn't enought RLC in its account to contribute (30% of the task in RLC)
-* CANT_CONTRIBUTE_SINCE_TASK_NOT_ACTIVE: The task is not active on chain
+* CANT_CONTRIBUTE_SINCE_STAKE_TOO_LOW: Your worker hasn't enought RLC in its account to contribute (30% of the task in RLC by default)
+* CANT_CONTRIBUTE_SINCE_TASK_NOT_ACTIVE: The task is not active on chain. This status usually happens when different workers have contributed on the same task but the consensus has been reached before your contribution.
 * CANT_CONTRIBUTE_SINCE_AFTER_DEADLINE: The deadline for the contribution is reached
 * CANT_CONTRIBUTE_SINCE_CONTRIBUTION_ALREADY_SET: Your worker already contributed for this task
 * CONTRIBUTING: Your worker sent the "contribute(..)" transaction (fingerprint of the result) on chain
