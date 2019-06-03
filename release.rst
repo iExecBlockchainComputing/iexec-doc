@@ -9,7 +9,7 @@ Module       Version    Link
 ==========  =========  ==================================================================================
 SDK          3.0.31     `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.31>`_
 Worker       3.0.1      `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.0.1>`_
-Poco         3.0.24     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.34>`_
+PoCo         3.0.35     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.35>`_
 ==========  =========  ==================================================================================
 
 Current Docker container worker version is **iexechub/iexec-worker:3.0.1**
@@ -128,4 +128,3 @@ Contact us
 - Slack: https://slack.iex.ec
 - Gitter : https://gitter.im/iExecBlockchainComputing/Lobby
 - Email : support@iex.ec
-
