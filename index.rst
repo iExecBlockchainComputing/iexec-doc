@@ -12,7 +12,7 @@ About iExec
    :caption: CLOUD RESOURCES MARKETPLACE
 
    intro
-   products
+   stackdescription
 
 .. toctree::
    :maxdepth: 1
