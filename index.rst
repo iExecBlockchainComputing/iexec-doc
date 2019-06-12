@@ -28,7 +28,7 @@ About iExec
    wallet
    worker
    workerpool
-   taskexecution
+   requester
    appprovider
    dataset
 
