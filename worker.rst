@@ -50,11 +50,9 @@ https://www.virtualbox.org/wiki/Downloads
 
 Keep your wallet in a safe place, you will need it later.
 Same advice for your wallet password, you will need it later.
-Go to the 'Wallet Managment' section for more information
+Go to the 'Wallet Management' section for more information
 
 4. Top up some ETH & RLC and make a RLC deposit to your iExec account
-
-Go to the 'Wallet Managment' section for more information
 
 5. Launch the VM
 
