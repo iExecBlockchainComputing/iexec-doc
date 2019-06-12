@@ -29,7 +29,7 @@ About iExec
    worker
    workerpool
    taskexecution
-   dockerapp
+   appprovider
    dataset
 
 .. toctree::

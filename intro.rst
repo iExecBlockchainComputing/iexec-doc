@@ -31,7 +31,7 @@ Developers also benefit from being free from adjusting resource allocation. By n
 
 Go to the `Application provider`_ section to learn how to build dapp for the community.
 
-.. _Application provider: /dockerapp.html
+.. _Application provider: /appprovider.html
 
 
 Dataset providers

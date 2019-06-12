@@ -19,7 +19,7 @@ The dapp store is a catalog of ready to use applications and tools.
 
 Go to the `Provide your application`_ section.
 
-.. _Provide your application: /dockerapp.html
+.. _Provide your application: /appprovider.html
 
 
 Data store
