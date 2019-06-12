@@ -37,7 +37,7 @@ About iExec
    :caption: Technical Documentation
 
    poco
-   poa
+   consortiumdeployment
    doracle
 
 .. toctree::
