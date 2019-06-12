@@ -61,8 +61,9 @@ Visit the iExec Marketplace (https://market.iex.ec)
 Worker pools
 ------------
 
-| Workers are organized in worker pools.
-| For each one of these, a scheduler manages the work distribution. There are two types of worker pools:
+| Workers are organized in worker pools, where participating computing powers are called ‘Workers’.
+| As a worker provider, you can connect your machine to the network and provide computing power.
+| A scheduler manages the work distribution. There are two types of worker pools:
 |  - Public worker pools
 |  - Private worker pools
 
