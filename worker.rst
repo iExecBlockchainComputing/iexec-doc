@@ -101,6 +101,8 @@ Customize the VM worker with your wallet
 
 2 - Install iexec sdk (password: iexec)
 
+   Right click on the desktop, and open a terminal
+
 .. code:: bash
 
     sudo apt-get install && sudo  npm install -g iexec
