@@ -58,7 +58,7 @@ Links
 - The iExec Marketplace: https://market.iex.ec
 - The iExec Explorer: https://explorer.iex.ec
 - The iExec Pools registry: https://pools.iex.ec
-- The RLC faucet: https://faucet.iex.ec
+- The RLC faucet: https://faucet.iex.ec, to get RLC for testing purpose and access to limited computing resources.
 - iExec main documentation: https://docs.iex.ec
 - https://github.com/iExecBlockchainComputing : source code, SDK, dapps registry to apply for Dapp Store listing.
 

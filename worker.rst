@@ -84,12 +84,37 @@ Note: If you want to properly shutdown your worker, you can click on the “Stop
 
 .. image:: _images/worker_vm_stop_icon.png
 
-
 **Supported OS**
 
 * Linux
 * MacOS
 * Windows
+
+.. NOTE::
+
+    | Change keyboard settings, this is qwerty mode by default.
+    | https://websiteforstudents.com/configure-ubuntu-18-04-lts-beta-keyboard-layout-for-native-languages/
+
+
+Customize the VM worker with your wallet
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1 - Export your private from your wallet manager, metasmask.
+
+2 - Install iexec sdk (password: iexec)
+
+.. code:: bash
+
+    sudo apt-get install && sudo  npm install -g iexec
+
+3 - Import your wallet with the iExec SDK.
+
+.. code:: bash
+
+    iexec wallet import your_private_key
+
+4 - Launch your worker, the script will automatically use the imported wallet.
+
 
 Docker
 ~~~~~~

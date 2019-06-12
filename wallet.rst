@@ -40,6 +40,9 @@ Credit your wallet with ETH and RLC
 | Ether is used to process the smart contracts.
 
 Useful links:
+
+For testing purpose and access to limited computing resources:
+
  - How to get some test ETH (Kovan) on your Ethereum wallet ? https://gitter.im/kovan-testnet/faucet
  - How to get some test RLC (Kovan) on your Ethereum wallet ? https://faucet.iex.ec/kovan
 
