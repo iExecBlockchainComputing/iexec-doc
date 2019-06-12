@@ -30,7 +30,7 @@ About iExec
    workerpool
    requester
    appprovider
-   dataset
+   datasetprovider
 
 .. toctree::
    :maxdepth: 3

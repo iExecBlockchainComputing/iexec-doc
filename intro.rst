@@ -44,7 +44,7 @@ iExec allows with multiple levels of security to monetize any data: data means d
 
 Go to the `Dataset provider`_ section to learn how to propose a dataset.
 
-.. _Dataset provider: /dataset.html
+.. _Dataset provider: /datasetprovider.html
 
 
 Computing Providers

@@ -35,7 +35,7 @@ The data store is a catalog of ready to use datasets.
 
 Go to the `Provide your dataset`_ section.
 
-.. _Provide your dataset: /dataset.html
+.. _Provide your dataset: /datasetprovider.html
 
 
 
