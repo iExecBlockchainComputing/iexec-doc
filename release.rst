@@ -2,7 +2,9 @@
 Current Version
 ---------------
 
-The latest stable version for iExec stack.
+The latest stable version for iExec stack:
+
+**3.0.1**
 
 ==========  =========  ==================================================================================
 Module       Version    Link
@@ -16,7 +18,7 @@ PoCo         3.0.35     `<https://github.com/iExecBlockchainComputing/PoCo/relea
 
 
 ==========  ===========================================
-Module       Current docker image Version
+Module       Current docker image version
 ==========  ===========================================
 Core         **iexechub/iexec-core:3.0.1**
 Worker       **iexechub/iexec-worker:3.0.1**
@@ -53,20 +55,8 @@ Worker              `<https://github.com/iExecBlockchainComputing/iexec-core/iss
 SDK                 `<https://github.com/iExecBlockchainComputing/iexec-sdk/issues>`_
 ================  ====================================================================
 
-| If the classification of the issue is not clear for you or does not match with the category above,
+| If the classification of the issue is not clear for you or does not match with the categories above,
 | you can send your bug report by mail at support@iex.ec
-
-
-Tutorials
----------
-
-Find a here a complete tutorial to monetize an application and a dataset.
-
-`<https://github.com/iExecBlockchainComputing/apps/tree/master/CloudCoinAnalysis>`_
-
-Build an oracle with iExec
-
-`<https://github.com/iExecBlockchainComputing/price-feed-doracle>`_
 
 
 Release Notes
@@ -75,7 +65,7 @@ Release Notes
 Version 3.0 : "Impatient Vanguard" (急先鋒)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The iExec v3.0 labelled “Impatient Vanguard” (急先鋒)
+The iExec v3.0 labelled “Impatient Vanguard” (急先鋒), **May 2019**
 
 The list of new features and improvement:
 
@@ -99,7 +89,7 @@ Poco       3.0.24   `<https://github.com/iExecBlockchainComputing/PoCo/releases/
 Version 2.3 "Gold Lancer” (金槍手)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This version is deprecated, not maintained.
+This version is deprecated, not maintained. **May 2018**
 
 The iExec v2.3 labelled “Gold Lancer” (金槍手) sees the addition of an SDK that provides full end-to-end privacy-preserving computing, guarantees execution integrity, and provides an on-chain enclave execution attestation. It consists of the following releases of the different modules:
 
@@ -110,6 +100,18 @@ XtremWeb  14.0.0   `<https://github.com/iExecBlockchainComputing/xtremweb-hep/re
 SDK       2.2.39   `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v2.2.39>`_
 PoCo      1.0.14   `<https://github.com/iExecBlockchainComputing/PoCo/>`_
 ========  =======  ===================================================================================
+
+
+Tutorials
+---------
+
+Find a here a complete tutorial to monetize an application and a dataset.
+
+`<https://github.com/iExecBlockchainComputing/apps/tree/master/CloudCoinAnalysis>`_
+
+Build an oracle with iExec
+
+`<https://github.com/iExecBlockchainComputing/price-feed-doracle>`_
 
 
 Useful Links
