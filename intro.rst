@@ -37,9 +37,10 @@ Go to the `Application provider`_ section to learn how to build dapp for the com
 Dataset providers
 -----------------
 
-Data owner can monetize their dats by setting a fixed-fee for each single usage of their software (pay-per-task model).
+Dataset provider can monetize their datas by setting a fixed-fee for each single usage of their software (pay-per-task model).
 Dataset can be seen as a wide concept to protect,
-iExec allows with multiple levels of security to monitize any data: data means dataset or more advanced valuable models as AI trained model,
+iExec allows with multiple levels of security to monetize any data: data means dataset or more advanced valuable models as AI trained model,
+
 
 Go to the `Dataset provider`_ section to learn how to propose a dataset.
 
