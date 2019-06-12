@@ -101,7 +101,7 @@ In a terminal, run:
 	docker run -d --name "MY_WORKER_NAME" \
            --hostname "MY_WORKER_NAME" \
            --env "IEXEC_WORKER_NAME=MY_WORKER_NAME" \
-           --env "IEXEC_CORE_HOST=main-pool.iex.ec" \
+           --env "IEXEC_CORE_HOST=public-pool.iex.ec" \
            --env "IEXEC_CORE_PORT=18090" \
            --env "IEXEC_WORKER_WALLET_PATH=/iexec-wallet/wallet.json" \
            --env "IEXEC_WORKER_WALLET_PASSWORD=MY_PASSWORD" \
