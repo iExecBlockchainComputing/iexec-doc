@@ -23,7 +23,8 @@ Our solution is two-fold:
 
                                                    .. image:: ./_images/SGX.jpg
 
-* Second we provide an auditable (open source) `Secret Management Service <https://github.com/iExecBlockchainComputing/SMS>`_ (SMS) software, whose purpose is to securely store the keys for the different actors involved (dataset owner, computation beneficiary). This solves the problem of delegating access rights: in essence the user delegates managing access to his data to the SMS. Of course the SMS has the same security challenges as the Worker (we must ensure it runs as expected, doesn’t spill the secrets, and is not spoofed by the owner of the machine on which it runs) hence **it must also run inside an SGX enclave** . As a company iExec will run its own version of the SMS, but the most security-minded users may very simply run their own SMS. Note that it could also be run by any willing third-party. The data owners will decide which SMS they entrust with their keys.
+* Second we provide an auditable (open source) `Secret Management Service <https://github.com/iExecBlockchainComputing/SMS>`_ (SMS) software, whose purpose is to securely store the keys for the different actors involved (dataset owner, computation beneficiary). This solves the problem of delegating access rights: in essence the user delegates managing access to his data to the SMS. Of course the SMS has the same security challenges as the Worker (we must ensure it runs as expected, doesn’t spill the secrets, and is not spoofed by the owner of the machine on which it runs) hence **it must also run inside an SGX enclave** . As of now there is only one SMS running on iExec's servers, but we intend to open-source the code in the near future, so that anyone will be able to run its own SMS. Data owners will then be able to choose the SMS they trust the most.
+The address of the chosen SMS is parametrizable in the iExec SDK.
 
 Security guarantees
 ~~~~~~~~~~~~~~~~~~~~
@@ -65,11 +66,11 @@ Analysis:
 
 Since the data is encrypted by the data owner, their confidentiality and integrity depends on two conditions:
 
-#. The keys to the data should not leak during transmission to the worker (machine) where the computation will take place
+#. The keys should not leak during transmission to the worker (machine) where the computation will take place
 #. The keys should not leak during the computation.
 
-* 1. is ensured on one hand by transmitting the keys over TLS, and on the other hand by the design of the SMS, which transmits the keys only to an enclave with the right MREnclave (and thus the right application), and only for a computation whose beneficiary has been authorized by the Data Owner. By running the SMS inside an enclave and attesting it before sending it the keys, the Data Owner can make sure he is communicating with a proper SMS that will run as intended.
-* 2. is ensured by remotely attesting the Worker enclave and auditing the code that runs inside it, making sure the code is not malicious and won’t leak the data.
+* 1. is ensured by symmetric encryption of the data, transmitting the keys over TLS, and by the design of the SMS, which transmits the keys only to an enclave with the right MREnclave (and thus the right application), and only for a computation whose beneficiary has been authorized by the Data Owner. By running the SMS inside an enclave and attesting it before sending it the keys, the Data Owner can make sure he is communicating with a proper SMS that will run as intended.
+* 2. is ensured by remotely attesting the Worker enclave and auditing the code that runs inside it, making sure the code is not malicious and won’t leak the data or its keys.
 
 ************
 Tutorial
