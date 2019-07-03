@@ -94,21 +94,37 @@ That’s it! Now you can register at your scheduler as an SGX compatible worker,
 Data provider
 ~~~~~~~~~~~~~~~~
 
-If you want to protect your dataset you need to encrypt it before making it available on the iExec platform. There are two ways to encrypt your dataset, and only one of them is SGX compatible: see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info. Make sure to encrypt your data with the right command.
-In your working directory, put all your plaintext data in a /data-original folder and run the following command:
+If you want to protect your dataset you need to encrypt it before making it available on the iExec platform. There are two ways to encrypt your dataset, and only one of them is SGX compatible: see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
+First, use theSDX to initialize the folder structure:
 
 .. code-block:: bash
 
-	docker run -v $PWD/data-original:/data-original  -v $PWD/data:/data -v $PWD/data-conf:/data-conf iexechub/sgx-data-encrypter
+        iexec tee init
 
-This image runs a script that encrypts your data, and writes the encryption key and corresponding hash on a file in data-conf named keytag. To enable the use of your data you need to upload this information in the SMS. This is\
-done with the following SDK command:
+This command will create the following folder structure:
 
 .. code-block:: bash
 
-	iexec tee push-secret --dataset /data-conf/keytag
+        ├── tee
+        │   ├── encrypted-dataset
+        │   └── original-dataset
+        └── .tee-secrets
+            ├── beneficiary
+            └── dataset
 
-Once this is done you need to create the contract for your dataset (more info `here <https://github.com/ayeks/SGX-hardware>`_)
+Copy your dataset in the original-dataset folder, then run the following command:
+
+.. code-block:: bash
+
+        iexec tee encrypt-dataset  --algorithm scone
+
+This comand will encrypt your dataset for its use in a scone runtime execution. It will also write the corresponding key and tag in a .tee-secrets/dataset/$dataset-name.scone.secret file.
+You then need to push the secret in the SMS:
+.. code-block:: bash
+
+	iexec tee push-secret --dataset --secret-path $PWD/.tee-secrets/dataset/[dataset-name].scone.secret
+
+Once this is done you need to create the contract for your dataset and to sign an order for your dataset  (see SDK doc `here <https://github.com/iExecBlockchainComputing/iexec-sdk>`_) .
 
 .. code-block:: bash
 
@@ -210,7 +226,7 @@ The script will build your docker image, authenticate all the libraries it uses,
 
 **Step 5: Deploy your app**
 
-You can then deploy you app following the normal iExec workflow. You need yo replace the MrEnclave value by the content of the fingerprint file in the iexec.json file.
+You can then deploy you app following the normal iExec workflow. You need to replace the MrEnclave value by the content of the *fingerprint.txt* file in the iexec.json file.
 
 .. code-block:: bash
 
