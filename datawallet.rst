@@ -125,6 +125,7 @@ You then need to push the secret in the SMS:
 	iexec tee push-secret --dataset --secret-path $PWD/.tee-secrets/dataset/[dataset-name].scone.secret
 
 Once this is done you need to create the contract for your dataset and to sign an order for your dataset  (see SDK doc `here <https://github.com/iExecBlockchainComputing/iexec-sdk>`_) .
+Don't forget to add the url of your dataset.
 
 .. code-block:: bash
 
@@ -160,7 +161,7 @@ You can copy the example of Dockerfile for Nilearn. Add the packages your app ne
 
 .. code-block:: bash
 
-        FROM nexus.iex.ec/scone-python
+        FROM iexechub/scone-python
 
         RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.5/community" >> /etc/apk/repositories \
         && apk update \
@@ -200,15 +201,15 @@ This is done as follows:
             -v $PWD/python/python3.6:/usr/lib/python3.6 \
             -v $PWD/conf:/conf \
             -v $PWD/temp:/temp                                   #maps the directory with lib to authenticate
-            nexus.iex.ec/scone-cli sh -c \
+            iexechub/scone-cli sh -c \
         "scone fspf create conf/fspf.pb; \
         scone fspf addr conf/fspf.pb /  --not-protected --kernel /; \
         scone fspf addr conf/fspf.pb /usr/lib/python3.6 --authenticated --kernel /usr/lib/python3.6; \
         scone fspf addf conf/fspf.pb /usr/lib/python3.6 /usr/lib/python3.6;\
         scone fspf addr conf/fspf.pb /usr/bin --authenticated --kernel /usr/bin; \
         scone fspf addf conf/fspf.pb /usr/bin /usr/bin;\
-        scone fspf addr conf/fspf.pb /temp/path/to/lib --authenticated --kernel /path/to/lib; \ #authenticate the libraries
-        scone fspf addf conf/fspf.pb /temp/path/to/lib /path/to/lib;\                           #authenticate the libraries
+        scone fspf addr conf/fspf.pb /temp/path/to/lib --authenticated --kernel /path/to/lib; \ #authenticate additional libraries
+        scone fspf addf conf/fspf.pb /temp/path/to/lib /path/to/lib;\                           #authenticate additional libraries
         scone fspf addr conf/fspf.pb /signer --authenticated --kernel /signer; \
         scone fspf addf conf/fspf.pb /signer /signer;\
         scone fspf addr conf/fspf.pb /app --authenticated --kernel /app; \
@@ -220,7 +221,7 @@ This is done as follows:
 
 .. code-block:: bash
 
-	sh create-app.sh [docker-image-name]
+	bash create-app.sh --app-name=<name:tag> --app-folder=<path> --dockerfile=<dockerfile-name>
 
 The script will build your docker image, authenticate all the libraries it uses, and compute the enclave hash of all your code and libraries. The enclave hash is written in the working directory in the file fingerprint.
 
@@ -306,6 +307,6 @@ Once the computation is finished you can download the result...
 
 .. code-block:: bash
 
-	$ iexec tee decrypt-results
+	$ iexec tee decrypt-results <encrypted-results-path>
 
 And that's all! Your computation was executed in a protected enclave, and encrypted in-place: no one on Earth except you will be able to read the results.
