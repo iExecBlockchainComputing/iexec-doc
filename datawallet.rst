@@ -119,20 +119,23 @@ Copy your dataset in the original-dataset folder, then run the following command
         iexec tee encrypt-dataset  --algorithm scone
 
 This comand will encrypt your dataset for its use in a scone runtime execution. It will also write the corresponding key and tag in a .tee-secrets/dataset/$dataset-name.scone.secret file.
-You then need to push the secret in the SMS:
-.. code-block:: bash
-
-	iexec tee push-secret --dataset --secret-path $PWD/.tee-secrets/dataset/[dataset-name].scone.secret
-
 Once this is done you need to create the contract for your dataset and to sign an order for your dataset  (see SDK doc `here <https://github.com/iExecBlockchainComputing/iexec-sdk>`_) .
-Don't forget to add the url of your dataset.
+Don't forget to add the url of your dataset in the *iexec.json* file.
 
 .. code-block:: bash
 
 	iexec dataset init
 	iexec dataset deploy
 	iexec order init
+        iexec order sign --dataset
 	iexec order publish --dataset
+
+Once you've deployed your dataset, you can find its Ethereum contract address in the *deployed.json* file. You then need to push the secret (ncryption key and tag) in the SMS:
+
+.. code-block:: bash
+
+	iexec tee push-secret --dataset <Dataset contract address> --secret-path <$PWD/.tee-secrets/dataset/[dataset-name].scone.secret>
+
 
 DApp developer
 ~~~~~~~~~~~~~~~~
@@ -153,7 +156,7 @@ Hence your Docker image should be built from our python_sgx image available on o
 
 .. code-block:: bash
 
-        git clone git@github.com:iExecBlockchainComputing/test_sgx.git
+        git clone https://github.com/iExecBlockchainComputing/test_sgx.git
 
 **Step 2: Create a Dockerfile for your app**
 
@@ -173,16 +176,16 @@ You can copy the example of Dockerfile for Nilearn. Add the packages your app ne
 
         RUN cp /usr/bin/python3.6 /usr/bin/python3
 
-        COPY nilearn.py	/app/nilearn.py #replace with your own app at this line
+        COPY nilearn.py	/app/test-nilearn.py #replace with your own app at this line
 
         ENTRYPOINT mkdir -p /iexec_in/data && unzip /iexec_in/$DATASET_FILENAME -d /iexec_in/data \
-        && python3 /app/nilearn.py sgx #replace with your command here
+        && python3 /app/test-nilearn.py sgx #replace with your command here
 
 
 **Step 3: Edit the script to add your libraries**
 
-To make your app compatible with the iExec SGX workflow you need to compute its MREnclave: this is basically a hash of your code, that will later enable us to check whether an enclave is actually running a genuine version of your code. You also need to authentify all the libraries that your app will use.
-We provide a simple shell script to do this. By default the script authentifies the /usr/bin and the usr/lib/python3.6 directory. If your app uses libraries that are located in other place, you will need to edit the script to add authentication for your libraries.
+To make your app compatible with the iExec SGX workflow you need to compute its MREnclave: this is basically a hash of your code, that will later enable us to check whether an enclave is actually running a genuine version of your code. You also need to authenticate all the libraries that your app will use.
+We provide a simple shell script named *create-app.sh* to do this. By default the script authentifies the /usr/bin and the usr/lib/python3.6 directory. If your app uses libraries that are located in other place, you will need to edit the script to add authentication for your libraries.
 This is done as follows:
 
 .. code-block:: bash
@@ -225,9 +228,20 @@ This is done as follows:
 
 The script will build your docker image, authenticate all the libraries it uses, and compute the enclave hash of all your code and libraries. The enclave hash is written in the working directory in the file fingerprint.
 
-**Step 5: Deploy your app**
+**Step 5: Deploy your dApp**
 
-You can then deploy you app following the normal iExec workflow. You need to replace the MrEnclave value by the content of the *fingerprint.txt* file in the iexec.json file.
+You can then deploy you app following the normal iExec workflow (see `doc <https://docs.iex.ec/appprovider.html#deploy-your-dapp>`_). You need to replace the MrEnclave value by the content of the *fingerprint.txt* file in the iexec.json file.
+
+.. code-block:: bash
+
+        "app": {
+          "owner": "0x9A07Ea49a32C1E69eD7B6dFe1aa1C19181465C52",
+          "name": "test_sgx",
+          "type": "DOCKER",
+          "multiaddr": "iexechub/nilearn:latest",
+          "checksum": "0xc4f18d6e024ac1bd1b0cf08484ca7baaf4c63eb67a20fefe51017424df2a5179",
+          "mrenclave": "1a69b1f5845b266aa65010a03bdd2079fe8291d8a212a6042052909ee388269d|f4209ca57b4e55e9bd46522cafb8e293|726b560078f9e5c33857b5cc917a8d36db7e4f814723437546928defcf21824d"
+        },
 
 .. code-block:: bash
 
@@ -250,12 +264,12 @@ Then you can push your public key to the SMS:
 
 .. code-block:: bash
 
-	$ iexec tee push-secrets
+	$ iexec tee push-secret
 
 
 **Step 2: Order a E2E encrypted computation on iExec**
 
-You can then follow the normal workflow to buy a computation as described in the `tutorial <https://docs.iex.ec/dockerapp.html#deploy-your-dapp>`_
+You can then follow the normal workflow to buy a computation as described in the `doc for the normal workflow <https://docs.iex.ec/requester.html>`_
 
 .. code-block:: bash
 
