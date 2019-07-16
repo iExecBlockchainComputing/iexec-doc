@@ -23,8 +23,7 @@ Our solution is two-fold:
 
                                                    .. image:: ./_images/SGX.jpg
 
-* Second we provide an auditable (open source) `Secret Management Service <https://github.com/iExecBlockchainComputing/SMS>`_ (SMS) software, whose purpose is to securely store the keys for the different actors involved (dataset owner, computation beneficiary). This solves the problem of delegating access rights: in essence the user delegates managing access to his data to the SMS. Of course the SMS has the same security challenges as the Worker (we must ensure it runs as expected, doesn’t spill the secrets, and is not spoofed by the owner of the machine on which it runs) hence **it must also run inside an SGX enclave** . As of now there is only one SMS running on iExec's servers, but we intend to open-source the code in the near future, so that anyone will be able to run its own SMS. Data owners will then be able to choose the SMS they trust the most.
-The address of the chosen SMS is parametrizable in the iExec SDK.
+* Second we provide an auditable (open source) `Secret Management Service <https://github.com/iExecBlockchainComputing/SMS>`_ (SMS) software, whose purpose is to securely store the keys for the different actors involved (dataset owner, computation beneficiary). This solves the problem of delegating access rights: in essence the user delegates managing access to his data to the SMS. Of course the SMS has the same security challenges as the Worker (we must ensure it runs as expected, doesn’t spill the secrets, and is not spoofed by the owner of the machine on which it runs) hence **it must also run inside an SGX enclave**. As of now there is only one SMS running on iExec's servers, but we intend to open-source the code in the near future, so that anyone will be able to run its own SMS. Data owners will then be able to choose the SMS they trust the most. The address of the chosen SMS is parametrizable in the iExec SDK.
 
 Security guarantees
 ~~~~~~~~~~~~~~~~~~~~
@@ -78,30 +77,36 @@ Tutorial
 
 In this tutorial we describe how to realize a fully secured computation with end-to-end data encryption using the iExec stack. As usual with the iExec platform, there are 4 different workflows, depending on your role in the transaction: dApp developer, data provider, hardware resource provider (worker) and computation requester.
 
+
 Worker
-~~~~~~~~~~
+~~~~~~~~
 
 As a worker you need SGX-compatible hardware if you want to perform TEE-based computations. An unofficial list of SGX enabled CPU is available `here <https://github.com/ayeks/SGX-hardware>`_. Basically if your computer was built after 2016 it should be good.
 In addition to an SGX-compatible CPU you also need to make sure the BIOS of your machine support the SGX extension. Most mainstream brand of computer (Dell, HP,...) do. If the SGX option is available in your BIOS then you need to enable it.
+
+
+                                                   .. image:: ./_images/bios1.jpeg
+
 The next step is to install the drivers from Intel for the SGX extension. This can be done in one command line using the following script (on Ubuntu):
 
 .. code-block:: bash
 
-	curl -fssl https://raw.githubusercontent.com/SconeDocs/SH/master/install_sgx_driver.sh | bash
+	# curl -fssl https://raw.githubusercontent.com/SconeDocs/SH/master/install_sgx_driver.sh | bash
 
 That’s it! Now you can register at your scheduler as an SGX compatible worker, and you’ll soon receive requests for SGX jobs.
 
+
 Data provider
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 If you want to protect your dataset you need to encrypt it before making it available on the iExec platform. There are two ways to encrypt your dataset, and only one of them is SGX compatible: see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
-First, use theSDX to initialize the folder structure:
+First, initialize the folder structure:
 
 .. code-block:: bash
 
-        iexec tee init
+        $ iexec tee init
 
-This command will create the following folder structure:
+This command will create the following folders:
 
 .. code-block:: bash
 
@@ -112,125 +117,162 @@ This command will create the following folder structure:
             ├── beneficiary
             └── dataset
 
-Copy your dataset in the original-dataset folder, then run the following command:
+Copy your dataset in the *original-dataset/*  folder, then encrypt it with the SDK:
 
 .. code-block:: bash
 
-        iexec tee encrypt-dataset  --algorithm scone
+        $ cp /path/to/your/dataset tee/original-dataset/dataset-name
+        $ iexec tee encrypt-dataset  --algorithm scone
 
-This comand will encrypt your dataset for its use in a scone runtime execution. It will also write the corresponding key and tag in a .tee-secrets/dataset/$dataset-name.scone.secret file.
-Once this is done you need to create the contract for your dataset and to sign an order for your dataset  (see SDK doc `here <https://github.com/iExecBlockchainComputing/iexec-sdk>`_) .
-Don't forget to add the url of your dataset in the *iexec.json* file.
+This command will encrypt your dataset to enable its use in a scone runtime execution. It will also write the corresponding key and tag in a :code:`.tee-secrets/dataset/<dataset-name>.scone.secret` file.
 
-.. code-block:: bash
+**You need to upload the encrypted dataset to a public server (for example a Github repository or on IPFS).**
 
-	iexec dataset init
-	iexec dataset deploy
-	iexec order init
-        iexec order sign --dataset
-	iexec order publish --dataset
-
-Once you've deployed your dataset, you can find its Ethereum contract address in the *deployed.json* file. You then need to push the secret (ncryption key and tag) in the SMS:
+Create the dataset contract template:
 
 .. code-block:: bash
 
-	iexec tee push-secret --dataset <Dataset contract address> --secret-path <$PWD/.tee-secrets/dataset/[dataset-name].scone.secret>
+	$ iexec dataset init
+
+This will create the template for the dataset info in the *iexec.json*. Don't forget to add the multiaddress of your dataset (where the dataset will be available to download). The checksum field is not used currently, and can be left blank.
+
+.. code-block:: bash
+
+        "dataset": {
+          "owner": "0x9A07Ea49a32C1E69eD7B6dFe1aa1C19181465C52",
+          "name": "test_sgx",
+          "multiaddr": "https://raw.githubusercontent.com/iExecBlockchainComputing/test_sgx/master/sgx_data.zip",
+          "checksum": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+
+Then deploy your dataset:
+
+.. code-block:: bash
+
+	$ iexec dataset deploy
+
+.. code-block:: bash
+
+        ~/SGX/test_sgx/test$ iexec dataset deploy
+        ℹ iExec SDK update available 3.0.33 →  3.0.34, Run "npm -g i iexec" to update
+
+        ℹ using chain [kovan]
+        ? Using wallet UTC--2019-05-28T16-00-29.164000000Z--9A07Ea49a32C1E69eD7B6dFe1aa1
+        C19181465C52
+        Please enter your password to unlock your wallet [hidden]
+        ✔ Deployed new dataset at address 0x0bF2AEb5e7FCE90DCb39FEEaC49Ce44893CAd31d
+
+Once you dataset is deployed you can push its secret (encryption key and hash of the data) to the SMS. This is done simply with the SDK:
+
+.. code-block:: bash
+
+	$ iexec tee push-secret --dataset <Dataset contract address> --secret-path <$PWD/.tee-secrets/dataset/<dataset-name>.scone.secret>
+
+
+Initialize your dataset order:
+
+.. code-block:: bash
+
+	$ iexec order init
+
+...and edit your dataset order in the *order.json* file, to copy-paste the address of your dataset. Here you can set the price of your dataset, and the number of utilisations. You can also whitelist \
+the app and worker pool that will be allowed to use your dataset. **Don't forget to replace the tag, from 0x00..000 to 0x00...001 (as seen below).**
+
+.. code-block:: bash
+
+        "datasetorder": {
+          "dataset": "0x0bF2AEb5e7FCE90DCb39FEEaC49Ce44893CAd31d",
+          "datasetprice": 1000,
+          "volume": 1000000,
+          "tag": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "apprestrict": "0x0000000000000000000000000000000000000000",
+          "workerpoolrestrict": "0x0000000000000000000000000000000000000000",
+          "requesterrestrict": "0x0000000000000000000000000000000000000000"
+        }
+
+Once your order is ready you can sign it, and send it to the potential user of your dataset. You can also publish it on the iExec marketplace with the SDK:
+
+.. code-block:: bash
+
+        $ iexec order sign --dataset
+	$ iexec order publish --dataset
 
 
 DApp developer
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+
 
 Background
------------
+************
+
 At its core the Intel SGX technology relies on the creation of special zones in memory called enclaves. Access to this zone is protected by the CPU, so that only code from inside the zone can access data in the enclave. If a code from outside the enclave - whatever its privilege level, even OS or hypervisor code -  tries to read a memory location that is part of the enclave the CPU will return an error.
 The drawback is that whenever your program needs to use code outside the enclave - for example OS code  (eg system calls) for network or file system access - it needs to perform a special sequence of CPU instruction to leave the enclave securely. As a result to run a program natively you would need to rewrite it using Intel SDK and call these instructions manually, an impractical and potentially complex task.
 To avoid this and make the use of SGX through iExec as developer friendly as possible, iExec provides a transparent integration with Scone, a runtime component developed by Scontain that allows to run applications in SGX enclaves in an unmodified way. We provide several docker images, that already include the Scone components as well as iExec integration code, that make the development of iExec-ready, SGX-enabled dApp as simple as a few Dockerfile lines.
 
 Example: creating a Python 3 SGX dApp
----------------------------------------
+**************************************
 
 Here we explain how to create an SGX enabled python app. We provide a Github repository with several examples. Our SGX framework is based on the Scone runtime, that allows us to run unmodified apps inside SGX enclaves.
 Hence your Docker image should be built from our python_sgx image available on our docker repository.
+We provide a `Github repository <https://github.com/iExecBlockchainComputing/test_sgx>`_ with several examples, that show how to build an SGX-enabled docker image.
 
-**Step 1: Clone the repository**
+**Step 1: Create your app folder**
+
+First clone the test-sgx repo and create the directories for your app, and initialize the iExec SDK:
 
 .. code-block:: bash
 
         git clone https://github.com/iExecBlockchainComputing/test_sgx.git
+        cd test-sgx
+        mkdir my-app
+        mkdir my-app/src
+        cd my-app
+        iexec init
+        iexec app init
 
-**Step 2: Create a Dockerfile for your app**
+After this you should copy the file for your app (python scripts) in the my-app/src folder.
 
-You can copy the example of Dockerfile for Nilearn. Add the packages your app needs in the RUN pip install command. Note that the python scone module is built on the muslc library and run only on the alpine version of Linux, so if your app needs specific binaries they should be recompiled using muslc, as shown in the Dockerfile.
-
-.. code-block:: bash
-
-        FROM iexechub/scone-python
-
-        RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.5/community" >> /etc/apk/repositories \
-        && apk update \
-        && apk add --update-cache --no-cache libgcc musl gcc musl\
-        && apk add --update-cache --no-cache libgfortran  libquadmath lapack-dev gfortran python-dev py-pip build-base wget freetype-dev libpng-dev \#add required binary packages here
-        && apk add --no-cache --virtual .build-deps gcc musl-dev
-
-        RUN SCONE_MODE=sim pip install cython scipy==1.2.0 scikit-learn nilearn matplotlib attrdict python-gnupg web3 #add required python packages here
-
-        RUN cp /usr/bin/python3.6 /usr/bin/python3
-
-        COPY nilearn.py	/app/test-nilearn.py #replace with your own app at this line
-
-        ENTRYPOINT mkdir -p /iexec_in/data && unzip /iexec_in/$DATASET_FILENAME -d /iexec_in/data \
-        && python3 /app/test-nilearn.py sgx #replace with your command here
-
-
-**Step 3: Edit the script to add your libraries**
-
-To make your app compatible with the iExec SGX workflow you need to compute its MREnclave: this is basically a hash of your code, that will later enable us to check whether an enclave is actually running a genuine version of your code. You also need to authenticate all the libraries that your app will use.
-We provide a simple shell script named *create-app.sh* to do this. By default the script authentifies the /usr/bin and the usr/lib/python3.6 directory. If your app uses libraries that are located in other place, you will need to edit the script to add authentication for your libraries.
-This is done as follows:
+**Step 2: Copy and edit the Dockerfile**
 
 .. code-block:: bash
 
-        docker run --rm --entrypoint="" \
-            -v $PWD/python:/python
-            -v $PWD/temp:/temp
-            $APP_NAME sh -c \
-            "cp -r /usr/lib/python3.6 /python" &&
-            "cp [-r] /path/to/lib /temp                  #copy lib to /temp volume, which is mapped to a filesystem directory $PWD/temp.
+        cp ../Dockerfile Dockerfile
+        nano  Dockerfile
 
-        # create fspf.pb
-        docker run -e SCONE_MODE=sim \
-            -v $PWD/app:/app \
-            -v $PWD/signer:/signer \
-            -v $PWD/python/python3.6:/usr/lib/python3.6 \
-            -v $PWD/conf:/conf \
-            -v $PWD/temp:/temp                                   #maps the directory with lib to authenticate
-            iexechub/scone-cli sh -c \
-        "scone fspf create conf/fspf.pb; \
-        scone fspf addr conf/fspf.pb /  --not-protected --kernel /; \
-        scone fspf addr conf/fspf.pb /usr/lib/python3.6 --authenticated --kernel /usr/lib/python3.6; \
-        scone fspf addf conf/fspf.pb /usr/lib/python3.6 /usr/lib/python3.6;\
-        scone fspf addr conf/fspf.pb /usr/bin --authenticated --kernel /usr/bin; \
-        scone fspf addf conf/fspf.pb /usr/bin /usr/bin;\
-        scone fspf addr conf/fspf.pb /temp/path/to/lib --authenticated --kernel /path/to/lib; \ #authenticate additional libraries
-        scone fspf addf conf/fspf.pb /temp/path/to/lib /path/to/lib;\                           #authenticate additional libraries
-        scone fspf addr conf/fspf.pb /signer --authenticated --kernel /signer; \
-        scone fspf addf conf/fspf.pb /signer /signer;\
-        scone fspf addr conf/fspf.pb /app --authenticated --kernel /app; \
-        scone fspf addf conf/fspf.pb /app /app;\
-        scone fspf encrypt ./conf/fspf.pb > /conf/keytag;"
+The Dockerfile provides template for a generic python app. **You should edit it to add the libraries and packages your app may need, as well as its specific Docker entrypoint**.
 
 
-**Step 4: Run the script**
+**Step 3: Build the Docker image and copy the fingerprint**
+
+Build your docker image in the normal way. You may need the no-cache option if you've already build it once (otherwise it won't print the MREnclave).
 
 .. code-block:: bash
 
-	bash create-app.sh --app-name=<name:tag> --app-folder=<path> --dockerfile=<dockerfile-name>
+        $ docker build --no-cache -t iexechub/myapp:latest .
 
-The script will build your docker image, authenticate all the libraries it uses, and compute the enclave hash of all your code and libraries. The enclave hash is written in the working directory in the file fingerprint.
+The build might take some time. At the end of the build process, the docker script will display the "mrenclave" value, as shown below:
 
-**Step 5: Deploy your dApp**
+.. code-block:: bash
 
-You can then deploy you app following the normal iExec workflow (see `doc <https://docs.iex.ec/appprovider.html#deploy-your-dapp>`_). You need to replace the MrEnclave value by the content of the *fingerprint.txt* file in the iexec.json file.
+        Added region /signer to file system protection file fspf.pb new AES-GCM tag: b074e8d611711a809e09ae48b26a2244
+        Added files to file system protection file fspf.pb new AES-GCM tag: 1798fa5a4f1311e51b2ac1435f1c6a38
+        Added region /app to file system protection file fspf.pb new AES-GCM tag: 43e2f518d28890425fb8f6f20acb2856
+        Added files to file system protection file fspf.pb new AES-GCM tag: ca4a9cdf07bc74ed535480a8562280f6
+
+        ########################################################
+        MREnclave: 3b62fef269341bc93238580b516d2d934e1264e7442e484d4d459a9abc519a76|b873e72c7687e95d734b7905e07c51d8|b84bc68bae8cdc8703ca4525b2cc16deffe9def4247498ebcc467830a67caf6d
+        ########################################################
+
+        Removing intermediate container 6994b08919a1
+         ---> 2ba28d9ea4c2
+        Step 7/7 : ENTRYPOINT python3 /app/app.py
+         ---> Running in 5ca393ffd291
+        Removing intermediate container 5ca393ffd291
+         ---> 7144abe35d7b
+        Successfully built 7144abe35d7b
+        Successfully tagged iexechub/sgx-app:latest
+
+You should copy this value and paste it in the iexec.json file, as the app "mrenclave" value:
 
 .. code-block:: bash
 
@@ -238,17 +280,64 @@ You can then deploy you app following the normal iExec workflow (see `doc <https
           "owner": "0x9A07Ea49a32C1E69eD7B6dFe1aa1C19181465C52",
           "name": "test_sgx",
           "type": "DOCKER",
-          "multiaddr": "iexechub/nilearn:latest",
+          "multiaddr": "iexechub/myapp:latest",
           "checksum": "0xc4f18d6e024ac1bd1b0cf08484ca7baaf4c63eb67a20fefe51017424df2a5179",
-          "mrenclave": "1a69b1f5845b266aa65010a03bdd2079fe8291d8a212a6042052909ee388269d|f4209ca57b4e55e9bd46522cafb8e293|726b560078f9e5c33857b5cc917a8d36db7e4f814723437546928defcf21824d"
+          "mrenclave": "3b62fef269341bc93238580b516d2d934e1264e7442e484d4d459a9abc519a76|b873e72c7687e95d734b7905e07c51d8|b84bc68bae8cdc8703ca4525b2cc16deffe9def4247498ebcc467830a67caf6d"
         },
+
+**Don't forget to also modify the "multiaddr" field, so that it points towards you app image once you've pushed it on a Docker repository.** You can then deploy you app, following the normal iExec workflow:
 
 .. code-block:: bash
 
-        iexec app deploy
+        $ docker push iexechub/myapp:latest
+
+.. code-block:: bash
+
+        $ iexec app deploy
+
+Once your app is deployed the SDK will display the Ethereum address of your app contract.
+
+.. code-block:: bash
+
+        ℹ iExec SDK update available 3.0.33 →  3.0.34, Run "npm -g i iexec" to update
+        ℹ using chain [kovan]
+        ? Using wallet UTC--2019-05-28T16-00-29.164000000Z--9A07Ea49a32C1E69eD7B6dFe1aa1
+        C19181465C52
+        Please enter your password to unlock your wallet [hidden]
+        ✔ Deployed new app at address 0x6E519c9887cD2d59918e4EF049b5d9fF489E6E2f
+
+You need to copy this address and paste it in your app order available in the order.json file:
+
+.. code-block:: bash
+
+        $ iexec order init
+        $ nano iexec.json
+
+Edit your app order, by copy-pasting your dApp contract address (in our example 0x6E519c9887cD2d59918e4EF049b5d9fF489E6E2f), and setting the price and number of use of your dApp (and potentially restriction on dataset, worker and requester allowed to use you dApp).
+**Don't forget to replace the tag, from 0x00..000 to 0x00...001 (as seen below).**
+
+.. code-block:: bash
+
+        "apporder": {
+          "app": "0x6E519c9887cD2d59918e4EF049b5d9fF489E6E2f",
+          "appprice": 10000,
+          "volume": 1000000,
+          "tag": "0x0000000000000000000000000000000000000000000000000000000000000001",
+          "datasetrestrict": "0x0000000000000000000000000000000000000000",
+          "workerpoolrestrict": "0x0000000000000000000000000000000000000000",
+          "requesterrestrict": "0x0000000000000000000000000000000000000000"
+        }
+
+Once your order is ready you can sign it, and send it to the potential user of your dApp. You can also publish it on the iExec marketplace with the SDK.
+
+.. code-block:: bash
+
+        $ iexec order sign --app
+        $ iexec order publish --app
+
 
 Computation requester/ beneficiary
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As a computation requester it is your choice to decide whether or not your execution should use iExec Data wallet.
 
@@ -271,10 +360,13 @@ Then you can push your public key to the SMS:
 
 You can then follow the normal workflow to buy a computation as described in the `doc for the normal workflow <https://docs.iex.ec/requester.html>`_
 
+At this point you may use either the SDK or the web interface available at market.iex.ec.
+
+**Option A: using the SDK**
+
 .. code-block:: bash
 
 	$ iexec order init
-        $ iexec order fill
 
 As in the normal iExec workflow, you should fill all the info needed in the iexec.json file (app, dataset, price, category). In the case of an SGX execution there are however two differences:
 
@@ -296,7 +388,7 @@ As in the normal iExec workflow, you should fill all the info needed in the iexe
 	"tag": "0x0000000000000000000000000000000000000000000000000000000000000001",
 	"beneficiary": "0xC08C3def622Af1476f2Db0E3CC8CcaeAd07BE3bB",
 	"callback": "0x0000000000000000000000000000000000000000",
-	"params": "python test-nilearn.py",
+	"params": "python app/app.py",
 	"requester": "0xC08C3def622Af1476f2Db0E3CC8CcaeAd07BE3bB"
 	}
 
@@ -309,18 +401,19 @@ Then sign your orders, and publish your request order:
 
 If your order is matched with the required components (app, dataset, worker), the computation will happen automatically, in a totally secure way.
 
+**Option B: using the web interface**
+
+You can also use the iExec marketplace's web interface. Likewise, you need to fill the address of the dataset and app you want to use. Don't forget to check the "TEE" checkbox.
+
+                                                .. image:: ./_images/BuyComputation.png
+
+
 **Step 3: Download and decrypt your results**
 
-Once the computation is finished you can download the result...
+Once the computation is finished you can download the result using the iExec marketplace web interface. You can then decrypt your result with the SDK:
 
 .. code-block:: bash
 
-	$ iexec show task --download
+	$ iexec tee decrypt-results <encryptedResultsFilePath>
 
-...and decrypt it:
-
-.. code-block:: bash
-
-	$ iexec tee decrypt-results <encrypted-results-path>
-
-And that's all! Your computation was executed in a protected enclave, and encrypted in-place: no one on Earth except you will be able to read the results.
+And that's it! Your computation was executed in a protected enclave, and encrypted in-place: no one on Earth except you will be able to read the results.
