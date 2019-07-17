@@ -31,6 +31,7 @@ About iExec
    requester
    appprovider
    datasetprovider
+   teeexecution
 
 .. toctree::
    :maxdepth: 3
@@ -39,6 +40,7 @@ About iExec
    poco
    consortiumdeployment
    doracle
+   tee
 
 .. toctree::
    :maxdepth: 2
