@@ -1,8 +1,8 @@
-===============
-Trust Execution
-===============
+==============================
+End-to-end encryption
+==============================
 
-In this tutorial we describe how to realize a fully secured computation with end-to-end data encryption using the iExec stack.
+This tutorial describes how to realize a fully secured computation with end-to-end data encryption using the iExec stack.
 
 This additional feature needs extra step, all embedded in the SDK, to manage the application, the dataset and the computation request.
 
@@ -116,9 +116,15 @@ Once your order is ready you can sign it, and send it to the potential user of y
 
 
 
-Prepare the application
------------------------
+Build an SGX-enabled application
+----------------------------------
 
+Background: porting an application to SGX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+At its core the Intel SGX technology relies on the creation of special zones in memory called enclaves. Access to this zone is protected by the CPU, so that only code from inside the zone can access data in the enclave. If a code from outside the enclave - whatever its privilege level, even OS or hypervisor code -  tries to read a memory location that is part of the enclave the CPU will return an error.
+The drawback is that whenever your program needs to use code outside the enclave - for example OS code  (eg system calls) for network or file system access - it needs to perform a special sequence of CPU instruction to leave the enclave securely. As a result to run a program natively you would need to rewrite it using Intel SDK and call these instructions manually, an impractical and potentially complex task.
+To avoid this and make the use of SGX through iExec as developer friendly as possible, iExec provides a transparent integration with Scone, a runtime component developed by Scontain that allows to run applications in SGX enclaves in an unmodified way. We provide several docker images, that already include the Scone components as well as iExec integration code, that make the development of iExec-ready, SGX-enabled dApp as simple as a few Dockerfile lines.
 
 Example: creating a Python 3 SGX dApp
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
