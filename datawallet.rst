@@ -1,6 +1,6 @@
-===================
+===========
 Data Wallet
-===================
+===========
 
 ************
 Overview
@@ -9,7 +9,7 @@ Overview
 An essential feature of the v3 of iExec is the ability to monetize all the aspects of a computation: not only the hardware resources (Workers), but also the code and the data used in the computation (owned respectively by the dApp developer and the Data Owner). In this setting, the iExec software stack must guarantee the security of the code and data, and ensure no one can get access to them if not in the context of a blockchain-verified iExec transaction. Given the decentralized nature of the iExec platform, where computation can be performed by any anonymous user on unknown machines, the only way to fulfill these requirements is to take advantage of the recent developments in hardware-enforced secure execution. Consequently iExec v3 makes use of the Intel SGX technology to create a hardware-protected Trusted Execution Environment (TEE), where the code and data are out of reach and invisible even for a user with physical access to the execution machine.
 
 Challenges/Requirements/Threat model
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Data security is an important concern and a challenging problem even in the traditional, private and centralized computing environment. In an open and decentralized computing model like the iExec platform, these challenges are compounded several times. In addition to security against a traditional attack (eg a remote attacker exploiting a software/OS vulnerability to breach into a server and leak data), iExec must solve the following technical challenges:
 
@@ -26,7 +26,7 @@ Our solution is two-fold:
 * Second we provide an auditable (open source) `Secret Management Service <https://github.com/iExecBlockchainComputing/SMS>`_ (SMS) software, whose purpose is to securely store the keys for the different actors involved (dataset owner, computation beneficiary). This solves the problem of delegating access rights: in essence the user delegates managing access to his data to the SMS. Of course the SMS has the same security challenges as the Worker (we must ensure it runs as expected, doesn’t spill the secrets, and is not spoofed by the owner of the machine on which it runs) hence **it must also run inside an SGX enclave**. As of now there is only one SMS running on iExec's servers, but we intend to open-source the code in the near future, so that anyone will be able to run its own SMS. Data owners will then be able to choose the SMS they trust the most. The address of the chosen SMS is parametrizable in the iExec SDK.
 
 Security guarantees
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 #. Valuable code and data will be symmetrically encrypted whenever publicly available (IPFS, public repository). Decryption will only take place inside an attested SGX enclave, whose code has been authorized by the data owner.
 #. Valuable code and data will be encrypted client-side, on the machine of their owner, then pushed on a public data repository. The corresponding keys will only be communicated over TLS channels established with auditable programs, running in attested enclave.
@@ -38,9 +38,9 @@ Security guarantees
 	* The iExec Dapp (with an MREnclave either guaranteed by its author or by an independent auditor) white-listed by the Data provider.
 	* The enclave-based Scone software component, audited by a third-party and attested by Intel IAS.
 
-****************
+**************
 Implementation
-****************
+**************
 
 Across the iExec software stack there are two components that are mainly concerned with the security of data: the Worker and the SMS.
 The Worker is made of two parts: the In-Enclave (trusted) Worker and the untrusted, standard Worker. All data-sensitive operations (ie handling the dataset keys and decryption, and subsequent processing of the data) are handled by the In-Enclave worker. The untrusted Worker handles interaction with the blockchain and the retribution process (PoCO) but it has no access to the data.
@@ -335,6 +335,9 @@ Once your order is ready you can sign it, and send it to the potential user of y
         $ iexec order sign --app
         $ iexec order publish --app
 
+That’s it! Your app is now SGX compatible. Now you can deploy it using iExec SDK, following the normal dApp workflow (see `tutorial <https://docs.iex.ec/appprovider.html#deploy-your-dapp>`_).
+
+
 ************************************************
 Computation requester/ beneficiary
 ************************************************
@@ -358,11 +361,14 @@ Then you can push your public key to the SMS:
 
 **Step 2: Order a E2E encrypted computation on iExec**
 
+
 You can then follow the normal workflow to buy a computation as described in the `doc for the normal workflow <https://docs.iex.ec/requester.html>`_
 
 At this point you may use either the SDK or the web interface available at market.iex.ec.
 
 **Option A: using the SDK**
+
+You can then follow the normal workflow to buy a computation as described in the `tutorial <https://docs.iex.ec/appprovider.html#deploy-your-dapp>`_
 
 .. code-block:: bash
 

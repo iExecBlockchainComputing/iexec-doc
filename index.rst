@@ -1,51 +1,48 @@
-Welcome to iExec
-=================
+About iExec
+===========
 
-**What is iExec?**
-
-| iExec wants to decentralize cloud computing market by building the future of the Internet infrastructure.
-| iExec aims at providing to companies scalable, secure and easy access to the services, the data-sets and the computing resources they need.
-| Our technology relies on the Ethereum smart contracts and allows for a virtual Cloud infrastructure that provides high-performance computing services on demand
-
-| iExec is the first decentralized marketplace for cloud resources.
-| The iExec platform allows everyone to monetize their applications, servers and data-sets.
-
-.. image:: https://raw.githubusercontent.com/iExecBlockchainComputing/iexec-doc/master/_images/V2_infography.png
+| iExec is building the future of the Internet infrastructure by decentralizing the cloud computing market. It is the first blockchain-based cloud computing marketplace.
+| The iExec network connects cloud resource sellers with cloud resource buyers, encouraging an ecosystem of decentralized and autonomous, privacy-preserving applications.
+| This network aims at providing companies with scalable, secure and easy access to the services, datasets and computing resources they need. iExec’s technology relies on Ethereum smart contracts and allows for a virtual cloud infrastructure that provides high-performance computing services on-demand.
+| At iExec, we believe in a future of decentralized infrastructure and market network, where big data and HPC applications, highly valued datasets, and computing resources (storage, CPU, GPU) will be monetized on the blockchain with the highest level of transparency, resiliency, and security.
 
 
 .. toctree::
    :maxdepth: 2
-   :caption: What is iExec?
+   :caption: CLOUD RESOURCES MARKETPLACE
 
    intro
+   stackdescription
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Release & Support
+
+   release
 
 .. toctree::
    :maxdepth: 2
-   :caption: Use iExec
+   :caption: Get Help
 
-   products
-   sdk
+   quickstart
    wallet
    worker
    workerpool
-   ordersubmit
-   dockerapp
-
+   requester
+   appprovider
+   datasetprovider
 
 .. toctree::
    :maxdepth: 3
    :caption: Technical Documentation
 
    poco
+   consortiumdeployment
+   doracle
 
 .. toctree::
    :maxdepth: 2
-   :caption: Releases
+   :caption: Resources
 
-   releases
+   resources
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Technical Report
-
-   technicalreport

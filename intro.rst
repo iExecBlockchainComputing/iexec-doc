@@ -1,105 +1,132 @@
-Introduction
-============
-
-| iExec is a multi-sided platform for computing resources.
-| It is a network connecting providers and users of distributed computing power, data-sets and developers, encouraging an ecosystem of decentralized and autonomous, privacy-preserving applications.
-| iExec therefore creates a new paradigm for cloud computing: a global and open market where computing power is traded like a commodity.
-| Comparably to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
-| iExec strengthens applications running on Ethereum smart contracts, allowing for off-chain computation services and data sets on-demand.
+| Comparable to the oil market, the iExec marketplace offers a uniform and standardized access to computing resources, regardless of their provider.
+| iExec strengthens applications running on Ethereum smart contracts, allowing for off-chain computation services and datasets on-demand.
 | This is made possible by the iExec Proof-of-Contribution or PoCo consensus protocol that validates off-chain computations.
 
+For Computing Resource Providers
+================================
 
-For resources providers
------------------------
+iExec distinguishes between 3 different types of cloud resource providers :
 
-| Resource providers are organized in a similar way to miners in a cryptocurrency mining pool.
+ - **Application providers**
 
-iExec Workerpool
-~~~~~~~~~~~~~~~~
+Your algorithms can change the world! Developers and application providers can monetize their apps, dapps, functions or algorithms.
 
-| Workers are organized in worker pools. For each one of these, a scheduler manages the work distribution.
-| Workers are the machines in charge of executing the tasks requested  by users, **the requestor**.
-| Similarly to blockchain miners, workers share their resources and get rewarded in RLC, the iExec's cryptocurrency and means of payment.
+ - **Computing providers**
 
-| There are two types of worker pools:
-|    - Public worker pools
-|    - Private worker pools
+No more CPU cycle wasted! Computing providers can make the most of their servers, by joining the iExec network and renting them.
 
-| Public worker pools are open for anyone to join. Anyone can also deploy a worker pool for others to join.
-| In the marketplace, you will also find private workers pools. This is the case for single cloud providers running their own scheduler and making available their own machines.
-| iExec has sealed agreement deals with several cloud companies, be it household names like IBM or TFCloud, or smaller providers in the area of Green IT.
+ - **Data providers**
 
-| In this open and inclusive system, competitive forces drive worker pools to offer the best quality of service possible,
- and a dynamic reputation mechanism assigns a score to each worker completing a work.
+Data is the new gold!
+Data providers can monetize datasets usage and open up new revenue streams for their assets.
+A single entity can be all types of providers at the same time.
 
 
-| Go to the `Be a worker pool`_ section to learn how to deploy your worker pool software.
+Application Providers
+---------------------
 
-.. _Be a worker pool: /workerpool.html
+Application providers can monetize their applications and algorithms by setting a fixed-fee for each single usage of their software (pay-per-task model).
+As a developer of decentralized applications, you may use iExec to overcome blockchain limitations (few kilobytes of storage, very inefficient virtual machines and very high latency protocol) by executing your computations “off-chain” on the iExec decentralized infrastructure.
+Developers also benefit from being free from adjusting resource allocation. By not having to maintain any servers, developers deploy applications that can rapidly upscale/downscale based on user-demand.
 
-Browse the available Worker Pools: https://pools.iex.ec/
+Go to the `Application provider`_ section to learn how to build dapp for the community.
 
-
-iExec Worker
-~~~~~~~~~~~~
-
-| Anyone who owns computing resources can make them available by joining a **Worker Pool** and contributing to execute computational tasks in exchange for RLC.
-| Any machine, from individual laptops to large-scale servers, can join a **Worker pool**.
-| Like blockchain miners, they want a simple solution that will make their computer part of a large infrastructure that will take care of the everything else for them.
-| As a worker, if you switch to a different worker pool, you will still be able to maintain your reputation score, bringing it "with you" to your new pool, as this is all recorded on the blockchain.
+.. _Application provider: /appprovider.html
 
 
-Go to the `Be a worker`_ section to learn how to deploy your worker software.
+Dataset providers
+-----------------
 
-.. _Be a worker: /worker.html
+Dataset provider can monetize their datas by setting a fixed-fee for each single usage of their software (pay-per-task model).
+Dataset can be seen as a wide concept to protect,
+iExec allows with multiple levels of security to monetize any data: data means dataset or more advanced valuable models as AI trained model,
 
 
-For Dapp users
+Go to the `Dataset provider`_ section to learn how to propose a dataset.
+
+.. _Dataset provider: /datasetprovider.html
+
+
+Computing Providers
+-------------------
+
+Within the iExec network, providers of computing power are called ‘Workers’.
+As a worker, you can connect your machine to the network and provide computing power.
+
+Your machine executes computational tasks in exchange for a reward in RLC tokens.
+Workers can be individuals or companies.
+Anyone owning computing resources can make them available by joining a “worker pool” and renting computing power to the network.
+Any machine, from an individual laptop to a large-scale data center, can join a worker pool.
+
+Head to the `How to become a worker`_ section to learn how to deploy your worker software.
+
+Worker pools are made up of multiple individual machines.
+They are led by a Pool manager, a lead entity that organizes the workload and signals how many tasks it is able to process and at which price.
+
+**The Pool Manager freely determines the pricing to execute computational task for its workers.**
+
+Pool manager, while not doing the actual computation, receive a fee for the management of the worker pool.
+Pool manager compete to attract workers to their worker pool by providing efficient management and guaranteeing earnings for workers.
+
+Head to the `How to Become a pool manager`_ section to learn how to deploy your worker pool service.
+
+You may also check out the list of worker pool currently available on the iExec Marketplace in the `Pools Catalog <https://pools.iex.ec>`_.
+
+.. _How to become a worker: /worker.html
+.. _How to become a pool manager: /workerpool.html
+
+
+Data providers
 --------------
 
-| As a Dapp user, you can browse the iExec Dapp Store; a listing of user-submitted decentralized applications that are already powered by iExec.
-| iExec is required to enhance the limited computing capacities of blockchain to run compute-intensive decentralized applications: few kilobytes of storage, very inefficient virtual machines and very high latency protocol.
-| As the demand for decentralized applications grows, there is an ever-growing need to provide additional computing capacity to run them.
-| The existing clouds cannot fulfill the requirements for DApps that need fully decentralized infrastructures for their execution.
-| For these applications, ‘off-chain’ computation is needed.
-| iExec provides the infrastructure for this as well as ‘PoCo’ (proof-of-contribution), the consensus protocol that provides blockchain-level certification and validation of the off-chain computation.
+Data providers that own valuable datasets can make them available for use by applications through the iExec Data Store.
 
-| Pick a Dapp on our Dapp store (https://dapps.iex.ec)
-| and learn in the `Submit a Work Order`_ section how to run dapps with the iExec SDK.
-
-.. _Submit a Work Order: /ordersubmit.html
-
-For developers
---------------
-
-| Developers can monetize applications by setting a fixed-fee for access using the iExec Pay-per-task model
-| As a developer of decentralized applications, you can use iExec to overcome blockchain limitations of cost
- and performance by executing your computations “off-chain” on the iExec distributed infrastructure.
-| Developers benefit from being able to easily adjust resource allocation, while not having to maintain any servers,
- developers still have the opportunity to rapidly upscale/downscale based on user-demand.
-
-Go to the `DEVELOP`_ section to learn how to build Dapps (binaries or docker images) for the community
-
-.. _DEVELOP: /dockerapp.html
+iExec pay per task model empowers Intel SGX and IBM Datashield to offer new opportunities of creating highly-secure applications that respect data privacy and ownership.
 
 
-For Data providers
-------------------
-
-| *Coming May 2019*
-| Data providers own valuable data-sets that have been made available for use by iExec Dapps.
-| Technologies such as Intel SGX and IBM Datashield combined with the pay-per-task model,
- the data wallet presents new opportunities to create highly secure applications, respecting privacy and ownership.
+For Cloud Resource Requesters
+=============================
 
 
-For requestors
---------------
+Buying applications, computing power and datasets
+-------------------------------------------------
 
-| In the iExec Marketplace https://market.iex.ec, with few clicks, you can access a large amounts of computational power.
-| In the iExec Dapp Store https://dapps.iex.ec, you can access an extensive list of ready-to-use decentralized applications.
-| The multi-sided market provided by iExec allows to trade applications, the requestors set requestorder for an “ask” publication, a computing resources provider should accept the deal and process this requestorder
-  at the price fixed by the requestor.
-| The Pay-Per-Task model and the blockchain allow a high level of control of operating costs and expenses for computation.
-| Requestors can define a minimum level of trust to ensure the task has been correctly processed, whether or not to execute on Intel SGX hardware enclave enables machines, for example.
-| Requestors select resources providers depending on certain criteria such as geographical location or energy management.
-| Requestors can monitor and fully audit all computing activity, thanks to Blockchain core property.
+'Requester' is the name given to an individual or enterprise requesting the use of cloud resources through iExec.
+
+iExec allows requesters (individuals and enterprises) to access affordable, secure and scalable cloud resources.
+
+
+  - **Access to applications**
+
+  On the `iExec Dapp Store <https://dapps.iex.ec>`_, requesters have access to an extensive list of ready-to-use decentralized applications.
+
+
+  - **Access to computing power**
+
+  On the `iExec Marketplace <https://market.iex.ec>`_, requesters have access to large amounts of computational power from a variety of computing providers
+  (networks of individuals, private data centers, Green IT providers, Trusted Execution Environments (TEE) worker pools).
+
+  Computing resources can be traded as any commodities. In the cloud market today, providers generally charge a flat rate for all resources per time.
+
+  On the iExec marketplace, a requester submits a task request that can be fulfilled by available computing resources.
+
+
+  - **Access to datasets**
+
+  On the `iExec Data Store <https://data.iex.ec>`_, requesters have access to a large amount of varied datasets that can be opened from associated dapps from the Dapp Store.
+
+  Requesters browses available cloud resources and triggers an execution in just a few clicks.
+
+  They can then monitor and audit all the orders they have triggered since each activity log is recorded on the blockchain.
+
+
+Secure and privacy-preserving cloud computing
+---------------------------------------------
+
+iExec offers optional full end-to-end trusted and private execution on the decentralized cloud.
+
+End-to-end protection means full protection of the application data, user data, embedded data as well as application output data.
+
+Results can never be inspected by anyone else but their requester, answering the needs of highly-confidential applications and sensitive datasets.
+
+
