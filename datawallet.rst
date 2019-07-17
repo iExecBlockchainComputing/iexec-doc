@@ -28,8 +28,8 @@ Our solution is two-fold:
 Security guarantees
 ~~~~~~~~~~~~~~~~~~~~
 
-#. Private code and data will be symmetrically encrypted whenever publicly available (IPFS, public repository). Decryption will only take place inside an attested SGX enclave, whose code has been authorized by the data owner.
-#. Private code and data will be encrypted client-side, on the machine of their owner, then pushed on a public data repository. The corresponding keys will only be communicated over TLS channels established with auditable programs, running in attested enclave.
+#. Valuable code and data will be symmetrically encrypted whenever publicly available (IPFS, public repository). Decryption will only take place inside an attested SGX enclave, whose code has been authorized by the data owner.
+#. Valuable code and data will be encrypted client-side, on the machine of their owner, then pushed on a public data repository. The corresponding keys will only be communicated over TLS channels established with auditable programs, running in attested enclave.
 #. The Data owner may limit the use of their data to a set of applications. In this case the key will only be sent to an attested enclave whose MREnclave matches the one whitelisted by the Data Owner.
 #. The Data Owner may limit the use of their data to a reduced number of end users (beneficiaries). In this case, the result of the computation will be encrypted by the Worker and only the beneficiary will be able to decrypt it.
 #. At all times, keys to the data will only be accessible by:
@@ -71,15 +71,15 @@ Since the data is encrypted by the data owner, their confidentiality and integri
 * 1. is ensured by symmetric encryption of the data, transmitting the keys over TLS, and by the design of the SMS, which transmits the keys only to an enclave with the right MREnclave (and thus the right application), and only for a computation whose beneficiary has been authorized by the Data Owner. By running the SMS inside an enclave and attesting it before sending it the keys, the Data Owner can make sure he is communicating with a proper SMS that will run as intended.
 * 2. is ensured by remotely attesting the Worker enclave and auditing the code that runs inside it, making sure the code is not malicious and won’t leak the data or its keys.
 
-************
+===================
 Tutorial
-************
+===================
 
 In this tutorial we describe how to realize a fully secured computation with end-to-end data encryption using the iExec stack. As usual with the iExec platform, there are 4 different workflows, depending on your role in the transaction: dApp developer, data provider, hardware resource provider (worker) and computation requester.
 
-
+****************
 Worker
-~~~~~~~~
+****************
 
 As a worker you need SGX-compatible hardware if you want to perform TEE-based computations. An unofficial list of SGX enabled CPU is available `here <https://github.com/ayeks/SGX-hardware>`_. Basically if your computer was built after 2016 it should be good.
 In addition to an SGX-compatible CPU you also need to make sure the BIOS of your machine support the SGX extension. Most mainstream brand of computer (Dell, HP,...) do. If the SGX option is available in your BIOS then you need to enable it.
@@ -95,9 +95,9 @@ The next step is to install the drivers from Intel for the SGX extension. This c
 
 That’s it! Now you can register at your scheduler as an SGX compatible worker, and you’ll soon receive requests for SGX jobs.
 
-
+****************
 Data provider
-~~~~~~~~~~~~~~~~~~
+****************
 
 If you want to protect your dataset you need to encrypt it before making it available on the iExec platform. There are two ways to encrypt your dataset, and only one of them is SGX compatible: see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
 First, initialize the folder structure:
@@ -128,7 +128,7 @@ This command will encrypt your dataset to enable its use in a scone runtime exec
 
 **You need to upload the encrypted dataset to a public server (for example a Github repository or on IPFS).**
 
-Create the dataset contract template:
+Create the dataset info template:
 
 .. code-block:: bash
 
@@ -197,9 +197,9 @@ Once your order is ready you can sign it, and send it to the potential user of y
         $ iexec order sign --dataset
 	$ iexec order publish --dataset
 
-
+****************
 DApp developer
-~~~~~~~~~~~~~~~
+****************
 
 
 Background
@@ -313,7 +313,7 @@ You need to copy this address and paste it in your app order available in the or
         $ iexec order init
         $ nano iexec.json
 
-Edit your app order, by copy-pasting your dApp contract address (in our example 0x6E519c9887cD2d59918e4EF049b5d9fF489E6E2f), and setting the price and number of use of your dApp (and potentially restriction on dataset, worker and requester allowed to use you dApp).
+Edit your app order, by copy-pasting your dApp contract address (in our example 0x6E519c9887cD2d59918e4EF049b5d9fF489E6E2f), and setting the price and number of use of your dApp (and potentially restrictions on dataset, worker and requester allowed to use your dApp).
 **Don't forget to replace the tag, from 0x00..000 to 0x00...001 (as seen below).**
 
 .. code-block:: bash
@@ -335,9 +335,9 @@ Once your order is ready you can sign it, and send it to the potential user of y
         $ iexec order sign --app
         $ iexec order publish --app
 
-
+************************************************
 Computation requester/ beneficiary
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+************************************************
 
 As a computation requester it is your choice to decide whether or not your execution should use iExec Data wallet.
 
