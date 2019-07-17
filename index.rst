@@ -37,10 +37,11 @@ About iExec
    :maxdepth: 3
    :caption: Technical Documentation
 
+   tee
    poco
    consortiumdeployment
    doracle
-   tee
+
 
 .. toctree::
    :maxdepth: 2

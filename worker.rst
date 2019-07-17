@@ -259,3 +259,24 @@ Here are the different possible statuses for a replicate:
 * RECOVERING: Your worker has been stop, it is starting back from where it stop
 
 
+
+SGX worker setup
+----------------
+
+As a worker you need SGX-compatible hardware if you want to perform TEE-based computations.
+
+An unofficial list of SGX enabled CPU is available `here <https://github.com/ayeks/SGX-hardware>`_.
+Basically if your computer was built after 2016 it should be good.
+In addition to an SGX-compatible CPU you also need to make sure the BIOS of your machine support the SGX extension.
+Most mainstream brand of computer (Dell, HP,...) do.
+If the SGX option is available in your BIOS then you need to enable it.
+
+.. image:: ./_images/bios1.jpeg
+
+The next step is to install the drivers from Intel for the SGX extension. This can be done in one command line using the following script (on Ubuntu):
+
+.. code-block:: bash
+
+	# curl -fssl https://raw.githubusercontent.com/SconeDocs/SH/master/install_sgx_driver.sh | bash
+
+That’s it! Now you can register at your scheduler as an SGX compatible worker, and you’ll soon receive requests for SGX jobs.
