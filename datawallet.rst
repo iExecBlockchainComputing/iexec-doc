@@ -134,7 +134,7 @@ Create the dataset contract template:
 
 	$ iexec dataset init
 
-This will create the template for the dataset info in the *iexec.json*. Don't forget to add the multiaddress of your dataset (where the dataset will be available to download). The checksum field is not used currently, and can be left blank.
+This will create the template for the dataset info in the *iexec.json*. **Don't forget to add the multiaddress of your dataset (where the dataset will be available to download)**. The checksum field is not used currently, and can be left blank.
 
 .. code-block:: bash
 
@@ -214,7 +214,7 @@ Example: creating a Python 3 SGX dApp
 
 Here we explain how to create an SGX enabled python app. We provide a Github repository with several examples. Our SGX framework is based on the Scone runtime, that allows us to run unmodified apps inside SGX enclaves.
 Hence your Docker image should be built from our python_sgx image available on our docker repository.
-We provide a `Github repository <https://github.com/iExecBlockchainComputing/test_sgx>`_ with several examples, that show how to build an SGX-enabled docker image.
+We provide a `Github repository <https://github.com/iExecBlockchainComputing/sgx-apps>`_ with several examples, that show how to build an SGX-enabled docker image.
 
 **Step 1: Create your app folder**
 
@@ -222,7 +222,7 @@ First clone the test-sgx repo and create the directories for your app, and initi
 
 .. code-block:: bash
 
-        git clone https://github.com/iExecBlockchainComputing/test_sgx.git
+        git clone https://github.com/iExecBlockchainComputing/sgx-apps.git
         cd test-sgx
         mkdir my-app
         mkdir my-app/src
