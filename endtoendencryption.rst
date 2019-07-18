@@ -6,7 +6,7 @@ This tutorial describes how to realize a fully secured computation with end-to-e
 
 This additional feature needs extra step, all embedded in the SDK, to manage the application, the dataset and the computation request.
 
-The TEE computation must a TEE compatible worker.
+The TEE computation must run on a TEE compatible worker, the requester needs to select a compatible SGX workerpool.
 
 
 The trust execution needs preparation for data, applications and for the request.
