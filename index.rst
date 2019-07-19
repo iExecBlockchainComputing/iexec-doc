@@ -31,12 +31,14 @@ About iExec
    requester
    appprovider
    datasetprovider
+   endtoendencryption
 
 .. toctree::
    :maxdepth: 3
    :caption: Technical Documentation
 
    poco
+   tee
    consortiumdeployment
    doracle
 

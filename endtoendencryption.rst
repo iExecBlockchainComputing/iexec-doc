@@ -4,24 +4,28 @@ End-to-end encryption
 
 This tutorial describes how to realize a fully secured computation with end-to-end data encryption using the iExec stack.
 
-This additional feature needs extra step, all embedded in the SDK, to manage the application, the dataset and the computation request.
+This additional feature needs extra step, all embedded in the SDK, to prepare the application, dataset and the computation request.
 
 The TEE computation must run on a TEE compatible worker, the requester needs to select a compatible SGX workerpool.
 
+You can find on the marketplace all the available TEE computing resources using the checkbox.
 
-The trust execution needs preparation for data, applications and for the request.
+.. image:: ./_images/teecheckbox.png
+
 
 Encrypt and register the dataset
 --------------------------------
 
 If you want to protect your dataset you need to encrypt it before making it available on the iExec platform.
-There are two ways to encrypt your dataset, and only one of them is SGX compatible: see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
+this can be easily done with the iExec SDK:
+see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
 
-First, initialize the folder structure:
+First, initialize the folder structure
 
 .. code-block:: bash
 
-        $ iexec tee init
+       iexec tee init
+   ✔ created TEE folders tree structure
 
 This command will create the following folders:
 
@@ -38,20 +42,34 @@ Copy your dataset in the *original-dataset/*  folder, then encrypt it with the S
 
 .. code-block:: bash
 
-        $ cp /path/to/your/dataset tee/original-dataset/dataset-name
-        $ iexec tee encrypt-dataset  --algorithm scone
+        cp /path/to/your/dataset tee/original-dataset/dataset-name
+        iexec tee encrypt-dataset  --algorithm scone
 
-This command will encrypt your dataset to enable its use in a scone runtime execution. It will also write the corresponding key and tag in a :code:`.tee-secrets/dataset/<dataset-name>.scone.secret` file.
+This command will encrypt your dataset to enable its use in a scone runtime execution.
+
+It will also write the corresponding key and tag in a :code:`.tee-secrets/dataset/<dataset-name>.scone.secret` file.
 
 **You need to upload the encrypted dataset to a public server (for example a Github repository or on IPFS).**
 
-Create the dataset info template:
+Check with wget command or your web browser to check the encrypted dataset has a public access.
+
+
+Now, you can deploy the dataset on the marketplace
+
+Set up a configuration file.
 
 .. code-block:: bash
 
-	$ iexec dataset init
+    iexec dataset init
 
-This will create the template for the dataset info in the *iexec.json*. **Don't forget to add the multiaddress of your dataset (where the dataset will be available to download)**. The checksum field is not used currently, and can be left blank.
+
+This will create the template for the dataset info in the *iexec.json*.
+
+Then edit the iexec.json to describe your application.
+
+**Don't forget to add the multiaddress of your dataset (where the dataset will be available to download)**.
+
+The checksum field is not used currently, and can be left blank.
 
 .. code-block:: bash
 
@@ -62,15 +80,11 @@ This will create the template for the dataset info in the *iexec.json*. **Don't 
           "checksum": "0x0000000000000000000000000000000000000000000000000000000000000000"
         }
 
-Then deploy your dataset:
+Then deploy your dataset.
 
 .. code-block:: bash
 
-	$ iexec dataset deploy
-
-.. code-block:: bash
-
-        ~/SGX/test_sgx/test$ iexec dataset deploy
+        iexec dataset deploy
         ℹ iExec SDK update available 3.0.33 →  3.0.34, Run "npm -g i iexec" to update
 
         ℹ using chain [kovan]
@@ -79,21 +93,41 @@ Then deploy your dataset:
         Please enter your password to unlock your wallet [hidden]
         ✔ Deployed new dataset at address 0x0bF2AEb5e7FCE90DCb39FEEaC49Ce44893CAd31d
 
-Once you dataset is deployed you can push its secret (encryption key and hash of the data) to the SMS. This is done simply with the SDK:
+
+Once you dataset is deployed you can push its secret (encryption key and hash of the data) to the SMS.
+This is done simply with the SDK:
 
 .. code-block:: bash
 
-	$ iexec tee push-secret --dataset <Dataset contract address> --secret-path <$PWD/.tee-secrets/dataset/<dataset-name>.scone.secret>
+       iexec tee push-secret --dataset <Dataset contract address> --secret-path <$PWD/.tee-secrets/dataset/<dataset-name>.scone.secret>
 
 
-Initialize your dataset order:
+Publish the dataset order
+
+Create an order template
 
 .. code-block:: bash
 
-	$ iexec order init
+	iexec order init --dataset
 
-...and edit your dataset order in the *order.json* file, to copy-paste the address of your dataset. Here you can set the price of your dataset, and the number of utilisations. You can also whitelist \
-the app and worker pool that will be allowed to use your dataset. **Don't forget to replace the tag, from 0x00..000 to 0x00...001 (as seen below).**
+...and edit your dataset order in the *order.json* file,
+
+Edit the order part in iexec.json to describe the dataset.
+
+===================== ==========================================================
+Parameter               Meaning
+===================== ==========================================================
+ dataset                dataset address
+ datasetprice           dataset price
+ volume                 number of order created
+ tag                    tag for extra computational requirement (*)
+ datasetrestrict:       restricted to dataset (*)
+ workerpoolrestrict     restricted to workerpool (*)
+ requesterrestrict:     restricted to requester (*)
+===================== ==========================================================
+
+**The dataset has to be enabled with the corresponding tag 0x0000000000000000000000000000000000000001**
+
 
 .. code-block:: bash
 
@@ -129,8 +163,12 @@ To avoid this and make the use of SGX through iExec as developer friendly as pos
 Example: creating a Python 3 SGX dApp
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Here we explain how to create an SGX enabled python app. We provide a Github repository with several examples. Our SGX framework is based on the Scone runtime, that allows us to run unmodified apps inside SGX enclaves.
+Here we explain how to create an SGX enabled python app.
+
+Our SGX framework is based on the Scone runtime, that allows us to run unmodified apps inside SGX enclaves.
+
 Hence your Docker image should be built from our python_sgx image available on our docker repository.
+
 We provide a `Github repository <https://github.com/iExecBlockchainComputing/sgx-apps>`_ with several examples, that show how to build an SGX-enabled docker image.
 
 **Step 1: Create your app folder**
@@ -281,7 +319,7 @@ Then you can push your public key to the SMS:
 
 You can then follow the normal workflow to buy a computation as described in the `doc for the normal workflow <https://docs.iex.ec/requester.html>`_
 
-At this point you may use either the SDK or the web interface available at market.iex.ec.
+At this point you may use either the SDK or the web interface available at `market.iex.ec <https://market.iex.ec>`_.
 
 **Option A: using the SDK**
 
@@ -291,9 +329,11 @@ You can then follow the normal workflow to buy a computation as described in the
 
 	$ iexec order init
 
-As in the normal iExec workflow, you should fill all the info needed in the iexec.json file (app, dataset, price, category). In the case of an SGX execution there are however two differences:
+As in the normal iExec workflow, you should fill all the info needed in the iexec.json file (app, dataset, price, category).
 
-#. You should replace the *tag* by 0x0...01 (instead of 0x00...000)
+In the case of an SGX execution there are however two differences:
+
+#. You must set the *tag* 0x0...01 (instead of 0x00...000)
 #. In the *params* field you should put the command to launch your app
 
 .. code-block:: bash
