@@ -1,5 +1,5 @@
 ==============================
-End-to-end encryption
+TEE End-to-end encryption (Intel SGX)
 ==============================
 
 This tutorial describes how to realize a fully secured computation with end-to-end data encryption using the iExec stack.
