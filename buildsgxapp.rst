@@ -4,7 +4,7 @@ Build an SGX-enabled application
 Background: porting an application to SGX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At its core, Intel SGX technology relies on the creation of special zones in memory called enclaves. Access to this zone is protected by the CPU, so that only code from inside the zone can access data in the enclave. If a code from outside the enclave - whatever its privilege level, even OS or hypervisor code -  tries to read a memory location that is part of the enclave, the CPU will return an error.
+At its core the Intel SGX technology relies on the creation of special zones in memory called enclaves. Access to this zone is protected by the CPU, so that only code from inside the zone can access data in the enclave. If a code from outside the enclave - whatever its privilege level, even OS or hypervisor code -  tries to read a memory location that is part of the enclave the CPU will return an error.
 The drawback is that whenever your program needs to use code outside the enclave - for example OS code  (eg system calls) for network or file system access - it needs to perform a special sequence of CPU instruction to leave the enclave securely. As a result to run a program natively you would need to rewrite it using Intel SDK and call these instructions manually, an impractical and potentially complex task.
 To avoid this and make the use of SGX through iExec as developer friendly as possible, iExec provides a transparent integration with Scone, a runtime component developed by Scontain that allows to run applications in SGX enclaves in an unmodified way. We provide several docker images, that already include the Scone components as well as iExec integration code, that make the development of iExec-ready, SGX-enabled dApp as simple as a few Dockerfile lines.
 
@@ -133,7 +133,7 @@ Edit your app order, by copy-pasting your dApp contract address (in our example 
           "requesterrestrict": "0x0000000000000000000000000000000000000000"
         }
 
-Once your order is ready, you can sign it, and send it to the potential user of your dApp. You can also publish it on the iExec marketplace with the SDK.
+Once your order is ready you can sign it, and send it to the potential user of your dApp. You can also publish it on the iExec marketplace with the SDK.
 
 .. code-block:: bash
 
@@ -151,7 +151,7 @@ As a computation requester it is your choice to decide whether or not your execu
 
 **Step 1: Create and push your encryption key**
 
-One of the most interesting features of iExec Data wallet is the possibility to ask for your result to be encrypted inside the TEE: meaning only you will be able to read them. To allow for this you will need to generate a PKC key pair, and upload the public part to the SMS. This can be done in just one step with the iExec SDK:
+One of the most interesting features of iExec Data wallet is the possibility to ask for your result to be encrypted inside the TEE: that is, only you will be able to read them. To allow this you need to generate a PKC key pair, and upload the public part to the SMS. This can be done in just one step with the iExec SDK:
 
 .. code-block:: bash
 
@@ -214,7 +214,7 @@ Then sign your orders, and publish your request order:
 
 If your order is matched with the required components (app, dataset, worker), the computation will happen automatically, in a totally secure way.
 
-**Option B: Using the web interface**
+**Option B: using the web interface**
 
 You can also use the iExec marketplace's web interface. Likewise, you need to fill the address of the dataset and app you want to use. Don't forget to check the "TEE" checkbox.
 
