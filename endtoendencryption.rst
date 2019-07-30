@@ -2,13 +2,13 @@
 TEE End-to-end encryption (Intel SGX)
 ==============================
 
-This tutorial describes how to realize a fully secured computation with end-to-end data encryption using the iExec stack.
+The following tutorial will show how you can execute a fully secured computation with end-to-end data encryption in a Trusted Execution Environment (TEE) using the iExec stack.
 
-This additional feature needs extra step, all embedded in the SDK, to prepare the application, dataset and the computation request.
+Preparing the application, dataset and the computation request for end-to-end TEE encryption will require some extra steps - but they are all embedded into the iExec SDK.
 
-The TEE computation must run on a TEE compatible worker, the requester needs to select a compatible SGX workerpool.
+The TEE computation must run on a TEE compatible worker. The requester will therefore need to select a SGX hardware enclave compatible workerpool.
 
-You can find on the marketplace all the available TEE computing resources using the checkbox.
+You can find all the available TEE computing resources by selecting the 'TEE' checkbox on the iExec Marketplace UI.
 
 .. image:: ./_images/teecheckbox.png
 
@@ -16,8 +16,7 @@ You can find on the marketplace all the available TEE computing resources using 
 Encrypt and register the dataset
 --------------------------------
 
-If you want to protect your dataset you need to encrypt it before making it available on the iExec platform.
-this can be easily done with the iExec SDK:
+If you want to protect your dataset you will need to encrypt it, before making it available on the iExec platform. This is quite simple to do using the iExec SDK:
 see the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
 
 First, initialize the folder structure
@@ -54,7 +53,7 @@ It will also write the corresponding key and tag in a :code:`.tee-secrets/datase
 Check with wget command or your web browser to check the encrypted dataset has a public access.
 
 
-Now, you can deploy the dataset on the marketplace
+Now, you can deploy the dataset on the iExec Marketplace
 
 Set up a configuration file.
 
@@ -94,7 +93,7 @@ Then deploy your dataset.
         ✔ Deployed new dataset at address 0x0bF2AEb5e7FCE90DCb39FEEaC49Ce44893CAd31d
 
 
-Once you dataset is deployed you can push its secret (encryption key and hash of the data) to the SMS.
+Once your dataset is deployed, you can push its secret (encryption key and hash of the data) to the SMS.
 This is done simply with the SDK:
 
 .. code-block:: bash
@@ -141,7 +140,7 @@ Parameter               Meaning
           "requesterrestrict": "0x0000000000000000000000000000000000000000"
         }
 
-Once your order is ready you can sign it, and send it to the potential user of your dataset. You can also publish it on the iExec marketplace with the SDK:
+Once your order is ready, you can sign it before sending it to the potential user of your dataset. You can also publish it on the iExec marketplace using the SDK:
 
 .. code-block:: bash
 
@@ -156,7 +155,7 @@ Build an SGX-enabled application
 Background: porting an application to SGX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-At its core the Intel SGX technology relies on the creation of special zones in memory called enclaves. Access to this zone is protected by the CPU, so that only code from inside the zone can access data in the enclave. If a code from outside the enclave - whatever its privilege level, even OS or hypervisor code -  tries to read a memory location that is part of the enclave the CPU will return an error.
+At its core, Intel SGX technology relies on the creation of special zones in memory called enclaves. Access to this zone is protected by the CPU, so that only code from inside the zone can access data in the enclave. If a code from outside the enclave - whatever its privilege level, even OS or hypervisor code -  tries to read a memory location that is part of the enclave, the CPU will return an error.
 The drawback is that whenever your program needs to use code outside the enclave - for example OS code  (eg system calls) for network or file system access - it needs to perform a special sequence of CPU instruction to leave the enclave securely. As a result to run a program natively you would need to rewrite it using Intel SDK and call these instructions manually, an impractical and potentially complex task.
 To avoid this and make the use of SGX through iExec as developer friendly as possible, iExec provides a transparent integration with Scone, a runtime component developed by Scontain that allows to run applications in SGX enclaves in an unmodified way. We provide several docker images, that already include the Scone components as well as iExec integration code, that make the development of iExec-ready, SGX-enabled dApp as simple as a few Dockerfile lines.
 
@@ -203,7 +202,7 @@ Build your docker image in the normal way. You may need the no-cache option if y
 
 .. code-block:: bash
 
-        $ docker build --no-cache -t iexechub/myapp:latest .
+        $ docker build --no-cache -t iexechub/myapp:1.0.0 .
 
 The build might take some time. At the end of the build process, the docker script will display the "mrenclave" value, as shown below:
 
@@ -225,7 +224,7 @@ The build might take some time. At the end of the build process, the docker scri
         Removing intermediate container 5ca393ffd291
          ---> 7144abe35d7b
         Successfully built 7144abe35d7b
-        Successfully tagged iexechub/sgx-app:latest
+        Successfully tagged iexechub/sgx-app:1.0.0 
 
 You should copy this value and paste it in the iexec.json file, as the app "mrenclave" value:
 
@@ -235,7 +234,7 @@ You should copy this value and paste it in the iexec.json file, as the app "mren
           "owner": "0x9A07Ea49a32C1E69eD7B6dFe1aa1C19181465C52",
           "name": "test_sgx",
           "type": "DOCKER",
-          "multiaddr": "iexechub/myapp:latest",
+          "multiaddr": "iexechub/myapp:1.0.0",
           "checksum": "0xc4f18d6e024ac1bd1b0cf08484ca7baaf4c63eb67a20fefe51017424df2a5179",
           "mrenclave": "3b62fef269341bc93238580b516d2d934e1264e7442e484d4d459a9abc519a76|b873e72c7687e95d734b7905e07c51d8|b84bc68bae8cdc8703ca4525b2cc16deffe9def4247498ebcc467830a67caf6d"
         },
@@ -244,7 +243,7 @@ You should copy this value and paste it in the iexec.json file, as the app "mren
 
 .. code-block:: bash
 
-        $ docker push iexechub/myapp:latest
+        $ docker push iexechub/myapp:1.0.0
 
 .. code-block:: bash
 
@@ -283,7 +282,7 @@ Edit your app order, by copy-pasting your dApp contract address (in our example 
           "requesterrestrict": "0x0000000000000000000000000000000000000000"
         }
 
-Once your order is ready you can sign it, and send it to the potential user of your dApp. You can also publish it on the iExec marketplace with the SDK.
+Once your order is ready, you can sign it, and send it to the potential user of your dApp. You can also publish it on the iExec marketplace with the SDK.
 
 .. code-block:: bash
 
@@ -301,7 +300,7 @@ As a computation requester it is your choice to decide whether or not your execu
 
 **Step 1: Create and push your encryption key**
 
-One of the most interesting features of iExec Data wallet is the possibility to ask for your result to be encrypted inside the TEE: that is, only you will be able to read them. To allow this you need to generate a PKC key pair, and upload the public part to the SMS. This can be done in just one step with the iExec SDK:
+One of the most interesting features of iExec Data wallet is the possibility to ask for your result to be encrypted inside the TEE: meaning only you will be able to read them. To allow for this you will need to generate a PKC key pair, and upload the public part to the SMS. This can be done in just one step with the iExec SDK:
 
 .. code-block:: bash
 
@@ -364,7 +363,7 @@ Then sign your orders, and publish your request order:
 
 If your order is matched with the required components (app, dataset, worker), the computation will happen automatically, in a totally secure way.
 
-**Option B: using the web interface**
+**Option B: Using the web interface**
 
 You can also use the iExec marketplace's web interface. Likewise, you need to fill the address of the dataset and app you want to use. Don't forget to check the "TEE" checkbox.
 
