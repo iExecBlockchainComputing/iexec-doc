@@ -79,3 +79,4 @@ Since the data is encrypted by the data owner, their confidentiality and integri
 
   - **The keys don't leak during the computation**.
    This is ensured by remotely attesting the Worker enclave and auditing the code that runs inside it, making sure the code is not malicious and won’t leak the data or its keys.
+
