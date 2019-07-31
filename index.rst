@@ -32,6 +32,7 @@ About iExec
    appprovider
    datasetprovider
    endtoendencryption
+   buildsgxapp
 
 .. toctree::
    :maxdepth: 3
