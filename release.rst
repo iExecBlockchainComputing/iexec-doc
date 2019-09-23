@@ -9,8 +9,8 @@ The latest stable version for iExec stack:
 ==========  =========  ==================================================================================
 Module       Version    Link
 ==========  =========  ==================================================================================
-Core         3.1.0     `<https://github.com/iExecBlockchainComputing/iexec-core/releases/tag/3.1.0>`_
-Worker       3.1.0     `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.1.0>`_
+Core         3.2.0     `<https://github.com/iExecBlockchainComputing/iexec-core/releases>`_
+Worker       3.2.0     `<https://github.com/iExecBlockchainComputing/iexec-worker/releases/tag/3.2.0>`_
 SDK          3.0.31     `<https://github.com/iExecBlockchainComputing/iexec-sdk/releases/tag/v3.0.31>`_
 PoCo         3.0.35     `<https://github.com/iExecBlockchainComputing/PoCo/releases/tag/v3.0.35>`_
 ==========  =========  ==================================================================================
