@@ -71,13 +71,13 @@ Parameter               Meaning
  dataset                dataset address
  datasetprice           dataset price
  volume                 number of order created
- tag                    tag for extra computational requirement (*)
- datasetrestrict:       restricted to dataset (*)
- workerpoolrestrict     restricted to workerpool (*)
- requesterrestrict:     restricted to requester (*)
+ tag                    tag for extra computational requirement (1)
+ dapprestrict:          restricted to an application defined by its address  (1)
+ workerpoolrestrict     restricted to a workerpool defined by its address (1)
+ requesterrestrict:     restricted to a requester defined by its address (1)
 ===================== ==========================================================
 
-(*) disable by default with 0x0000000000000000000000000000000000000000
+(1) the restriction is disabled by default with 0x0000000000000000000000000000000000000000
 
 The volume is the total number of tasks allowed within the order created.
 Once all the volume is consumed, the dataset won't be available, the dataset owner has to publish a new datasetorder:

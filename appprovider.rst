@@ -211,10 +211,12 @@ Parameter               Meaning
  appprice               app price
  volume                 number of order created, each usage decrease this number
  tag                    not use
- datasetrestrict:       restricted to dataset
- workerpoolrestrict     restricted to workerpool
- requesterrestrict:     restricted to requester
+ datasetrestrict:       restricted to a dataset  (1)
+ workerpoolrestrict     restricted to a workerpool (1)
+ requesterrestrict:     restricted to a requester (1)
 ===================== ==========================================================
+
+(1) the restriction is disabled by default with 0x0000000000000000000000000000000000000000
 
 
 .. code:: bash
