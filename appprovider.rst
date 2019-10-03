@@ -265,3 +265,40 @@ Check out http://explorer.iex.ec
 Go to the `Quick start`_ section to learn how to test your dapp .
 
 .. _Quick start : /quickstart.html
+
+Variables available in the container
+------------------------------------
+
+When a worker triggers the computation of a task, a few variables are available to the application that is running. They can be used by the application.
+
+General variables
+-----------------
+
+Those variables are available in the container performing the computation of a task:
+
+========================== ======================================================================================================
+Variables                    Meaning
+========================== ======================================================================================================
+IEXEC_DATASET_FILENAME      name of the dataset filename that is in the description of task
+IEXEC_INPUT_FILES_FOLDER    name of the folder (in the container) where are all the input files and dataset
+IEXEC_NB_INPUT_FILES        number of input files described in the task and that have been downloaded to IEXEC_INPUT_FILES_FOLDER
+IEXEC_INPUT_FILE_NAME_1     name of the first input file in the list of input files given in parameters of the task.
+IEXEC_INPUT_FILE_NAME_2     name of the second input file in the list of input files given in parameters of the task.
+IEXEC_INPUT_FILE_NAME_n     name of the nth input file in the list of input files given in parameters of the task.
+========================== ======================================================================================================
+
+There will be as many IEXEC_INPUT_FILE_NAME_* variables as there are input files in the parameters of the task.
+
+BoT variables
+-------------
+
+Some additional variables are available regarding the Bag Of Task, in order for the worker to know which part of the BoT it is processing:
+
+===================== ==================================================================================
+Variables               Meaning
+===================== ==================================================================================
+IEXEC_BOT_SIZE         Size of the BoT, which means that it is the number of Tasks contained in the BoT.
+IEXEC_BOT_FIRST_INDEX  Index of the first task in the BoT.
+IEXEC_BOT_TASK_INDEX   Index of the current task that is being processed.
+===================== ==================================================================================
+
