@@ -21,17 +21,14 @@ Zip your dataset, or model.
 
 Put the data on public data storage, the dataset must be accessible in direct download.
 
-Set up a configuration file.
+Set up the iexec.json configuration file.
 
 .. code-block:: bash
 
     iexec init --skip-wallet
     iexec dataset init
 
-
-to set up the template in iexec.json
-
-Then edit the iexec.json to describe your application: name, source, price,...
+Edit the iexec.json to describe your dataset.
 
 .. code:: javascript
 
