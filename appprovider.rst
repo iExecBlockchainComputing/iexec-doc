@@ -133,7 +133,7 @@ Parameter               Meaning
 owner                   the wallet address of the owner
 name                    the dapp name
 multiaddr               docker hub address of the application
-checksum                "0x" + sha356 of the digest of the docker image
+checksum                "0x" + sha256 of the digest of the docker image
 ===================== ==================================================
 
 Get the digest sha256:
