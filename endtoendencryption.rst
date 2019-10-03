@@ -104,7 +104,7 @@ Create an order template
 
 	iexec order init --dataset
 
-...and edit your dataset order in the *order.json* file,
+...and edit your dataset order in the *orders.json* file,
 
 Edit the order part in iexec.json to describe the dataset.
 

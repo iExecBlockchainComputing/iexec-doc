@@ -111,7 +111,7 @@ Once your app is deployed the SDK will display the Ethereum address of your app 
         Please enter your password to unlock your wallet [hidden]
         ✔ Deployed new app at address 0x6E519c9887cD2d59918e4EF049b5d9fF489E6E2f
 
-You need to copy this address and paste it in your app order available in the order.json file:
+You need to copy this address and paste it in your app order available in the orders.json file:
 
 .. code-block:: bash
 
