@@ -24,30 +24,35 @@ First, initialize the folder structure
 
 .. code-block:: bash
 
-       iexec tee init
-   ✔ created TEE folders tree structure
+        iexec dataset init --encrypted
 
-This command will create the following folders:
+        ℹ Created dataset folder tree for encryption
+        ✔ Saved default dataset in "iexec.json", you can edit it:
+        owner:     0x62F2a967EaF91976763B96E515E4014a5526b6D3
+        name:      my-dataset
+        multiaddr: /ipfs/QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ
+        checksum:  0x0000000000000000000000000000000000000000000000000000000000000000
 
-.. code-block:: bash
-
-        ├── tee
-        │   ├── encrypted-dataset
-        │   └── original-dataset
-        └── .tee-secrets
-            ├── beneficiary
-            └── dataset
-
-Copy your dataset in the *original-dataset/*  folder, then encrypt it with the SDK:
+This will create the template for the dataset info in the *iexec.json* and the following folders:
 
 .. code-block:: bash
 
-        cp /path/to/your/dataset tee/original-dataset/dataset-name
-        iexec tee encrypt-dataset  --algorithm scone
+        ├── datasets
+        │   ├── encrypted
+        │   └── original
+        └── .secrets
+            └── datasets
+
+Copy your dataset in the *datasets/original/*  folder, then encrypt it with the SDK:
+
+.. code-block:: bash
+
+        cp /path/to/your/dataset datasets/original/dataset-name
+        iexec dataset encrypt --algorithm scone
 
 This command will encrypt your dataset to enable its use in a scone runtime execution.
 
-It will also write the corresponding key and tag in a :code:`.tee-secrets/dataset/<dataset-name>.scone.secret` file.
+It will also write the corresponding key and tag in a :code:`.secrets/datasets/<dataset-name>.scone.secret` file.
 
 **You need to upload the encrypted dataset to a public server (for example a Github repository or on IPFS).**
 
@@ -55,15 +60,6 @@ Check with wget command or your web browser to check the encrypted dataset has a
 
 
 Now, you can deploy the dataset on the marketplace
-
-Set up a configuration file.
-
-.. code-block:: bash
-
-    iexec dataset init
-
-
-This will create the template for the dataset info in the *iexec.json*.
 
 Then edit the iexec.json to describe your application.
 
@@ -85,7 +81,6 @@ Then deploy your dataset.
 .. code-block:: bash
 
         iexec dataset deploy
-        ℹ iExec SDK update available 3.0.33 →  3.0.34, Run "npm -g i iexec" to update
 
         ℹ using chain [kovan]
         ? Using wallet UTC--2019-05-28T16-00-29.164000000Z--9A07Ea49a32C1E69eD7B6dFe1aa1
@@ -99,8 +94,7 @@ This is done simply with the SDK:
 
 .. code-block:: bash
 
-       iexec tee push-secret --dataset <Dataset contract address> --secret-path <$PWD/.tee-secrets/dataset/<dataset-name>.scone.secret>
-
+       iexec dataset push-secret --secret-path <$PWD/.secrets/datasets/<dataset-name>.scone.secret>
 
 Publish the dataset order
 

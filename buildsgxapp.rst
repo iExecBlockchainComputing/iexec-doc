@@ -155,13 +155,13 @@ One of the most interesting features of iExec Data wallet is the possibility to 
 
 .. code-block:: bash
 
-	iexec tee generate-beneficiary-keys
+	iexec result generate-keys
 
 Then you can push your public key to the SMS:
 
 .. code-block:: bash
 
-	$ iexec tee push-secret
+	$ iexec result push-secret
 
 
 **Step 2: Order a E2E encrypted computation on iExec**
@@ -227,6 +227,6 @@ Once the computation is finished you can download the result using the iExec mar
 
 .. code-block:: bash
 
-	$ iexec tee decrypt-results <encryptedResultsFilePath>
+	$ iexec result decrypt <encryptedResultsFilePath>
 
 And that's it! Your computation was executed in a protected enclave, and encrypted in-place: no one on Earth except you will be able to read the results.
