@@ -92,7 +92,7 @@ Run and test locally your application with the following command
 
 .. code-block:: bash
 
-   docker run -e DATASET_FILENAME="nsfw_model.zip" -v `pwd`/iexec_in/:/iexec_in -v `pwd`/iexec_out:/iexec_out iexechub/nsfw_prediction:1.0 https://www.w3schools.com/w3css/img_lights.jpg
+   docker run -e IEXEC_DATASET_FILENAME="nsfw_model.zip" -v `pwd`/iexec_in/:/iexec_in -v `pwd`/iexec_out:/iexec_out iexechub/nsfw_prediction:1.0 https://www.w3schools.com/w3css/img_lights.jpg
 
 
 
