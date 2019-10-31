@@ -1,13 +1,17 @@
-Application provider
-====================
+Application
+===========
 
 | In this section we will show you how you can create a Docker dapp over the iExec infrastructure.
 | In the **task as a service** model, each time a task is launched through the iExec network,
 | Developers set the price of their app. Requesters pay on a pay-per-task basis.
 | And you can then withdraw your funds at anytime to your own wallet.
 
+
+Set up you app
+--------------
+
 Why using Docker containers?
-----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another.
 | Docker Engine is the most widely used container engine. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
@@ -17,7 +21,7 @@ Why using Docker containers?
 https://docs.docker.com/storage/storagedriver/#images-and-layers
 
 Build & test your Docker image
-------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We suppose your wallet is already created and charged with ETH to deploy your dapp and with RLC for testing.
 
@@ -51,7 +55,7 @@ https://github.com/iExecBlockchainComputing/iexec-apps
 
 
 Deterministic result
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 | iExec allows requesters to ask for a result with a predefined level of trust.
 | For the PoCo to run smoothly and verify that different workers return the same result, some determinism is needed at some point in the execution.
@@ -72,7 +76,7 @@ Deterministic result
 
 
 How to manage datasets
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 If the applications manages dataset,
 the dataset is downloaded at the initialization of the task
@@ -95,9 +99,8 @@ Run and test locally your application with the following command
    docker run -e IEXEC_DATASET_FILENAME="nsfw_model.zip" -v `pwd`/iexec_in/:/iexec_in -v `pwd`/iexec_out:/iexec_out iexechub/nsfw_prediction:1.0 https://www.w3schools.com/w3css/img_lights.jpg
 
 
-
 Put your image in Dockerhub
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must push your image to a public repository at DockerHub.
 Before the execution of the task, iExec worker will pull the image from public repository.
@@ -111,8 +114,8 @@ Before the execution of the task, iExec worker will pull the image from public r
         docker push iexechub/nilearn:1.0
 
 
-Deploy your dapp
-----------------
+Deploy your app
+~~~~~~~~~~~~~~~
 
 Once the application is available on Docker, you have to register your application on the blockchain
 and really create your decentralized and autonomous application, **a dapp**
@@ -165,7 +168,7 @@ For a docker the checksum is obtained with a docker of the image
   }
 
 
-Then deploy the dapp.
+Then deploy the app.
 
 .. code-block:: bash
 
@@ -177,7 +180,7 @@ Then deploy the dapp.
 
 
 Publish app order
------------------
+~~~~~~~~~~~~~~~~~
 
 Now the application registration is completed, let's publish an order to propose the application to the market
 
@@ -268,13 +271,13 @@ Go to the `Quick start`_ section to learn how to test your dapp .
 
 .. _Quick start : /quickstart.html
 
-Variables available in the container
-------------------------------------
+Variables available at the runtime
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a worker triggers the computation of a task, a few variables are available to the application that is running. They can be used by the application.
 
-General variables
------------------
+ **General variables**
+
 
 Those variables are available in the container performing the computation of a task:
 
@@ -291,8 +294,7 @@ IEXEC_INPUT_FILE_NAME_n     name of the nth input file in the list of input file
 
 There will be as many IEXEC_INPUT_FILE_NAME_* variables as there are input files in the parameters of the task.
 
-BoT variables
--------------
+  **BoT variables**
 
 Some additional variables are available regarding the Bag Of Task, in order for the worker to know which part of the BoT it is processing:
 
@@ -304,3 +306,214 @@ IEXEC_BOT_FIRST_INDEX  Index of the first task in the BoT.
 IEXEC_BOT_TASK_INDEX   Index of the current task that is being processed.
 ===================== ==================================================================================
 
+
+Provide a dataset
+-----------------
+
+| In this section we will show you how you can propose a dataset or any valuable data over iExec infrastructure.
+| In the **task-as-a-service** model, each time a task is launched through the iExec network,
+| The dataset providers set the price of their datasets. Requesters pay on a pay-per-task basis.
+| And you can then withdraw your funds at anytime to your own wallet.
+
+
+Whitelisting and ordering Dataset owner will manage:
+
+ * who can process the dataset
+ * which application can run the dataset
+ * make restriction for computing resources
+ * set up a cutting-edge pricing management
+
+Deploy your dataset
+~~~~~~~~~~~~~~~~~~~
+
+Zip your dataset, or model.
+
+Put the data on public data storage, the dataset must be accessible in direct download.
+
+Set up the iexec.json configuration file.
+
+.. code-block:: bash
+
+    iexec init --skip-wallet
+    iexec dataset init
+
+Edit the iexec.json to describe your dataset.
+
+.. code:: javascript
+
+   "dataset": {
+    "owner": "0x9CdDC59c3782828724f55DD4AB4920d98aA88418",
+    "name": "Neurovault_brainstatsmaps",
+    "multiaddr": "https://raw.githubusercontent.com/ericr6/nilearn/master/nilearn_data.zip",
+    "checksum": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+
+
+Then you deploy your dataset:
+
+.. code-block:: bash
+
+    iexec dataset deploy --wallet-file data_owner_wallet
+    ℹ using chain [kovan]
+    ? Using wallet data_owner_wallet
+    Please enter your password to unlock your wallet [hidden]
+    ✔ Deployed new dataset at address 0xCb781f3106E25E2A9408C4B89C47034877223D12
+
+
+Publish a dataset order
+~~~~~~~~~~~~~~~~~~~~~~~
+
+- Create an order template
+
+.. code-block:: bash
+
+    iexec order init --dataset --wallet-file developper_wallet
+
+Edit the order part in iexec.json to describe the dataset.
+
+===================== ==========================================================
+Parameter               Meaning
+===================== ==========================================================
+ dataset                dataset address
+ datasetprice           dataset price
+ volume                 number of order created
+ tag                    tag for extra computational requirement (1)
+ dapprestrict:          restricted to an application defined by its address  (1)
+ workerpoolrestrict     restricted to a workerpool defined by its address (1)
+ requesterrestrict:     restricted to a requester defined by its address (1)
+===================== ==========================================================
+
+(1) the restriction is disabled by default with 0x0000000000000000000000000000000000000000
+
+The volume is the total number of tasks allowed within the order created.
+Once all the volume is consumed, the dataset won't be available, the dataset owner has to publish a new datasetorder:
+
+
+.. code-block:: javascript
+
+    "datasetorder": {
+      "dataset": "0xCb781f3106E25E2A9408C4B89C47034877223D12",
+      "datasetprice": 2,
+      "volume": 1000000,
+      "tag": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "apprestrict": "0x0000000000000000000000000000000000000000",
+      "workerpoolrestrict": "0x0000000000000000000000000000000000000000",
+      "requesterrestrict": "0x0000000000000000000000000000000000000000"
+    }
+
+
+Sign the order
+
+.. code-block:: bash
+
+    iexec order sign --dataset --wallet-file data_owner_wallet
+    ℹ using chain [kovan]
+    ? Using wallet data_owner_wallet
+    Please enter your password to unlock your wallet [hidden]
+    ✔ datasetorder signed and saved in orders.json, you can share it:
+    dataset:            0xCb781f3106E25E2A9408C4B89C47034877223D12
+    datasetprice:       2
+    volume:             1000000
+    tag:                0x0000000000000000000000000000000000000000000000000000000000000000
+    apprestrict:        0x0000000000000000000000000000000000000000
+    workerpoolrestrict: 0x0000000000000000000000000000000000000000
+    requesterrestrict:  0x0000000000000000000000000000000000000000
+    salt:               0xaaae00a749e198b9f43bc89c420aaf146f3a224c8500d327c3569075eea2c2ae
+    sign:               0x87f720bb9e09762257bd62561f52b22237b2982397cb8aae19e84adf8afcb4d21f758f40dcc001a5dd018aaf48ccfd59a91f3c18adcb27c414da44436bea8c931b
+
+Publish the order
+
+.. code:: bash
+
+    iexec order publish --dataset --wallet-file data_owner_wallet
+    ℹ using chain [kovan]
+    ? Using wallet developper_wallet
+    Please enter your password to unlock your wallet [hidden]
+    ? Do you want to publish the following apporder?
+    app:                0xC97b068BffDf6Cf07C25d0Cfb01Bd079EebB134D
+    appprice:           0
+    volume:             1000000
+    tag:                0x0000000000000000000000000000000000000000000000000000000000000000
+    datasetrestrict:    0x0000000000000000000000000000000000000000
+    workerpoolrestrict: 0x0000000000000000000000000000000000000000
+    requesterrestrict:  0x0000000000000000000000000000000000000000
+    salt:               0xda9180521bb3eb495e5fc9723d351199324b96481cdd85e9f7004477911045f0
+    sign:               0xad835e8b86ccb9b44d3704fd64166da648927adf9dc88e96931de388033fb178192ee52a8c665fefe6
+    6b99296e299226d0f047aa8fb5bd87b7b165374154e3c51c
+     Yes
+    ✔ apporder successfully published with orderHash 0x2d09cc3e08e675fc290b683aa376b7038d1762f31674e97baaaa723a0e879fdc
+
+
+Now the dataset is available.
+
+
+Dataset encryption
+------------------
+
+As a dataset provider, you might want to protect your dataset with encryption in order to monetize it.
+Any encrypted dataset will be decrypted on worker resources with a dataset secret key retrieved from the Secret Management Service.
+This dataset secret key need to be created and push by the dataset owner.
+At this point, the decrypted dataset will be ready to be used by the app.
+
+
+See the `SDK tutorial <https://github.com/iExecBlockchainComputing/iexec-sdk/>`_ for more info.
+
+First, initialize the folder structure
+
+.. code-block:: bash
+
+        iexec dataset init --encrypted
+
+        ℹ Created dataset folder tree for encryption
+        ✔ Saved default dataset in "iexec.json", you can edit it:
+        owner:     0x62F2a967EaF91976763B96E515E4014a5526b6D3
+        name:      my-dataset
+        multiaddr: /ipfs/QmW2WQi7j6c7UgJTarActp7tDNikE4B2qXtFCfLPdsgaTQ
+        checksum:  0x0000000000000000000000000000000000000000000000000000000000000000
+
+This will create the template for the dataset info in the *iexec.json* and the following folders:
+
+.. code-block:: bash
+
+        ├── datasets
+        │   ├── encrypted
+        │   └── original
+        └── .secrets
+            └── datasets
+
+Copy your dataset in the *datasets/original/*  folder, then encrypt it with the SDK:
+
+
+Generate a secret key for each file or folder in dataset/original/ and encrypt it
+
+.. code-block:: bash
+
+    iexec dataset encrypt
+
+It produces the secret key for decrypting the dataset
+
+.. code-block:: bash
+
+    cat ./.secrets/dataset/myAwsomeDataset.file.secret
+
+and the encrypted dataset, you must share at a public url
+
+.. code-block:: bash
+
+    ls -lh ./datasets/encrypted/myAwsomeDataset.file.enc
+
+Securely share the dataset secret key (Encrypted datasets only)
+
+Disclaimer: The secrets pushed in the Secret Management Service will be shared with the worker to process the dataset in the therms your specify in the dataset order.
+Make sure to always double check your selling policy in the dataset order before signing it.
+
+Push the secret in the Secret Management Service (sms)
+
+.. code-block:: bash
+
+    iexec dataset push-secret
+
+
+Go to the `Quick start`_ section to learn how to test a dapp .
+
+.. _Quick start: /quickstart.html

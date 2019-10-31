@@ -1,5 +1,5 @@
-Dataset provider
-================
+Dataset provider (DEPRECATED)
+=============================
 
 | In this section we will show you how you can propose a dataset or any valuable data over iExec infrastructure.
 | In the **task-as-a-service** model, each time a task is launched through the iExec network,

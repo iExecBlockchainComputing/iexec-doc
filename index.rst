@@ -25,14 +25,13 @@ About iExec
    :caption: Get Help
 
    quickstart
+   appprovider
+   buildsgxapp
+   requester
    wallet
    worker
    workerpool
-   requester
-   appprovider
-   datasetprovider
-   endtoendencryption
-   buildsgxapp
+
 
 .. toctree::
    :maxdepth: 3
