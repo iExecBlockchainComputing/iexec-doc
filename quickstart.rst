@@ -348,7 +348,7 @@ Now the request order is created and it can be submitted
 
 .. code-block:: bash
 
-    iexec deal show 0xccb19c6792b6e9da0ea9d5af46a221e6836da93cce57cdfd8014c900b695b691 --tasks 0
+    iexec deal show 0xccb19c6792b6e9da0ea9d5af46a221e6836da93cce57cdfd8014c900b695b691
     ℹ using chain [kovan]
     ✔ Deal 0xccb19c6792b6e9da0ea9d5af46a221e6836da93cce57cdfd8014c900b695b691 details:
     app:
