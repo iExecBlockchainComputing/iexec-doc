@@ -105,7 +105,7 @@ Customize the VM worker with your wallet
 
 .. code:: bash
 
-    sudo apt-get install && sudo  npm install -g iexec
+    sudo apt-get install -y npm && sudo  npm install -g iexec
 
 3 - Import your wallet with the iExec SDK.
 
@@ -136,7 +136,7 @@ In a terminal, run:
            iexechub/iexec-worker:3.X.X
 
 
-Please get the lastest version available (3.X.X) `here <https://hub.docker.com/r/iexechub/iexec-core/tags>`_. Note that it must match the version of the scheduler.
+Please get the lastest version available (3.X.X) `here <https://hub.docker.com/r/iexechub/iexec-worker/tags>`_. Note that it must match the version of the scheduler.
 
 Please note that all the values shown here are just given as an example, it should be adapted to the worker workerpool you are trying to join and to the machine on which the worker will run.
 
@@ -146,7 +146,7 @@ Here is the details for the different parameters used in the command:
 Parameter                                       Meaning
 =============================================  ==========================================================================================
 IEXEC_WORKER_NAME                              Name of your worker on the workerpool dashboard
-EXEC_CORE_HOST                                 Domain of the scheduler
+IEXEC_CORE_HOST                                 Domain of the scheduler
 IEXEC_CORE_PORT                                Port of the scheduler
 IEXEC_WORKER_BASE_DIR                          | Should match the tmp folder your mounting (-v /tmp/iexec-worker).
                                                | Results of tasks will be stored in /tmp/iexec-worker/my-iexec-worker)
